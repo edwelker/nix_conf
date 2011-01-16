@@ -20,6 +20,8 @@ alias orch='cd ~/git_repos/orch/'
 
 alias work='./bin/new_work.sh'
 
+alias g='git'
+
 alias gitk='gitk --all'
 
 alias gs="git status"
