@@ -18,7 +18,7 @@ alias shell='python manage.py shell_plus'
 alias db='python manage.py dbshell'
 alias orch='cd ~/git_repos/orch/'
 
-alias work='./bin/new_work.sh'
+alias work='./bin/work.sh'
 
 alias g='git'
 
