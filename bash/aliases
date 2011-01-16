@@ -2,6 +2,9 @@ alias ls='ls -G'
 alias ll='ls -hl'
 alias la='ls -al'
 alias ..='cd ..'
+alias ...='cd ../..'
+
+alias h='history'
 
 alias col='source ~/env/col/bin/activate'
 alias ma='python manage.py'
@@ -14,5 +17,9 @@ alias work='./bin/new_work.sh'
 
 alias gitk='gitk --all'
 
+alias gs="git status"
 alias gc='git commit'
 alias gca='git commit -a'
+function gg() { 
+    git commit -v -a -m "$*"
+}
