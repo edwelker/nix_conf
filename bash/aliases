@@ -1,6 +1,7 @@
 alias ls='ls -G'
 alias ll='ls -hl'
 alias la='ls -al'
+alias ..='cd ..'
 
 alias col='source ~/env/col/bin/activate'
 alias ma='python manage.py'
@@ -10,3 +11,8 @@ alias db='python manage.py dbshell'
 alias orch='cd ~/git_repos/orch/'
 
 alias work='./bin/new_work.sh'
+
+alias gitk='gitk --all'
+
+alias gc='git commit'
+alias gca='git commit -a'
