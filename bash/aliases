@@ -1,0 +1,12 @@
+alias ls='ls -G'
+alias ll='ls -hl'
+alias la='ls -al'
+
+alias col='source ~/env/col/bin/activate'
+alias ma='python manage.py'
+alias rs='python manage.py runserver'
+alias shell='python manage.py shell_plus'
+alias db='python manage.py dbshell'
+alias orch='cd ~/git_repos/orch/'
+
+alias work='./bin/new_work.sh'
