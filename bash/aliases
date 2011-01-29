@@ -12,18 +12,14 @@ alias ...='cd ../..'
 alias h='history'
 
 alias py='python'
-alias col='source ~/env/col/bin/activate'
 alias ma='python manage.py'
 alias rs='python manage.py runserver'
 alias shell='python manage.py shell_plus'
 alias db='python manage.py dbshell'
-alias orch='cd ~/git_repos/orch/'
 
 function backup(){
-    echo '.dump' | sqlite3 $*
+    echo '.dump' | sqlite3 $1
 }
-
-alias dbsand='. ~/env/dbsandbox/bin/activate'
 
 alias work='~/bin/work.sh'
 
