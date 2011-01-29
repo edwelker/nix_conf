@@ -80,9 +80,9 @@ else
 
 endif " has("autocmd")
 
-set number
-syntax on
-set ai sw=4
+set number    "show line numbers
+syntax on     "show syntax highlighting
+set ai sw=4        
 set encoding=utf8
 set paste
 set expandtab
