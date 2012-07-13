@@ -2,12 +2,16 @@ export EDITOR="vi"
 export PAGER="less"
 export TERM=xterm-color
 
+export LS_OPTIONS='--color=auto'
+eval `dircolors`
+alias ls='ls $LS_OPTIONS'
+
 #virtualenvwrapper
 export WORKON_HOME=$HOME/env
 
-if [[ -f /usr/local/bin/virtualenvwrapper.sh ]]
+if [[ -f $HOME/bin/virtualenvwrapper.sh ]]
 then
-    source /usr/local/bin/virtualenvwrapper.sh
+    source $HOME/bin/virtualenvwrapper.sh
 fi
 
 #pip
@@ -24,3 +28,7 @@ _pip_completion()
 }
 complete -o default -F _pip_completion pip
 # pip bash completion end
+
+#lang/locale settings
+export LC_ALL='en_US.UTF-8'
+export LANG='en_US.UTF-8'

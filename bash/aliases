@@ -1,6 +1,6 @@
-alias rbash='source ~/.bashrc'
-alias aliases='vi ~/bin/nix_conf/bash/aliases && rbash'
-alias env='vi ~/bin/nix_conf/bash/env && rbash'
+alias rebash='source ~/.bashrc'
+alias aliases='vi ~/bin/nix_conf/bash/aliases && rebash'
+alias envs='vi ~/bin/nix_conf/bash/env && rebash'
 
 alias c="clear"
 
@@ -17,6 +17,8 @@ alias ma='python manage.py'
 alias rs='python manage.py runserver'
 alias shell='python manage.py shell_plus'
 alias db='python manage.py dbshell'
+
+alias error_tail='tail -n 40 /web/public/logs/error'
 
 function backup(){
     echo '.dump' | sqlite3 $1
@@ -40,3 +42,8 @@ function gg() {
 SSH_COMPLETE=( $(cat ~/.ssh/known_hosts | cut -f 1 -d ' ' | sed -e s/,.*//g | uniq | egrep -v [0123456789]) )
 complete -o default -W "${SSH_COMPLETE[*]}" ssh 
 
+#http://www.bit-integrity.com/2011/08/vim-syntax-highlighting-with-less.html
+VLESS=$(find /usr/share/vim -name 'less.sh')
+if [ ! -z $VLESS ]; then
+  alias less=$VLESS
+fi
