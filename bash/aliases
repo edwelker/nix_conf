@@ -9,6 +9,7 @@ alias ll='ls -hl'
 alias la='ls -al'
 alias ..='cd ..'
 alias ...='cd ../..'
+alias md='mkdir -p'
 
 alias h='history'
 

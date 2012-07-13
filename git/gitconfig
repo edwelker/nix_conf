@@ -3,11 +3,10 @@
 	email = eddie.welker@gmail.com
 [core]
 	editor = vi
+    pager = less -FXRS -x2
 [color]
     diff = auto
     status = auto
     branch = auto
     interactive = auto
     ui = auto
-[core]
-    pager = less -FXRS -x2
