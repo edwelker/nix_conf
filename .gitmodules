@@ -4,6 +4,6 @@
 [submodule "vim/vim/bundle/pep8"]
 	path = vim/vim/bundle/pep8
 	url = git://github.com/vim-scripts/pep8.git
-[submodule "vim/vim/bundle/syntastic"]
-	path = vim/vim/bundle/syntastic
-	url = git://github.com/scrooloose/syntastic.git
+[submodule "vim/vim/bundle/solarized"]
+	path = vim/vim/bundle/solarized
+	url = git://github.com/altercation/vim-colors-solarized.git
