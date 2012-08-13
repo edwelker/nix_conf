@@ -97,4 +97,4 @@ set commentstring=\ #\ %s
 set foldlevel=0
 set clipboard+=unnamed
 
-set backupdir=~/tmp
+set backupdir=~/.tmp
