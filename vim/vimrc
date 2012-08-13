@@ -1,13 +1,13 @@
 " An example for a vimrc file.
-"
-" Maintainer:	Bram Moolenaar <Bram@vim.org>
-" Last change:	2002 Sep 19
-"
-" To use it, copy it to
-"     for Unix and OS/2:  ~/.vimrc
-"	      for Amiga:  s:.vimrc
-"  for MS-DOS and Win32:  $VIM\_vimrc
-"	    for OpenVMS:  sys$login:.vimrc
+
+
+
+" pathogen for plugin loading, but turn off filetype first, so it loads correctly
+filetype off
+call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
+
+
 
 " When started as "evim", evim.vim will already have done these settings.
 if v:progname =~? "evim"
@@ -55,6 +55,7 @@ if has("autocmd")
   " Use the default filetype settings, so that mail gets 'tw' set to 72,
   " 'cindent' is on in C files, etc.
   " Also load indent files, to automatically do language-dependent indenting.
+  filetype on
   filetype plugin indent on
 
   " Put these in an autocmd group, so that we can delete them easily.
@@ -98,3 +99,20 @@ set foldlevel=0
 set clipboard+=unnamed
 
 set backupdir=~/.tmp
+
+colorscheme oceandeep
+
+
+" Add the virtualenv's site-packages to vim path
+" http://sontek.net/blog/detail/turning-vim-into-a-modern-python-ide 
+py << EOF
+import os.path
+import sys
+import vim
+if 'VIRTUAL_ENV' in os.environ:
+    project_base_dir = os.environ['VIRTUAL_ENV']
+    sys.path.insert(0, project_base_dir)
+    activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+    execfile(activate_this, dict(__file__=activate_this))
+EOF
+
