@@ -5,6 +5,14 @@ export TERM=xterm-color
 export LS_OPTIONS='--color=auto'
 eval `dircolors`
 alias ls='ls $LS_OPTIONS'
+PATH=~/bin:$PATH
+export PATH
+
+#macvim
+#if [[ -d /Applications/MacVim ]]
+#then 
+#    $VIM_APP_DIR=/Applications/MacVim
+#fi
 
 #virtualenvwrapper
 export WORKON_HOME=$HOME/env
@@ -15,9 +23,9 @@ then
 fi
 
 #pip
-export PIP_REQUIRE_VIRTUALENV=true
-export PIP_RESPECT_VIRTUALENV=true
-export PIP_VIRTUALENV_BASE=$WORKON_HOME
+#export PIP_REQUIRE_VIRTUALENV=true
+#export PIP_RESPECT_VIRTUALENV=true
+#export PIP_VIRTUALENV_BASE=$WORKON_HOME
     
 # pip bash completion start
 _pip_completion()
