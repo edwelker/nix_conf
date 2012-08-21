@@ -10,3 +10,6 @@
 [submodule "vim/vim/bundle/vim-commentary"]
 	path = vim/vim/bundle/vim-commentary
 	url = git://github.com/tpope/vim-commentary.git
+[submodule "vim/vim/bundle/matchit"]
+	path = vim/vim/bundle/matchit
+	url = git://github.com/tmhedberg/matchit.git
