@@ -2,9 +2,12 @@ export EDITOR="vi"
 export PAGER="less"
 export TERM=xterm-color
 
-export LS_OPTIONS='--color=auto'
-eval `dircolors`
-alias ls='ls $LS_OPTIONS'
+if [ -f /usr/bin/dircolors ]
+  then
+    export LS_OPTIONS='--color=auto'
+    eval `dircolors`
+    alias ls='ls $LS_OPTIONS'
+fi
 
 PATH=~/bin:$PATH
 export PATH
