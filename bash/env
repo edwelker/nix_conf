@@ -41,5 +41,3 @@ complete -o default -F _pip_completion pip
 #lang/locale settings
 export LC_ALL='en_US.UTF-8'
 export LANG='en_US.UTF-8'
-
-export DJANGO_SETTINGS_MODULE=project.settings
