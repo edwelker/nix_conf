@@ -3,3 +3,4 @@ ln -s ~/bin/nix_conf/git/gitconfig ~/.gitconfig
 ln -s ~/bin/nix_conf/git/gitk ~/.gitk
 ln -s ~/bin/nix_conf/vim/vimrc ~/.vimrc
 ln -s ~/bin/nix_conf/vim/vim ~/.vim
+ln -s ~/bin/nix_conf/tmux.conf ~/.tmux.conf
