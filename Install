@@ -29,3 +29,8 @@ fi;
 if [ ! -d ~/.tmp ]; then
     mkdir ~/.tmp;
 fi;
+
+#checkout the pathogen submodules and whatnot
+if [ ! "$(ls -A ~/bin/nix_conf/pathogen)" ]; then
+    git submodule update --init
+fi;
