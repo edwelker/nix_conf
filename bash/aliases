@@ -21,6 +21,8 @@ alias rs='python manage.py runserver'
 alias shell='python manage.py shell_plus'
 alias db='python manage.py dbshell'
 
+alias pp='xmllint --c14n "$*" | xmllint --format --encode "utf-8" -'
+
 alias error_tail='tail -n 40 /web/public/logs/error'
 
 function backup(){
