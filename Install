@@ -1,6 +1,14 @@
 #!/bin/bash
 
 #Create symlinks for the configs
+if [ ! -h ~/.bashrc ]; then
+    if [ -f ~/.bashrc ]; then #there's a file there to remove
+        mv ~/.bashrc ~/.bashrc.old
+    fi;
+    ln -s ~/bin/nix_conf/bashrc ~/.bashrc
+    source ~/.bashrc
+fi;
+
 if [ ! -h ~/.ssh/config ]; then
     ln -s ~/bin/nix_conf/ssh/config ~/.ssh/config
 fi;

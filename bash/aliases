@@ -1,6 +1,7 @@
 alias rebash='source ~/.bashrc'
 alias aliases='vi ~/bin/nix_conf/bash/aliases && rebash'
 alias envs='vi ~/bin/nix_conf/bash/env && rebash'
+alias nix='cd ~/bin/nix_conf'
 
 alias c="clear"
 
