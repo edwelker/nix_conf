@@ -10,3 +10,9 @@
     branch = auto
     interactive = auto
     ui = auto
+[alias]
+    st = status -s
+    ci = commit
+    cm = commit -m
+    co = checkout
+    br = branch
