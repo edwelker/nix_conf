@@ -1,6 +1,7 @@
 alias rebash='source ~/.bashrc'
 alias aliases='vi ~/bin/nix_conf/bash/aliases && rebash'
 alias envs='vi ~/bin/nix_conf/bash/env && rebash'
+alias nix='cd ~/bin/nix_conf'
 
 alias c="clear"
 
@@ -9,6 +10,7 @@ alias ll='ls -hl'
 alias la='ls -al'
 alias ..='cd ..'
 alias ...='cd ../..'
+alias ....='cd ../../..'
 alias md='mkdir -p'
 
 alias h='history'
@@ -19,6 +21,8 @@ alias rs='python manage.py runserver'
 alias shell='python manage.py shell_plus'
 alias db='python manage.py dbshell'
 
+alias pp='xmllint --c14n "$*" | xmllint --format --encode "utf-8" -'
+
 alias error_tail='tail -n 40 /web/public/logs/error'
 
 function backup(){
@@ -28,15 +32,6 @@ function backup(){
 alias work='~/bin/work.sh'
 
 alias g='git'
-
-alias gitk='gitk --all'
-
-alias gs="git status"
-alias gc='git commit'
-alias gca='git commit -a'
-function gg() { 
-    git commit -v -a -m "$*"
-}
 
 #stolen from elsewhere
 # SSH Auto Completion of Remote Hosts

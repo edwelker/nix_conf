@@ -1,4 +1,4 @@
-1) copy anything good in your existing .bashrc or .bash_profile files to ~/bin/nix_conf/bash/<the appropriate file>, and then delete it from both files
-2) add the contents of install_files/<both> to .bashrc and .bash_profile
-3) diff the others... like vimrc, git/config, gitk, etc. and delete if they've got nothing good
-4) . ~bin/nix_conf/install
+dotfiles
+
+* keep them all in /bin/nix_conf/, not necessarily the greatest idea, but...
+* ./Install will install, replacing .foo in ~ with a simlink to these (it'll rename old .bashrc)
