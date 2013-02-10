@@ -28,3 +28,6 @@
     aliases = "!git config -l | grep alias | cut -c 7-"
 [credential]
 	helper = osxkeychain
+[github]
+    user = edwelker
+    password = !security find-generic-password -gs github.password -w | tr -d '\n'
