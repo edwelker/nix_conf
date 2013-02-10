@@ -1,6 +1,44 @@
-ln -s ~/bin/nix_conf/ssh/config ~/.ssh/config
-ln -s ~/bin/nix_conf/git/gitconfig ~/.gitconfig
-ln -s ~/bin/nix_conf/git/gitk ~/.gitk
-ln -s ~/bin/nix_conf/vim/vimrc ~/.vimrc
-ln -s ~/bin/nix_conf/vim/vim ~/.vim
-ln -s ~/bin/nix_conf/tmux.conf ~/.tmux.conf
+#!/bin/bash
+
+#Create symlinks for the configs
+if [ ! -h ~/.bashrc ]; then
+    if [ -f ~/.bashrc ]; then #there's a file there to remove
+        mv ~/.bashrc ~/.bashrc.old
+    fi;
+    ln -s ~/bin/nix_conf/bashrc ~/.bashrc
+    source ~/.bashrc
+fi;
+
+if [ ! -h ~/.ssh/config ]; then
+    ln -s ~/bin/nix_conf/ssh/config ~/.ssh/config
+fi;
+
+if [ ! -h ~/.gitconfig ]; then
+    ln -s ~/bin/nix_conf/git/gitconfig ~/.gitconfig
+fi; 
+
+if [ ! -h ~/.gitk ]; then
+    ln -s ~/bin/nix_conf/git/gitk ~/.gitk
+fi;
+
+if [ ! -h ~/.vimrc ]; then
+    ln -s ~/bin/nix_conf/vim/vimrc ~/.vimrc
+fi;
+
+if [ ! -h ~/.vim ]; then
+    ln -s ~/bin/nix_conf/vim/vim ~/.vim
+fi;
+
+if [ ! -h ~/.tmux.conf ]; then
+    ln -s ~/bin/nix_conf/tmux.conf ~/.tmux.conf
+fi;
+
+#create a .tmp directory for vim backups
+if [ ! -d ~/.tmp ]; then
+    mkdir ~/.tmp;
+fi;
+
+#checkout the pathogen submodules and whatnot
+if [ ! "$(ls -A ~/bin/nix_conf/pathogen)" ]; then
+    git submodule update --init
+fi;
