@@ -11,10 +11,17 @@
     interactive = auto
     ui = auto
 [alias]
-    st = status -s
+    st = status -sb
     ci = commit
     cm = commit -m
     co = checkout
     br = branch
     ai = add --interactive
     le = log --oneline --decorate
+    undo = reset --soft HEAD^
+    amend = commit --amend -C HEAD
+    ls = log --pretty=format:"%C(green)%h\\ %C(yellow)[%ad]%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
+    graph = log --graph --pretty=format':%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset'
+    yesterday = log --since '1 day ago' --oneline --author eddie.welker@gmail.com
+    latest = "for-each-ref --sort=-committerdate --format='%(committerdate:short) %(refname:short) [%(committername)]'"
+    aliases = "!git config -l | grep alias | cut -c 7-"
