@@ -1,5 +1,6 @@
 export EDITOR="vi"
 export PAGER="less"
+export LESS="-R"
 export TERM=xterm-color
 
 if [ -f /usr/bin/dircolors ]
@@ -25,6 +26,12 @@ if [[ -f $HOME/bin/virtualenvwrapper.sh ]]
 then
     source $HOME/bin/virtualenvwrapper.sh
 fi
+
+if [[ -f /usr/local/bin/virtualenvwrapper.sh ]]
+then
+    source /usr/local/bin/virtualenvwrapper.sh
+fi
+
 
 #pip
 #export PIP_REQUIRE_VIRTUALENV=true
