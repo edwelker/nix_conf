@@ -13,6 +13,10 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias md='mkdir -p'
 
+alias pd="pushd"
+alias pd1="pushd +1"
+alias pd2="pushd +2"
+
 alias h='history'
 
 alias py='python'
