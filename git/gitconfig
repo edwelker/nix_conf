@@ -16,3 +16,5 @@
     cm = commit -m
     co = checkout
     br = branch
+    ai = add --interactive
+    le = log --oneline --decorate
