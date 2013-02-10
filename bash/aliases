@@ -30,15 +30,6 @@ alias work='~/bin/work.sh'
 
 alias g='git'
 
-alias gitk='gitk --all'
-
-alias gs="git status"
-alias gc='git commit'
-alias gca='git commit -a'
-function gg() { 
-    git commit -v -a -m "$*"
-}
-
 #stolen from elsewhere
 # SSH Auto Completion of Remote Hosts
 SSH_COMPLETE=( $(cat ~/.ssh/known_hosts | cut -f 1 -d ' ' | sed -e s/,.*//g | uniq | egrep -v [0123456789]) )
