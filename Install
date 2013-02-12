@@ -33,6 +33,10 @@ if [ ! -h ~/.tmux.conf ]; then
     ln -s ~/bin/nix_conf/tmux.conf ~/.tmux.conf
 fi;
 
+if [ ! -h ~/.pythonstartup ]; then
+    ln -s ~/bin/nix_conf/pythonstartup ~/.pythonstartup
+fi;
+
 #create a .tmp directory for vim backups
 if [ ! -d ~/.tmp ]; then
     mkdir ~/.tmp;
