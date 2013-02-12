@@ -13,11 +13,7 @@ fi
 PATH=~/bin:$PATH
 export PATH
 
-#macvim
-#if [[ -d /Applications/MacVim ]]
-#then 
-#    $VIM_APP_DIR=/Applications/MacVim
-#fi
+export PYTHONSTARTUP=~/.pythonstartup
 
 #virtualenvwrapper
 export WORKON_HOME=$HOME/env
