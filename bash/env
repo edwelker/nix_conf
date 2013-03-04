@@ -17,6 +17,7 @@ export PYTHONSTARTUP=~/.pythonstartup
 
 #virtualenvwrapper
 export WORKON_HOME=$HOME/env
+export PROJECT_HOME=$HOME/code/python
 
 if [[ -f $HOME/bin/virtualenvwrapper.sh ]]
 then
