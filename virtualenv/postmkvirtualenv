@@ -13,16 +13,4 @@ PYDOC
 ) > $VIRTUAL_ENV/bin/pydoc
 chmod +x $VIRTUAL_ENV/bin/pydoc
 
-(cat <<'POSTACTIVATE'
-#!/bin/sh
-
-export PROJECT_ROOT=$HOME/Projects/__PROJECT_ROOT__
-export PATH=$PROJECT_ROOT/bin:$PATH
-
-pushd $PROJECT_ROOT
-POSTACTIVATE
-) > $VIRTUAL_ENV/bin/postactivate
-sed -i -e "s/__PROJECT_ROOT__/`basename $VIRTUAL_ENV`/g" $VIRTUAL_ENV/bin/postactivate
-chmod +x $VIRTUAL_ENV/bin/postactivate
-
 pip install -q pep8 flake8 pyflakes ipython ipdb 
