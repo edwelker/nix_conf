@@ -12,17 +12,17 @@ fi
 
 if [ -f /usr/bin/dircolors ]
   then
-    export LS_OPTIONS='--color=auto'
+    export LS_OPTIONS='-F --color=auto'
     eval `dircolors`
     alias ls='ls $LS_OPTIONS'
+
+    alias grep='grep --color=auto'
 fi
 
 export HISTCONTROL=ignoredups:erasedups
 shopt -s histappend
 export PROMPT_COMMAND='history -a'
 export HISTSIZE=2000
-
-PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[0;33m\] \[\033[00m\]\$ '
 
 PATH=~/bin:$PATH
 export PATH
@@ -65,3 +65,5 @@ fi
 #        done
 #    fi
 #done
+
+PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[0;33m\] \[\033[00m\]\$ '
