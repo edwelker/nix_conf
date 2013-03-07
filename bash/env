@@ -5,7 +5,7 @@ export TERM=xterm-color
 export CDPATH=.:~:~/code:~/code/python:~/src:~/bin:~/bin/nix_conf
 
 
-if command -v dnsdomainname && [[ $(dnsdomainname) =~ ^.*ncbi.*$ ]]; then
+if command -v dnsdomainname 1>/dev/null && [[ $(dnsdomainname) =~ ^.*ncbi.*$ ]]; then
     CDPATH=$CDPATH:/net/iwebdev2/export/home/web/private/htdocs/staff/welkere
     export CDPATH
 fi
