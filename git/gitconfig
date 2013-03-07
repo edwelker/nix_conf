@@ -11,6 +11,7 @@
     interactive = auto
     ui = auto
 [alias]
+    s = status
     st = status -sb
     ci = commit
     cm = commit -m
@@ -32,4 +33,4 @@
     user = edwelker
     password = !security find-generic-password -gs github.password -w | tr -d '\n'
 [push]
-	default = simple
+	default = current

@@ -1,13 +1,13 @@
-alias rebash='source ~/.bashrc'
+alias rebash='source ~/.bashrc; echo -e "\n\nBash config reloaded"'
 alias aliases='vi ~/bin/nix_conf/bash/aliases && rebash'
 alias envs='vi ~/bin/nix_conf/bash/env && rebash'
 alias nix='cd ~/bin/nix_conf'
 
 alias c="clear"
 
-alias ls='ls -G'
-alias ll='ls -hl'
-alias la='ls -al'
+alias ls='ls -GF'
+alias ll='ls -hlF'
+alias la='ls -alF'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
@@ -24,6 +24,10 @@ alias ma='python manage.py'
 alias rs='python manage.py runserver'
 alias shell='python manage.py shell_plus'
 alias db='python manage.py dbshell'
+
+alias findhere='find . -iname'
+alias findhome='find ~ -iname'
+alias findeverywhere='find / -iname'
 
 alias pp='xmllint --c14n "$*" | xmllint --format --encode "utf-8" -'
 
