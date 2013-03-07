@@ -2,6 +2,13 @@ export EDITOR="vi"
 export PAGER="less"
 export LESS="-R"
 export TERM=xterm-color
+export CDPATH=.:~:~/code:~/code/python:~/src:~/bin:~/bin/nix_conf
+
+
+if command -v dnsdomainname && [[ $(dnsdomainname) =~ ^.*ncbi.*$ ]]; then
+    CDPATH=$CDPATH:/net/iwebdev2/export/home/web/private/htdocs/staff/welkere
+    export CDPATH
+fi
 
 if [ -f /usr/bin/dircolors ]
   then
@@ -10,31 +17,28 @@ if [ -f /usr/bin/dircolors ]
     alias ls='ls $LS_OPTIONS'
 fi
 
+export HISTCONTROL=ignoredups:erasedups
+shopt -s histappend
+export PROMPT_COMMAND='history -a'
+export HISTSIZE=2000
+
+PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[0;33m\] \[\033[00m\]\$ '
+
 PATH=~/bin:$PATH
 export PATH
 
-export PYTHONSTARTUP=~/.pythonstartup
-
-#virtualenvwrapper
-export WORKON_HOME=$HOME/env
-export PROJECT_HOME=$HOME/code/python
-
-if [[ -f $HOME/bin/virtualenvwrapper.sh ]]
-then
-    source $HOME/bin/virtualenvwrapper.sh
+if [ -f ~/.pythonstartup ]; then
+    export PYTHONSTARTUP=~/.pythonstartup
 fi
 
-if [[ -f /usr/local/bin/virtualenvwrapper.sh ]]
-then
-    source /usr/local/bin/virtualenvwrapper.sh
+export VENVWRAPPER=$(command -v virtualenvwrapper.sh 2>/dev/null)
+if [ ! -z "$VENVWRAPPER" ]; then
+    export WORKON_HOME=$HOME/env
+    export PROJECT_HOME=$HOME/code/python
+    source "$VENVWRAPPER" 
 fi
 
 
-#pip
-#export PIP_REQUIRE_VIRTUALENV=true
-#export PIP_RESPECT_VIRTUALENV=true
-#export PIP_VIRTUALENV_BASE=$WORKON_HOME
-    
 # pip bash completion start
 _pip_completion()
 {
@@ -48,3 +52,16 @@ complete -o default -F _pip_completion pip
 #lang/locale settings
 export LC_ALL='en_US.UTF-8'
 export LANG='en_US.UTF-8'
+
+#completion
+if [ -f /etc/bash_completion ]; then
+    source /etc/bash_completion
+fi
+#completion_dirs=(/etc/bash_completion.d/* ~/.bash_completion.d/*)
+#for comp_dir in completion_dirs; do 
+#    if [ -f "$comp_dir" ]; then
+#        for x in "$comp_dir" ; do 
+#            source "$x"
+#        done
+#    fi
+#done
