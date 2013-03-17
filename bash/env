@@ -4,6 +4,9 @@ export LESS="-R"
 export TERM=xterm-256color
 export CDPATH=.:~:~/code:~/code/python:~/src:~/bin:~/bin/nix_conf
 
+#because I hit ctrl-s all the time
+stty ixany
+stty ixoff -ixon
 
 if command -v dnsdomainname 1>/dev/null && [[ $(dnsdomainname) =~ ^.*ncbi.*$ ]]; then
     CDPATH=$CDPATH:/net/iwebdev2/export/home/web/private/htdocs/staff/welkere
