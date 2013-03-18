@@ -40,6 +40,7 @@ function backup(){
 alias work='~/bin/work.sh'
 
 alias g='git'
+alias b='bzr'
 
 #stolen from elsewhere
 # SSH Auto Completion of Remote Hosts
