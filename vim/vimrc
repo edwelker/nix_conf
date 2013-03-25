@@ -11,7 +11,7 @@ call pathogen#infect()
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
-#learn to do it correctly
+" learn to do it correctly
 noremap <Up> <Nop>
 noremap <Down> <Nop>
 noremap <Left> <Nop>
