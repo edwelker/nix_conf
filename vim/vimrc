@@ -11,6 +11,11 @@ call pathogen#infect()
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
+#learn to do it correctly
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
 
 
 " When started as "evim", evim.vim will already have done these settings.
