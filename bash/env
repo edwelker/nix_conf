@@ -27,12 +27,18 @@ shopt -s histappend
 export PROMPT_COMMAND='history -a'
 export HISTSIZE=2000
 
-PATH=~/bin:$PATH
+PATH=~/bin:~/bin/py_libs:$PATH
 export PATH
+
+if [ -d /Users/welkere/Library/Python/2.7/bin ];then
+    export PATH=/Users/welkere/Library/Python/2.7/bin:$PATH
+fi
 
 if [ -f ~/.pythonstartup ]; then
     export PYTHONSTARTUP=~/.pythonstartup
 fi
+
+export PYTHONPATH=$PYTHONPATH:~/bin/py_libs
 
 export VENVWRAPPER=$(command -v virtualenvwrapper.sh 2>/dev/null)
 if [ ! -z "$VENVWRAPPER" ]; then
