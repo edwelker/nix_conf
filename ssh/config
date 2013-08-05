@@ -6,3 +6,6 @@ Host cdepot
     HostName cdepot.homedns.org
     User ewelker
 
+Host github github.com
+Hostname github.com
+IdentityFile ~/.ssh/id_rsa
