@@ -9,3 +9,6 @@ Host cdepot
 Host github github.com
 Hostname github.com
 IdentityFile ~/.ssh/id_rsa
+
+ServerAliveInterval 120
+TCPKeepAlive no
