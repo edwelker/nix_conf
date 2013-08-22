@@ -76,20 +76,6 @@ fi
 if [ -f /etc/bash_completion.d/ ]; then
     source /etc/bash_completion.d/*
 fi
-#completion_dirs=(/etc/bash_completion.d/* ~/.bash_completion.d/*)
-#for comp_dir in completion_dirs; do 
-#    if [ -f "$comp_dir" ]; then
-#        for x in "$comp_dir" ; do 
-#            source "$x"
-#        done
-#    fi
-#done
-#function parse_git_dirty {
-#[[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]] && echo "*"
-#}
-#function parse_git_branch {
-#git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/[\1$(parse_git_dirty)]/"
-#}
 
 if [ -f ~/bin/nix_conf/git/git-prompt.sh ]; then
     . ~/bin/nix_conf/git/git-prompt.sh
