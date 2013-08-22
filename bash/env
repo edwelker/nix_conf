@@ -72,6 +72,10 @@ export LANG='en_US.UTF-8'
 if [ -f /etc/bash_completion ]; then
     source /etc/bash_completion
 fi
+
+if [ -f /etc/bash_completion.d/ ]; then
+    source /etc/bash_completion.d/*
+fi
 #completion_dirs=(/etc/bash_completion.d/* ~/.bash_completion.d/*)
 #for comp_dir in completion_dirs; do 
 #    if [ -f "$comp_dir" ]; then
@@ -90,7 +94,7 @@ fi
 if [ -f ~/bin/nix_conf/git/git-prompt.sh ]; then
     . ~/bin/nix_conf/git/git-prompt.sh
     GIT_PS1_SHOWDIRTYSTATE=true
-    PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[0;33m\] \[\033[0;33m\]$(__git_ps1 " (%s)") \[\033[00m\]\$ '
+    PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[0;33m\] \[\033[0;33m\]$(__git_ps1 "(%s)") \[\033[00m\]\$ '
 fi
 
 export PS1
