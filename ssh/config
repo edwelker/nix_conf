@@ -6,3 +6,17 @@ Host cdepot
     HostName cdepot.homedns.org
     User ewelker
 
+Host github github.com
+Hostname github.com
+IdentityFile ~/.ssh/id_rsa
+
+# see http://stackoverflow.com/questions/13228425/write-failed-broken-pipe
+# and
+# http://andy.wordpress.com/2010/06/14/my-ssh-config-setup/
+
+# Don't kill connection if route goes down
+TCPKeepAlive no
+
+ServerAliveInterval 120
+
+Compression yes
