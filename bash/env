@@ -87,3 +87,5 @@ if [ -f ~/bin/nix_conf/git/git-prompt.sh ]; then
 fi
 
 export PS1
+
+#. ~/bin/nix_conf/vim/vim/bundle/powerline/powerline/bindings/bash/powerline.sh
