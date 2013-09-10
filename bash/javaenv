@@ -1,4 +1,4 @@
-export JAVA_HOME=~/code/java/jdk1.7.0_40/
-export GRAILS_HOME=~/code/java/grails-2.2.4/
-export GROOVY_HOME=~/code/java/groovy-2.1.7/
+export JAVA_HOME=~/code/java/jdk/
+export GRAILS_HOME=~/code/java/grails/
+export GROOVY_HOME=~/code/java/groovy/
 export PATH=$JAVA_HOME/bin:$PATH:$GRAILS_HOME/bin/:$GROOVY_HOME/bin/
