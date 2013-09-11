@@ -4,6 +4,9 @@ export LESS="-R"
 export TERM=xterm-256color
 export CDPATH=.:~:~/code:~/code/python:~/src:~/bin:~/bin/nix_conf
 
+. ~/bin/nix_conf/bash/javaenv
+
+
 PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[0;33m\] \[\033[00m\]\$ '
 
 #because I hit ctrl-s all the time
@@ -84,3 +87,5 @@ if [ -f ~/bin/nix_conf/git/git-prompt.sh ]; then
 fi
 
 export PS1
+
+#. ~/bin/nix_conf/vim/vim/bundle/powerline/powerline/bindings/bash/powerline.sh

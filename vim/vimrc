@@ -113,9 +113,12 @@ let g:user_emmet_leader_key = '<c-e>'
 "let g:use_emmet_complete_tag=1
 "let g:user_emmet_mode='a'
 
-" set background=dark
-colorscheme oceandeep
+colo oceandeep  "default
+autocmd! BufEnter,BufNewFile *.groovy,*.java colo elflord 
+autocmd! BufLeave *.groovy,*.java colo oceandeep 
 
+"powerline
+set rtp+=~/bin/nix_conf/vim/vim/bundle/powerline/powerline/bindings/vim
 
 " Add the virtualenv's site-packages to vim path
 " http://sontek.net/blog/detail/turning-vim-into-a-modern-python-ide 
