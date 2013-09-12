@@ -1,4 +1,6 @@
 export JAVA_HOME=~/code/java/jdk/
 export GRAILS_HOME=~/code/java/grails/
 export GROOVY_HOME=~/code/java/groovy/
-export PATH=$JAVA_HOME/bin:$PATH:$GRAILS_HOME/bin/:$GROOVY_HOME/bin/
+export M2_HOME=~/code/java/maven/
+export MAVEN_OPTS="-Xmx512m -XX:MaxPermSize=256"
+export PATH=$JAVA_HOME/bin:$PATH:$GRAILS_HOME/bin/:$GROOVY_HOME/bin/:$M2_HOME/bin
