@@ -89,3 +89,4 @@ fi
 export PS1
 
 #. ~/bin/nix_conf/vim/vim/bundle/powerline/powerline/bindings/bash/powerline.sh
+source ~/.gvm/bin/gvm-init.sh
