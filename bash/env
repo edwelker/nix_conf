@@ -33,7 +33,7 @@ fi
 export HISTCONTROL=ignoredups:erasedups
 shopt -s histappend
 export PROMPT_COMMAND='history -a'
-export HISTSIZE=2000
+export HISTSIZE=20000
 
 PATH=~/bin:~/bin/py_libs:~/ift:$PATH
 export PATH
