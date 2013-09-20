@@ -5,7 +5,7 @@ export TERM=xterm-256color
 export CDPATH=.:~:~/code:~/code/python:~/src:~/bin:~/bin/nix_conf
 
 . ~/bin/nix_conf/bash/javaenv
-
+. ~/bin/nix_conf/bash/grailsenv
 
 PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[0;33m\] \[\033[00m\]\$ '
 
@@ -92,4 +92,5 @@ fi
 export PS1
 
 #. ~/bin/nix_conf/vim/vim/bundle/powerline/powerline/bindings/bash/powerline.sh
-source ~/.gvm/bin/gvm-init.sh
+
+[[ -s "~/.gvm/bin/gvm-init.sh" ]] && source "~/.gvm/bin/gvm-init.sh"
