@@ -22,3 +22,6 @@
 [submodule "vim/vim/bundle/powerline"]
 	path = vim/vim/bundle/powerline
 	url = https://github.com/Lokaltog/powerline.git
+[submodule "vim/vim/syntax/groovy"]
+	path = vim/vim/syntax/groovy
+	url = https://github.com/vim-scripts/groovy.vim.git
