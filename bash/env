@@ -3,6 +3,7 @@ export PAGER="less"
 export LESS="-R"
 export TERM=xterm-256color
 export CDPATH=.:~:~/code:~/code/python:~/src:~/bin:~/bin/nix_conf
+export HISTIGNORE="&:ls:[bf]g:exit:history*:pwd:clear:[ \t]*"
 
 . ~/bin/nix_conf/bash/javaenv
 . ~/bin/nix_conf/bash/grailsenv
