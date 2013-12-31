@@ -1,3 +1,5 @@
+export SCALA_HOME=~/code/java/scala
+export PATH=$JAVA_HOME/bin:$SCALA_HOME/bin:$PATH
 export JAVA_HOME=~/code/java/jdk
 export M2_HOME=~/code/java/maven
 export M2=$M2_HOME/bin
