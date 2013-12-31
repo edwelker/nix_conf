@@ -1,1 +1,2 @@
-export PATH=$JAVA_HOME/bin:$PATH
+export SCALA_HOME=~/code/java/scala
+export PATH=$JAVA_HOME/bin:$SCALA_HOME/bin:$PATH
