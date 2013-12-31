@@ -32,6 +32,8 @@ alias findhere='find . -iname'
 alias findhome='find ~ -iname'
 alias findeverywhere='find / -iname'
 
+alias w='w -s'
+
 alias pp='xmllint --c14n "$*" | xmllint --format --encode "utf-8" -'
 
 alias error_tail='tail -n 40 /web/public/logs/error'
