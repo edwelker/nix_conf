@@ -31,7 +31,6 @@ if [ -f /usr/bin/dircolors ]
     alias grep='grep --color=auto'
 fi
 
-export HISTCONTROL=ignoredups:erasedups
 shopt -s histappend
 export PROMPT_COMMAND='history -a'
 export HISTSIZE=20000

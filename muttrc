@@ -1,0 +1,21 @@
+#Basic settings
+set my_name = "Eddie Welker"
+set editor = `echo \$EDITOR`
+
+#Gmail settings
+set folder = imaps://imap.gmail.com
+set imap_user = eddie.welker@gmail.com
+set spoolfile = +INBOX
+mailboxes = +INBOX
+
+set header_cache = ~/.cache/mutt
+set message_cachedir = ~/.cache/mutt
+
+unset imap_passive
+set imap_keepalive = 300
+set mail_check = 120
+
+#reverse order so newest are on top
+set sort=threads
+set sort_browser=date
+set sort_aux=reverse-last-date-received
