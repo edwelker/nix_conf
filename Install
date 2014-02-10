@@ -30,7 +30,7 @@ if [ ! -h ~/.vim ]; then
 fi;
 
 if [ ! -h ~/.tmux.conf ]; then
-    ln -s ~/bin/nix_conf/tmux.conf ~/.tmux.conf
+    ln -s ~/bin/nix_conf/tmux/tmux.conf ~/.tmux.conf
 fi;
 
 if [ ! -h ~/.pythonstartup ]; then
