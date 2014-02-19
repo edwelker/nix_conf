@@ -1,0 +1,2 @@
+#!/bin/env sh
+xmllint --c14n11 --format --encode "utf-8" "$*"
