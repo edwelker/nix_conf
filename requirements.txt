@@ -1,0 +1,4 @@
+httpie
+jsbeautifier
+pep8
+flake8
