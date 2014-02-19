@@ -35,7 +35,7 @@ shopt -s histappend
 export PROMPT_COMMAND='history -a'
 export HISTSIZE=20000
 
-PATH=~/bin:~/bin/py_libs:~/ift:$PATH
+PATH=~/bin:~/bin/nix_conf/bin:~/bin/py_libs:~/ift:$PATH
 export PATH
 
 if [ -d /usr/local/bin/ ];then
