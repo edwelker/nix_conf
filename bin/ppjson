@@ -1,0 +1,22 @@
+#!/usr/bin/env python3
+"""
+Convert JSON data to human-readable form.
+
+(Reads from stdin and writes to stdout)
+"""
+
+import sys
+import json
+
+
+def pprint(input):
+    print(json.dumps(json.loads(input), indent=2))
+
+def main(argv):
+    if len(argv) == 2:
+        pprint(open(argv[1]).read())
+    else:
+        pprint(sys.stdin.read())
+
+if __name__ == '__main__':
+    main(sys.argv)    
