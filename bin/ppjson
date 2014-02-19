@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 """
-Convert JSON data to human-readable form.
-
-(Reads from stdin and writes to stdout)
+Only difference between this and python -mjson.tool is
+the two space indent (which I like better for diffing)
 """
 
 import sys
