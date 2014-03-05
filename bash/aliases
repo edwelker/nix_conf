@@ -28,6 +28,8 @@ alias shell='python manage.py shell_plus'
 alias db='python manage.py dbshell'
 
 alias nz='nosetests'
+alias pip-upgrade="pip install --upgrade"
+alias pip-old="pip list -o"
 
 alias findhere='find . -iname'
 alias findhome='find ~ -iname'
