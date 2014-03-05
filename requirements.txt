@@ -3,3 +3,7 @@ jsbeautifier
 pep8
 flake8
 wheel
+requests
+virtualenv
+virtualenvwrapper
+Pygments
