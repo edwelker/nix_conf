@@ -1,5 +1,6 @@
 alias rebash='source ~/.bashrc; echo -e "\n\nBash config reloaded"'
 alias aliases='vi ~/bin/nix_conf/bash/aliases && rebash'
+alias galiases='vi ~/bin/nix_conf/git/gitconfig && rebash'
 alias envs='vi ~/bin/nix_conf/bash/env && rebash'
 alias nix='cd ~/bin/nix_conf'
 
@@ -8,10 +9,12 @@ alias c="clear"
 alias ls='ls -GF'
 alias ll='ls -hlF'
 alias la='ls -alF'
+alias lt='ls -to'
 alias lal='ls -al | less'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
+alias .....='cd ../../../..'
 alias md='mkdir -p'
 
 alias pd="pushd"
