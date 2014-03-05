@@ -8,5 +8,5 @@ virtualenv
 virtualenvwrapper
 Pygments
 pyflakes
-ipython
 ipdb 
+ipython
