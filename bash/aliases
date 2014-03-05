@@ -30,6 +30,7 @@ alias db='python manage.py dbshell'
 alias nz='nosetests'
 alias pip-upgrade="pip install --upgrade"
 alias pip-old="pip list -o"
+alias pip-local="egrep -v -f ~/bin/nix_conf/requirements.txt"
 
 alias findhere='find . -iname'
 alias findhome='find ~ -iname'
