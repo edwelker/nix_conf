@@ -33,6 +33,11 @@ if [ ! -h ~/.tmux.conf ]; then
     ln -s ~/bin/nix_conf/tmux/tmux.conf ~/.tmux.conf
 fi;
 
+if [ ! -h ~/.pip ]; then
+    mkdir ~/.pip;
+    ln -s ~/bin/nix_conf/pip.conf ~/.pip/pip.conf
+fi;
+
 if [ ! -h ~/.pythonstartup ]; then
     ln -s ~/bin/nix_conf/pythonstartup ~/.pythonstartup
 fi;
