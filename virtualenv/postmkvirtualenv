@@ -13,4 +13,4 @@ PYDOC
 ) > $VIRTUAL_ENV/bin/pydoc
 chmod +x $VIRTUAL_ENV/bin/pydoc
 
-pip install -q pep8 flake8 pyflakes ipython ipdb 
+#pip install -q pep8 flake8 pyflakes ipython ipdb

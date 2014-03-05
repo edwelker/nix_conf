@@ -7,3 +7,6 @@ requests
 virtualenv
 virtualenvwrapper
 Pygments
+pyflakes
+ipython
+ipdb 
