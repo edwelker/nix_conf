@@ -38,6 +38,7 @@ alias pip-local="egrep -v -f ${DOTDOT}/requirements.txt"
 alias findhere='find . -iname'
 alias findhome='find ~ -iname'
 alias findeverywhere='find / -iname'
+alias f='egrep -ir * -e'
 
 alias hi='pygmentize -f console256 -g'
 
@@ -64,3 +65,7 @@ VLESS=$(find /usr/share/vim -name 'less.sh')
 if [ ! -z $VLESS ]; then
   alias less=$VLESS
 fi
+
+lsa(){
+    egrep bash/aliases -e 'alias' | awk '{$1=""; print $0}'
+}
