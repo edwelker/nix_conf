@@ -2,7 +2,7 @@ alias rebash="source ~/.bashrc; echo -e '\nBash config reloaded'"
 alias aliases="vi ${DOTDOT}/bash/aliases && rebash"
 alias galiases="vi ${DOTDOT}/git/gitconfig && rebash"
 alias envs="vi ${DOTDOT}/bash/env && rebash"
-alias nix="cd ${DOTDOT}"
+alias dotdot="cd ${DOTDOT}"
 
 alias c="clear"
 

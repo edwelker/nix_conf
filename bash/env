@@ -2,7 +2,7 @@ export EDITOR="vi"
 export PAGER="less"
 export LESS="-R"
 export TERM=xterm-256color
-export CDPATH=.:~:~/code:~/code/python:~/src:~/bin:~/bin/nix_conf
+export CDPATH=.:~:~/code:~/code/python:~/src:~/bin:$DOTDOT
 export HISTIGNORE="&:ls:[bf]g:exit:history*:pwd:clear"
 
 . ${DOTDOT}/bash/javaenv
@@ -35,7 +35,7 @@ shopt -s histappend
 export PROMPT_COMMAND='history -a'
 export HISTSIZE=20000
 
-PATH=~/bin:~/bin/nix_conf/bin:~/bin/py_libs:~/ift:$PATH
+PATH=~/bin:$DOTDOT/bin:~/bin/py_libs:~/ift:$PATH
 export PATH
 
 if [ -d /usr/local/bin/ ];then

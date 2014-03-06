@@ -118,7 +118,7 @@ autocmd! BufEnter,BufNewFile *.groovy,*.java colo elflord
 autocmd! BufLeave *.groovy,*.java colo oceandeep 
 
 "powerline
-set rtp+=~/bin/nix_conf/vim/vim/bundle/powerline/powerline/bindings/vim
+set rtp+=$DOTDOT/vim/vim/bundle/powerline/powerline/bindings/vim
 
 " Add the virtualenv's site-packages to vim path
 " http://sontek.net/blog/detail/turning-vim-into-a-modern-python-ide 
