@@ -53,6 +53,7 @@ function backup(){
 alias work="~/bin/work.sh"
 
 alias g='git'
+alias gp='git push'
 alias b='bzr'
 
 #stolen from elsewhere
