@@ -1,8 +1,8 @@
-alias rebash='source ~/.bashrc; echo -e "\n\nBash config reloaded"'
-alias aliases='vi ~/bin/nix_conf/bash/aliases && rebash'
-alias galiases='vi ~/bin/nix_conf/git/gitconfig && rebash'
-alias envs='vi ~/bin/nix_conf/bash/env && rebash'
-alias nix='cd ~/bin/nix_conf'
+alias rebash="source ~/.bashrc; echo -e '\nBash config reloaded'"
+alias aliases="vi ${DOTDOT}/bash/aliases && rebash"
+alias galiases="vi ${DOTDOT}/git/gitconfig && rebash"
+alias envs="vi ${DOTDOT}/bash/env && rebash"
+alias nix="cd ${DOTDOT}"
 
 alias c="clear"
 
@@ -33,11 +33,13 @@ alias db='python manage.py dbshell'
 alias nz='nosetests'
 alias pip-upgrade="pip install --upgrade"
 alias pip-old="pip list -o"
-alias pip-local="egrep -v -f ~/bin/nix_conf/requirements.txt"
+alias pip-local="egrep -v -f ${DOTDOT}/requirements.txt"
 
 alias findhere='find . -iname'
 alias findhome='find ~ -iname'
 alias findeverywhere='find / -iname'
+
+alias hi='pygmentize -f console256 -g'
 
 alias w='w -s'
 
@@ -47,7 +49,7 @@ function backup(){
     echo '.dump' | sqlite3 $1
 }
 
-alias work='~/bin/work.sh'
+alias work="~/bin/work.sh"
 
 alias g='git'
 alias b='bzr'

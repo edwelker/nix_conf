@@ -1,4 +1,5 @@
-dotfiles
+### dotfiles
 
-* keep them all in /bin/nix_conf/, not necessarily the greatest idea, but...
+$DOTDOT is the install location, set explictly in Install and bashrc
+
 * ./Install will install, replacing .foo in ~ with a simlink to these (it'll rename old .bashrc)

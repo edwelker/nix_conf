@@ -23,6 +23,7 @@
     le = log --oneline --decorate
     undo = reset --soft HEAD^
     soft = reset --soft HEAD^
+    diffprev = diff HEAD^
     amend = commit --amend -C HEAD
     ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
     ls = log --pretty=format:"%C(green)%h\\ %C(yellow)[%ad]%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
