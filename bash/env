@@ -93,4 +93,5 @@ export PS1
 
 #. ${DOTDOT}/vim/vim/bundle/powerline/powerline/bindings/bash/powerline.sh
 
-[[ -s "~/.gvm/bin/gvm-init.sh" ]] && source "~/.gvm/bin/gvm-init.sh"
+#install the groovy enVironment Manager
+[[ -r "~/.gvm/bin/gvm-init.sh" ]] && source "~/.gvm/bin/gvm-init.sh"
