@@ -1,3 +1,5 @@
-. ~/bin/nix_conf/bash/aliases
-. ~/bin/nix_conf/bash/config
-. ~/bin/nix_conf/bash/env
+export DOTDOT="${HOME}/bin/nix_conf"
+
+. ${DOTDOT}/bash/aliases
+. ${DOTDOT}/bash/config
+. ${DOTDOT}/bash/env

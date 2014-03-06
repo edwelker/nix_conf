@@ -1,49 +1,51 @@
 #!/bin/bash
 
+export DOTDOT="${HOME}/bin/nix_conf"
+
 #Create symlinks for the configs
 if [ ! -h ~/.bashrc ]; then
     if [ -f ~/.bashrc ]; then #there's a file there to remove
         mv ~/.bashrc ~/.bashrc.old
     fi;
-    ln -s ~/bin/nix_conf/bashrc ~/.bashrc
+    ln -s ${DOTDOT}/bashrc ~/.bashrc
     source ~/.bashrc
 fi;
 
 if [ ! -h ~/.ssh/config ]; then
-    ln -s ~/bin/nix_conf/ssh/config ~/.ssh/config
+    ln -s ${DOTDOT}/ssh/config ~/.ssh/config
 fi;
 
 if [ ! -h ~/.gitconfig ]; then
-    ln -s ~/bin/nix_conf/git/gitconfig ~/.gitconfig
+    ln -s ${DOTDOT}/git/gitconfig ~/.gitconfig
 fi; 
 
 if [ ! -h ~/.gitk ]; then
-    ln -s ~/bin/nix_conf/git/gitk ~/.gitk
+    ln -s ${DOTDOT}/git/gitk ~/.gitk
 fi;
 
 if [ ! -h ~/.vimrc ]; then
-    ln -s ~/bin/nix_conf/vim/vimrc ~/.vimrc
+    ln -s ${DOTDOT}/vim/vimrc ~/.vimrc
 fi;
 
 if [ ! -h ~/.vim ]; then
-    ln -s ~/bin/nix_conf/vim/vim ~/.vim
+    ln -s ${DOTDOT}/vim/vim ~/.vim
 fi;
 
 if [ ! -h ~/.tmux.conf ]; then
-    ln -s ~/bin/nix_conf/tmux/tmux.conf ~/.tmux.conf
+    ln -s ${DOTDOT}/tmux/tmux.conf ~/.tmux.conf
 fi;
 
 if [ ! -h ~/.pip ]; then
     mkdir ~/.pip;
-    ln -s ~/bin/nix_conf/pip.conf ~/.pip/pip.conf
+    ln -s ${DOTDOT}/pip.conf ~/.pip/pip.conf
 fi;
 
 if [ ! -h ~/.pythonstartup ]; then
-    ln -s ~/bin/nix_conf/pythonstartup ~/.pythonstartup
+    ln -s ${DOTDOT}/pythonstartup ~/.pythonstartup
 fi;
 
 if [ ! -h ~/.muttrc ]; then
-    ln -s ~/bin/nix_conf/muttrc ~/.muttrc
+    ln -s ${DOTDOT}/muttrc ~/.muttrc
 fi;
 
 #create a .tmp directory for vim backups
@@ -52,6 +54,6 @@ if [ ! -d ~/.tmp ]; then
 fi;
 
 #checkout the pathogen submodules and whatnot
-if [ ! "$(ls -A ~/bin/nix_conf/pathogen)" ]; then
+if [ ! "$(ls -A ${DOTDOT}/pathogen)" ]; then
     git submodule update --init
 fi;
