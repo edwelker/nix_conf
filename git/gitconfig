@@ -40,3 +40,5 @@
 	default = current
 [credential]
 	helper = cache --timeout=3600
+[init]
+   templatedir =  ~/bin/nix/gittemplate
