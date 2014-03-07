@@ -63,6 +63,7 @@ alias work="~/bin/work.sh"
 alias g='git'
 alias gp='git push'
 alias gpp='git pull && git push'
+alias ginitpy="git init --template=${DOTDOT}/pygittemplate"
 alias b='bzr'
 
 #stolen from elsewhere
