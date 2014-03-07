@@ -18,6 +18,7 @@
     co = checkout
     br = branch
     ap = add -p
+    a = add
     ds = diff --staged
     ai = add --interactive
     le = log --oneline --decorate
