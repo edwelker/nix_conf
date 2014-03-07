@@ -48,6 +48,7 @@ alias ta='tmux attach -t'
 alias tn='tmux new-session -s'
 alias tl='tmux list-sessions'
 alias td='tmux detach'
+alias tk='tmux kill-session -t'
 
 alias w='w -s'
 
