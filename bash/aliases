@@ -6,6 +6,7 @@ alias dotdot="cd ${DOTDOT}"
 
 alias c="clear"
 
+alias l='ls'
 alias ls='ls -GF'
 alias ll='ls -hlF'
 alias la='ls -alF'
@@ -54,6 +55,7 @@ alias work="~/bin/work.sh"
 
 alias g='git'
 alias gp='git push'
+alias gpp='git pull && git push'
 alias b='bzr'
 
 #stolen from elsewhere
@@ -70,3 +72,10 @@ fi
 lsa(){
     egrep bash/aliases -e 'alias' | awk '{$1=""; print $0}'
 }
+
+#openshift
+alias rh='rhc'
+alias rht='rhc tail'
+alias rhe='rhc env'
+alias rhse='rhc set-env'
+alias rhls='rhc apps'
