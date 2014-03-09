@@ -21,6 +21,7 @@ alias md='mkdir -p'
 alias pd="pushd"
 alias pd1="pushd +1"
 alias pd2="pushd +2"
+alias dirs='dirs -v'
 
 alias h='history'
 
