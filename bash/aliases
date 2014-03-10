@@ -82,6 +82,11 @@ lsa(){
     egrep ${DOTDOT}/bash/aliases -e 'alias' | awk '{$1=""; print $0}'
 }
 
+lastcommand(){
+    h | tail -n 2 | head -n 1 | awk '{$1=""; print $0}' | sed -e 's/^ *//' 
+}
+alias savelastcommand='lastcommand >'
+
 #openshift
 alias rh='rhc'
 alias rht='rhc tail'
