@@ -17,7 +17,7 @@ stty ixoff -ixon
 #because I occasionally kill shells by Ctrl+d, don't send eof.
 set -o ignoreeof
 
-if command -v dnsdomainname 1>/dev/null && [[ $(dnsdomainname) =~ ^.*ncbi.*$ ]]; then
+if command -v dnsdomainname 1>/dev/null && [[ $(dnsdomainname 2>/dev/null) =~ ^.*ncbi.*$ ]]; then
     CDPATH=$CDPATH:/net/iwebdev2/export/home/web/private/htdocs/staff/welkere
     export CDPATH
 fi
