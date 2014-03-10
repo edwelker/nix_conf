@@ -9,6 +9,12 @@ Host cdepot
 Host github github.com
     Hostname github.com
 
+Host *
+    Compression yes
+    CompressionLevel 7
+    ControlMaster auto
+    ControlPath /tmp/ssh-%r@%h:%p
+
 IdentityFile ~/.ssh/id_rsa
 
 # see http://stackoverflow.com/questions/13228425/write-failed-broken-pipe
