@@ -90,6 +90,26 @@ if [ -f ${DOTDOT}/git/git-prompt.sh ]; then
     PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[0;33m\] \[\033[0;33m\]$(__git_ps1 "(%s)") \[\033[00m\]\$ '
 fi
 
+#aws completion
+if [ -x $(which aws_completer) 2>/dev/null ]; then
+    complete -C aws_completer aws
+fi
+
+#http://tychoish.com/rhizome/9-awesome-ssh-tricks/
+#ssh-agent runs per-session, so tmux can't always find it. 
+#don't re-run, just find the real one
+ssh-reagent () {
+    for agent in /tmp/ssh-*/agent.*; do
+        export SSH_AUTH_SOCK=$agent
+        if ssh-add -l 2>&1 > /dev/null; then
+            echo Found working SSH Agent:
+            ssh-add -l
+            return
+        fi
+    done
+    echo Cannot find ssh agent - maybe you should reconnect and forward it?
+}
+
 export PS1
 
 #. ${DOTDOT}/vim/vim/bundle/powerline/powerline/bindings/bash/powerline.sh
