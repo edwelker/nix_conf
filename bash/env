@@ -91,7 +91,7 @@ if [ -f ${DOTDOT}/git/git-prompt.sh ]; then
 fi
 
 #aws completion
-if [ -x $(which aws_completer) 2>/dev/null ]; then
+if [ -x $(which aws_completer 2>/dev/null) ]; then
     complete -C aws_completer aws
 fi
 
