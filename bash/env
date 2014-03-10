@@ -4,6 +4,7 @@ export LESS="-R"
 export TERM=xterm-256color
 export CDPATH=.:~:~/code:~/code/python:~/src:~/bin:$DOTDOT
 export HISTIGNORE="&:ls:[bf]g:exit:history*:pwd:clear"
+export HISTTIMEFORMAT="%y-%m-%dT%T "
 
 . ${DOTDOT}/bash/javaenv
 . ${DOTDOT}/bash/grailsenv
