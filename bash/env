@@ -76,12 +76,17 @@ export LC_ALL='en_US.UTF-8'
 export LANG='en_US.UTF-8'
 
 #completion
+#TODO: clean up these three identical if statements
 if [ -f /etc/bash_completion ]; then
     source /etc/bash_completion
 fi
 
 if [ -f /etc/bash_completion.d/ ]; then
     source /etc/bash_completion.d/*
+fi
+
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+  . $(brew --prefix)/etc/bash_completion
 fi
 
 if [ -f ${DOTDOT}/git/git-prompt.sh ]; then
