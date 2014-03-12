@@ -9,10 +9,13 @@ brew tap phinze/cask
 brew install brew-cask
 
 #install GUI's
-brew cask install firefox iterm2 google-chrome rdio alfred vlc macvim flux vienna dropbox dash caffeine time-out spirited-away selfcontrol lastfm eclipse
+brew cask install firefox iterm2 google-chrome rdio alfred vlc macvim flux vienna dropbox dash caffeine time-out spirited-away selfcontrol lastfm eclipse-ide java
 
 #install non-GUI's
-brew install git python python3 tmux vim phantomjs ack wget tree node bash-completion ruby irssi
+brew install git python python3 tmux vim phantomjs ack wget tree node bash-completion ruby irssi tomcat groovy maven gradle
+
+#make code directory and subdir, leave empty
+mkdir -p ~/code/python
 
 #get dotfiles
 mkdir -p bin/nix_conf
