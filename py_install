@@ -1,8 +1,0 @@
-#for when you have no su permissions
-
-#install pip locally. This dir is already on the path and pythonpath
-easy_install -d ~/bin/py_libs pip
-
-#on a mac, this will install to /Users/<user>/Library/Python/<version>/bin
-#which is already on the path for welkere, 2.7
-pip install -user virtualenv virtualenvwrapper
