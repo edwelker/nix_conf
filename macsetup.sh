@@ -9,10 +9,17 @@ brew tap phinze/cask
 brew install brew-cask
 
 #install GUI's
-brew cask install firefox iterm2 google-chrome rdio alfred vlc macvim flux vienna dropbox dash caffeine time-out spirited-away selfcontrol lastfm eclipse-ide java
+brew cask install firefox iterm2 google-chrome rdio alfred vlc macvim flux vienna dropbox dash caffeine time-out spirited-away selfcontrol lastfm eclipse-ide java cord
 
 #install non-GUI's
 brew install git python python3 tmux vim phantomjs ack wget tree node bash-completion ruby irssi tomcat groovy maven gradle scala
+
+#add system duplicates
+brew tap homebrew/dupes
+
+#opensc for that stupid card reader, then you have to change the ssh call to point
+#to /usr/local/Cellar/opensc/0.13.0/lib/pkcs11/opensc-pkcs11.so
+brew install opensc
 
 #make code directory and subdir, leave empty
 mkdir -p ~/code/python
