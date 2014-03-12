@@ -9,7 +9,7 @@ brew tap phinze/cask
 brew install brew-cask
 
 #install GUI's
-brew cask install firefox iterm2 google-chrome rdio alfred vlc macvim flux vienna dropbox dash
+brew cask install firefox iterm2 google-chrome rdio alfred vlc macvim flux vienna dropbox dash caffeine time-out spirited-away selfcontrol lastfm eclipse
 
 #install non-GUI's
 brew install git python python3 tmux vim phantomjs ack wget tree node bash-completion ruby irssi
