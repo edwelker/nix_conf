@@ -1,5 +1,7 @@
 #!/bin/sh
 
+#idea and portions stolen shamelessly from @llimllib
+
 #install homebrew
 ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
 
@@ -10,7 +12,7 @@ brew install brew-cask
 brew cask install firefox iterm2 google-chrome rdio alfred vlc macvim flux vienna dropbox dash
 
 #install non-GUI's
-brew install git python python3 tmux vim phantomjs ack wget tree node bash-completion ruby
+brew install git python python3 tmux vim phantomjs ack wget tree node bash-completion ruby irssi
 
 #get dotfiles
 mkdir -p bin/nix_conf
@@ -22,7 +24,7 @@ cd ~
 #install global python packages
 pip install -r ${DOTDOT}/requirements.txt
 
-#dock on left
+#dock on bottom (gotta manually move to the left)
 defaults write com.apple.dock pinning -string end
 #show hidden files
 defaults write com.apple.finder AppleShowAllFiles -bool true
@@ -37,3 +39,13 @@ defaults write NSGlobalDomain KeyRepeat -int 0
 
 #restart dock to see changes
 killall Dock
+
+echo "\n\nTime to set the computer name Eddie... which composer is it this time?\n"
+sethost(){
+    sudo scutil --set ComputerName $1
+    sudo scutil --set LocalHostName $1
+    sudo scutil --set HostName $1
+    dscacheutil -flushcache
+}
+
+sethost
