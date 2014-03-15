@@ -34,6 +34,9 @@ cd ~
 #install global python packages
 pip install -r ${DOTDOT}/requirements.txt
 
+#ssh key
+mkdir ~/.ssh && cd ~/.ssh && ssh-keygen -t rsa -C "eddie.welker@gmail.com"
+
 #dock on bottom (gotta manually move to the left)
 defaults write com.apple.dock pinning -string end
 #show hidden files
