@@ -37,7 +37,7 @@ pip install -r ${DOTDOT}/requirements.txt
 #dock on bottom (gotta manually move to the left)
 defaults write com.apple.dock pinning -string end
 #show hidden files
-defaults write com.apple.finder AppleShowAllFiles -bool true
+#defaults write com.apple.finder AppleShowAllFiles -bool true
 #show Library
 chflags nohidden ~/Library
 #show extensions
