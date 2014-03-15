@@ -8,7 +8,7 @@ ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
 brew tap phinze/cask
 brew install brew-cask
 
-#install GUI's
+#install GUI's to /opt/homebrew-cask/Caskroom
 brew cask install firefox iterm2 google-chrome rdio alfred vlc macvim flux vienna dropbox dash caffeine time-out spirited-away selfcontrol lastfm eclipse-ide java cord
 
 #install non-GUI's
