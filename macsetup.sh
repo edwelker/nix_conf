@@ -12,6 +12,8 @@ brew install brew-cask
 #install GUI's to /opt/homebrew-cask/Caskroom
 brew cask install firefox iterm2 google-chrome rdio alfred vlc macvim flux vienna dropbox dash caffeine time-out spirited-away selfcontrol lastfm eclipse-ide java cord pckeyboardhack
 
+#remember: http://stackoverflow.com/questions/127591/using-caps-lock-as-esc-in-mac-os-x
+
 #install non-GUI's
 brew install git python python3 tmux vim phantomjs ack wget tree node bash-completion ruby irssi tomcat groovy maven gradle scala
 
