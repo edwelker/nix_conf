@@ -25,3 +25,6 @@
 [submodule "vim/vim/syntax/groovy"]
 	path = vim/vim/syntax/groovy
 	url = https://github.com/vim-scripts/groovy.vim.git
+[submodule "vim/vim/bundle/supertab"]
+	path = vim/vim/bundle/supertab
+	url = https://github.com/ervandew/supertab.git
