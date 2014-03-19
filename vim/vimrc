@@ -101,9 +101,19 @@ set autoindent
 set ignorecase
 set wildmenu
 set commentstring=\ #\ %s
-set foldlevel=0
+
+"folding
+set foldmethod=indent
+set foldlevel=99
 set clipboard+=unnamed
 
+"window movements
+map <c-j> <c-w>j
+map <c-k> <c-w>k
+map <c-l> <c-w>l
+map <c-h> <c-w>h
+
+"set a temporary directory
 set backupdir=~/.tmp
 
 "emmet settings
