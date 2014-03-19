@@ -55,10 +55,6 @@ alias w='w -s'
 
 alias error_tail='tail -n 40 /web/public/logs/error'
 
-function backup(){
-    echo '.dump' | sqlite3 $1
-}
-
 alias work="~/bin/work.sh"
 
 alias g='git'
