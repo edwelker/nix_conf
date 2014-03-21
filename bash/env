@@ -85,7 +85,7 @@ if [ -f /etc/bash_completion.d/ ]; then
     source /etc/bash_completion.d/*
 fi
 
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
+if command -v brew 1>/dev/null && [ -f $(brew --prefix)/etc/bash_completion ]; then
   . $(brew --prefix)/etc/bash_completion
 fi
 
