@@ -3,7 +3,7 @@
 
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
-set nocompatible
+set nocompatible " don't need vi compatibility
 
 " pathogen for plugin loading, but turn off filetype first, so it loads correctly
 filetype off
