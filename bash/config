@@ -2,4 +2,6 @@ set -o vi
 set -o noclobber
 set completion-ignore-case
 set show-all-symlinked-directories
-shopt -s histverify
+
+#take off the training wheels
+#shopt -s histverify
