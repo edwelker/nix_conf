@@ -6,6 +6,9 @@ Host cdepot
     HostName cdepot.homedns.org
     User ewelker
 
+Host iwebdev2
+    User welkere
+
 Host github github.com
     Hostname github.com
 
