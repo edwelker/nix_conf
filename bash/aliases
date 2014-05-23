@@ -60,6 +60,7 @@ alias kernel='uname -a'
 alias error_tail='tail -n 40 /web/public/logs/error'
 
 alias work="~/bin/work.sh"
+alias iweb="cd ~/iwebdev-welkere"
 
 alias g='git'
 alias gp='git push'
