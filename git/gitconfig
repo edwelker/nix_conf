@@ -17,6 +17,7 @@
     cm = commit -m
     co = checkout
     br = branch
+    bra = branch -a
     ap = add -p
     a = add
     ds = diff --staged
