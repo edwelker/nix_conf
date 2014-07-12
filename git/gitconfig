@@ -2,7 +2,7 @@
 	name = Eddie Welker
 	email = eddie.welker@gmail.com
 [core]
-	editor = vi
+	editor = /usr/bin/vim
     pager = less -FXRS -x2
 [color]
     diff = auto
