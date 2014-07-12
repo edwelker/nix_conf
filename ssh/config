@@ -17,7 +17,6 @@ Host *
     CompressionLevel 7
     ControlMaster auto
     ControlPath /tmp/ssh-%r@%h:%p
-    ControlPersist 4h
 
 IdentityFile ~/.ssh/id_rsa
 

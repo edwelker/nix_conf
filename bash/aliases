@@ -68,10 +68,26 @@ alias gpp='git pull && git push'
 alias ginitpy="git init --template=${DOTDOT}/pygittemplate"
 alias b='bzr'
 
-#stolen from elsewhere
+#stolen from elsewhere : https://gist.github.com/aliang/1024466
 # SSH Auto Completion of Remote Hosts
-SSH_COMPLETE=( $(cat ~/.ssh/known_hosts 2>/dev/null | cut -f 1 -d ' ' | sed -e s/,.*//g | uniq | egrep -v [0123456789]) )
-complete -o default -W "${SSH_COMPLETE[*]}" ssh 
+_complete_ssh_hosts ()
+{
+COMPREPLY=()
+cur="${COMP_WORDS[COMP_CWORD]}"
+comp_ssh_hosts=`cat ~/.ssh/known_hosts | \
+cut -f 1 -d ' ' | \
+sed -e s/,.*//g | \
+grep -v ^# | \
+     uniq | \
+     grep -v "\[" ;
+cat ~/.ssh/config | \
+        grep "^Host " | \
+        awk '{print $2}'
+        `
+        COMPREPLY=( $(compgen -W "${comp_ssh_hosts}" -- $cur))
+        return 0
+        }
+complete -F _complete_ssh_hosts ssh
 
 #http://www.bit-integrity.com/2011/08/vim-syntax-highlighting-with-less.html
 VLESS=$(find /usr/share/vim -name 'less.sh')
