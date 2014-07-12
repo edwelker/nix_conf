@@ -6,11 +6,17 @@
 ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
 
 brew tap phinze/cask
+brew tap caskroom/fonts
 brew install brew-cask
+
+#install fonts
+brew cask install font-source-code-pro
+brew cask install font-inconsolata
+brew cask install font-dejavu-sans
 
 #install GUI's
 #install GUI's to /opt/homebrew-cask/Caskroom
-brew cask install firefox iterm2 google-chrome rdio alfred vlc macvim flux vienna dropbox dash caffeine time-out spirited-away selfcontrol lastfm eclipse-ide java cord pckeyboardhack
+brew cask install firefox iterm2 google-chrome rdio alfred vlc macvim flux vienna dropbox dash caffeine time-out spirited-away selfcontrol lastfm eclipse-ide java cord seil quicksilver
 
 #remember: http://stackoverflow.com/questions/127591/using-caps-lock-as-esc-in-mac-os-x
 
