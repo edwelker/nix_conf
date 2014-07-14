@@ -32,6 +32,7 @@ alias ma='python manage.py'
 alias rs='python manage.py runserver'
 alias shell='python manage.py shell_plus'
 alias db='python manage.py dbshell'
+alias ipy="python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'"
 
 alias nz='nosetests'
 alias pip-upgrade="pip install --upgrade"
@@ -56,11 +57,19 @@ alias w='w -s'
 
 alias os='cat /etc/*-release'
 alias kernel='uname -a'
+alias top='top -a'
+alias rc='chkconfig --list'
+alias netstat='netstat -plant'
+alias psg='ps -ef | grep'
 
 alias error_tail='tail -n 40 /web/public/logs/error'
+alias tail='tail -f'
 
 alias work="~/bin/work.sh"
 alias iweb="cd ~/iwebdev-welkere"
+alias lbsg="lbsmc | grep"
+
+alias macssh='eval `ssh-agent`'
 
 alias g='git'
 alias gp='git push'
