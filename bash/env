@@ -117,6 +117,14 @@ ssh-reagent () {
     echo Cannot find ssh agent - maybe you should reconnect and forward it?
 }
 
+#for xforwarding
+#see http://brainscraps.wikia.com/wiki/Extreme_Multitasking_with_tmux_and_PuTTY
+update_display() {
+    good_display=$(netstat -an | /bin/grep 0\ [0-9,:,.]*:60..\  | awk '{print $4}' | tail -n 1)
+    good_display=${good_display: -2}
+    export DISPLAY=${HOSTNAME}:${good_display}.0
+}
+
 export PS1
 
 #. ${DOTDOT}/vim/vim/bundle/powerline/powerline/bindings/bash/powerline.sh
