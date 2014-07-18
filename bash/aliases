@@ -25,6 +25,8 @@ alias pd2="pushd +2"
 alias dirs='dirs -v'
 
 alias h='history'
+alias r='fc -s'
+alias hl='fc -l'
 
 alias py='python'
 alias py3='python3'
