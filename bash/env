@@ -94,7 +94,7 @@ fi
 if [ -f ${DOTDOT}/git/git-prompt.sh ]; then
     . ${DOTDOT}/git/git-prompt.sh
     GIT_PS1_SHOWDIRTYSTATE=true
-    PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[0;33m\] \[\033[0;33m\]$(__git_ps1 "(%s)") \[\033[00m\]\$ '
+    PS1='\[\033[01;32m\][\!] \u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[0;33m\] \[\033[0;33m\]$(__git_ps1 "(%s)") \[\033[00m\]\$ '
 fi
 
 #aws completion
@@ -115,6 +115,14 @@ ssh-reagent () {
         fi
     done
     echo Cannot find ssh agent - maybe you should reconnect and forward it?
+}
+
+#for xforwarding
+#see http://brainscraps.wikia.com/wiki/Extreme_Multitasking_with_tmux_and_PuTTY
+update_display() {
+    good_display=$(netstat -an | /bin/grep 0\ [0-9,:,.]*:60..\  | awk '{print $4}' | tail -n 1)
+    good_display=${good_display: -2}
+    export DISPLAY=${HOSTNAME}:${good_display}.0
 }
 
 export PS1
