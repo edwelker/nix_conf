@@ -125,6 +125,7 @@ update_display() {
     export DISPLAY=${HOSTNAME}:${good_display}.0
 }
 
+
 export PS1
 
 #. ${DOTDOT}/vim/vim/bundle/powerline/powerline/bindings/bash/powerline.sh
