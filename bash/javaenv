@@ -1,0 +1,4 @@
+export GRADLE_HOME=~/code/java/gradle
+export JAVA_HOME=~/code/java/jdk
+export M2_HOME=~/code/java/maven
+export TOMCAT_HOME=~/code/java/tomcat 
