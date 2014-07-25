@@ -71,7 +71,7 @@ alias work="~/bin/work.sh"
 alias iweb="cd ~/iwebdev-welkere"
 alias lbsg="lbsmc | grep"
 
-alias macssh='eval `ssh-agent`'
+alias macssh='eval $(ssh-agent)'
 
 alias g='git'
 alias gp='git push'
