@@ -11,6 +11,16 @@ call pathogen#infect()
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
+" remap the leader key.  typically \, but , is easier
+let mapleader=","
+
+" set timeout before leader key is executed
+set timeoutlen=1
+
+" Quickly edit/reload the vimrc file
+nmap <silent> <leader>ev :e $MYVIMRC<CR>
+nmap <silent> <leader>sv :so $MYVIMRC<CR>
+
 " learn to do it correctly
 noremap <Up> <Nop>
 noremap <Down> <Nop>
@@ -54,32 +64,39 @@ if &t_Co > 2 || has("gui_running")
   set hlsearch
 endif
 
+
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
 
-  " Enable file type detection.
-  " Use the default filetype settings, so that mail gets 'tw' set to 72,
-  " 'cindent' is on in C files, etc.
-  " Also load indent files, to automatically do language-dependent indenting.
-  filetype on
-  filetype plugin indent on
+    " Enable file type detection.
+    " Use the default filetype settings, so that mail gets 'tw' set to 72,
+    " 'cindent' is on in C files, etc.
+    " Also load indent files, to automatically do language-dependent indenting.
+    filetype on
+    filetype indent plugin on
 
-  " Put these in an autocmd group, so that we can delete them easily.
-  augroup vimrcEx
-  au!
+    " Put these in an autocmd group, so that we can delete them easily.
+    augroup vimrcEx
+    au!
 
-  " For all text files set 'textwidth' to 78 characters.
-  autocmd FileType text setlocal textwidth=78
+    " For all text files set 'textwidth' to 78 characters.
+    autocmd FileType text setlocal textwidth=78
 
-  " When editing a file, always jump to the last known cursor position.
-  " Don't do it when the position is invalid or when inside an event handler
-  " (happens when dropping a file on gvim).
-  autocmd BufReadPost *
+    " When editing a file, always jump to the last known cursor position.
+    " Don't do it when the position is invalid or when inside an event handler
+    " (happens when dropping a file on gvim).
+    autocmd BufReadPost *
     \ if line("'\"") > 0 && line("'\"") <= line("$") |
     \   exe "normal g`\"" |
     \ endif
 
-  augroup END
+    augroup END
+
+    " whitespace characters displayed
+    set list
+    set listchars=tab:>.,trail:.,extends:#,nbsp:.
+
+    autocmd filetype html,xml set listchars-=tab:>.
 
 else
 
@@ -89,7 +106,7 @@ endif " has("autocmd")
 
 set number    "show line numbers
 syntax on     "show syntax highlighting
-set ai sw=4        
+set ai sw=4
 set encoding=utf8
 set paste
 set expandtab
@@ -101,6 +118,7 @@ set autoindent
 set ignorecase
 set wildmenu
 set commentstring=\ #\ %s
+set hidden
 
 "folding
 set foldmethod=indent
@@ -131,10 +149,22 @@ let g:user_emmet_mode='a'
 "F2 spell check
 nnoremap <F2> :set spell<CR>
 
+set pastetoggle=<F3>
+
+" fix capitol writing combos, when I don't unpress shift fast enough
+command WQ wq
+command Wq wq
+command W w
+command Q q
+
+
+" file based stuff
+au BufNewFile,BufRead *.groovy,*.gradle setf groovy
 
 colo oceandeep  "default
-autocmd! BufEnter,BufNewFile *.groovy,*.java colo elflord 
-autocmd! BufLeave *.groovy,*.java colo oceandeep 
+autocmd! BufEnter,BufNewFile *.groovy,*.java,*.gradle colo elflord 
+autocmd! BufLeave *.groovy,*.java,*.gradle colo oceandeep 
+
 
 "powerline
 set rtp+=$DOTDOT/vim/vim/bundle/powerline/powerline/bindings/vim
@@ -167,3 +197,5 @@ if &term =~ "xterm"
         let &t_Sb="\ESC[4%dm"
     endif
 endif
+
+" http://nvie.com/posts/how-i-boosted-my-vim/ need to look at this
