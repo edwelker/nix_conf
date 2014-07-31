@@ -16,7 +16,7 @@ brew cask install font-dejavu-sans
 
 #install GUI's
 #install GUI's to /opt/homebrew-cask/Caskroom
-brew cask install firefox iterm2 google-chrome rdio alfred vlc macvim flux vienna dropbox dash caffeine time-out spirited-away selfcontrol lastfm eclipse-ide java cord seil quicksilver amethyst phantomjs amazon-music iterm2 java node serf virtualbox java7 mou
+brew cask install firefox iterm2 google-chrome rdio alfred vlc macvim flux vienna dropbox dash caffeine time-out spirited-away selfcontrol lastfm eclipse-ide java cord seil quicksilver amethyst phantomjs amazon-music iterm2 java node serf virtualbox java7 mou adium
 
 #for older versions: http://stackoverflow.com/questions/3987683/homebrew-install-specific-version-of-formula
 
@@ -47,6 +47,8 @@ pip install -r ${DOTDOT}/requirements.txt
 
 #ssh key
 mkdir ~/.ssh && cd ~/.ssh && ssh-keygen -t rsa -C "eddie.welker@gmail.com"
+
+#get the adium prefs from bb
 
 #dock on bottom (gotta manually move to the left)
 defaults write com.apple.dock pinning -string end
