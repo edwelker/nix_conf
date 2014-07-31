@@ -1,0 +1,35 @@
+set realname = "Eddie Welker"
+set from = 'welkere@ncbi.nlm.nih.gov'
+set envelope_from = yes
+
+# Credential stuff
+set imap_user='welkere'
+set folder=imaps://mail.nih.gov/
+
+# setup Exchange based params
+set spoolfile="=Inbox"
+set record = "=Sent Items"
+set postponed="=Drafts"
+
+
+
+# what follows would potentially move to a shared file
+
+# save copies of sent mail to $record
+set copy=yes
+
+# sorting
+# reverse order so newest are on top
+set sort=threads
+set sort_browser=date
+set sort_aux=reverse-last-date-received
+
+# cache stuff. run `makemuttdirs.sh` first, so stuff exists
+set header_cache=~/.mutt/cache/headers
+set message_cachedir=~/.mutt/cache/bodies
+set certificate_file=~/.mutt/certificates
+
+# set the editor
+set editor='vim + -c "set textwidth=72" -c "set wrap" -c "set nocp" -c "?^$"'
+
+source $DOTDOT/mutt/mutt-colors-solarized/mutt-colors-solarized-light-16.muttrc

@@ -51,7 +51,7 @@ if [ ! -h ~/.pythonstartup ]; then
 fi;
 
 if [ ! -h ~/.muttrc ]; then
-    ln -s ${DOTDOT}/muttrc ~/.muttrc
+    ln -s ${DOTDOT}/mutt/muttrc ~/.muttrc
 fi;
 
 #create a .tmp directory for vim backups
