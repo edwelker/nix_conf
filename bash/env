@@ -20,7 +20,9 @@ set -o ignoreeof
 
 if command -v dnsdomainname 1>/dev/null && [[ $(dnsdomainname 2>/dev/null) =~ ^.*ncbi.*$ ]]; then
     CDPATH=$CDPATH:/net/iwebdev2/export/home/web/private/htdocs/staff/welkere
-    export CDPATH
+    export CDPATH;
+
+    export TMPDIR=/tmp
 fi
 
 if [ -f /usr/bin/dircolors ]

@@ -11,6 +11,7 @@ set spoolfile="=Inbox"
 set record = "=Sent Items"
 set postponed="=Drafts"
 
+set imap_authenticators="login"
 
 
 # what follows would potentially move to a shared file
@@ -30,7 +31,9 @@ set message_cachedir=~/.mutt/cache/bodies
 set certificate_file=~/.mutt/certificates
 
 # set the editor
-set editor='vim + -c "set textwidth=72" -c "set wrap" -c "set nocp" -c "?^$"'
+# set editor='vim + -c "set textwidth=72" -c "set wrap" -c "set nocp" -c "?^$"'
+# editor at the top
+set editor='vim -c "set textwidth=72" -c "set wrap" -c "set nocp" -c "?^$"'
 
 # Header settings
 ignore *                # Don't display all headers
