@@ -32,4 +32,72 @@ set certificate_file=~/.mutt/certificates
 # set the editor
 set editor='vim + -c "set textwidth=72" -c "set wrap" -c "set nocp" -c "?^$"'
 
-source $DOTDOT/mutt/mutt-colors-solarized/mutt-colors-solarized-light-16.muttrc
+# Header settings
+ignore *                # Don't display all headers
+unignore From To Cc Subject Date Organization X-Mailer User-Agent
+hdr_order From: Date: To: Cc: Subject:
+
+# Set vim as the editor and use autoformat script to strip out nested replies
+# set editor="$HOME/.mutt/bin/autotrim %s; /usr/bin/vim -c 'set tw=70 et' %s"
+
+# Other Settings
+set markers=no                  # Fix multiline url wrapping to not break in gnome terminal
+set smart_wrap                  # dont wrap mid word
+set pager_context=5             # Retain 5 lines of previous page when scrolling.
+set delete=yes                  # Automatically delete messages marked for deletion on exit
+set ssl_starttls=yes            # Start TLS if available on server
+auto_view text/html             # autoview html
+set strict_threads              # Don't thread messages by subject
+set fast_reply=yes              # Skip prompt for subject and recipients when replying
+set beep_new=yes                # Beep when new messages arrive in mailbox
+set beep=no                     # Don't beep on errors
+set abort_nosubject=yes         # cancel if a subject isn't entered
+set charset="utf-8"             # guess what this does
+
+# HTML is the last option. Unless Microsoft is involved.
+alternative_order text/enriched text/plain text/html application/vnd.msword application/msword
+
+
+# Simple modification to index format to display year in date column
+set index_format="%4C %Z %[!%b %d %Y] %-17.17F (%4c) %s"
+
+# source $DOTDOT/mutt/mutt-colors-solarized/mutt-colors-solarized-light-16.muttrc
+
+# Default color definitions
+color   hdrdefault  black       cyan
+color   quoted      brightred   black
+color   signature   magenta     black
+color   indicator   brightwhite red
+color   attachment  white       black
+color   error       red     black
+color   message     white       black
+color   search      brightwhite magenta
+color   status      brightyellow    blue
+color   tree        red     black
+color   normal      white       black
+color   tilde       green       black
+color   bold        brightyellow    black
+#color  underline   magenta     black
+color   markers     red     black
+
+# Colour definitions when on a mono screen
+mono bold      bold
+mono underline underline
+mono indicator reverse
+
+# Colours for items in the reader
+color header black cyan ".*:"
+color header brightwhite cyan "^(From|Subject):"
+mono  header bold             "^(From|Subject):"
+
+# Colours for items in the index
+color index brightblue  black ~N
+# Hmm, don't like this.
+#color index brightgreen black "~N (~x byers.world)|(~x byers.x)|(~x langly.levallois123.axialys.net)|(~x the.earth.li)"
+color index red         black ~F
+color index black       green ~T
+color index brightwhite black ~D
+mono  index bold              ~N
+mono  index bold              ~F
+mono  index bold              ~T
+mono  index bold              ~D
