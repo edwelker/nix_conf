@@ -43,6 +43,9 @@ hdr_order From: Date: To: Cc: Subject:
 # Set vim as the editor and use autoformat script to strip out nested replies
 # set editor="$HOME/.mutt/bin/autotrim %s; /usr/bin/vim -c 'set tw=70 et' %s"
 
+#show 10 messages of index in reading mode.
+set pager_index_lines=10
+
 # Other Settings
 set markers=no                  # Fix multiline url wrapping to not break in gnome terminal
 set smart_wrap                  # dont wrap mid word
