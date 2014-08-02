@@ -66,6 +66,7 @@ alias psg='ps -ef | grep'
 alias netstat_mac="sudo lsof -i -P"
 alias threads="ps -o nlwp"
 alias duhere="du -h --max-depth=1"
+alias dirsize="du -sh"
 
 alias error_tail='tail -n 40 /web/public/logs/error'
 alias tail='tail -f'
