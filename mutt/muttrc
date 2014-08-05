@@ -64,7 +64,7 @@ set smart_wrap                  # dont wrap mid word
 set pager_context=5             # Retain 5 lines of previous page when scrolling.
 set delete=yes                  # Automatically delete messages marked for deletion on exit
 set ssl_starttls=yes            # Start TLS if available on server
-auto_view text/html             # autoview html
+#auto_view text/html             # autoview html --- don't want this until I set up .mailcap like http://home.roadrunner.com/~computertaijutsu/mutt.html
 set strict_threads              # Don't thread messages by subject
 set fast_reply=yes              # Skip prompt for subject and recipients when replying
 set beep_new=yes                # Beep when new messages arrive in mailbox
