@@ -37,3 +37,6 @@
 [submodule "mutt/mutt-colors-solarized"]
 	path = mutt/mutt-colors-solarized
 	url = https://github.com/altercation/mutt-colors-solarized.git
+[submodule "vim/vim/bundle/vim-scala"]
+	path = vim/vim/bundle/vim-scala
+	url = https://github.com/derekwyatt/vim-scala.git
