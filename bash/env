@@ -85,7 +85,7 @@ if [ -f /etc/bash_completion ]; then
     source /etc/bash_completion
 fi
 
-if [ -f /etc/bash_completion.d/ ]; then
+if [ -d /etc/bash_completion.d/ ]; then
     source /etc/bash_completion.d/*
 fi
 
