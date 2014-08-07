@@ -86,7 +86,8 @@ if [ -f /etc/bash_completion ]; then
 fi
 
 if [ -d /etc/bash_completion.d/ ]; then
-    source /etc/bash_completion.d/*
+   for f in /etc/bash_completion.d/*; do source $f; done
+   complete -o default -o nospace -F _git g
 fi
 
 if command -v brew 1>/dev/null && [ -f $(brew --prefix)/etc/bash_completion ]; then
