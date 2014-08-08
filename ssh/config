@@ -6,11 +6,53 @@ Host cdepot
     HostName cdepot.homedns.org
     User ewelker
 
-Host iwebdev2
+# see http://stackoverflow.com/questions/13228425/write-failed-broken-pipe
+# and
+# http://andy.wordpress.com/2010/06/14/my-ssh-config-setup/
+
+# Don't kill connection if route goes down
+TCPKeepAlive no
+ServerAliveInterval 120
+
+Host i
     User welkere
+    HostName iwebdev2
+    ProxyCommand ssh w -W %h:%p
+    LocalForward 3128 webproxy.ncbi.nlm.nih.gov:3128
+    LocalForward 3389 NCBIPC8234.be-md.ncbi.nlm.nih.gov:3389
+    LocalForward 9418 stash.be-md.ncbi.nlm.nih.gov:9418
+    LocalForward 9922 ncbimac1029.ncbi.nlm.nih.gov:22
+    LocalForward 5920 ncbimac1029.ncbi.nlm.nih.gov:5920
+    LocalForward 10323 artifactory-dev.ncbi.nlm.nih.gov:443
+    ForwardX11 no
+    Compression yes
+
+Host w
+    HostName ssh.ncbi.nlm.nih.gov
+    User welkere
+    PKCS11Provider /usr/local/Cellar/opensc/0.13.0/lib/pkcs11/opensc-pkcs11.so 
+    LocalForward 3128 webproxy.ncbi.nlm.nih.gov:3128
+    LocalForward 3389 NCBIPC8234.be-md.ncbi.nlm.nih.gov:3389
+    LocalForward 33301 ncbimac1029.ncbi.nlm.nih.gov:22
+    LocalForward 9418 stash.be-md.ncbi.nlm.nih.gov:9418
+    LocalForward 5920 ncbimac1029.ncbi.nlm.nih.gov:5920
+    LocalForward 9922 ncbimac1029.ncbi.nlm.nih.gov:22
+    LocalForward 10323 artifactory-dev.ncbi.nlm.nih.gov:443
+    ForwardX11 yes
+    Compression yes
+
+Host ncbimac1029
+#    HostName localhost
+    User welkere
+    Compression yes
+    HostName ncbimac1029.be-md.ncbi.nlm.nih.gov
+#    Port 9922
 
 Host github github.com
-    Hostname github.com
+    HostName github.com
+    User edwelker
+    Compression yes
+    IdentityFile ~/.ssh/macbookpro_to_github/macbookpro_to_github
 
 Host *
     Compression yes
@@ -20,13 +62,40 @@ Host *
 
 IdentityFile ~/.ssh/id_rsa
 
-# see http://stackoverflow.com/questions/13228425/write-failed-broken-pipe
-# and
-# http://andy.wordpress.com/2010/06/14/my-ssh-config-setup/
+Host nflux-edge
+    HostName 54.86.44.98
+Host nflux-mid
+    HostName 54.210.47.39
+Host nflux-admin
+    HostName 54.84.165.218
 
-# Don't kill connection if route goes down
-TCPKeepAlive no
+Host nflux-asgard
+    HostName 54.210.65.193
 
-ServerAliveInterval 120
+Host nflux-carledge
+    HostName 54.88.98.32
+    User ubuntu
 
-Compression yes
+Host nflux-*
+    User ec2-user
+    IdentityFile ~/.ssh/aa-new-shared-netflix.pem
+
+Host Centos
+    User root
+    IdentityFile ~/.ssh/welkere_for_aws_aug14
+    HostName 54.210.249.119
+
+Host awsdjango
+    User ec2-user
+    HostName 54.210.226.123
+    IdentityFile ~/.ssh/welkere_for_aws_aug14
+
+Host rebake_image
+    User ec2-user
+    HostName 54.236.87.234
+    IdentityFile ~/.ssh/aa-new-shared-netflix.pem
+
+Host finagle
+    User ec2-user
+    HostName 54.210.229.113
+    IdentityFile ~/.ssh/welkere_for_aws_aug14
