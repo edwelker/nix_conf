@@ -53,6 +53,10 @@ if [ -f ~/.pythonstartup ]; then
     export PYTHONSTARTUP=~/.pythonstartup
 fi
 
+if [ -d ~/.rvm/bin ]; then
+    export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+fi
+
 export PYTHONPATH=$PYTHONPATH:~/bin/py_libs
 
 export PYTHONDONTWRITEBYTECODE=1
@@ -128,6 +132,9 @@ update_display() {
     export DISPLAY=${HOSTNAME}:${good_display}.0
 }
 
+if [ -d ~/.rvm/bin ]; then
+    PS1="\$(~/.rvm/bin/rvm-prompt) $PS1"
+fi
 
 export PS1
 
