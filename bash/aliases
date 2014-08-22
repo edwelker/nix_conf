@@ -126,73 +126,8 @@ alias rhe='rhc env'
 alias rhse='rhc set-env'
 alias rhls='rhc apps'
 
-# aws stuff
+#scala
+alias sbc="sbt clean"
+alias server="sbt server/run"
+alias client="sbt client/run"
 
-# aws_cli
-aws_cli(){
-if [ ! -d ~/.env/awscli ]
-then
-    $(which virtualenv) ~/.env/awscli
-    . ~/.env/awscli/bin/activate
-    $(which pip) install awscli
-    complete -C aws_completer aws
-    aws configure
-    echo "awscli virtualenv installed and activated. Type 'deactivate' to exit. Type 'aws_cli' to reactivate."
-else
-    . ~/.env/awscli/bin/activate
-    complete -C aws_completer aws
-    echo "awscli virtualenv activated. Type 'deactivate' to exit. Type 'aws_cli' to reactivate."
-fi
-}
-
-# awsec2create
-aws_ec2_create(){
-if [ $# -ne 2 ]
-then
-    echo "Usage: aws_ec2_create {aws image ami (ami-xxxxxxxx)} {privatekeyname (without .pem suffix)}"
-else
-    aws ec2 run-instances --associate-public-ip-address --image-id $1 --security-group-ids sg-2d9dea48 --instance-type m3.medium --subnet-id subnet-958579e2 --count 1 --key-name $2 >> aws_instance_created_$(date +%F)_$1.json
-fi
-}
-aws_get_instance_from_json(){
-if [ $# -ne 1 ]
-then
-    echo "Usage: aws_get_instance_from_json {aws_instance_created*.json file}"
-else
-    grep "InstanceId" $1 | awk '{ print $2 }' | sed -e 's/"//' -e 's/",//'
-fi
-}
-aws_get_instance_data(){
-if [ $# -ne 1 ]
-then
-    echo "Usage: aws_get_instance_data {aws instance-id (i-xxxxxxxx)}"
-else
-    aws ec2 describe-instances --instance $1
-fi
-}
-aws_set_instance_name(){
-if [ $# -ne 2 ]
-then
-    echo "Usage: aws_set_instance_name {aws instance-id (i-xxxxxxxx)} {desired_instance_name}"
-else
-    aws ec2 create-tags --resources $1 --tags Key=Name,Value=$2
-fi
-}
-aws_set_instance_tag(){
-if [ $# -ne 3 ]
-then
-    echo "Usage: aws_set_instance_tag {aws instance-id (i-xxxxxxxx)} {tagKey} {tagValue}"
-else
-    aws ec2 create-tags --resources $1 --tags Key=$2,Value=$3
-fi
-}
-aws_get_instance_public_ip(){
-if [ $# -ne 1 ]
-then
-    echo "Usage: aws_get_instance_public_ip {aws instance-id (i-xxxxxxxx)}"
-else
-    aws_get_instance_data $1 | grep "PublicIpAddress" | awk '{print $2}' | sed -e 's/^"//' -e 's/",//'
-fi
-}
-
-#modify ssh config too!
