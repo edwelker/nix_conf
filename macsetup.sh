@@ -71,6 +71,7 @@ sethost(){
     sudo scutil --set ComputerName $1
     sudo scutil --set LocalHostName $1
     sudo scutil --set HostName $1
+    sudo echo "127.0.0.1 $1" >> /etc/hosts
     dscacheutil -flushcache
 }
 
