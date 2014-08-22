@@ -35,6 +35,7 @@
     latest = "for-each-ref --sort=-committerdate --format='%(committerdate:short) %(refname:short) [%(committername)]'"
     num = shortlog -sn
     aliases = "!git config -l | grep alias | cut -c 7-"
+	create-pull-request = !sh -c 'stash pull-request $0'
 [github]
     user = edwelker
     password = !security find-generic-password -gs github.password -w | tr -d '\n'
