@@ -1,6 +1,6 @@
 [user]
 	name = Eddie Welker
-	email = eddie.welker@gmail.com
+	email = welkere@ncbi.nlm.nih.gov
 [core]
 	editor = /usr/bin/vim
     pager = less -FXRS -x2
