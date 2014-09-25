@@ -18,6 +18,7 @@
     co = checkout
     br = branch
     bra = branch -a
+    rv = remote -v
     ap = add -p
     a = add
     ds = diff --staged
