@@ -84,7 +84,7 @@ Host nflux-*
 Host Centos
     User root
     IdentityFile ~/.ssh/welkere_for_aws_aug14
-    HostName 54.210.249.119
+    HostName 54.164.128.54
 
 Host awsdjango
     User ec2-user
@@ -96,28 +96,10 @@ Host rebake_image
     HostName 54.236.87.234
     IdentityFile ~/.ssh/aa-new-shared-netflix.pem
 
-Host nflux-carledge
-    HostName 54.88.98.32
-    User ubuntu
-
-Host nflux-*
+Host personal_proxy
     User ec2-user
-    IdentityFile ~/.ssh/aa-new-shared-netflix.pem
-
-Host Centos
-    User root
-    IdentityFile ~/.ssh/welkere_for_aws_aug14
-    HostName 54.164.128.54
-
-Host awsdjango
-    User ec2-user
-    HostName 54.165.58.52
-    IdentityFile ~/.ssh/welkere_for_aws_aug14
-
-Host rebake_image
-    User ec2-user
-    HostName 54.236.87.234
-    IdentityFile ~/.ssh/aa-new-shared-netflix.pem
+    HostName 54.201.93.109
+    IdentityFile ~/.ssh/personal_aws_key.pem
 
 Host finagle
     HostName 54.210.151.161
