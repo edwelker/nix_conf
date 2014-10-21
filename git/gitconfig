@@ -22,6 +22,7 @@
     ap = add -p
     a = add
     ds = diff --staged
+    push = push --follow-tags
     ai = add --interactive
     le = log --oneline --decorate
     undo = reset --soft HEAD^
@@ -36,11 +37,11 @@
     latest = "for-each-ref --sort=-committerdate --format='%(committerdate:short) %(refname:short) [%(committername)]'"
     num = shortlog -sn
     aliases = "!git config -l | grep alias | cut -c 7-"
-	create-pull-request = !sh -c 'stash pull-request $0'
+    create-pull-request = !sh -c 'stash pull-request $0'
 [github]
     user = edwelker
     password = !security find-generic-password -gs github.password -w | tr -d '\n'
 [push]
-	default = current
+   default = current
 [credential]
-	helper = cache --timeout=3600
+    helper = cache --timeout=3600
