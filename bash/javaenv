@@ -1,0 +1,6 @@
+export GRADLE_HOME=~/code/java/gradle
+export M2_HOME=~/code/java/maven
+export TOMCAT_HOME=~/code/java/tomcat
+
+export SCALA_HOME=~/code/java/scala
+export PATH=$PATH:$SCALA_HOME/bin
