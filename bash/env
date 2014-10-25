@@ -57,6 +57,10 @@ if [ -d ~/.rvm/bin ]; then
     export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 fi
 
+if [ -d ~/node_modules/.bin ]; then
+    export PATH=~/node_modules/.bin:$PATH
+fi
+
 export PYTHONPATH=$PYTHONPATH:~/bin/py_libs
 
 export PYTHONDONTWRITEBYTECODE=1
