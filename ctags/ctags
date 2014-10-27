@@ -3,5 +3,6 @@
 --exclude=.svn
 --exclude=.git
 --exclude=__pycache__
+--exclude=.tox
 
 --python-kinds=-i
