@@ -37,6 +37,10 @@ if [ ! -h ~/.vim ]; then
     ln -s ${DOTDOT}/vim/vim ~/.vim
 fi;
 
+if [ ! -h ~/.ctags ]; then
+    ln -s ${DOTDOT}/ctags ~/.ctags
+fi;
+
 if [ ! -h ~/.tmux.conf ]; then
     ln -s ${DOTDOT}/tmux/tmux.conf ~/.tmux.conf
 fi;

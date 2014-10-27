@@ -1,8 +1,8 @@
 [user]
-	name = Eddie Welker
-	email = welkere@ncbi.nlm.nih.gov
+    name = Eddie Welker
+    email = welkere@ncbi.nlm.nih.gov
 [core]
-	editor = /usr/bin/vim
+    editor = /usr/bin/vim
     pager = less -FXRS -x2
 [color]
     diff = auto

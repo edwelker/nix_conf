@@ -1,0 +1,7 @@
+-f .tags
+-R
+--exclude=.svn
+--exclude=.git
+--exclude=__pycache__
+
+--python-kinds=-i
