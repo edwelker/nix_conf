@@ -84,6 +84,9 @@ alias gpp='git pull && git push'
 alias ginitpy="git init --template=${DOTDOT}/pygittemplate"
 alias b='bzr'
 
+alias vu='vagrant up'
+alias vd='vagrant destroy -f'
+
 #stolen from elsewhere : https://gist.github.com/aliang/1024466
 # SSH Auto Completion of Remote Hosts
 _complete_ssh_hosts ()
