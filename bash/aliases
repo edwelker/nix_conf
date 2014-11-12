@@ -85,6 +85,7 @@ alias ginitpy="git init --template=${DOTDOT}/pygittemplate"
 alias b='bzr'
 
 alias vu='vagrant up'
+alias vs='vagrant ssh'
 alias vd='vagrant destroy -f'
 
 #stolen from elsewhere : https://gist.github.com/aliang/1024466
