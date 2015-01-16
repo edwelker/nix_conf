@@ -78,6 +78,8 @@ alias lbsg="lbsmc | grep"
 
 alias macssh='eval $(ssh-agent)'
 
+alias sr='ssh-reagent'
+
 alias g='git'
 alias gp='git push'
 alias gpp='git pull && git push'
