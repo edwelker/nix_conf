@@ -6,6 +6,8 @@ alias dotdot="cd ${DOTDOT}"
 
 alias c="clear"
 
+alias vi=vim
+
 alias l='ls'
 alias ls='ls -GF'
 alias ll='ls -hlF'
