@@ -23,6 +23,8 @@ if command -v dnsdomainname 1>/dev/null && [[ $(dnsdomainname 2>/dev/null) =~ ^.
     export CDPATH;
 
     export TMPDIR=/tmp
+
+    export PATH=/usr/local/python/all/bin/:"$PATH"
 fi
 
 if [ -f /usr/bin/dircolors ]
