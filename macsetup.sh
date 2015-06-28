@@ -16,14 +16,14 @@ brew cask install font-dejavu-sans
 
 #install GUI's
 #install GUI's to /opt/homebrew-cask/Caskroom
-brew cask install firefox iterm2 google-chrome rdio alfred vlc macvim flux vienna dropbox dash caffeine time-out spirited-away selfcontrol lastfm eclipse-ide java cord seil quicksilver amethyst phantomjs amazon-music iterm2 java node serf virtualbox java7 mou adium karabiner spotify
+brew cask install firefox iterm2 google-chrome rdio alfred vlc macvim flux vienna dropbox dash caffeine time-out spirited-away selfcontrol lastfm eclipse-ide java cord seil quicksilver amethyst phantomjs amazon-music iterm2 java node serf virtualbox java7 mou adium karabiner spotify thunderbird
 
 #for older versions: http://stackoverflow.com/questions/3987683/homebrew-install-specific-version-of-formula
 
 #remember: http://stackoverflow.com/questions/127591/using-caps-lock-as-esc-in-mac-os-x
 
 #install non-GUI's
-brew install git python python3 tmux vim phantomjs ack wget tree node bash-completion ruby irssi tomcat groovy maven gradle scala sbt typesafe-activator jq autossh mosh libev sshfs mutt awscli cask go hadoop nvm cassandra meld gnu-sed the_silver_searcher ctags pstree
+brew install git python python3 tmux vim phantomjs ack wget tree node bash-completion ruby irssi tomcat groovy maven gradle scala sbt typesafe-activator jq autossh mosh libev sshfs mutt awscli cask go hadoop nvm cassandra meld gnu-sed the_silver_searcher ctags pstree watch
 
 #add system duplicates
 brew tap homebrew/dupes
