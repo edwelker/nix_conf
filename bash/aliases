@@ -81,6 +81,7 @@ alias lbsg="lbsmc | grep"
 alias macssh='eval $(ssh-agent)'
 
 alias sr='ssh-reagent'
+alias sk='ssh-keygen -t rsa -b 4096'
 
 alias g='git'
 alias gp='git push'
@@ -139,4 +140,4 @@ alias rhls='rhc apps'
 alias sbc="sbt clean"
 alias server="sbt server/run"
 alias client="sbt client/run"
-
+alias srun="sbt run"

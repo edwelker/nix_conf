@@ -23,6 +23,7 @@
     a = add
     cp = cherry-pick
     ds = diff --staged
+    dc = diff --cached
     push = push --follow-tags
     ai = add --interactive
     le = log --oneline --decorate
