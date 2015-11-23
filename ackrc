@@ -1,3 +1,5 @@
+#ack --create-ackrc  # for the defaults
+
 --sort-files
 --smart-case
 
@@ -12,7 +14,9 @@
 --ignore-file=ext:sql
 --ignore-file=ext:svg
 --type-add=css=scss
---type-add=python=j2
+
+--type-set=json=.json
+--type-add=python=.j2,.jinja,.jinja2
 
 #js stuff
 --type-set=minijs=min.js
