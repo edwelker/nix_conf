@@ -1,0 +1,5 @@
+--ignore-dir=.tox
+--ignore-file=ext:map
+--ignore-file=ext:svg
+--ignore-dir=htmlcov
+--ignore-dir=site-packages
