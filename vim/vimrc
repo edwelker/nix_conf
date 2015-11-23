@@ -149,6 +149,20 @@ let g:user_emmet_expandabbr_key='<c-e>'
 let g:use_emmet_complete_tag=1
 let g:user_emmet_mode='a'
 
+"syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+let g:syntastic_python_flake8_post_args='--ignore=W291,W293,E501,E265,E127,E128'
+
+let g:syntastic_javascript_checkers = ['jshint']
+
 "F2 spell check
 nnoremap <F2> :set spell<CR>
 

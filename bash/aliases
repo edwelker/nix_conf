@@ -71,6 +71,10 @@ alias duhere="du -h --max-depth=1"
 alias dirsize="du -sh"
 alias permissionshere="namei -m $(pwd -P)"
 
+#systemd
+alias psc='ps xawf -eo pid,user,cgroup,args'
+alias cgrps='systemd-cgls'
+
 alias error_tail='tail -n 40 /web/public/logs/error'
 alias tail='tail -f'
 
