@@ -5,6 +5,9 @@
 
 --ignore-dir=.tox
 --ignore-dir=coverage
+--ignore-dir=.svn
+--ignore-dir=.git
+--ignore-dir=__pycache__
 --ignore-dir=htmlcov
 --ignore-dir=site-packages
 --ignore-dir=bin
