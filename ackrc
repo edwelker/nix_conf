@@ -3,26 +3,34 @@
 --sort-files
 --smart-case
 
+# python
+--type-add=python=.j2,.jinja,.jinja2
 --ignore-dir=.tox
 --ignore-dir=coverage
---ignore-dir=.svn
---ignore-dir=.git
 --ignore-dir=__pycache__
 --ignore-dir=htmlcov
 --ignore-dir=site-packages
+
 --ignore-dir=bin
 --ignore-dir=vendor
+
+--ignore-dir=.svn
+--ignore-dir=.git
 
 --ignore-file=ext:pdf
 --ignore-file=ext:sql
 --ignore-file=ext:svg
+
+# css
 --type-add=css=scss
+--type-set=mapcss=.css.map
+--nomapcss
 
+# json
 --type-set=json=.json
---type-add=python=.j2,.jinja,.jinja2
 
-#js stuff
---type-set=minijs=min.js
+# js
+--type-set=minijs=.min.js
 --nominijs
 
 --type-set=mapjs=min.map
