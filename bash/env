@@ -8,6 +8,8 @@ export HISTTIMEFORMAT="%y-%m-%dT%T "
 
 . ${DOTDOT}/bash/javaenv
 . ${DOTDOT}/bash/grailsenv
+. ${DOTDOT}/bash/go
+. ${DOTDOT}/bash/ncbi
 
 PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[0;33m\] \[\033[00m\]\$ '
 
@@ -23,6 +25,8 @@ if command -v dnsdomainname 1>/dev/null && [[ $(dnsdomainname 2>/dev/null) =~ ^.
     export CDPATH;
 
     export TMPDIR=/tmp
+
+    export PATH=/usr/local/python/all/bin/:"$PATH"
 fi
 
 if [ -f /usr/bin/dircolors ]
@@ -38,7 +42,7 @@ shopt -s histappend
 export PROMPT_COMMAND='history -a'
 export HISTSIZE=20000
 
-PATH=~/bin:$DOTDOT/bin:~/bin/py_libs:~/ift:$PATH
+PATH=~/bin:$DOTDOT/bin:$PATH
 export PATH
 
 if [ -d /usr/local/bin/ ];then
@@ -66,26 +70,24 @@ if [ -d ~/node_modules/.bin ]; then
     export PATH=~/node_modules/.bin:$PATH
 fi
 
-export PYTHONPATH=$PYTHONPATH:~/bin/py_libs
-
 export PYTHONDONTWRITEBYTECODE=1
 
 export VENVWRAPPER=$(command -v virtualenvwrapper.sh 2>/dev/null)
 if [ ! -z "$VENVWRAPPER" ]; then
     export WORKON_HOME=$HOME/env
     export PROJECT_HOME=$HOME/code/python
-    source "$VENVWRAPPER" 
+    source "$VENVWRAPPER"
 fi
 
 
 # pip bash completion start
-_pip_completion()
-{
-    COMPREPLY=( $( COMP_WORDS="${COMP_WORDS[*]}" \
-                    COMP_CWORD=$COMP_CWORD \
-                    PIP_AUTO_COMPLETE=1 $1 ) )
-}
-complete -o default -F _pip_completion pip
+# _pip_completion()
+# {
+#     COMPREPLY=( $( COMP_WORDS="${COMP_WORDS[*]}" \
+#                     COMP_CWORD=$COMP_CWORD \
+#                     PIP_AUTO_COMPLETE=1 $1 ) )
+# }
+# complete -o default -F _pip_completion pip
 # pip bash completion end
 
 #lang/locale settings

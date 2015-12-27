@@ -71,6 +71,10 @@ alias duhere="du -h --max-depth=1"
 alias dirsize="du -sh"
 alias permissionshere="namei -m $(pwd -P)"
 
+#systemd
+alias psc='ps xawf -eo pid,user,cgroup,args'
+alias cgrps='systemd-cgls'
+
 alias error_tail='tail -n 40 /web/public/logs/error'
 alias tail='tail -f'
 
@@ -81,6 +85,7 @@ alias lbsg="lbsmc | grep"
 alias macssh='eval $(ssh-agent)'
 
 alias sr='ssh-reagent'
+alias sk='ssh-keygen -t rsa -b 4096'
 
 alias g='git'
 alias gp='git push'
@@ -139,4 +144,4 @@ alias rhls='rhc apps'
 alias sbc="sbt clean"
 alias server="sbt server/run"
 alias client="sbt client/run"
-
+alias srun="sbt run"

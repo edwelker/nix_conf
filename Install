@@ -58,6 +58,10 @@ if [ ! -h ~/.muttrc ]; then
     ln -s ${DOTDOT}/mutt/muttrc ~/.muttrc
 fi;
 
+if [ ! -h ~/.ackrc ]; then
+    ln -s ${DOTDOT}/ackrc ~/.ackrc
+fi;
+
 #create a .tmp directory for vim backups
 if [ ! -d ~/.tmp ]; then
     mkdir ~/.tmp;
@@ -67,3 +71,6 @@ fi;
 if [ ! "$(ls -A ${DOTDOT}/pathogen)" ]; then
     git submodule update --init
 fi;
+
+#to update to the latest submodules,
+#git submodule foreach git pull origin master

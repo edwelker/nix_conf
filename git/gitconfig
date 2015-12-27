@@ -21,7 +21,9 @@
     rv = remote -v
     ap = add -p
     a = add
+    cp = cherry-pick
     ds = diff --staged
+    dc = diff --cached
     push = push --follow-tags
     ai = add --interactive
     le = log --oneline --decorate
@@ -29,15 +31,18 @@
     soft = reset --soft HEAD^
     diffprev = diff HEAD^
     amend = commit --amend -C HEAD
+    syncfetch = remote prune origin
     ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
     ls = log --pretty=format:"%C(green)%h\\ %C(yellow)[%ad]%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
     la = log --pretty=format:"%C(green)%h\\ %C(yellow)[%ad]%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative --graph
+    lst = ls-tree
     graph = log --graph --pretty=format':%C(yellow)%h%Cblue%d%Creset %s %C(white) %an, %ar%Creset'
     yesterday = log --since '1 day ago' --oneline --author eddie.welker@gmail.com
     latest = "for-each-ref --sort=-committerdate --format='%(committerdate:short) %(refname:short) [%(committername)]'"
     num = shortlog -sn
     aliases = "!git config -l | grep alias | cut -c 7-"
     create-pull-request = !sh -c 'stash pull-request $0'
+    home = "rev-parse --show-toplevel"
 [github]
     user = edwelker
     password = !security find-generic-password -gs github.password -w | tr -d '\n'
