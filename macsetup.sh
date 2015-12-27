@@ -62,6 +62,8 @@ defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 defaults write com.apple.dock showhidden -bool true
 #low keyboard rate
 defaults write NSGlobalDomain KeyRepeat -int 0
+#make the notification time very short
+defaults write com.apple.notificationcenterui bannerTime 1.5
 
 #restart dock to see changes
 killall Dock
