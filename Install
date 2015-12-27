@@ -71,3 +71,6 @@ fi;
 if [ ! "$(ls -A ${DOTDOT}/pathogen)" ]; then
     git submodule update --init
 fi;
+
+#to update to the latest submodules,
+#git submodule foreach git pull origin master

@@ -42,7 +42,7 @@ shopt -s histappend
 export PROMPT_COMMAND='history -a'
 export HISTSIZE=20000
 
-PATH=~/bin:$DOTDOT/bin:~/bin/py_libs:~/ift:$PATH
+PATH=~/bin:$DOTDOT/bin:$PATH
 export PATH
 
 if [ -d /usr/local/bin/ ];then
@@ -69,8 +69,6 @@ fi
 if [ -d ~/node_modules/.bin ]; then
     export PATH=~/node_modules/.bin:$PATH
 fi
-
-export PYTHONPATH=$PYTHONPATH:~/bin/py_libs
 
 export PYTHONDONTWRITEBYTECODE=1
 
