@@ -141,6 +141,12 @@ vnoremap > >gv
 "set a temporary directory
 set backupdir=~/.tmp
 
+" html5 settings
+let g:html5_event_handler_attributes_complete = 1
+let g:html5_microdata_attributes_complete = 1
+let g:html5_rdfa_attributes_complete = 1
+let g:html5_aria_attributes_complete = 1
+
 "emmet settings
 let g:user_emmet_leader_key = '<c-e>'
 let g:user_emmet_mode='a'
@@ -149,9 +155,15 @@ let g:use_emmet_complete_tag=1
 let g:user_emmet_mode='a'
 
 " python-mode (pymode)
-let g:pymode_options_max_line_length = 119
 let g:pymode_virtualenv = 1
 let g:pymode_lint = 0
+
+let g:pymode_options = 1
+let g:pymode_options_max_line_length = 119
+let g:pymode_options_colorcolumn = 1
+let g:pymode_indent = 1
+let g:pymode_foliding = 1
+let g:pymode_syntax = 1
 
 "syntastic
 set statusline+=%#warningmsg#
