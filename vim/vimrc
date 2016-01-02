@@ -13,9 +13,6 @@ call pathogen#helptags()
 " remap the leader key.  typically \, but , is easier
 let mapleader=","
 
-" set timeout before leader key is executed
-set timeoutlen=1
-
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
@@ -44,7 +41,7 @@ if has("vms")
 else
   set backup		" keep a backup file
 endif
-set history=50		" keep 50 lines of command line history
+set history=100		" keep 50 lines of command line history
 set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
@@ -82,7 +79,7 @@ if has("autocmd")
     au!
 
     " For all text files set 'textwidth' to 78 characters.
-    autocmd FileType text setlocal textwidth=78
+    autocmd FileType text setlocal textwidth=99
 
     " When editing a file, always jump to the last known cursor position.
     " Don't do it when the position is invalid or when inside an event handler
@@ -102,32 +99,66 @@ if has("autocmd")
 
 else
 
-  set autoindent		" always set autoindenting on
+  set autoindent " always set autoindenting on
 
 endif " has("autocmd")
 
 set number    "show line numbers
-syntax on     "show syntax highlighting
-set ai sw=4
 set encoding=utf8
 set paste
 set expandtab
 set textwidth=0
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
+" set ai sw=4
+" set tabstop=4
+" set softtabstop=4
+" set shiftwidth=4
 set autoindent
 set ignorecase
-set wildmenu
+set wildmenu " show graphical file list
 set commentstring=\ #\ %s
-set hidden
+set hidden " Leave hidden buffers open  
+set lazyredraw " fewer redraws
+
+set cursorline " show where the cursor is
+set showmatch " shows matching parens
+
+set colorcolumn=99
+
+" Split settings
+set splitbelow
+set splitright
+
+set wildignore=*.swp,*.bak,*.pyc,*.class " ignore these while opening
+
+" when wrapping, go to next editor line, not next file line
+nnoremap j gj
+nnoremap k gk
+
+" clear highlighting
+nmap <silent> ,/ :nohlsearch<CR>
+
+" show loaded scripts
+nmap <silent> <leader>sn :scriptnames<CR>
+
+" Set <leader>c to comment out code via Commentary
+nmap <silent> <leader>c <Plug>Commentary<CR>
+nmap <silent> <leader>cc <Plug>CommentaryLine<CR>
+
+" for when you forgot sudo
+cmap w!! w !sudo tee % >/dev/null
+
+" Use Q for formatting the current paragraph (or selection)
+vmap Q gq
+nmap Q gqap
 
 "folding
 set foldmethod=indent
-set foldlevel=99
+set foldlevel=10
 set clipboard+=unnamed
+" use spacebar to fold
+nnoremap <space> za
 
-"window movements
+" window movements
 map <c-j> <c-w>j
 map <c-k> <c-w>k
 map <c-l> <c-w>l
@@ -141,9 +172,12 @@ vnoremap > >gv
 "set a temporary directory
 set backupdir=~/.tmp
 
+" Ag settings
+let g:ag_highlight=1
+
 " html5 settings
 let g:html5_event_handler_attributes_complete = 1
-let g:html5_microdata_attributes_complete = 1
+nlet g:html5_microdata_attributes_complete = 1
 let g:html5_rdfa_attributes_complete = 1
 let g:html5_aria_attributes_complete = 1
 
@@ -164,6 +198,9 @@ let g:pymode_options_colorcolumn = 1
 let g:pymode_indent = 1
 let g:pymode_foliding = 1
 let g:pymode_syntax = 1
+
+" highlight
+let python_highlight_all=1
 
 "syntastic
 set statusline+=%#warningmsg#
@@ -190,7 +227,7 @@ let g:syntastic_javascript_checkers = ['jshint']
 "F2 spell check
 nnoremap <F2> :set spell<CR>
 
-set pastetoggle=<F3>
+set pastetoggle=<leader>p
 
 " fix capitol writing combos, when I don't unpress shift fast enough
 command WQ wq
@@ -203,8 +240,8 @@ command Q q
 au BufNewFile,BufRead *.groovy,*.gradle setf groovy
 
 colo oceandeep  "default
-autocmd! BufEnter,BufNewFile *.groovy,*.java,*.gradle colo elflord 
-autocmd! BufLeave *.groovy,*.java,*.gradle colo oceandeep 
+autocmd! BufEnter,BufNewFile *.groovy,*.java,*.gradle colo elflord
+autocmd! BufLeave *.groovy,*.java,*.gradle colo oceandeep
 
 
 "powerline
@@ -228,3 +265,19 @@ if &term =~ "xterm"
 endif
 
 " http://nvie.com/posts/how-i-boosted-my-vim/ need to look at this
+
+set title                " change the terminal's title
+set visualbell           " don't beep
+set noerrorbells         " don't beep
+
+
+" allows cursor change in tmux mode
+if exists('$TMUX')
+    let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+    let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+else
+    let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+    let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+endif
+
+
