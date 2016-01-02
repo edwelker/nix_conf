@@ -13,4 +13,4 @@ PYDOC
 ) > $VIRTUAL_ENV/bin/pydoc
 chmod +x $VIRTUAL_ENV/bin/pydoc
 
-pip install -q flake8 pylint
+pip install -q pylama
