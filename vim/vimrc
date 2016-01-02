@@ -13,6 +13,8 @@ call pathogen#helptags()
 " remap the leader key.  typically \, but , is easier
 let mapleader=","
 
+inoremap jk <ESC>
+
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
@@ -37,14 +39,14 @@ endif
 set backspace=indent,eol,start
 
 if has("vms")
-  set nobackup		" do not keep a backup file, use versions instead
+  set nobackup          " do not keep a backup file, use versions instead
 else
-  set backup		" keep a backup file
+  set backup            " keep a backup file
 endif
-set history=100		" keep 50 lines of command line history
-set ruler		" show the cursor position all the time
-set showcmd		" display incomplete commands
-set incsearch		" do incremental searching
+set history=100         " keep 50 lines of command line history
+set ruler               " show the cursor position all the time
+set showcmd             " display incomplete commands
+set incsearch           " do incremental searching
 
 " For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
 " let &guioptions = substitute(&guioptions, "t", "", "g")
@@ -128,7 +130,14 @@ set colorcolumn=99
 set splitbelow
 set splitright
 
-set wildignore=*.swp,*.bak,*.pyc,*.class " ignore these while opening
+set wildmode=longest:full,list:full
+set wildignorecase
+set wildignore+=*.DS_Store,~*
+set wildignore+=*.bmp,*.gif,*.jpg,*.png
+set wildignore+=*.exe,*.dll,*.so,*.swp,*.zip,*.pyc
+set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/tmp/*
+set wildignore+=*/.sass-cache/*,*/bower_components/*,*/node_modules/*,*/__pycache__/*,
+set wildmenu
 
 " when wrapping, go to next editor line, not next file line
 nnoremap j gj
@@ -140,12 +149,11 @@ nmap <silent> ,/ :nohlsearch<CR>
 " show loaded scripts
 nmap <silent> <leader>sn :scriptnames<CR>
 
-" Set <leader>c to comment out code via Commentary
-nmap <silent> <leader>c <Plug>Commentary<CR>
-nmap <silent> <leader>cc <Plug>CommentaryLine<CR>
-
 " for when you forgot sudo
 cmap w!! w !sudo tee % >/dev/null
+
+nmap <leader>w :w!<cr>
+nmap <leader>fq :q!<cr>
 
 " Use Q for formatting the current paragraph (or selection)
 vmap Q gq
@@ -173,11 +181,14 @@ vnoremap > >gv
 set backupdir=~/.tmp
 
 " Ag settings
+" No carrage return at the end so we can actually search
+" :help key-notation
+nnoremap <leader>a :Ag<Space>
 let g:ag_highlight=1
 
 " html5 settings
 let g:html5_event_handler_attributes_complete = 1
-nlet g:html5_microdata_attributes_complete = 1
+let g:html5_microdata_attributes_complete = 1
 let g:html5_rdfa_attributes_complete = 1
 let g:html5_aria_attributes_complete = 1
 
@@ -227,14 +238,14 @@ let g:syntastic_javascript_checkers = ['jshint']
 "F2 spell check
 nnoremap <F2> :set spell<CR>
 
-set pastetoggle=<leader>p
+" Paste mode with visual indication
+set pastetoggle=<F2>
+set showmode
 
 " fix capitol writing combos, when I don't unpress shift fast enough
-command WQ wq
-command Wq wq
-command W w
-command Q q
-
+cnoremap W w
+cnoremap Wq wq
+cnoremap Q q
 
 " file based stuff
 au BufNewFile,BufRead *.groovy,*.gradle setf groovy
@@ -243,11 +254,16 @@ colo oceandeep  "default
 autocmd! BufEnter,BufNewFile *.groovy,*.java,*.gradle colo elflord
 autocmd! BufLeave *.groovy,*.java,*.gradle colo oceandeep
 
+" JavaScript
+au FileType javascript setlocal foldmethod=marker
+au FileType javascript setlocal foldmarker={,}
+
 
 "powerline
 set rtp+=$DOTDOT/vim/vim/bundle/powerline/powerline/bindings/vim
 
-
+" close quick/location fix/list
+nnoremap <leader>l :lcl<CR>
 
 " http://vim.wikia.com/wiki/Using_vim_color_schemes_with_Putty
 if &term =~ "xterm"
@@ -280,4 +296,25 @@ else
     let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 endif
 
+" Django filetypes
+au BufNewFile,BufRead admin.py     setlocal filetype=python.django
+au BufNewFile,BufRead urls.py      setlocal filetype=python.django
+au BufNewFile,BufRead models.py    setlocal filetype=python.django
+au BufNewFile,BufRead views.py     setlocal filetype=python.django
+au BufNewFile,BufRead settings.py  setlocal filetype=python.django
+au BufNewFile,BufRead forms.py     setlocal filetype=python.django
+au BufNewFile,BufRead *.html setlocal filetype=htmldjango
 
+
+" Omni completion
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+
+au FileType htmldjango set omnifunc=htmldjangocomplete#CompleteDjango
+au FileType htmldjango inoremap {% {% %}<left><left><left>
+au FileType htmldjango inoremap {{ {{ }}<left><left><left>
+
+" set custom indentation
+au FileType html,handlebars.html,htmldjango,css,scsshp,twig,javascript setlocal sts=2 sw=2 et
