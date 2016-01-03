@@ -26,6 +26,7 @@ Plug 'vim-scripts/github-theme'
 Plug 'vim-scripts/oceanlight'
 Plug 'vim-scripts/Railscasts-Theme-GUIand256color'
 Plug 'vim-scripts/twilight'
+Plug 'atelierbram/vim-colors_atelier-schemes'
 
 " Plug 'vim-scripts/twilight256'
 " Plug 'vim-scripts/kib_darktango'
@@ -40,7 +41,10 @@ Plug 'qrps/lilypond-vim', { 'for': 'lilypond' }
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
 Plug 'sukima/xmledit', { 'for': 'xml' }
-Plug 'othree/html5', { 'for': 'html' }
+Plug 'https://github.com/othree/html5.vim.git', { 'for': 'html' }
+
+" All the syntax
+Plug 'sheerun/vim-polyglot'
 
 " Python
 Plug 'jmcantrell/vim-virtualenv', { 'for': 'python' }
@@ -55,6 +59,9 @@ Plug 'edsono/vim-matchit', { 'for': ['html', 'xml'] }
 
 " Make tab handle all completions
 Plug 'ervandew/supertab'
+
+" Fugitive: Git from within Vim
+Plug 'tpope/vim-fugitive'
 
 " Syntastic: Code linting errors
 Plug 'scrooloose/syntastic', { 'for': ['python', 'javascript', 'css'] }
