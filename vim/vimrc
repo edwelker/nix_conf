@@ -116,7 +116,7 @@ set softtabstop=4
 set shiftwidth=4
 set autoindent
 set ignorecase
-set commentstring=\ #\ %s
+" set commentstring=\ #\ %s
 set hidden               " Leave hidden buffers open
 set lazyredraw           " fewer redraws
 
@@ -242,6 +242,7 @@ let g:syntastic_enable_balloons = 0
 let g:syntastic_always_populate_loc_list = 1
 
 let g:syntastic_python_checkers = ['pylama']
+" let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_javascript_checkers = ['jshint']
 
 " let g:syntastic_python_flake8_post_args='--jobs=8 --ignore=W291,W293,E265,E127,E128 --max-line-length=119'
@@ -274,8 +275,8 @@ colo oceandeep  " Default
 
 " file based stuff
 au BufNewFile,BufRead *.groovy,*.gradle setf groovy
-autocmd! BufEnter,BufNewFile *.groovy,*.java,*.gradle colo elflord
-autocmd! BufLeave *.groovy,*.java,*.gradle colo oceandeep
+autocmd! BufEnter,BufNewFile *.groovy,*.java,*.gradle,*.scala,*.sbt colo elflord
+autocmd! BufLeave *.groovy,*.java,*.gradle,*.scala,*.sbt colo oceandeep
 
 " JavaScript
 au FileType javascript setlocal foldmethod=marker
