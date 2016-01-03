@@ -5,16 +5,12 @@
 " This must be first, because it changes other options as a side effect.
 set nocompatible " don't need vi compatibility
 
-" pathogen for plugin loading, but turn off filetype first, so it loads correctly
-filetype off
-call pathogen#infect()
-call pathogen#helptags()
+source $DOTDOT/vim/plugins.vim
 
 " remap the leader key.  typically \, but , is easier
 let mapleader=","
 
-" set timeout before leader key is executed
-set timeoutlen=1
+inoremap jk <esc>
 
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
@@ -40,14 +36,14 @@ endif
 set backspace=indent,eol,start
 
 if has("vms")
-  set nobackup		" do not keep a backup file, use versions instead
+  set nobackup          " do not keep a backup file, use versions instead
 else
-  set backup		" keep a backup file
+  set backup            " keep a backup file
 endif
-set history=50		" keep 50 lines of command line history
-set ruler		" show the cursor position all the time
-set showcmd		" display incomplete commands
-set incsearch		" do incremental searching
+set history=100         " keep 50 lines of command line history
+set ruler               " show the cursor position all the time
+set showcmd             " display incomplete commands
+set incsearch           " do incremental searching
 
 " For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
 " let &guioptions = substitute(&guioptions, "t", "", "g")
@@ -70,64 +66,114 @@ endif
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
 
+    augroup vim
+            au!
+            " autosource vimrc on write
+            au BufWritePost .vimrc source $MYVIMRC
+    augroup END
+
     " Enable file type detection.
-    " Use the default filetype settings, so that mail gets 'tw' set to 72,
-    " 'cindent' is on in C files, etc.
-    " Also load indent files, to automatically do language-dependent indenting.
     filetype on
     filetype indent plugin on
 
     " Put these in an autocmd group, so that we can delete them easily.
     augroup vimrcEx
-    au!
+        au!
 
-    " For all text files set 'textwidth' to 78 characters.
-    autocmd FileType text setlocal textwidth=78
+        " For all text files set 'textwidth' to 78 characters.
+        autocmd FileType text setlocal textwidth=99
 
-    " When editing a file, always jump to the last known cursor position.
-    " Don't do it when the position is invalid or when inside an event handler
-    " (happens when dropping a file on gvim).
-    autocmd BufReadPost *
-    \ if line("'\"") > 0 && line("'\"") <= line("$") |
-    \   exe "normal g`\"" |
-    \ endif
-
+        " When editing a file, always jump to the last known cursor position.
+        " Don't do it when the position is invalid or when inside an event handler
+        " (happens when dropping a file on gvim).
+        autocmd BufReadPost *
+        \ if line("'\"") > 0 && line("'\"") <= line("$") |
+        \   exe "normal g`\"" |
+        \ endif
     augroup END
 
     " whitespace characters displayed
     set list
     set listchars=tab:>.,trail:.,extends:#,nbsp:.
+    " set listchars=tab:˒\ ,trail:·,extends:…,precedes:…,nbsp:+
 
     autocmd filetype html,xml set listchars-=tab:>.
 
 else
 
-  set autoindent		" always set autoindenting on
+  set autoindent " always set autoindenting on
 
 endif " has("autocmd")
 
 set number    "show line numbers
-syntax on     "show syntax highlighting
-set ai sw=4
 set encoding=utf8
 set paste
 set expandtab
 set textwidth=0
+set ai sw=4
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set autoindent
 set ignorecase
-set wildmenu
 set commentstring=\ #\ %s
-set hidden
+set hidden               " Leave hidden buffers open
+set lazyredraw           " fewer redraws
+
+set cursorline           " show where the cursor is YES, THIS MAY BE ANNOYING
+set showmatch            " shows matching parens
+
+set title                " change the terminal's title
+set visualbell           " don't beep
+set noerrorbells         " don't beep
+
+set colorcolumn=99
+highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
+
+" Split settings
+set splitbelow
+set splitright
+
+set wildmenu             " show graphical file list
+set wildmode=longest:full,list:full
+set wildignorecase
+set wildignore+=*.DS_Store,~*
+set wildignore+=*.bmp,*.gif,*.jpg,*.png
+set wildignore+=*.exe,*.dll,*.so,*.swp,*.zip,*.pyc
+set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/tmp/*
+set wildignore+=*/.sass-cache/*,*/bower_components/*,*/node_modules/*,*/__pycache__/*,
+
+" when wrapping, go to next editor line, not next file line
+nnoremap j gj
+nnoremap k gk
+
+" clear highlighting
+nmap <silent> ,/ :nohlsearch<CR>
+
+" clean trailing whitespace
+map <silent><leader>\ :%s/\s\+$//<CR>:let @/=''<CR>
+
+" show loaded scripts
+nmap <silent> <leader>sn :scriptnames<CR>
+
+" for when you forgot sudo
+cmap w!! w !sudo tee % >/dev/null
+
+nmap <leader>w :w!<cr>
+nmap <leader>fq :q!<cr>
+
+" Use Q for formatting the current paragraph (or selection)
+vmap Q gq
+nmap Q gqap
 
 "folding
 set foldmethod=indent
-set foldlevel=99
+set foldlevel=10
 set clipboard+=unnamed
+" use spacebar to fold
+nnoremap <space> za
 
-"window movements
+" window movements
 map <c-j> <c-w>j
 map <c-k> <c-w>k
 map <c-l> <c-w>l
@@ -141,64 +187,106 @@ vnoremap > >gv
 "set a temporary directory
 set backupdir=~/.tmp
 
+" Ag settings
+" No carrage return at the end so we can actually search
+" :help key-notation
+nnoremap <leader>a :Ag<Space>
+let g:ag_highlight=1
+
+" html5 settings
+let g:html5_event_handler_attributes_complete = 1
+let g:html5_microdata_attributes_complete = 1
+let g:html5_rdfa_attributes_complete = 1
+let g:html5_aria_attributes_complete = 1
+
 "emmet settings
 let g:user_emmet_leader_key = '<c-e>'
 let g:user_emmet_mode='a'
 let g:user_emmet_expandabbr_key='<c-e>'
 let g:use_emmet_complete_tag=1
-let g:user_emmet_mode='a'
 
 " python-mode (pymode)
-let g:pymode_options_max_line_length = 119
 let g:pymode_virtualenv = 1
 let g:pymode_lint = 0
 
-"syntastic
+let g:pymode_options = 1
+let g:pymode_options_max_line_length = 99
+let g:pymode_options_colorcolumn = 1
+let g:pymode_indent = 1
+let g:pymode_foliding = 1
+let g:pymode_syntax = 1
+
+" Highlight
+let python_highlight_all=1
+
+" Syntastic
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+let g:syntastic_error_symbol   = '✗'
+let g:syntastic_warning_symbol = '⚠'
+let g:syntastic_style_error_symbol = '»'
+let g:syntastic_style_warning_symbol = '»'
+
 let g:syntastic_aggregate_errors = 1
 
-let g:syntastic_loc_list_height=5
-let g:syntastic_enable_signs = 0
+let g:syntastic_auto_jump       = 0
+let g:syntastic_auto_loc_list   = 0
+let g:syntastic_check_on_open   = 1
+let g:syntastic_enable_signs    = 0
+let g:syntastic_loc_list_height = 5
 let g:syntastic_enable_balloons = 0
-" let g:syntastic_enable_highlighting = 0
 
-let g:syntastic_python_checkers = ['pylint', 'flake8']
-let g:syntastic_python_flake8_post_args='--jobs=8 --ignore=W291,W293,E265,E127,E128 --max-line-length=119'
-let g:syntastic_python_pylint_post_args='-j 8 --disable=line-too-long'
+" Jump thought errors with :lnext and :lprev
+let g:syntastic_always_populate_loc_list = 1
 
+let g:syntastic_python_checkers = ['pylama']
 let g:syntastic_javascript_checkers = ['jshint']
+
+" let g:syntastic_python_flake8_post_args='--jobs=8 --ignore=W291,W293,E265,E127,E128 --max-line-length=119'
+" let g:syntastic_python_pylint_post_args='-j 8 --disable=line-too-long'
+
+
+" http://vim.wikia.com/wiki/Simplifying_regular_expressions_using_magic_and_no-magic
+nnoremap / /\v
+nnoremap s/ s/\v
+nnoremap %s/ %s/\v
+vnoremap / /\v
+vnoremap %s/ %s/\v
+
 
 "F2 spell check
 nnoremap <F2> :set spell<CR>
 
-set pastetoggle=<F3>
+" Paste mode with visual indication
+set pastetoggle=<F2>
+set showmode
 
 " fix capitol writing combos, when I don't unpress shift fast enough
-command WQ wq
-command Wq wq
-command W w
-command Q q
+command! W w
+command! Wq wq
+command! Q q
+command! Bd bd
+command! BD bd
 
+colo oceandeep  " Default
 
 " file based stuff
 au BufNewFile,BufRead *.groovy,*.gradle setf groovy
+autocmd! BufEnter,BufNewFile *.groovy,*.java,*.gradle colo elflord
+autocmd! BufLeave *.groovy,*.java,*.gradle colo oceandeep
 
-colo oceandeep  "default
-autocmd! BufEnter,BufNewFile *.groovy,*.java,*.gradle colo elflord 
-autocmd! BufLeave *.groovy,*.java,*.gradle colo oceandeep 
+" JavaScript
+au FileType javascript setlocal foldmethod=marker
+au FileType javascript setlocal foldmarker={,}
 
 
 "powerline
 set rtp+=$DOTDOT/vim/vim/bundle/powerline/powerline/bindings/vim
 
-
+" close quick/location fix/list
+nnoremap <leader>l :lcl<CR>
 
 " http://vim.wikia.com/wiki/Using_vim_color_schemes_with_Putty
 if &term =~ "xterm"
@@ -215,4 +303,35 @@ if &term =~ "xterm"
     endif
 endif
 
-" http://nvie.com/posts/how-i-boosted-my-vim/ need to look at this
+
+" allows cursor change in tmux mode
+if exists('$TMUX')
+    let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+    let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+else
+    let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+    let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+endif
+
+" Django filetypes
+au BufNewFile,BufRead admin.py     setlocal filetype=python.django
+au BufNewFile,BufRead urls.py      setlocal filetype=python.django
+au BufNewFile,BufRead models.py    setlocal filetype=python.django
+au BufNewFile,BufRead views.py     setlocal filetype=python.django
+au BufNewFile,BufRead settings.py  setlocal filetype=python.django
+au BufNewFile,BufRead forms.py     setlocal filetype=python.django
+au BufNewFile,BufRead *.html setlocal filetype=htmldjango
+
+
+" Omni completion
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+
+au FileType htmldjango set omnifunc=htmldjangocomplete#CompleteDjango
+au FileType htmldjango inoremap {% {% %}<left><left><left>
+au FileType htmldjango inoremap {{ {{ }}<left><left><left>
+
+" set custom indentation
+au FileType html,handlebars.html,htmldjango,css,scsshp,twig,javascript setlocal sts=2 sw=2 et
