@@ -22,6 +22,9 @@ brew cask install firefox iterm2 google-chrome rdio alfred vlc macvim flux vienn
 
 #remember: http://stackoverflow.com/questions/127591/using-caps-lock-as-esc-in-mac-os-x
 
+# use system rvm before installing vim
+rvm use system
+
 #install non-GUI's
 brew install git python python3 tmux vim phantomjs ack wget tree node bash-completion ruby irssi tomcat groovy maven gradle scala sbt typesafe-activator jq autossh mosh libev sshfs mutt awscli cask go hadoop nvm cassandra meld gnu-sed the_silver_searcher ctags pstree watch
 
