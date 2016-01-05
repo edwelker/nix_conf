@@ -42,7 +42,7 @@
     num = shortlog -sn
     aliases = "!git config -l | grep alias | cut -c 7-"
     create-pull-request = !sh -c 'stash pull-request $0'
-    home = "rev-parse --show-toplevel"
+    home = "!git rev-parse && cd $(git rev-parse --show-cdup)"
 [github]
     user = edwelker
     password = !security find-generic-password -gs github.password -w | tr -d '\n'
