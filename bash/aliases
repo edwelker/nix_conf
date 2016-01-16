@@ -145,3 +145,7 @@ alias sbc="sbt clean"
 alias server="sbt server/run"
 alias client="sbt client/run"
 alias srun="sbt run"
+
+function fr(){
+    ag -l $1 | xargs sed -i "s/$1/$2/"
+}
