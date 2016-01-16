@@ -16,11 +16,14 @@ brew cask install font-dejavu-sans
 
 #install GUI's
 #install GUI's to /opt/homebrew-cask/Caskroom
-brew cask install firefox iterm2 google-chrome rdio alfred vlc macvim flux vienna dropbox dash caffeine time-out spirited-away selfcontrol lastfm eclipse-ide java cord seil quicksilver amethyst phantomjs amazon-music iterm2 java node serf virtualbox java7 mou adium karabiner spotify thunderbird
+brew cask install firefox iterm2 google-chrome rdio alfred vlc macvim flux vienna dropbox dash caffeine time-out spirited-away selfcontrol lastfm eclipse-ide java cord seil quicksilver amethyst phantomjs amazon-music iterm2 java node serf virtualbox java7 mou adium karabiner spotify thunderbird soundcast radiant-player
 
 #for older versions: http://stackoverflow.com/questions/3987683/homebrew-install-specific-version-of-formula
 
 #remember: http://stackoverflow.com/questions/127591/using-caps-lock-as-esc-in-mac-os-x
+
+# use system rvm before installing vim
+rvm use system
 
 #install non-GUI's
 brew install git python python3 tmux vim phantomjs ack wget tree node bash-completion ruby irssi tomcat groovy maven gradle scala sbt typesafe-activator jq autossh mosh libev sshfs mutt awscli cask go hadoop nvm cassandra meld gnu-sed the_silver_searcher ctags pstree watch
@@ -62,6 +65,8 @@ defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 defaults write com.apple.dock showhidden -bool true
 #low keyboard rate
 defaults write NSGlobalDomain KeyRepeat -int 0
+#make the notification time very short
+defaults write com.apple.notificationcenterui bannerTime 1.5
 
 #restart dock to see changes
 killall Dock

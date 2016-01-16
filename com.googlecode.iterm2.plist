@@ -5,7 +5,7 @@
 	<key>AFRStrokeThickness</key>
 	<real>0.0</real>
 	<key>AdjustWindowForFontSizeChange</key>
-	<true/>
+	<false/>
 	<key>AdvancedFontRendering</key>
 	<false/>
 	<key>AllowClipboardAccess</key>
@@ -1444,12 +1444,8 @@
 	<true/>
 	<key>MinimumContrast</key>
 	<real>0.0</real>
-	<key>NSColorPanelMode</key>
-	<string>1</string>
-	<key>NSColorPickerSlidersDefaults</key>
-	<string>1</string>
 	<key>NSFontPanelAttributes</key>
-	<string>1, 4</string>
+	<string>1, 6</string>
 	<key>NSNavLastRootDirectory</key>
 	<string>~/bin/nix_conf</string>
 	<key>NSQuotedKeystrokeBinding</key>
@@ -1458,16 +1454,29 @@
 	<string></string>
 	<key>NSScrollAnimationEnabled</key>
 	<false/>
-	<key>NSWindow Frame NSFontPanel</key>
-	<string>1342 479 445 270 0 0 1920 1178 </string>
+	<key>NSTableView Columns KeyBingingTable</key>
+	<array>
+		<data>
+		BAtzdHJlYW10eXBlZIHoA4QBQISEhAhOU1N0cmluZwGEhAhOU09iamVjdACF
+		hAErATCG
+		</data>
+		<string>198</string>
+		<data>
+		BAtzdHJlYW10eXBlZIHoA4QBQISEhAhOU1N0cmluZwGEhAhOU09iamVjdACF
+		hAErATGG
+		</data>
+		<string>302</string>
+	</array>
+	<key>NSTableView Hidden Columns KeyBingingTable</key>
+	<array/>
+	<key>NSTableView Sort Ordering KeyBingingTable</key>
+	<array/>
 	<key>NSWindow Frame Preferences</key>
-	<string>397 370 924 485 0 0 1920 1178 </string>
-	<key>NSWindow Frame UKCrashReporter</key>
-	<string>155 594 592 584 0 0 1920 1178 </string>
+	<string>279 202 605 485 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>20 57 1618 930 0 0 1920 1177 </string>
+	<string>4 13 1672 1014 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>327 74 730 608 0 0 1920 1178 </string>
+	<string>749 69 730 608 0 0 1680 1028 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -2135,8 +2144,14 @@
 			<string>/home/welkere</string>
 		</dict>
 	</array>
+	<key>NoSyncNeverRemindPrefsChangesCopy</key>
+	<true/>
+	<key>NoSyncTimeOfLastPromo</key>
+	<real>453352220.03601199</real>
+	<key>NoSyncTimeOfLastPromoDownload</key>
+	<real>453840680.93568802</real>
 	<key>OnlyWhenMoreTabs</key>
-	<false/>
+	<true/>
 	<key>OpenArrangementAtStartup</key>
 	<false/>
 	<key>OpenBookmark</key>
@@ -2187,15 +2202,13 @@
 	<key>PromptOnQuit</key>
 	<true/>
 	<key>QuitWhenAllWindowsClosed</key>
-	<false/>
+	<true/>
 	<key>RefreshRate</key>
 	<integer>25</integer>
 	<key>RightCommand</key>
 	<integer>8</integer>
 	<key>RightOption</key>
 	<integer>3</integer>
-	<key>SUAutomaticallyUpdate</key>
-	<true/>
 	<key>SUEnableAutomaticChecks</key>
 	<true/>
 	<key>SUFeedURL</key>
@@ -2203,7 +2216,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2015-02-23T00:03:33Z</date>
+	<date>2015-05-20T18:50:49Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Show Toolbelt</key>
@@ -2261,8 +2274,6 @@
 	</array>
 	<key>TripleClickSelectsFullWrappedLines</key>
 	<false/>
-	<key>UKCrashReporterLastCrashReportDate</key>
-	<real>1406604928</real>
 	<key>URLHandlers</key>
 	<dict/>
 	<key>URLHandlersByGuid</key>
@@ -2276,7 +2287,7 @@
 	<key>WebKitDefaultFontSize</key>
 	<integer>11</integer>
 	<key>WebKitStandardFont</key>
-	<string>Lucida Grande</string>
+	<string>.Helvetica Neue DeskInterface</string>
 	<key>WindowNumber</key>
 	<true/>
 	<key>WindowStyle</key>
@@ -2284,6 +2295,6 @@
 	<key>WordCharacters</key>
 	<string></string>
 	<key>iTerm Version</key>
-	<string>2.0.0.20141103</string>
+	<string>2.1.1</string>
 </dict>
 </plist>
