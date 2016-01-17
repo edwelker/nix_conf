@@ -120,7 +120,7 @@ set ignorecase
 set hidden               " Leave hidden buffers open
 set lazyredraw           " fewer redraws
 
-set cursorline           " show where the cursor is YES, THIS MAY BE ANNOYING
+" set cursorline           " show where the cursor is YES, THIS MAY BE ANNOYING
 set showmatch            " shows matching parens
 
 set title                " change the terminal's title
@@ -174,10 +174,10 @@ set clipboard+=unnamed
 nnoremap <space> za
 
 " window movements
-nnoremap <c-j> <c-w>j
-nnoremap <c-k> <c-w>k
-nnoremap <c-l> <c-w>l
-nnoremap <c-h> <c-w>h
+" nnoremap <c-j> <c-w>j
+" nnoremap <c-k> <c-w>k
+" nnoremap <c-l> <c-w>l
+" nnoremap <c-h> <c-w>h
 
 "keep selection after intending (thank goodness)
 "gv means select what you last selected

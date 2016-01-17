@@ -69,6 +69,9 @@ Plug 'scrooloose/syntastic', { 'for': ['python', 'javascript', 'css'] }
 " Ag for searching
 Plug 'rking/ag.vim'
 
+" Tmux window navigation
+Plug 'christoomey/vim-tmux-navigator'
+
 " Make commenting easier
 Plug 'tpope/vim-commentary'
 
