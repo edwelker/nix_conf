@@ -174,10 +174,10 @@ set clipboard+=unnamed
 nnoremap <space> za
 
 " window movements
-map <c-j> <c-w>j
-map <c-k> <c-w>k
-map <c-l> <c-w>l
-map <c-h> <c-w>h
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-l> <c-w>l
+nnoremap <c-h> <c-w>h
 
 "keep selection after intending (thank goodness)
 "gv means select what you last selected
@@ -208,6 +208,8 @@ let g:use_emmet_complete_tag=1
 " python-mode (pymode)
 let g:pymode_virtualenv = 1
 let g:pymode_lint = 0
+
+let g:pymode_rope = 0
 
 let g:pymode_options = 1
 let g:pymode_options_max_line_length = 99
@@ -241,7 +243,7 @@ let g:syntastic_enable_balloons = 0
 " Jump thought errors with :lnext and :lprev
 let g:syntastic_always_populate_loc_list = 1
 
-let g:syntastic_python_checkers = ['pylama']
+" let g:syntastic_python_checkers = ['pylint', 'flake8']
 " let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_javascript_checkers = ['jshint']
 
@@ -270,6 +272,11 @@ command! Wq wq
 command! Q q
 command! Bd bd
 command! BD bd
+
+" range select
+command! -range Vis call setpos('.', [0,<line1>,0,0]) |
+                    \ exe "normal V" |
+                    \ call setpos('.', [0,<line2>,0,0])
 
 colo oceandeep  " Default
 
