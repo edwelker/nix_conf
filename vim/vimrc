@@ -162,6 +162,9 @@ cmap w!! w !sudo tee % >/dev/null
 nmap <leader>w :w!<cr>
 nmap <leader>fq :q!<cr>
 
+" for reloading
+nmap <leader>rw :redraw!<cr>
+
 " Use Q for formatting the current paragraph (or selection)
 vmap Q gq
 nmap Q gqap
@@ -186,6 +189,9 @@ vnoremap > >gv
 
 "set a temporary directory
 set backupdir=~/.tmp
+
+" airline
+set laststatus=2
 
 " Ag settings
 " No carrage return at the end so we can actually search

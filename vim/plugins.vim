@@ -72,6 +72,9 @@ Plug 'rking/ag.vim'
 " Tmux window navigation
 Plug 'christoomey/vim-tmux-navigator'
 
+" Let's try to make this pretty...
+Plug 'vim-airline/vim-airline'
+
 " Make commenting easier
 Plug 'tpope/vim-commentary'
 

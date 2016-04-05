@@ -1,2 +1,2 @@
-export GOROOT=$HOME/code/go
-export PATH=$PATH:$GOROOT/bin
+# export GOROOT=$HOME/src/go
+# export PATH=$PATH:$GOROOT/bin

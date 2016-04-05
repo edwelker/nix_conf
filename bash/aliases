@@ -38,6 +38,8 @@ alias shell='python manage.py shell_plus'
 alias db='python manage.py dbshell'
 alias ipy="python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'"
 
+alias venv='source venv/bin/activate'
+
 alias nz='nosetests'
 alias pip-upgrade="pip install --upgrade"
 alias pip-old="pip list -o"
@@ -152,5 +154,14 @@ function fr(){
         exit 2
     else
         ag -l $1 | xargs sed -i "s/$1/$2/"
+    fi
+}
+
+function gurm(){
+    if [ $# -lt 1 ]; then
+        echo 1>&2 "$0: wrong number of arguments"
+        exit 2
+    else
+        git reset -- $1 && g checkout -- $1;
     fi
 }

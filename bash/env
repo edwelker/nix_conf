@@ -2,7 +2,7 @@ export EDITOR="vi"
 export PAGER="less"
 export LESS="-R"
 export TERM=xterm-256color
-export CDPATH=.:~:~/code:~/code/python:~/src:~/bin:$DOTDOT
+export CDPATH=.:~:~/code:~/code/python:~/code/scala:~/src:~/bin:$DOTDOT
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:~/lib
 # export HISTIGNORE="&:ls:[bf]g:exit:history*:pwd:clear"
 export HISTTIMEFORMAT="%y-%m-%dT%T "
@@ -102,7 +102,9 @@ if [ -f /etc/bash_completion ]; then
 fi
 
 if [ -d /etc/bash_completion.d/ ]; then
-   for f in /etc/bash_completion.d/*; do source $f; done
+   source /etc/bash_completion.d/git
+   source /etc/bash_completion.d/yum.bash
+   source /etc/bash_completion.d/yum-utils.bash
    complete -o default -o nospace -F _git g
 fi
 
