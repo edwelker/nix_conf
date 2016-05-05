@@ -1,8 +1,8 @@
+export JAVA_HOME=`/usr/libexec/java_home`
 export GRADLE_HOME=~/code/java/gradle
-export M2_HOME=~/code/java/maven
 export TOMCAT_HOME=~/code/java/tomcat
 
-export SCALA_HOME=~/code/java/scala
+export SCALA_HOME=~/usr/local/opt/scala/idea
 export PATH=$PATH:$SCALA_HOME/bin
 
 export JAVA_HOME=/usr/lib/jvm/java-1.8.0
