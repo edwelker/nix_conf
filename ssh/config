@@ -12,57 +12,71 @@ Host cdepot
 
 # Don't kill connection if route goes down
 TCPKeepAlive no
+
+# always enable compression
+Compression yes
+# very high
+CompressionLevel 7
+
+# multiplex connections
+ControlMaster auto
+# the unix socket created
+ControlPath /tmp/ssh-%r@%h:%p
+ControlPersist yes
+
+# send a null packet to server every 60s to keep connection alive
 ServerAliveInterval 60
 StrictHostKeyChecking no
+# do authentication checks here, have them sent to other machines
+ForwardAgent yes
+ForwardX11 yes
+IdentityFile ~/.ssh/id_rsa
+SendEnv EDITOR
+SendEnv GIT_AUTHOR_NAME
+SendEnv GIT_COMMITTER_NAME
+SendEnv COLORSCHEME
+
 
 Host i
     User welkere
     HostName iwebdev2
     ProxyCommand ssh w -W %h:%p
     LocalForward 3128 webproxy.ncbi.nlm.nih.gov:3128
+    LocalForward 2181 10.50.2.148:2181
     LocalForward 3389 NCBIPC8234.be-md.ncbi.nlm.nih.gov:3389
     LocalForward 9418 stash.be-md.ncbi.nlm.nih.gov:9418
     LocalForward 9922 ncbimac1029.ncbi.nlm.nih.gov:22
     LocalForward 5920 ncbimac1029.ncbi.nlm.nih.gov:5920
     LocalForward 10323 artifactory-dev.ncbi.nlm.nih.gov:443
-    ForwardX11 no
-    Compression yes
+    LocalForward 5222 net.nih.gov:5222
+    LocalForward 2525 mailgw.ncbi.nlm.nih.gov:25
+    ForwardX11 yes
 
 Host w
     HostName ssh.ncbi.nlm.nih.gov
     User welkere
-    PKCS11Provider /usr/local/Cellar/opensc/0.14.0_1/lib/pkcs11/opensc-pkcs11.so
+    PKCS11Provider /usr/local/Cellar/opensc/0.15.0/lib/pkcs11/opensc-pkcs11.so
     LocalForward 3128 webproxy.ncbi.nlm.nih.gov:3128
-    LocalForward 3389 NCBIPC8234.be-md.ncbi.nlm.nih.gov:3389
-    LocalForward 33301 ncbimac1029.ncbi.nlm.nih.gov:22
+    #LocalForward 3389 NCBIPC8234.be-md.ncbi.nlm.nih.gov:3389
+    #LocalForward 33301 ncbimac1029.ncbi.nlm.nih.gov:22
     LocalForward 9418 stash.be-md.ncbi.nlm.nih.gov:9418
-    LocalForward 5920 ncbimac1029.ncbi.nlm.nih.gov:5920
-    LocalForward 9922 ncbimac1029.ncbi.nlm.nih.gov:22
-    LocalForward 10323 artifactory-dev.ncbi.nlm.nih.gov:443
+    #LocalForward 5920 ncbimac1029.ncbi.nlm.nih.gov:5920
+    #LocalForward 9922 ncbimac1029.ncbi.nlm.nih.gov:22
+    #LocalForward 10323 artifactory-dev.ncbi.nlm.nih.gov:443
+    ServerAliveInterval 50
+    KeepAlive yes
     ForwardX11 yes
-    Compression yes
 
 Host ncbimac1029
-#    HostName localhost
     User welkere
-    Compression yes
     HostName ncbimac1029.be-md.ncbi.nlm.nih.gov
 #    Port 9922
 
 Host github github.com
     HostName github.com
     User edwelker
-    Compression yes
     IdentityFile ~/.ssh/macbookpro_to_github/macbookpro_to_github
 
-Host *
-    Compression yes
-    CompressionLevel 7
-    ControlMaster auto
-    ControlPath /tmp/ssh-%r@%h:%p
-    ServerAliveInterval 60
-
-IdentityFile ~/.ssh/id_rsa
 
 Host Centos
     User root
