@@ -67,3 +67,9 @@
    default = current
 [credential]
     helper = cache --timeout=3600
+[merge]
+    tool = diffconflicts
+[mergetool "diffconflicts"]
+    cmd = diffconflicts vim $BASE $LOCAL $REMOTE $MERGED
+    trustExitCode = true
+    keepBackup = false

@@ -15,6 +15,7 @@ inoremap jk <esc>
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
+nmap <silent> <leader>sp :e $DOTDOT/vim/plugins.vim
 
 " learn to do it correctly
 noremap <Up> <Nop>
@@ -190,8 +191,16 @@ vnoremap > >gv
 "set a temporary directory
 set backupdir=~/.tmp
 
+"set where to keep swp files
+set directory=~/.tmp/swapfiles//
+
 " airline
 set laststatus=2
+" Enable the list of buffers
+let g:airline#extensions#tabline#enabled = 1
+
+" Show just the filename
+let g:airline#extensions#tabline#fnamemod = ':t'
 
 " Ag settings
 " No carrage return at the end so we can actually search
@@ -212,49 +221,52 @@ let g:user_emmet_expandabbr_key='<c-e>'
 let g:use_emmet_complete_tag=1
 
 " python-mode (pymode)
-let g:pymode_virtualenv = 1
-let g:pymode_lint = 0
+let g:pymode_lint_ignore="E501"
+" let g:pymode_virtualenv = 1
+" let g:pymode_lint = 0
 
-let g:pymode_rope = 0
+" let g:pymode_rope = 0
 
-let g:pymode_options = 1
-let g:pymode_options_max_line_length = 99
-let g:pymode_options_colorcolumn = 1
-let g:pymode_indent = 1
-let g:pymode_foliding = 1
-let g:pymode_syntax = 1
+" let g:pymode_options = 0
+" let g:pymode_options_max_line_length = 99
+" let g:pymode_options_colorcolumn = 1
+" let g:pymode_indent = 1
+" let g:pymode_foliding = 1
+" let g:pymode_syntax = 0
+" let g:pymode_lint_on_write = 0
+" let g:pymode_lint_message = 0
 
 " Highlight
 let python_highlight_all=1
 
 " Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
 
-let g:syntastic_error_symbol   = '✗'
-let g:syntastic_warning_symbol = '⚠'
-let g:syntastic_style_error_symbol = '»'
-let g:syntastic_style_warning_symbol = '»'
+" let g:syntastic_error_symbol   = '✗'
+" let g:syntastic_warning_symbol = '⚠'
+" let g:syntastic_style_error_symbol = '»'
+" let g:syntastic_style_warning_symbol = '»'
 
-let g:syntastic_aggregate_errors = 1
+" let g:syntastic_aggregate_errors = 1
 
-let g:syntastic_auto_jump       = 0
-let g:syntastic_auto_loc_list   = 0
-let g:syntastic_check_on_open   = 1
-let g:syntastic_enable_signs    = 0
-let g:syntastic_loc_list_height = 5
-let g:syntastic_enable_balloons = 0
+" let g:syntastic_auto_jump       = 0
+" let g:syntastic_auto_loc_list   = 0
+" let g:syntastic_check_on_open   = 1
+" let g:syntastic_enable_signs    = 0
+" let g:syntastic_loc_list_height = 5
+" let g:syntastic_enable_balloons = 0
 
-" Jump thought errors with :lnext and :lprev
-let g:syntastic_always_populate_loc_list = 1
+" " Jump thought errors with :lnext and :lprev
+" let g:syntastic_always_populate_loc_list = 1
 
-" let g:syntastic_python_checkers = ['pylint', 'flake8']
+" let g:syntastic_python_checkers = ['pep8']
 " let g:syntastic_javascript_checkers = ['jshint']
-let g:syntastic_javascript_checkers = ['jshint']
 
 " let g:syntastic_python_flake8_post_args='--jobs=8 --ignore=W291,W293,E265,E127,E128 --max-line-length=119'
 " let g:syntastic_python_pylint_post_args='-j 8 --disable=line-too-long'
+" autocmd FileType python let g:syntastic_check_on_wq = 0
 
 
 " http://vim.wikia.com/wiki/Simplifying_regular_expressions_using_magic_and_no-magic

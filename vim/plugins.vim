@@ -60,14 +60,22 @@ Plug 'edsono/vim-matchit', { 'for': ['html', 'xml'] }
 " Make tab handle all completions
 Plug 'ervandew/supertab'
 
-" Fugitive: Git from within Vim
+" Fugitive Git from within Vim
 Plug 'tpope/vim-fugitive'
 
 " Syntastic: Code linting errors
-Plug 'scrooloose/syntastic', { 'for': ['python', 'javascript', 'css'] }
+" Plug 'scrooloose/syntastic', { 'for': ['python', 'javascript', 'css'] }
 
 " Ag for searching
 Plug 'rking/ag.vim'
+
+" Files!
+Plug 'ctrlpvim/ctrlp.vim'
+
+" ctags
+" Plug 'xolox/vim-easytags'
+" Plug 'xolox/vim-misc'
+" Plug 'majutsushi/tagbar'
 
 " Tmux window navigation
 Plug 'christoomey/vim-tmux-navigator'

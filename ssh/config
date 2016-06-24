@@ -42,7 +42,7 @@ Host i
     HostName iwebdev2
     ProxyCommand ssh w -W %h:%p
     LocalForward 3128 webproxy.ncbi.nlm.nih.gov:3128
-    LocalForward 2181 10.50.2.148:2181
+    LocalForward 24 intrawebdev2.be-md.ncbi.nlm.nih.gov:22
     LocalForward 3389 NCBIPC8234.be-md.ncbi.nlm.nih.gov:3389
     LocalForward 9418 stash.be-md.ncbi.nlm.nih.gov:9418
     LocalForward 9922 ncbimac1029.ncbi.nlm.nih.gov:22
@@ -59,6 +59,7 @@ Host w
     LocalForward 3128 webproxy.ncbi.nlm.nih.gov:3128
     #LocalForward 3389 NCBIPC8234.be-md.ncbi.nlm.nih.gov:3389
     #LocalForward 33301 ncbimac1029.ncbi.nlm.nih.gov:22
+    LocalForward 24 intrawebdev2.be-md.ncbi.nlm.nih.gov:22
     LocalForward 9418 stash.be-md.ncbi.nlm.nih.gov:9418
     #LocalForward 5920 ncbimac1029.ncbi.nlm.nih.gov:5920
     #LocalForward 9922 ncbimac1029.ncbi.nlm.nih.gov:22
@@ -76,50 +77,3 @@ Host github github.com
     HostName github.com
     User edwelker
     IdentityFile ~/.ssh/macbookpro_to_github/macbookpro_to_github
-
-
-Host Centos
-    User root
-    IdentityFile ~/.ssh/welkere_for_aws_aug14
-    HostName 54.164.128.54
-
-Host awsdjango
-    User ec2-user
-    HostName 54.210.226.123
-    IdentityFile ~/.ssh/welkere_for_aws_aug14
-
-Host rebake_image
-    User ec2-user
-    HostName 54.236.87.234
-    IdentityFile ~/.ssh/aa-new-shared-netflix.pem
-
-Host personal_proxy
-    User ec2-user
-    HostName 54.201.93.109
-    IdentityFile ~/.ssh/personal_aws_key.pem
-
-Host finagle
-    HostName 54.210.151.161
-
-Host finagle-tiny
-    HostName 54.164.71.231
-
-Host finagle*
-    User ec2-user
-    IdentityFile ~/.ssh/welkere_for_aws_aug14
-
-Host finagle-zookeeper
-    HostName 54.164.97.66
-
-Host finagle-client
-    HostName 54.85.193.241
-
-Host finagle-zipkin
-    HostName 54.164.99.117
-
-Host os-*
-    User cloud-user
-    IdentityFile ~/.ssh/welkere_for_nova
-
-Host os-firstinstance
-    HostName 130.14.190.109

@@ -4,6 +4,7 @@
 --exclude=.git
 --exclude=__pycache__
 --exclude=.tox
+--exclude=venv
 
 --python-kinds=-i
 

@@ -103,8 +103,7 @@ fi
 
 if [ -d /etc/bash_completion.d/ ]; then
    source /etc/bash_completion.d/git
-   source /etc/bash_completion.d/yum.bash
-   source /etc/bash_completion.d/yum-utils.bash
+   source /etc/bash_completion.d/yum
    complete -o default -o nospace -F _git g
 fi
 

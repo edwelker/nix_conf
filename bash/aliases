@@ -6,7 +6,7 @@ alias dotdot="cd ${DOTDOT}"
 
 alias c="clear"
 
-alias vi=vim
+alias vi=$(which vim)
 
 alias l='ls'
 alias ls='ls -GF'
@@ -60,10 +60,15 @@ alias td='tmux detach'
 alias tk='tmux kill-session -t'
 
 alias w='w -s'
+alias lookup="/usr/local/bin/lookup"
+function myphone () { grep -i $1  /net/intrawebdev2/export/home/web/public/htdocs/projects/db_utils/staff/section_report.xls  | tr , ' '; grep -i $1 /etc/aliases.nis;  getent passwd  $1 ; /usr/local/bin/lookup $1 ; /netopt/genbank/staff/staff $@ ; }
+
+# from morty
+path_filter_nfs(){ export PATH=$(/bin/echo $PATH|/usr/bin/tr ":" "\n"|/bin/egrep -v '^/(net|am|usr/local)'|/usr/bin/tr "\n" :) ;}
 
 alias os='cat /etc/*-release'
 alias kernel='uname -a'
-alias top='top -a'
+alias top='COLUMNS=200 top -c'
 alias rc='chkconfig --list'
 alias netstat='netstat -plant'
 alias psg='ps -ef | grep'
@@ -92,6 +97,7 @@ alias sk='ssh-keygen -t rsa -b 4096'
 alias g='git'
 alias gp='git push'
 alias gpp='git pull && git push'
+alias gpt='git push && git push --tags'
 alias ginitpy="git init --template=${DOTDOT}/pygittemplate"
 alias b='bzr'
 
