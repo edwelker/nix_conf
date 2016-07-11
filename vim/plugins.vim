@@ -72,6 +72,9 @@ Plug 'rking/ag.vim'
 " Files!
 Plug 'ctrlpvim/ctrlp.vim'
 
+" PASTE!!!!!
+Plug 'ConradIrwin/vim-bracketed-paste'
+
 " ctags
 " Plug 'xolox/vim-easytags'
 " Plug 'xolox/vim-misc'
