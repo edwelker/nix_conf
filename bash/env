@@ -8,7 +8,6 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:~/lib
 export HISTTIMEFORMAT="%y-%m-%dT%T "
 
 . ${DOTDOT}/bash/javaenv
-. ${DOTDOT}/bash/grailsenv
 . ${DOTDOT}/bash/go
 . ${DOTDOT}/bash/ncbi
 
