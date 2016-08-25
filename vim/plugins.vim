@@ -68,6 +68,7 @@ Plug 'tpope/vim-fugitive'
 
 " Ag for searching
 Plug 'rking/ag.vim'
+Plug 'majutsushi/tagbar'
 
 " Files!
 Plug 'ctrlpvim/ctrlp.vim'

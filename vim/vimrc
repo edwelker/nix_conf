@@ -137,7 +137,7 @@ set splitright
 
 set wildmenu             " show graphical file list
 set wildmode=longest:full,list:full
-set wildignorecase
+" set wildignorecase
 set wildignore+=*.DS_Store,~*
 set wildignore+=*.bmp,*.gif,*.jpg,*.png
 set wildignore+=*.exe,*.dll,*.so,*.swp,*.zip,*.pyc
