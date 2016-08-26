@@ -82,7 +82,6 @@ Host w
     #LocalForward 2222 intrawebdev2.be-md.ncbi.nlm.nih.gov:22
     #LocalForward 3389 NCBIPC8234.be-md.ncbi.nlm.nih.gov:3389
     #LocalForward 33301 ncbimac1029.ncbi.nlm.nih.gov:22
-    LocalForward 24 intrawebdev2.be-md.ncbi.nlm.nih.gov:22
     LocalForward 9418 stash.be-md.ncbi.nlm.nih.gov:9418
     #LocalForward 5920 ncbimac1029.ncbi.nlm.nih.gov:5920
     #LocalForward 9922 ncbimac1029.ncbi.nlm.nih.gov:22
