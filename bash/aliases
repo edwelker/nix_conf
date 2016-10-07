@@ -108,6 +108,17 @@ alias vu='vagrant up'
 alias vs='vagrant ssh'
 alias vd='vagrant destroy -f'
 
+#get openssl cert for proxying
+function getcert(){
+    if [ $# -lt 2 ]; then
+        echo 1>&2 "$0: not enough arguments, specify host and filename.pem"
+        exit 2
+    else
+        openssl s_client -showcerts -connect $1:443 </dev/null 2>/dev/null|openssl x509 -outform PEM >$2
+    fi
+}
+
+
 #stolen from elsewhere : https://gist.github.com/aliang/1024466
 # SSH Auto Completion of Remote Hosts
 _complete_ssh_hosts ()

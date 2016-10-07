@@ -47,7 +47,7 @@ Host iweb
     LocalForward 2222 intrawebdev2.be-md.ncbi.nlm.nih.gov:22
     LocalForward 2181 10.50.2.148:2181
     LocalForward 3389 NCBIPC8234.be-md.ncbi.nlm.nih.gov:3389
-    LocalForward 9418 stash.be-md.ncbi.nlm.nih.gov:9418
+    LocalForward 9418 bitbucket.be-md.ncbi.nlm.nih.gov:9418
     LocalForward 9922 ncbimac1029.ncbi.nlm.nih.gov:22
     LocalForward 5920 ncbimac1029.ncbi.nlm.nih.gov:5920
     LocalForward 5443 artifactory.ncbi.nlm.nih.gov:443
@@ -62,11 +62,8 @@ Host i
     #Host iwebdev2
     ProxyCommand ssh w nc %h %p
     #ProxyCommand ssh w -W %h:%p
-    LocalForward 3128 webproxy.ncbi.nlm.nih.gov:3128
     LocalForward 2222 intrawebdev2.be-md.ncbi.nlm.nih.gov:22
-    LocalForward 2181 10.50.2.148:2181
     LocalForward 3389 NCBIPC8234.be-md.ncbi.nlm.nih.gov:3389
-    LocalForward 9418 stash.be-md.ncbi.nlm.nih.gov:9418
     LocalForward 9922 ncbimac1029.ncbi.nlm.nih.gov:22
     LocalForward 5920 ncbimac1029.ncbi.nlm.nih.gov:5920
     LocalForward 5443 artifactory.ncbi.nlm.nih.gov:443
@@ -79,13 +76,7 @@ Host w
     User welkere
     PKCS11Provider /usr/local/Cellar/opensc/0.15.0/lib/pkcs11/opensc-pkcs11.so
     LocalForward 3128 webproxy.ncbi.nlm.nih.gov:3128
-    #LocalForward 2222 intrawebdev2.be-md.ncbi.nlm.nih.gov:22
-    #LocalForward 3389 NCBIPC8234.be-md.ncbi.nlm.nih.gov:3389
-    #LocalForward 33301 ncbimac1029.ncbi.nlm.nih.gov:22
     LocalForward 9418 stash.be-md.ncbi.nlm.nih.gov:9418
-    #LocalForward 5920 ncbimac1029.ncbi.nlm.nih.gov:5920
-    #LocalForward 9922 ncbimac1029.ncbi.nlm.nih.gov:22
-    #LocalForward 10323 artifactory-dev.ncbi.nlm.nih.gov:443
     ServerAliveInterval 50
     KeepAlive yes
     ForwardX11 yes

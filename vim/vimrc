@@ -173,7 +173,9 @@ nmap Q gqap
 "folding
 set foldmethod=indent
 set foldlevel=10
-set clipboard+=unnamed
+if $TMUX == ''
+    set clipboard+=unnamed
+endif
 " use spacebar to fold
 nnoremap <space> za
 
