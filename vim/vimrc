@@ -140,9 +140,11 @@ set wildmode=longest:full,list:full
 set wildignorecase
 set wildignore+=*.DS_Store,~*
 set wildignore+=*.bmp,*.gif,*.jpg,*.png
-set wildignore+=*.exe,*.dll,*.so,*.swp,*.zip,*.pyc
+set wildignore+=*/tmp/*,*.exe,*.dll,*.so,*.swp,*.zip,*.pyc
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/tmp/*
-set wildignore+=*/.sass-cache/*,*/bower_components/*,*/node_modules/*,*/__pycache__/*,
+set wildignore+=*/.sass-cache/*,*/bower_components/*,*/node_modules/*,*/__pycache__/*,*venv*,*.tox*
+" Scala
+set wildignore+=*/target/*
 
 " when wrapping, go to next editor line, not next file line
 nnoremap j gj

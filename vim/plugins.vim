@@ -49,6 +49,7 @@ Plug 'sheerun/vim-polyglot'
 " Python
 Plug 'jmcantrell/vim-virtualenv', { 'for': 'python' }
 Plug 'klen/python-mode', { 'for': 'python' }
+Plug 'vim-scripts/indentpython.vim', { 'for': 'python' }
 
 " Completion
 Plug 'mattn/emmet-vim', { 'for': 'html' }
@@ -68,6 +69,9 @@ Plug 'tpope/vim-fugitive'
 
 " Ag for searching
 Plug 'rking/ag.vim'
+
+" autotags for ctag generation
+Plug 'craigemery/vim-autotag'
 
 " Files!
 Plug 'ctrlpvim/ctrlp.vim'
