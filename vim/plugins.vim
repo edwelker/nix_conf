@@ -69,6 +69,7 @@ Plug 'tpope/vim-fugitive'
 
 " Ag for searching
 Plug 'rking/ag.vim'
+Plug 'majutsushi/tagbar'
 
 " autotags for ctag generation
 Plug 'craigemery/vim-autotag'
