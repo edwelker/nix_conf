@@ -108,6 +108,8 @@ alias vu='vagrant up'
 alias vs='vagrant ssh'
 alias vd='vagrant destroy -f'
 
+alias brewu='brew update && brew upgrade && brew cleanup -s; brew doctor'
+
 #get openssl cert for proxying
 function getcert(){
     if [ $# -lt 2 ]; then
