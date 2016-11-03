@@ -28,11 +28,11 @@ Plug 'vim-scripts/Railscasts-Theme-GUIand256color'
 Plug 'vim-scripts/twilight'
 Plug 'atelierbram/vim-colors_atelier-schemes'
 
-" Plug 'vim-scripts/twilight256'
-" Plug 'vim-scripts/kib_darktango'
-" Plug 'vim-scripts/blackboard'
-" Plug 'vim-scripts/darkgit'
-" Plug 'vim-scripts/codeschool'
+Plug 'vim-scripts/twilight256'
+Plug 'vim-scripts/kib_darktango'
+Plug 'vim-scripts/blackboard'
+Plug 'vim-scripts/darkgit'
+Plug 'vim-scripts/codeschool'
 
 " Syntax
 Plug 'tpope/vim-git', { 'for': 'git' }
@@ -54,6 +54,7 @@ Plug 'raimon49/requirements.txt.vim'
 
 " Completion
 Plug 'mattn/emmet-vim', { 'for': 'html' }
+Plug 'alvan/vim-closetag', { 'for': 'html' }
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 
 " Make % match xml tags
@@ -81,22 +82,34 @@ Plug 'ctrlpvim/ctrlp.vim'
 " PASTE!!!!!
 Plug 'ConradIrwin/vim-bracketed-paste'
 
+" Handlebars
+Plug 'mustache/vim-mustache-handlebars'
+
 " ctags
-" Plug 'xolox/vim-easytags'
-" Plug 'xolox/vim-misc'
-" Plug 'majutsushi/tagbar'
+Plug 'xolox/vim-easytags'
+Plug 'xolox/vim-misc'
+Plug 'majutsushi/tagbar'
 
 " Tmux window navigation
 Plug 'christoomey/vim-tmux-navigator'
 
 " Let's try to make this pretty...
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 " Make commenting easier
 Plug 'tpope/vim-commentary'
 
 " 'Vastly improved Javascript indentation and syntax support in Vim'
 Plug 'pangloss/vim-javascript'
+
+" General tool for builds and external commands
+Plug 'tpope/vim-dispatch'
+
+" Trial
+Plug 'majutsushi/tagbar'
+Plug 'airblade/vim-gitgutter'
+
 
 filetype plugin indent on                   " required!
 call plug#end()

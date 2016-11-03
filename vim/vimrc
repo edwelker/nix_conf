@@ -108,7 +108,6 @@ endif " has("autocmd")
 
 set number    "show line numbers
 set encoding=utf8
-set paste
 set expandtab
 set textwidth=0
 set ai sw=4
@@ -202,9 +201,12 @@ set directory=~/.tmp/swapfiles//
 set laststatus=2
 " Enable the list of buffers
 let g:airline#extensions#tabline#enabled = 1
-
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
+" Use this theme:
+let g:airline_theme='luna'
+let g:airline_powerline_fonts = 1
+
 
 " Ag settings
 " No carrage return at the end so we can actually search
@@ -285,7 +287,8 @@ vnoremap %s/ %s/\v
 nnoremap <F2> :set spell<CR>
 
 " Paste mode with visual indication
-set pastetoggle=<F2>
+" set pastetoggle=<F2>
+" No longer needed with bracketed paste plugin: https://github.com/ConradIrwin/vim-bracketed-paste
 set showmode
 
 " fix capitol writing combos, when I don't unpress shift fast enough

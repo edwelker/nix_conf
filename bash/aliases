@@ -169,6 +169,7 @@ alias sbc="sbt clean"
 alias server="sbt server/run"
 alias client="sbt client/run"
 alias srun="sbt run"
+alias sct="sbt clean clean-files coverage test coverageReport"
 
 function fr(){
     if [ $# -lt 2 ]; then

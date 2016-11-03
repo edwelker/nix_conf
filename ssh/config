@@ -51,6 +51,7 @@ Host iweb
     LocalForward 9922 ncbimac1029.ncbi.nlm.nih.gov:22
     LocalForward 5920 ncbimac1029.ncbi.nlm.nih.gov:5920
     LocalForward 5443 artifactory.ncbi.nlm.nih.gov:443
+    LocalForward 5444 teamcity.ncbi.nlm.nih.gov:443
     LocalForward 5222 net.nih.gov:5222
     LocalForward 2525 mailgw.ncbi.nlm.nih.gov:25
     #ForwardX11 yes
@@ -67,6 +68,7 @@ Host i
     LocalForward 9922 ncbimac1029.ncbi.nlm.nih.gov:22
     LocalForward 5920 ncbimac1029.ncbi.nlm.nih.gov:5920
     LocalForward 5443 artifactory.ncbi.nlm.nih.gov:443
+    LocalForward 5444 teamcity.ncbi.nlm.nih.gov:443
     LocalForward 5222 net.nih.gov:5222
     LocalForward 2525 mailgw.ncbi.nlm.nih.gov:25
     #ForwardX11 yes
