@@ -1,4 +1,5 @@
 Examples of using surround.
+For more (and better) examples, see : http://www.futurile.net/2016/03/19/vim-surround-plugin-tutorial/
 
 1)
 On first word - ysw[ (y-add, s-surround, w-word, [-square braces with space)
