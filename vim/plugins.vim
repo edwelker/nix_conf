@@ -82,6 +82,9 @@ Plug 'ctrlpvim/ctrlp.vim'
 " PASTE!!!!!
 Plug 'ConradIrwin/vim-bracketed-paste'
 
+" numbers (trial)
+Plug 'myusuf3/numbers.vim'
+
 " Handlebars
 Plug 'mustache/vim-mustache-handlebars'
 
