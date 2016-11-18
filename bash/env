@@ -53,8 +53,8 @@ fi
 
 # homebrew sbin
 which -s brew
-if [[ $? != 0 ]] ; then
-    export PATH=$PATH:/usr/local/sbin
+if [[ $? = 0 ]] ; then
+    export PATH="/usr/local/sbin:$PATH"
 fi
 
 # pipsi
