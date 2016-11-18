@@ -15,7 +15,7 @@ inoremap jk <esc>
 imap jj <Esc>
 imap hh <Esc>
 imap kk <Esc>
-imap ll <Esc>
+" imap ll <Esc> This one doesn't work (will, allow, etc.)
 
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
