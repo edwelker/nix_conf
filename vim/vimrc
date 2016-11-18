@@ -10,7 +10,9 @@ source $DOTDOT/vim/plugins.vim
 " remap the leader key.  typically \, but , is easier
 let mapleader=","
 
+" jk will be remapped to esc
 inoremap jk <esc>
+imap jj <Esc>
 
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
