@@ -106,6 +106,9 @@ Plug 'pangloss/vim-javascript'
 " General tool for builds and external commands
 Plug 'tpope/vim-dispatch'
 
+" Tim Pope is good. Also, surrounding things
+Plug 'tpope/vim-surround'
+
 " Trial
 Plug 'majutsushi/tagbar'
 Plug 'airblade/vim-gitgutter'
