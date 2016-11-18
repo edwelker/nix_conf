@@ -60,6 +60,15 @@
     churners = shortlog -sn --
     rank = shortlog -sn --no-merges
     ; urm = "!f() { git reset -- $1 && git checkout -- $1; }; `f`"  # can't get this to work
+    ;
+    ; these are stolen from here: https://hackernoon.com/lesser-known-git-commands-151a1918a60#.iemxe52lc
+    please = "push --force-with-lease"
+    commend = "commit --amend --no-edit"
+    it = "!git init && git commit -m 'root' --allow-empty"
+    stsh = 'stash --keep-index'
+    staash = 'stash --include-untracked'
+    staaash = 'stash --all'
+    merc = 'merge --no-ff'
 [github]
     user = edwelker
     password = !security find-generic-password -gs github.password -w | tr -d '\n'
