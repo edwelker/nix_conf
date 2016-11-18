@@ -51,6 +51,12 @@ if [ -d /usr/local/bin/ ];then
     export PATH=/usr/local/bin:$PATH
 fi
 
+# homebrew sbin
+which -s brew
+if [[ $? != 0 ]] ; then
+    export PATH=$PATH:/usr/local/sbin
+fi
+
 # pipsi
 if [ -d ~/.local/bin ];then
     export PATH=~/.local/bin:$PATH
