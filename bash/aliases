@@ -78,6 +78,7 @@ alias psg='ps -ef | grep'
 alias netstat_mac="sudo lsof -i -P"
 alias threads="ps -o nlwp"
 alias duhere="du -h --max-depth=1"
+alias dusort="du -sk * | sort -n"
 alias dirsize="du -sh"
 alias permissionshere="namei -m $(pwd -P)"
 

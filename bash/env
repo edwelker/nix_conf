@@ -52,7 +52,7 @@ if [ -d /usr/local/bin/ ];then
 fi
 
 # homebrew sbin
-which -s brew
+which -s brew 2> /dev/null
 if [[ $? = 0 ]] ; then
     export PATH="/usr/local/sbin:$PATH"
 fi
