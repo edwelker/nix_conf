@@ -11,11 +11,8 @@ source $DOTDOT/vim/plugins.vim
 let mapleader=","
 
 " jk will be remapped to esc
-inoremap jk <esc>
+imap jk <esc>
 imap jj <Esc>
-imap hh <Esc>
-imap kk <Esc>
-" imap ll <Esc> This one doesn't work (will, allow, etc.)
 
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
