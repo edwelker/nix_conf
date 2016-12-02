@@ -82,8 +82,11 @@ Plug 'ctrlpvim/ctrlp.vim'
 " PASTE!!!!!
 Plug 'ConradIrwin/vim-bracketed-paste'
 
-" numbers (trial)
+" line numbers numbers
 Plug 'myusuf3/numbers.vim'
+
+" incrementing numbers using + and -
+Plug 'vim-scripts/nextval'
 
 " Handlebars
 Plug 'mustache/vim-mustache-handlebars'

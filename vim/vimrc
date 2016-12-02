@@ -199,6 +199,10 @@ set backupdir=~/.tmp
 "set where to keep swp files
 set directory=~/.tmp/swapfiles//
 
+"nextval
+nmap <silent> <unique> + <Plug>nextvalInc
+nmap <silent> <unique> - <Plug>nextvalDec
+
 " airline
 set laststatus=2
 " Enable the list of buffers
