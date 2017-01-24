@@ -1,4 +1,3 @@
-" An example for a vimrc file.
 
 
 " Use Vim settings, rather then Vi settings (much better!).
@@ -11,8 +10,10 @@ source $DOTDOT/vim/plugins.vim
 let mapleader=","
 
 " jk will be remapped to esc
-imap jk <esc>
-imap jj <Esc>
+" DON'T DO THIS. YOU like opening files and searching too much, and it causes
+" problems.
+" imap jk <esc>
+" imap jj <Esc>
 
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
@@ -188,6 +189,12 @@ nnoremap <space> za
 " nnoremap <c-l> <c-w>l
 " nnoremap <c-h> <c-w>h
 
+" Cancel search with escape
+nnoremap <silent> <Esc> :nohlsearch<Bar>:echo<CR>
+
+" Open the last file
+nnoremap <Leader><Leader> :e#<CR>
+
 "keep selection after intending (thank goodness)
 "gv means select what you last selected
 vnoremap < <gv
@@ -326,6 +333,9 @@ set rtp+=$DOTDOT/vim/vim/bundle/powerline/powerline/bindings/vim
 
 " close quick/location fix/list
 nnoremap <leader>l :lcl<CR>
+" next/prev quicklist item
+nmap <c-b> :cprevious<CR>
+nmap <c-n> :cnext<CR>
 
 " http://vim.wikia.com/wiki/Using_vim_color_schemes_with_Putty
 if &term =~ "xterm"
