@@ -43,6 +43,11 @@ Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
 Plug 'sukima/xmledit', { 'for': 'xml' }
 Plug 'https://github.com/othree/html5.vim.git', { 'for': 'html' }
 
+" Ugh, Ruby
+Plug 'rodjek/vim-puppet', { 'for': 'puppet' }
+Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
+Plug 'vim-scripts/Specky', { 'for': 'rspec' }
+
 " All the syntax
 Plug 'sheerun/vim-polyglot'
 
@@ -68,6 +73,7 @@ Plug 'tpope/vim-fugitive'
 
 " Syntastic: Code linting errors
 " Plug 'scrooloose/syntastic', { 'for': ['python', 'javascript', 'css'] }
+Plug 'scrooloose/syntastic', { 'for': 'ruby' }
 
 " Ag for searching
 Plug 'rking/ag.vim'
