@@ -373,3 +373,6 @@ au FileType htmldjango inoremap {{ {{ }}<left><left><left>
 
 " set custom indentation
 au FileType html,handlebars.html,htmldjango,css,scsshp,twig,javascript setlocal sts=2 sw=2 et
+
+" do crontab editing correctly
+autocmd FileType crontab setlocal nowritebackup

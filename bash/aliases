@@ -92,7 +92,7 @@ alias work="~/bin/work.sh"
 alias iweb="cd ~/iwebdev-welkere"
 alias lbsg="lbsmc | grep"
 
-alias macssh='eval $(ssh-agent)'
+alias agent='eval $(ssh-agent)'
 
 alias sr='ssh-reagent'
 alias sk='ssh-keygen -t rsa -b 4096'
