@@ -28,11 +28,12 @@ Plug 'vim-scripts/Railscasts-Theme-GUIand256color'
 Plug 'vim-scripts/twilight'
 Plug 'atelierbram/vim-colors_atelier-schemes'
 
-Plug 'vim-scripts/twilight256'
-Plug 'vim-scripts/kib_darktango'
-Plug 'vim-scripts/blackboard'
-Plug 'vim-scripts/darkgit'
-Plug 'vim-scripts/codeschool'
+" all of these have 'could not read Username' issues
+" Plug 'vim-scripts/twilight256'
+" Plug 'vim-scripts/blackboard'
+" Plug 'https://github.com/vim-scripts/darkgit.vim.git'
+" Plug 'vim-scripts/kib_darktango'
+" Plug 'vim-scripts/codeschool'
 
 " Syntax
 Plug 'tpope/vim-git', { 'for': 'git' }
@@ -90,6 +91,9 @@ Plug 'ConradIrwin/vim-bracketed-paste'
 
 " line numbers numbers
 Plug 'myusuf3/numbers.vim'
+
+" aligning
+Plug 'godlygeek/tabular'
 
 " incrementing numbers using + and -
 Plug 'vim-scripts/nextval'
