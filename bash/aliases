@@ -189,3 +189,16 @@ function gurm(){
         git reset -- $1 && g checkout -- $1;
     fi
 }
+
+
+linux_servers ()
+{
+   awk '/#lnx-srv-/{print $2}' /etc/hosts.nis
+}
+
+alias rvmlist="rvm list known"
+alias rvminstall="rvm install"
+alias rvmuse="rvm use"
+alias rvmdefault="rvm use system"
+alias rvmsys="rvm use system"
+alias rvmnoautolibs="rvm autolibs disable"  # Don't use yum, etc.
