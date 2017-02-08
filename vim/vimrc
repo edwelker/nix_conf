@@ -39,10 +39,18 @@ endif
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
-if has("vms")
-  set nobackup          " do not keep a backup file, use versions instead
+if has("vms") || has("mac")
+  set nobackup
+  " do not keep a backup file, use versions instead
+  autocmd filetype crontab setlocal nobackup nowritebackup
 else
   set backup            " keep a backup file
+
+  "set a temporary directory
+  set backupdir=~/.tmp
+
+  "set where to keep swp files
+  set directory=~/.tmp/swapfiles//
 endif
 set history=100         " keep 50 lines of command line history
 set ruler               " show the cursor position all the time
@@ -200,12 +208,6 @@ nnoremap <Leader><Leader> :e#<CR>
 vnoremap < <gv
 vnoremap > >gv
 
-"set a temporary directory
-set backupdir=~/.tmp
-
-"set where to keep swp files
-set directory=~/.tmp/swapfiles//
-
 "nextval
 nmap <silent> <unique> + <Plug>nextvalInc
 nmap <silent> <unique> - <Plug>nextvalDec
@@ -323,6 +325,7 @@ au BufNewFile,BufRead *.groovy,*.gradle setf groovy
 autocmd! BufEnter,BufNewFile *.groovy,*.java,*.gradle,*.scala,*.sbt colo elflord
 autocmd! BufLeave *.groovy,*.java,*.gradle,*.scala,*.sbt colo oceandeep
 
+
 " JavaScript
 au FileType javascript setlocal foldmethod=marker
 au FileType javascript setlocal foldmarker={,}
@@ -385,5 +388,3 @@ au FileType htmldjango inoremap {{ {{ }}<left><left><left>
 " set custom indentation
 au FileType html,handlebars.html,htmldjango,css,scsshp,twig,javascript setlocal sts=2 sw=2 et
 
-" do crontab editing correctly
-autocmd FileType crontab setlocal nowritebackup
