@@ -9,12 +9,6 @@ source $DOTDOT/vim/plugins.vim
 " remap the leader key.  typically \, but , is easier
 let mapleader=","
 
-" jk will be remapped to esc
-" DON'T DO THIS. YOU like opening files and searching too much, and it causes
-" problems.
-" imap jk <esc>
-" imap jj <Esc>
-
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>

@@ -28,11 +28,12 @@ Plug 'vim-scripts/Railscasts-Theme-GUIand256color'
 Plug 'vim-scripts/twilight'
 Plug 'atelierbram/vim-colors_atelier-schemes'
 
-Plug 'vim-scripts/twilight256'
-Plug 'vim-scripts/kib_darktango'
-Plug 'vim-scripts/blackboard'
-Plug 'vim-scripts/darkgit'
-Plug 'vim-scripts/codeschool'
+" all of these have 'could not read Username' issues
+" Plug 'vim-scripts/twilight256'
+" Plug 'vim-scripts/blackboard'
+" Plug 'https://github.com/vim-scripts/darkgit.vim.git'
+" Plug 'vim-scripts/kib_darktango'
+" Plug 'vim-scripts/codeschool'
 
 " Syntax
 Plug 'tpope/vim-git', { 'for': 'git' }
@@ -42,6 +43,11 @@ Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
 Plug 'sukima/xmledit', { 'for': 'xml' }
 Plug 'https://github.com/othree/html5.vim.git', { 'for': 'html' }
+
+" Ugh, Ruby
+Plug 'rodjek/vim-puppet', { 'for': 'puppet' }
+Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
+Plug 'vim-scripts/Specky', { 'for': 'rspec' }
 
 " All the syntax
 Plug 'sheerun/vim-polyglot'
@@ -68,6 +74,7 @@ Plug 'tpope/vim-fugitive'
 
 " Syntastic: Code linting errors
 " Plug 'scrooloose/syntastic', { 'for': ['python', 'javascript', 'css'] }
+Plug 'scrooloose/syntastic', { 'for': 'ruby' }
 
 " Ag for searching
 Plug 'rking/ag.vim'
@@ -84,6 +91,9 @@ Plug 'ConradIrwin/vim-bracketed-paste'
 
 " line numbers numbers
 Plug 'myusuf3/numbers.vim'
+
+" aligning
+Plug 'godlygeek/tabular'
 
 " incrementing numbers using + and -
 Plug 'vim-scripts/nextval'
