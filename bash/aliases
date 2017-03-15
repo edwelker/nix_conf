@@ -141,6 +141,7 @@ function fixpermissions(){
     fi
 }
 
+alias removetokens='/bin/rm -rf /private/var/db/TokenCache/*'
 
 #stolen from elsewhere : https://gist.github.com/aliang/1024466
 # SSH Auto Completion of Remote Hosts

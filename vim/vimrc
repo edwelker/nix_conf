@@ -380,10 +380,18 @@ au FileType htmldjango inoremap {% {% %}<left><left><left>
 au FileType htmldjango inoremap {{ {{ }}<left><left><left>
 
 " set custom indentation
-au FileType html,handlebars.html,htmldjango,css,scsshp,twig,javascript setlocal sts=2 sw=2 et
+let g:scala_sort_across_groups=1
+let g:scala_first_party_namespaces='\(controllers\|views\|models\|modules\|util.\|gov.\)'
+" au FileType html,handlebars.html,htmldjango,css,scsshp,twig,javascript setlocal sts=2 sw=2 et
 
 " Don't bother with newlines for text-based files (but keep for others)
 au FileType html,css,markdown,htmldjango,scsshp,txt setlocal binary noeol
 if exists("nofixeol") " only for versions 7.4.785 and later (http://vim.wikia.com/wiki/Do_not_auto-add_a_newline_at_EOF)
     au FileType html,css,markdown,htmldjango,scsshp,txt setlocal binary noeol nofixeol
 endif
+
+" " Moving between buffers
+" map <C-Tab> :bnext<cr>
+" map <C-S-Tab> :bprevious<cr>
+
+" au FileType scala syn region foldImports start="import" end=/import.*\n^$/ fold keepend

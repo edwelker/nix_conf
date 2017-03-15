@@ -29,7 +29,7 @@ ServerAliveInterval 60
 StrictHostKeyChecking no
 # do authentication checks here, have them sent to other machines
 ForwardAgent yes
-ForwardX11 yes
+ForwardX11 no
 IdentityFile ~/.ssh/id_rsa
 SendEnv EDITOR
 SendEnv GIT_AUTHOR_NAME
