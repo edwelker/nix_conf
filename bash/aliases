@@ -111,6 +111,15 @@ alias vd='vagrant destroy -f'
 
 alias brewu='brew update && brew upgrade && brew cleanup -s; brew doctor'
 
+function port(){
+  fuser $1/tcp
+}
+
+function port-and-app(){
+  # xargs strips whitespace
+  ls -al /proc/$(fuser $1/tcp | xargs)/exe
+}
+
 #get openssl cert for proxying
 function getcert(){
     if [ $# -lt 2 ]; then
