@@ -8,3 +8,5 @@ export DOTDOT="${HOME}/bin/nix_conf"
 [ -f /home/welkere/.travis/travis.sh ] && source /home/welkere/.travis/travis.sh
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
