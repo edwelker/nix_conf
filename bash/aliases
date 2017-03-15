@@ -93,7 +93,7 @@ alias work="~/bin/work.sh"
 alias iweb="cd ~/iwebdev-welkere"
 alias lbsg="lbsmc | grep"
 
-alias agent='eval $(ssh-agent)'
+alias agent='eval $(ssh-agent); ssh-add ~/.ssh/id_rsa'
 
 alias sr='ssh-reagent'
 alias sk='ssh-keygen -t rsa -b 4096'
@@ -110,6 +110,15 @@ alias vs='vagrant ssh'
 alias vd='vagrant destroy -f'
 
 alias brewu='brew update && brew upgrade && brew cleanup -s; brew doctor'
+
+function port(){
+  fuser $1/tcp
+}
+
+function port-and-app(){
+  # xargs strips whitespace
+  ls -al /proc/$(fuser $1/tcp | xargs)/exe
+}
 
 #get openssl cert for proxying
 function getcert(){
