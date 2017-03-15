@@ -5,6 +5,15 @@
 --exclude=__pycache__
 --exclude=.tox
 --exclude=venv
+--exclude=target
+--exclude=.hg
+--exclude=node_modules
+--exclude=bundle.js
+--exclude=*.js.map
+--exclude=*.min.*
+--exclude=*.swp
+--exclude=*.bak
+--exclude=*.tar.*
 
 --python-kinds=-i
 
