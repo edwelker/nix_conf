@@ -130,6 +130,17 @@ function getcert(){
     fi
 }
 
+# fix permissions, standard 644 on files, 755 on directories
+function fixpermissions(){
+    if [ $# -lt 2 ]; then
+        echo 1>&2 "$0: not enough arguments, specifiy the directory to start in"
+        exit 2
+    else
+        find $1 -type d -exec chmod 755 {} +
+        find $1 -type f -exec chmod 644 {} +
+    fi
+}
+
 
 #stolen from elsewhere : https://gist.github.com/aliang/1024466
 # SSH Auto Completion of Remote Hosts

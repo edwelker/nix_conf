@@ -5,3 +5,4 @@ ssh/config
 vim/vim/plugged
 *.swp
 vim/vim/bundle/
+ncbi
