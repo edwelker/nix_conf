@@ -38,13 +38,14 @@
     le = log --oneline --decorate
     undo = reset --soft HEAD^
     soft = reset --soft HEAD^
+    unstage = reset HEAD
     diffprev = diff HEAD^
     subinit = submodule update --init
     subupdate = pull --recurse-submodules
     subco = submodule foreach --recursive git checkout .
     amend = commit --amend -C HEAD
     pruneremotes = remote prune origin
-    bclean = "!f() { git branch --merged ${1-master} | grep -v " ${1-master}$" | xargs -r git branch -d; }; f"
+    bclean = "!git co master && git branch --no-color --merged | grep -v '\\*' | xargs -n 1 git branch -d"
     lt = describe --tags --abbrev=0
     ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
     ls = log --pretty=format:"%C(green)%h\\ %C(yellow)[%ad]%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
@@ -63,8 +64,7 @@
     aged-branches = "!f() { git for-each-ref --sort=committerdate refs/heads $1  --format=\"%(refname:short)\" ; }; g() { for C in $(f $1) ; do git show -s --pretty=format:\"%Cgreen%ci %Cblue%cr%Creset $C\" \"$C\" -- ; done; }; g "
     churners = shortlog -sn --
     rank = shortlog -sn --no-merges
-    ; urm = "!f() { git reset -- $1 && git checkout -- $1; }; `f`"  # can't get this to work
-    ;
+
     ; these are stolen from here: https://hackernoon.com/lesser-known-git-commands-151a1918a60#.iemxe52lc
     please = "push --force-with-lease"
     commend = "commit --amend --no-edit"
@@ -73,6 +73,16 @@
     staash = 'stash --include-untracked'
     staaash = 'stash --all'
     merc = 'merge --no-ff'
+
+    # STOLEN! https://gist.github.com/robmiller/6018582
+    # Mark a file as "assume unchanged", which means that Git will treat it
+    # as though there are no changes to it even if there are. Useful for
+    # temporary changes to tracked files
+    assume = update-index --assume-unchanged
+    # Reverse the above
+    unassume = update-index --no-assume-unchanged
+    # Show the files that are currently assume-unchanged
+    assumed = "!git ls-files -v | grep ^h | cut -c 3-"
 [github]
     user = edwelker
     password = !security find-generic-password -gs github.password -w | tr -d '\n'
