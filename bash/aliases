@@ -103,6 +103,7 @@ alias gp='git push'
 alias gpp='git pull && git push'
 alias gpt='git push && git push --tags'
 alias ginitpy="git init --template=${DOTDOT}/pygittemplate"
+alias ghome="cd $(g root)"
 alias b='bzr'
 
 alias vu='vagrant up'

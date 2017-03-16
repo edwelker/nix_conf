@@ -58,7 +58,8 @@
     aliases = "!git config -l | grep alias | cut -c 7-"
     authors = shortlog -sne --no-merges -w1024,0,0
     create-pull-request = !sh -c 'stash pull-request $0'
-    home = "!git rev-parse && cd $(git rev-parse --show-cdup)"
+    home = "!cd $(git rev-parse --show-cdup)"
+    root = "!pwd"
     edit-unmerged = "!f() { git diff --name-status --diff-filter=U | cut -f2 ; }; vim `f`"
     add-unmerged = "!f() { git diff --name-status --diff-filter=U | cut -f2 ; }; git add `f`"
     aged-branches = "!f() { git for-each-ref --sort=committerdate refs/heads $1  --format=\"%(refname:short)\" ; }; g() { for C in $(f $1) ; do git show -s --pretty=format:\"%Cgreen%ci %Cblue%cr%Creset $C\" \"$C\" -- ; done; }; g "
