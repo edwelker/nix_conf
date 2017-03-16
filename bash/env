@@ -118,9 +118,9 @@ if [ -d /etc/bash_completion.d/ ]; then
    __git_complete g __git_main
 fi
 
+# mac with homebrew
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion
-    . $(brew --prefix)/etc/bash_completion.d/*
    # support the `g` alias for git
     __git_complete g __git_main
 fi
