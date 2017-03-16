@@ -113,11 +113,16 @@ fi
 if [ -d /etc/bash_completion.d/ ]; then
    source /etc/bash_completion.d/git
    source /etc/bash_completion.d/yum
+   # support the `g` alias for git
    complete -o default -o nospace -F _git g
+   __git_complete g __git_main
 fi
 
-if command -v brew 1>/dev/null && [ -f $(brew --prefix)/etc/bash_completion ]; then
-  . $(brew --prefix)/etc/bash_completion
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+    . $(brew --prefix)/etc/bash_completion
+    . $(brew --prefix)/etc/bash_completion.d/*
+   # support the `g` alias for git
+    __git_complete g __git_main
 fi
 
 if [ -f ${DOTDOT}/git/git-prompt.sh ]; then
