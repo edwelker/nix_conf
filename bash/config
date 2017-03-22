@@ -1,7 +1,5 @@
 set -o vi
 set -o noclobber
-set completion-ignore-case
-set show-all-symlinked-directories
 #take off the training wheels
 #shopt -s histverify
 shopt -s histreedit

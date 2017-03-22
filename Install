@@ -21,6 +21,10 @@ if [ ! -h ~/.ssh/config ]; then
     ln -s ${DOTDOT}/ssh/config ~/.ssh/config
 fi;
 
+if [ ! -h ~/.inputrc ]; then
+    ln -s ${DOTDOT}/inputrc ~/.inputrc
+fi;
+
 if [ ! -h ~/.gitconfig ]; then
     ln -s ${DOTDOT}/git/gitconfig ~/.gitconfig
 fi; 
