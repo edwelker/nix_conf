@@ -22,6 +22,7 @@
     rv = remote -v
     ap = add -p
     a = add
+    p = pull --rebase
     w = whatchanged
     cp = cherry-pick
     ds = diff --staged
@@ -44,9 +45,12 @@
     subupdate = pull --recurse-submodules
     subco = submodule foreach --recursive git checkout .
     amend = commit --amend -C HEAD
+
     c = clean -fdx
+
     pruneremotes = remote prune origin
     bclean = "!git co master && git branch --no-color --merged | grep -v '\\*' | xargs -n 1 git branch -d"
+
     lt = describe --tags --abbrev=0
     ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
     ls = log --pretty=format:"%C(green)%h\\ %C(yellow)[%ad]%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
