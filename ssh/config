@@ -15,8 +15,6 @@ TCPKeepAlive no
 
 # always enable compression
 Compression yes
-# very high
-CompressionLevel 7
 
 # multiplex connections
 ControlMaster auto
