@@ -95,7 +95,7 @@ alias lbsg="lbsmc | grep"
 
 alias agent='eval $(ssh-agent); ssh-add ~/.ssh/id_rsa'
 
-alias sr='ssh-reagent'
+alias sr='ssh-agent-hookup'
 alias sk='ssh-keygen -t rsa -b 4096'
 
 alias g='git'

@@ -139,16 +139,39 @@ fi
 #http://tychoish.com/rhizome/9-awesome-ssh-tricks/
 #ssh-agent runs per-session, so tmux can't always find it. 
 #don't re-run, just find the real one
-ssh-reagent () {
-    for agent in $TMPDIR/ssh-*/agent.*; do
-        export SSH_AUTH_SOCK=$agent
-        if ssh-add -l 2>&1 > /dev/null; then
-            echo Found working SSH Agent:
-            ssh-add -l
-            return
-        fi
-    done
-    echo Cannot find ssh agent - maybe you should reconnect and forward it?
+# ssh-reagent () {
+#     for agent in $TMPDIR/ssh-*/agent.*; do
+#         export SSH_AUTH_SOCK=$agent
+#         if ssh-add -l 2>&1 > /dev/null; then
+#             echo Found working SSH Agent:
+#             ssh-add -l
+#             return
+#         fi
+#     done
+#     echo Cannot find ssh agent - maybe you should reconnect and forward it?
+# }
+
+function ssh-agent-hookup (){
+  if [ -n "$SSH_AUTH_SOCK" ]; then return; fi; # already have an ssh agent
+        local pids pid;
+        pids=$(pgrep -u $LOGNAME $(basename $SHELL))
+        if [ "$pids" = "" ]; then
+                eval `ssh-agent -s`
+                return;
+        fi;
+        for pid in $pids; do
+                if [ -e /proc/$pid/environ ] && strings /proc/$pid/environ | egrep -q ^SSH_AUTH_SOCK; then
+                        export $(strings /proc/$pid/environ|egrep ^SSH_AUTH_SOCK)
+                        if ssh-add -l 2>&1 > /dev/null; then
+                            echo Found working SSH Agent:
+                            ssh-add -l
+                            return
+                        fi
+                        return;
+                fi
+        done
+        eval `ssh-agent -s`
+        return
 }
 
 #for xforwarding
