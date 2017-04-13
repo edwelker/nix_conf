@@ -203,7 +203,7 @@ function fr(){
         echo 1>&2 "$0: not enough arguments"
         exit 2
     else
-        ag -l $1 | xargs sed -i "s/$1/$2/"
+        ag --hidden -l $1 | xargs sed -i "s/$1/$2/"
     fi
 }
 
