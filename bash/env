@@ -3,7 +3,7 @@ export EDITOR=vim
 export PAGER="less"
 export LESS="-R"
 export TERM=xterm-256color
-export CDPATH=.:~:~/code:~/code/python:~/code/scala:~/src:~/bin:$DOTDOT
+export CDPATH=.:~:~/code:~/code/python:~/code/scala:~/code/css:~/src:~/bin:$DOTDOT
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:~/lib
 # export HISTIGNORE="&:ls:[bf]g:exit:history*:pwd:clear"
 export HISTTIMEFORMAT="%y-%m-%dT%T "
@@ -145,10 +145,35 @@ ssh-reagent () {
         if ssh-add -l 2>&1 > /dev/null; then
             echo Found working SSH Agent:
             ssh-add -l
-            return
+            return  # after the first one found, exit the for loop
         fi
     done
     echo Cannot find ssh agent - maybe you should reconnect and forward it?
+}
+
+function ssh-agent-hookup (){
+  if [ -n "$SSH_AUTH_SOCK" ]; then return; fi; # already have an ssh agent
+        local pids pid;
+        pids=$(pgrep -u $LOGNAME $(basename $SHELL))
+        # if there are no bash processes, then create an ssh-agent
+        if [ "$pids" = "" ]; then
+                eval `ssh-agent -s`
+                return;
+        fi;
+        for pid in $pids; do
+                if [ -e /proc/$pid/environ ] && strings /proc/$pid/environ | egrep -q ^SSH_AUTH_SOCK; then
+                        echo Found a working agent
+                        export $(strings /proc/$pid/environ|egrep ^SSH_AUTH_SOCK)
+                        if ssh-add -l 2>&1 > /dev/null; then
+                            echo Found working SSH Agent:
+                            ssh-add -l
+                            # found one, instead return
+                        fi
+                        return;
+                fi
+        done
+        eval `ssh-agent -s`
+        return
 }
 
 #for xforwarding
