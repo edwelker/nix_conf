@@ -395,3 +395,34 @@ endif
 " map <C-S-Tab> :bprevious<cr>
 
 " au FileType scala syn region foldImports start="import" end=/import.*\n^$/ fold keepend
+
+
+" Markdown
+" " Goyo
+function! s:auto_goyo()
+    if &ft == 'markdown' && winnr('$') == 1
+        Goyo 80
+        NumbersToggle
+    elseif exists('#goyo')
+        Goyo!
+    endif
+endfunction
+
+function! s:goyo_leave()
+    if winnr('$') < 2
+        silent! :q
+    endif
+endfunction
+
+augroup goyo_markdown
+    autocmd!
+    autocmd BufNewFile,BufRead * call s:auto_goyo()
+    autocmd! User GoyoLeave nested call goyo_leave()
+augroup END
+
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+
+" Spell check
+setlocal spell
+highlight clear SpellBad
+highlight SpellBad term=standout ctermfg=1 term=underline cterm=underline

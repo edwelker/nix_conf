@@ -39,10 +39,13 @@ Plug 'atelierbram/vim-colors_atelier-schemes'
 Plug 'tpope/vim-git', { 'for': 'git' }
 Plug 'cakebaker/scss-syntax.vim', { 'for': 'scss' }
 Plug 'qrps/lilypond-vim', { 'for': 'lilypond' }
-Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
 Plug 'sukima/xmledit', { 'for': 'xml' }
 Plug 'https://github.com/othree/html5.vim.git', { 'for': 'html' }
+
+" Markdown
+Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
 
 " Ugh, Ruby
 Plug 'rodjek/vim-puppet', { 'for': 'puppet' }
