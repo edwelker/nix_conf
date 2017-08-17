@@ -61,6 +61,9 @@ Plug 'klen/python-mode', { 'for': 'python' }
 Plug 'vim-scripts/indentpython.vim', { 'for': 'python' }
 Plug 'raimon49/requirements.txt.vim'
 
+" Hashi
+Plug 'hashivim/vim-terraform'
+
 " Completion
 Plug 'mattn/emmet-vim', { 'for': 'html' }
 Plug 'alvan/vim-closetag', { 'for': 'html' }
