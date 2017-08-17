@@ -2035,7 +2035,7 @@
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>81 443 592 584 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>31 253 850 730 0 0 1680 1050 </string>
+	<string>764 310 850 730 0 0 1680 1050 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>4 439 730 608 0 0 1680 1050 </string>
 	<key>New Bookmarks</key>
@@ -3673,6 +3673,8 @@
 	<false/>
 	<key>OpenTmuxWindowsIn</key>
 	<integer>0</integer>
+	<key>PMPrintingExpandedStateForPrint2</key>
+	<false/>
 	<key>PassOnControlClick</key>
 	<false/>
 	<key>PasteFromClipboard</key>
@@ -3722,6 +3724,8 @@
 	</dict>
 	<key>PrefsCustomFolder</key>
 	<string>/Users/ewelker/bin/nix_conf</string>
+	<key>Print In Black And White</key>
+	<true/>
 	<key>PromptOnClose</key>
 	<false/>
 	<key>PromptOnQuit</key>
@@ -3745,7 +3749,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2017-04-05T17:20:06Z</date>
+	<date>2017-04-24T02:02:40Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Show Toolbelt</key>

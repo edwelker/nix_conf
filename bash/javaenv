@@ -4,4 +4,4 @@ export TOMCAT_HOME=~/code/java/tomcat
 # export JENV_ROOT=/usr/local/var/jenv
 
 # if which jenv > /dev/null; then eval "$(jenv init -)"; fi
-export PATH=$PATH:~/src/scala/bin/
+export PATH=$PATH:~/src/scala/bin
