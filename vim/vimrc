@@ -237,6 +237,7 @@ let g:use_emmet_complete_tag=1
 
 " python-mode (pymode)
 let g:pymode_lint_ignore="E501"
+let g:pymode_python = 'python3'
 " let g:pymode_virtualenv = 1
 " let g:pymode_lint = 0
 
