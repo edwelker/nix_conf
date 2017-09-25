@@ -2,4 +2,5 @@ set -o vi
 set -o noclobber
 #take off the training wheels
 #shopt -s histverify
-shopt -s histreedit
+shopt -s histreedit 
+shopt -s histappend # append to the file rather than overwrite, for multiple sessions

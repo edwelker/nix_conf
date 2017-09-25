@@ -5,8 +5,11 @@ export LESS="-R"
 export TERM=xterm-256color
 export CDPATH=.:~:~/code:~/code/python:~/code/scala:~/code/css:~/src:~/bin:$DOTDOT
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:~/lib
-# export HISTIGNORE="&:ls:[bf]g:exit:history*:pwd:clear"
+export HISTIGNORE="clear" # Ignore clear, since I type that constantly
 export HISTTIMEFORMAT="%y-%m-%dT%T "
+export HISTSIZE=3000 # 3000 per session
+export HISTFILESIZE=500000 # 500,000 across all sessions
+export HISTCONTROL="ignoreboth" # Ignore cmds starting with whitepsace, and duplicates
 
 . ${DOTDOT}/bash/javaenv
 . ${DOTDOT}/bash/go

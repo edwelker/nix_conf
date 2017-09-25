@@ -20,6 +20,7 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias md='mkdir -p'
+alias mt='cd $(mktemp -d)'
 
 alias pd="pushd"
 alias pd1="pushd +1"
