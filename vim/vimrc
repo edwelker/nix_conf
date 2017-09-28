@@ -237,7 +237,6 @@ let g:use_emmet_complete_tag=1
 
 " python-mode (pymode)
 let g:pymode_lint_ignore="E501"
-let g:pymode_python = 'python3'
 " let g:pymode_virtualenv = 1
 " let g:pymode_lint = 0
 
@@ -299,6 +298,11 @@ nnoremap <F2> :set spell<CR>
 " Paste mode with visual indication
 " set pastetoggle=<F2>
 " No longer needed with bracketed paste plugin: https://github.com/ConradIrwin/vim-bracketed-paste
+
+" Be able to keep pasting the same thing... hack that re-yanks the text each
+" time
+xnoremap p pgvy
+
 set showmode
 
 " fix capitol writing combos, when I don't unpress shift fast enough
