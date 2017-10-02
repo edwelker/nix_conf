@@ -90,6 +90,7 @@ export VENVWRAPPER=$(command -v virtualenvwrapper.sh 2>/dev/null)
 if [ ! -z "$VENVWRAPPER" ]; then
     export WORKON_HOME=$HOME/env
     export PROJECT_HOME=$HOME/code/python
+    export VIRTUALENVWRAPPER_PYTHON=$(which python3)
     source "$VENVWRAPPER"
 fi
 
