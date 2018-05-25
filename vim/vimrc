@@ -100,10 +100,9 @@ if has("autocmd")
 
     " whitespace characters displayed
     set list
-    set listchars=tab:>.,trail:.,extends:#,nbsp:.
-    " set listchars=tab:˒\ ,trail:·,extends:…,precedes:…,nbsp:+
+    set listchars=tab:▸\ ,trail:.,eol:¬,extends:#,nbsp:.,precedes:…
 
-    autocmd filetype html,xml set listchars-=tab:>.
+    " autocmd filetype html,xml set listchars-=tab:>.
 
 else
 

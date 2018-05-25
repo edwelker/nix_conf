@@ -46,7 +46,7 @@
     subco = submodule foreach --recursive git checkout .
     amend = commit --amend -C HEAD
 
-    c = clean -fdx
+    c = "clean -f -d -x"
 
     pruneremotes = remote prune origin
     bclean = "!git co master && git branch --no-color --merged | grep -v '\\*' | xargs -n 1 git branch -d"

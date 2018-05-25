@@ -22,6 +22,13 @@ alias .....='cd ../../../..'
 alias md='mkdir -p'
 alias mt='cd $(mktemp -d)'
 
+mvenv(){
+    cd $(mktemp -d);
+    virtualenv3.6 venv;
+    source venv/bin/activate;
+    cd -;
+}
+
 alias pd="pushd"
 alias pd1="pushd +1"
 alias pd2="pushd +2"
@@ -79,8 +86,8 @@ alias psg='ps -ef | grep'
 alias netstat_mac="sudo lsof -i -P"
 alias threads="ps -o nlwp"
 alias duhere="du -h --max-depth=1"
-alias dusort="du -sk * | sort -n"
-alias dirsize="du -sh"
+alias dusort="du -skh * | sort -h"
+alias dudirsize="du -sh"
 alias permissionshere="namei -m $(pwd -P)"
 
 #systemd
@@ -94,7 +101,7 @@ alias work="~/bin/work.sh"
 alias iweb="cd ~/iwebdev-welkere"
 alias lbsg="lbsmc | grep"
 
-alias agent='eval $(ssh-agent); ssh-add ~/.ssh/id_rsa'
+alias agent='eval $(ssh-agent); ssh-add ~/.ssh/id_rsa; ssh-add ~/.ssh/me_for_stash/id_rsa'
 
 alias sr='ssh-reagent'
 alias sh='ssh-agent-hookup'
@@ -169,6 +176,15 @@ cat ~/.ssh/config | \
         return 0
         }
 complete -F _complete_ssh_hosts ssh
+
+ven(){
+    pushd .
+    TEMPDIR=`mktemp -d`
+    cd $TEMPDIR
+    virtualenv3 venv
+    source venv/bin/activate
+    popd
+}
 
 #http://www.bit-integrity.com/2011/08/vim-syntax-highlighting-with-less.html
 VLESS=$(find /usr/share/vim -name 'less.sh')
