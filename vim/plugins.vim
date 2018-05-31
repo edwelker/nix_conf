@@ -60,6 +60,7 @@ Plug 'jmcantrell/vim-virtualenv', { 'for': 'python' }
 Plug 'klen/python-mode', { 'for': 'python' }
 Plug 'vim-scripts/indentpython.vim', { 'for': 'python' }
 Plug 'raimon49/requirements.txt.vim'
+Plug 'fisadev/vim-isort'
 
 " Hashi
 Plug 'hashivim/vim-terraform'
