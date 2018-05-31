@@ -92,7 +92,10 @@ Plug 'majutsushi/tagbar'
 Plug 'craigemery/vim-autotag'
 
 " Files!
-Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'junegunn/fzf.vim'
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
 
 " PASTE!!!!!
 Plug 'ConradIrwin/vim-bracketed-paste'

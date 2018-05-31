@@ -258,10 +258,23 @@ let python_highlight_all=1
 " Ale
 let g:ale_lint_on_enter = 1
 let g:ale_lint_on_save = 1
+" Ale JavaScript
+"https://prettier.io/docs/en/vim.html
+" let g:ale_fixers['javascript'] = ['prettier']
+" let g:ale_javascript_prettier_options = '--single-quote --trailing-comma es5'
+" Ale Python
+" https://blog.landscape.io/using-pylint-on-django-projects-with-pylint-django.html
+let g:ale_python_pylint_options = '--load-plugins pylint_django'
+" Ale-Airline
+let g:airline#extensions#ale#enabled = 1
 
 "Ctrlp
 "https://medium.com/a-tiny-piece-of-vim/making-ctrlp-vim-load-100x-faster-7a722fae7df6
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+" let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+
+map <C-p> :FZF<CR>
+let $FZF_DEFAULT_COMMAND= 'ag -g ""'
+
 
 "GitGutter - this substantially makes git gutter much faster
 set updatetime=100
