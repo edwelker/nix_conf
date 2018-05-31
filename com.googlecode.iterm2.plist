@@ -2031,7 +2031,7 @@
 	<key>NSWindow Frame Preferences</key>
 	<string>190 470 606 456 0 0 1680 1027 </string>
 	<key>NSWindow Frame SUAutomaticUpdateAlert</key>
-	<string>534 639 616 174 0 0 1680 1027 </string>
+	<string>532 656 616 174 0 0 1680 1027 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>-46 2025 620 392 -1240 1050 3008 1692 </string>
 	<key>NSWindow Frame SessionsPreferences</key>
@@ -2041,7 +2041,7 @@
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>81 443 592 584 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>119 14 865 730 0 0 1680 1027 </string>
+	<string>152 296 865 730 0 0 1680 1050 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>4 282 850 730 0 0 1680 1028 </string>
 	<key>New Bookmarks</key>
@@ -3761,7 +3761,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2017-12-12T04:35:04Z</date>
+	<date>2018-05-31T15:20:09Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Show Toolbelt</key>
@@ -3769,7 +3769,7 @@
 	<key>ShowBookmarkName</key>
 	<false/>
 	<key>ShowFullScreenTabBar</key>
-	<false/>
+	<true/>
 	<key>ShowPaneTitles</key>
 	<true/>
 	<key>SmartPlacement</key>
@@ -3853,7 +3853,7 @@ i</string>
 	<key>findMode_iTerm</key>
 	<integer>0</integer>
 	<key>iTerm Version</key>
-	<string>3.1.5.beta.2</string>
+	<string>3.1.6beta5</string>
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>0</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>
