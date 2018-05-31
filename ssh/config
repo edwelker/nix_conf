@@ -58,7 +58,7 @@ Host iweb
 
 Host i
     User welkere
-    HostName iebdev13
+    HostName iebdev12
     #Host iwebdev2
     ProxyCommand ssh w nc %h %p
     #ProxyCommand ssh w -W %h:%p
@@ -73,6 +73,7 @@ Host i
     ForwardX11 no
     LocalForward 9443 bbkt-test.be-md.ncbi.nlm.nih.gov:443
     LocalForward 9444 tctest.be-md.ncbi.nlm.nih.gov:443
+    LocalForward 4140 intrawebdev2.be-md.ncbi.nlm.nih.gov:4140
 
 Host w
     HostName ssh.ncbi.nlm.nih.gov
