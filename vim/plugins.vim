@@ -48,16 +48,16 @@ Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
 
 " Ugh, Ruby
-Plug 'rodjek/vim-puppet', { 'for': 'puppet' }
-Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
-Plug 'vim-scripts/Specky', { 'for': 'rspec' }
+" Plug 'rodjek/vim-puppet', { 'for': 'puppet' }
+" Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
+" Plug 'vim-scripts/Specky', { 'for': 'rspec' }
 
 " All the syntax
 Plug 'sheerun/vim-polyglot'
 
 " Python
 Plug 'jmcantrell/vim-virtualenv', { 'for': 'python' }
-Plug 'klen/python-mode', { 'for': 'python' }
+" Plug 'klen/python-mode', { 'for': 'python' }
 Plug 'vim-scripts/indentpython.vim', { 'for': 'python' }
 Plug 'raimon49/requirements.txt.vim'
 Plug 'fisadev/vim-isort'
@@ -81,7 +81,8 @@ Plug 'tpope/vim-fugitive'
 
 " Syntastic: Code linting errors
 " Plug 'scrooloose/syntastic', { 'for': ['python', 'javascript', 'css'] }
-Plug 'scrooloose/syntastic', { 'for': 'ruby' }
+" Plug 'scrooloose/syntastic', { 'for': 'ruby' }
+Plug 'w0rp/ale'
 
 " Ag for searching
 Plug 'rking/ag.vim'
@@ -97,7 +98,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'ConradIrwin/vim-bracketed-paste'
 
 " line numbers numbers
-Plug 'myusuf3/numbers.vim'
+" Plug 'myusuf3/numbers.vim'
 
 " aligning
 Plug 'godlygeek/tabular'

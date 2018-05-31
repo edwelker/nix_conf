@@ -191,7 +191,9 @@ nnoremap <space> za
 " nnoremap <c-h> <c-w>h
 
 " Cancel search with escape
-nnoremap <silent> <Esc> :nohlsearch<Bar>:echo<CR>
+" this is commented so that files don't start in replace mode
+" nnoremap <silent> <Esc> :nohlsearch<Bar>:echo<CR>
+nnoremap <esc><esc> :nohl<cr>
 
 " Open the last file
 nnoremap <Leader><Leader> :e#<CR>
@@ -236,51 +238,33 @@ let g:use_emmet_complete_tag=1
 
 " python-mode (pymode)
 let g:pymode_lint_ignore="E501"
-" let g:pymode_virtualenv = 1
-" let g:pymode_lint = 0
+let g:pymode_virtualenv = 1
+let g:pymode_lint = 0
 
-" let g:pymode_rope = 0
+let g:pymode_rope = 0
 
 " let g:pymode_options = 0
 " let g:pymode_options_max_line_length = 99
 " let g:pymode_options_colorcolumn = 1
 " let g:pymode_indent = 1
 " let g:pymode_foliding = 1
-" let g:pymode_syntax = 0
+let g:pymode_syntax = 0
 " let g:pymode_lint_on_write = 0
 " let g:pymode_lint_message = 0
 
 " Highlight
 let python_highlight_all=1
 
-" Syntastic
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
+" Ale
+let g:ale_lint_on_enter = 1
+let g:ale_lint_on_save = 1
 
-" let g:syntastic_error_symbol   = '✗'
-" let g:syntastic_warning_symbol = '⚠'
-" let g:syntastic_style_error_symbol = '»'
-" let g:syntastic_style_warning_symbol = '»'
+"Ctrlp
+"https://medium.com/a-tiny-piece-of-vim/making-ctrlp-vim-load-100x-faster-7a722fae7df6
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
-" let g:syntastic_aggregate_errors = 1
-
-" let g:syntastic_auto_jump       = 0
-" let g:syntastic_auto_loc_list   = 0
-" let g:syntastic_check_on_open   = 1
-" let g:syntastic_enable_signs    = 0
-" let g:syntastic_loc_list_height = 5
-" let g:syntastic_enable_balloons = 0
-
-" " Jump thought errors with :lnext and :lprev
-" let g:syntastic_always_populate_loc_list = 1
-
-" let g:syntastic_python_checkers = ['pep8']
-" let g:syntastic_javascript_checkers = ['jshint']
-
-" let g:syntastic_python_flake8_post_args='--jobs=8 --ignore=W291,W293,E265,E127,E128 --max-line-length=119'
-" let g:syntastic_python_pylint_post_args='-j 8 --disable=line-too-long'
-" autocmd FileType python let g:syntastic_check_on_wq = 0
+"GitGutter - this substantially makes git gutter much faster
+set updatetime=100
 
 
 " http://vim.wikia.com/wiki/Simplifying_regular_expressions_using_magic_and_no-magic
@@ -303,6 +287,9 @@ nnoremap <F2> :set spell<CR>
 xnoremap p pgvy
 
 set showmode
+
+" Seems to speed up scrolling
+set regexpengine=1
 
 " fix capitol writing combos, when I don't unpress shift fast enough
 command! W w
