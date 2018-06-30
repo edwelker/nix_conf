@@ -1,3 +1,4 @@
+let g:airline#extensions#tabline#buffer_nr_show=1
 
 
 " Use Vim settings, rather then Vi settings (much better!).
@@ -26,19 +27,6 @@ noremap <Right> <Nop>
 if v:progname =~? "evim"
   finish
 endif
-
-" TAGS
-"
-"tell vim where the tags are
-:set tags+=.tags
-"open function definition in new tab
-map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
-" try to use async tag generation b/c `vim --startuptime file` says it takes a while
-let g:easytags_async = 1
-" Let Vim walk up directory hierarchy from CWD to root looking for tags file
-set tags=tags;/
-" Tell EasyTags to use the tags file found by Vim
-let g:easytags_dynamic_files = 1
 
 
 " allow backspacing over everything in insert mode
@@ -134,6 +122,7 @@ set ignorecase
 " set commentstring=\ #\ %s
 set hidden               " Leave hidden buffers open
 set lazyredraw           " fewer redraws
+set ttyfast
 
 " set cursorline           " show where the cursor is YES, THIS MAY BE ANNOYING
 set showmatch            " shows matching parens
@@ -228,6 +217,13 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_theme='luna'
 let g:airline_powerline_fonts = 1
 
+" gutentags Don't pollute project dirs
+let g:gutentags_ctags_exclude = ['venv', 'build', 'static', 'node_modules']
+let g:gutentags_ctags_exclude_wildignore = 0
+let g:gutentags_ctags_tagfile = '.tags'
+
+" set vim default tags file name `tags` to `.tags`
+set tags=./.tags;,.tags
 
 " Ag settings
 " No carrage return at the end so we can actually search
@@ -278,6 +274,8 @@ let g:ale_lint_on_save = 1
 let g:ale_python_pylint_options = '--load-plugins pylint_django'
 " Ale-Airline
 let g:airline#extensions#ale#enabled = 1
+let g:ale_sign_error = '✗'
+let g:ale_sign_warning = '⚠'
 
 "Ctrlp
 "https://medium.com/a-tiny-piece-of-vim/making-ctrlp-vim-load-100x-faster-7a722fae7df6
@@ -285,6 +283,11 @@ let g:airline#extensions#ale#enabled = 1
 
 map <C-p> :FZF<CR>
 let $FZF_DEFAULT_COMMAND= 'ag -g ""'
+let g:fzf_action = {
+      \'ctrl-t': 'tab split',
+      \'ctrl-v': 'vsplit',
+      \'ctrl-x': 'split',
+  \}
 
 
 "GitGutter - this substantially makes git gutter much faster

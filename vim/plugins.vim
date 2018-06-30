@@ -111,8 +111,9 @@ Plug 'mustache/vim-mustache-handlebars'
 
 " ctags
 " autotags for ctag generation
-Plug 'craigemery/vim-autotag'
-Plug 'xolox/vim-easytags'
+" Plug 'craigemery/vim-autotag'
+Plug 'ludovicchabant/vim-gutentags'
+" Plug 'xolox/vim-easytags'
 Plug 'xolox/vim-misc'
 Plug 'majutsushi/tagbar'
 
