@@ -19,6 +19,9 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
+alias ......='cd ../../../../..'
+alias .......='cd ../../../../../..'
+
 alias md='mkdir -p'
 alias mt='cd $(mktemp -d)'
 
@@ -188,10 +191,10 @@ ven(){
 }
 
 #http://www.bit-integrity.com/2011/08/vim-syntax-highlighting-with-less.html
-VLESS=$(find /usr/share/vim -name 'less.sh')
-if [ ! -z $VLESS ]; then
-  alias less=$VLESS
-fi
+# VLESS=$(find /usr/share/vim -name 'less.sh')
+# if [ ! -z $VLESS ]; then
+#   alias less=$VLESS
+# fi
 
 lsa(){
     egrep ${DOTDOT}/bash/aliases -e 'alias' | awk '{$1=""; print $0}'
