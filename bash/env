@@ -10,6 +10,7 @@ export HISTTIMEFORMAT="%y-%m-%dT%T "
 export HISTSIZE=3000 # 3000 per session
 export HISTFILESIZE=500000 # 500,000 across all sessions
 export HISTCONTROL="ignoreboth" # Ignore cmds starting with whitepsace, and duplicates
+export RIPGREP_CONFIG_PATH=$DOTDOT/ripgreprc
 
 . ${DOTDOT}/bash/javaenv
 . ${DOTDOT}/bash/go
