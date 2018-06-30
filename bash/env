@@ -199,3 +199,11 @@ export PS1
 
 #install the groovy enVironment Manager
 [[ -r "~/.gvm/bin/gvm-init.sh" ]] && source "~/.gvm/bin/gvm-init.sh"
+
+# terminfo, italics, https://sookocheff.com/post/vim/italics/
+if [ ! -d $HOME/.terminfo ]; then
+    mkdir $HOME/.terminfo
+    tic -o $HOME/.terminfo $DOTDOT/terminfo/tmux.terminfo
+    tic -o $HOME/.terminfo $DOTDOT/terminfo/tmux-256color.terminfo
+    tic -o $HOME/.terminfo $DOTDOT/terminfo/xterm-256color.terminfo
+fi

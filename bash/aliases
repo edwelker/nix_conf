@@ -24,7 +24,7 @@ alias mt='cd $(mktemp -d)'
 
 mvenv(){
     cd $(mktemp -d);
-    virtualenv3.6 venv;
+    virtualenv venv;
     source venv/bin/activate;
     pip install ipython ipdb trepan3k pylint black mypy isort flake8 pylint-django django-extensions werkzeug
     cd -;
