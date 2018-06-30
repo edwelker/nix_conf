@@ -439,3 +439,6 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 setlocal spell
 highlight clear SpellBad
 highlight SpellBad term=standout ctermfg=1 term=underline cterm=underline
+
+" Comment italics - tho depends on colorscheme
+highlight Comment cterm=italic
