@@ -374,14 +374,23 @@ au BufNewFile,BufRead *.html setlocal filetype=htmldjango
 
 
 " Omni completion
-autocmd FileType python set omnifunc=pythoncomplete#Complete
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+" autocmd FileType python set omnifunc=pythoncomplete#Complete
+" autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+" autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+" autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 
-au FileType htmldjango set omnifunc=htmldjangocomplete#CompleteDjango
-au FileType htmldjango inoremap {% {% %}<left><left><left>
-au FileType htmldjango inoremap {{ {{ }}<left><left><left>
+" au FileType htmldjango set omnifunc=htmldjangocomplete#CompleteDjango
+" au FileType htmldjango inoremap {% {% %}<left><left><left>
+" au FileType htmldjango inoremap {{ {{ }}<left><left><left>
+
+
+" Completor
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>\<cr>" : "\<cr>"
+
+" let g:completor_auto_trigger = 0
+" inoremap <expr> <Tab> pumvisible() ? "<C-N>" : "<C-R>=completor#do('complete')<CR>"
 
 " set custom indentation
 let g:scala_sort_across_groups=1

@@ -63,18 +63,19 @@ Plug 'raimon49/requirements.txt.vim'
 Plug 'fisadev/vim-isort'
 
 " Hashi
-Plug 'hashivim/vim-terraform'
+" Plug 'hashivim/vim-terraform'
 
 " Completion
 Plug 'mattn/emmet-vim', { 'for': 'html' }
 Plug 'alvan/vim-closetag', { 'for': 'html' }
+Plug 'maralla/completor.vim'
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 
 " Make % match xml tags
-Plug 'edsono/vim-matchit', { 'for': ['html', 'xml'] }
+" Plug 'edsono/vim-matchit', { 'for': ['html', 'xml'] }
 
 " Make tab handle all completions
-Plug 'ervandew/supertab'
+" Plug 'ervandew/supertab'
 
 " Fugitive Git from within Vim
 Plug 'tpope/vim-fugitive'
@@ -88,8 +89,6 @@ Plug 'w0rp/ale'
 Plug 'rking/ag.vim'
 Plug 'majutsushi/tagbar'
 
-" autotags for ctag generation
-Plug 'craigemery/vim-autotag'
 
 " Files!
 " Plug 'ctrlpvim/ctrlp.vim'
@@ -113,6 +112,8 @@ Plug 'vim-scripts/nextval'
 Plug 'mustache/vim-mustache-handlebars'
 
 " ctags
+" autotags for ctag generation
+Plug 'craigemery/vim-autotag'
 Plug 'xolox/vim-easytags'
 Plug 'xolox/vim-misc'
 Plug 'majutsushi/tagbar'
@@ -129,6 +130,7 @@ Plug 'tpope/vim-commentary'
 
 " 'Vastly improved Javascript indentation and syntax support in Vim'
 Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx' " React
 
 " General tool for builds and external commands
 Plug 'tpope/vim-dispatch'
@@ -137,7 +139,6 @@ Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-surround'
 
 " Trial
-Plug 'majutsushi/tagbar'
 Plug 'airblade/vim-gitgutter'
 
 
