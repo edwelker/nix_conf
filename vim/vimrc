@@ -292,6 +292,8 @@ let g:fzf_action = {
 
 "GitGutter - this substantially makes git gutter much faster
 set updatetime=100
+set signcolumn=yes " always show the column, so vim doesn't resize
+let g:gitgutter_max_signs = 100  " 500 default value
 
 
 " http://vim.wikia.com/wiki/Simplifying_regular_expressions_using_magic_and_no-magic
@@ -309,8 +311,7 @@ nnoremap <F2> :set spell<CR>
 " set pastetoggle=<F2>
 " No longer needed with bracketed paste plugin: https://github.com/ConradIrwin/vim-bracketed-paste
 
-" Be able to keep pasting the same thing... hack that re-yanks the text each
-" time
+" Be able to keep pasting the same thing... hack that re-yanks the text each time
 xnoremap p pgvy
 
 set showmode
