@@ -11,8 +11,9 @@ let mapleader=","
 
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
-nmap <silent> <leader>sv :so $MYVIMRC<CR>
-nmap <silent> <leader>sp :e $DOTDOT/vim/plugins.vim
+nmap <silent> <leader>sv :w<CR>:so $MYVIMRC<CR>
+nmap <silent> <leader>ep :e $DOTDOT/vim/plugins.vim
+nmap <silent> <leader>sp :w<CR>:so $DOTDOT/vim/plugins.vim
 
 " learn to do it correctly
 noremap <Up> <Nop>
@@ -28,6 +29,8 @@ endif
 
 "tell vim where the tags are
 :set tags+=.tags
+"open function definition in new tab
+map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 
 
 " allow backspacing over everything in insert mode
@@ -316,7 +319,8 @@ command! -range Vis call setpos('.', [0,<line1>,0,0]) |
                     \ exe "normal V" |
                     \ call setpos('.', [0,<line2>,0,0])
 
-colo oceandeep  " Default
+" colorscheme oceandeep  " Default
+colorscheme Atelier_CaveDark
 
 " file based stuff
 au BufNewFile,BufRead *.groovy,*.gradle setf groovy

@@ -27,13 +27,11 @@ Plug 'vim-scripts/oceanlight'
 Plug 'vim-scripts/Railscasts-Theme-GUIand256color'
 Plug 'vim-scripts/twilight'
 Plug 'atelierbram/vim-colors_atelier-schemes'
+Plug 'rafi/awesome-vim-colorschemes'
 
-" all of these have 'could not read Username' issues
-" Plug 'vim-scripts/twilight256'
-" Plug 'vim-scripts/blackboard'
-" Plug 'https://github.com/vim-scripts/darkgit.vim.git'
-" Plug 'vim-scripts/kib_darktango'
-" Plug 'vim-scripts/codeschool'
+" Cycle through colorschemes
+Plug 'xolox/vim-colorscheme-switcher'
+
 
 " Syntax
 Plug 'tpope/vim-git', { 'for': 'git' }
