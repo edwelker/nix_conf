@@ -12,8 +12,8 @@ let mapleader=","
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :w<CR>:so $MYVIMRC<CR>
-nmap <silent> <leader>ep :e $DOTDOT/vim/plugins.vim
-nmap <silent> <leader>sp :w<CR>:so $DOTDOT/vim/plugins.vim
+nmap <silent> <leader>ep :e $DOTDOT/vim/plugins.vim<CR>
+nmap <silent> <leader>sp :w<CR>:so $DOTDOT/vim/plugins.vim<CR>
 
 " learn to do it correctly
 noremap <Up> <Nop>
@@ -27,10 +27,18 @@ if v:progname =~? "evim"
   finish
 endif
 
+" TAGS
+"
 "tell vim where the tags are
 :set tags+=.tags
 "open function definition in new tab
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+" try to use async tag generation b/c `vim --startuptime file` says it takes a while
+let g:easytags_async = 1
+" Let Vim walk up directory hierarchy from CWD to root looking for tags file
+set tags=tags;/
+" Tell EasyTags to use the tags file found by Vim
+let g:easytags_dynamic_files = 1
 
 
 " allow backspacing over everything in insert mode
@@ -103,7 +111,7 @@ if has("autocmd")
 
     " whitespace characters displayed
     set list
-    set listchars=tab:▸\ ,trail:.,eol:¬,extends:#,nbsp:.,precedes:…
+    set listchars=tab:▸\ ,trail:.,extends:#,nbsp:.,precedes:… ",eol:¬
 
     " autocmd filetype html,xml set listchars-=tab:>.
 
@@ -206,9 +214,9 @@ nnoremap <Leader><Leader> :e#<CR>
 vnoremap < <gv
 vnoremap > >gv
 
-"nextval
-nmap <silent> <unique> + <Plug>nextvalInc
-nmap <silent> <unique> - <Plug>nextvalDec
+" nextval
+nnoremap <silent> <unique> + <Plug>nextvalInc
+nnoremap <silent> <unique> - <Plug>nextvalDec
 
 " airline
 set laststatus=2

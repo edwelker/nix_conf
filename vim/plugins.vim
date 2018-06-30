@@ -14,20 +14,20 @@ endif
 call plug#begin('~/.vim/plugged')
 
 " Colorschemes
-Plug 'captbaritone/molokai'
-Plug 'chriskempson/vim-tomorrow-theme'
-Plug 'altercation/vim-colors-solarized'
-Plug 'fxn/vim-monochrome'
-Plug 'chriskempson/base16-vim'
-Plug 'NLKNguyen/papercolor-theme'
+" Plug 'captbaritone/molokai'
+" Plug 'chriskempson/vim-tomorrow-theme'
+" Plug 'altercation/vim-colors-solarized'
+" Plug 'fxn/vim-monochrome'
+" Plug 'chriskempson/base16-vim'
+" Plug 'NLKNguyen/papercolor-theme'
 Plug 'vim-scripts/oceandeep'
-Plug 'vim-scripts/corn'
-Plug 'vim-scripts/github-theme'
-Plug 'vim-scripts/oceanlight'
-Plug 'vim-scripts/Railscasts-Theme-GUIand256color'
-Plug 'vim-scripts/twilight'
+" Plug 'vim-scripts/corn'
+" Plug 'vim-scripts/github-theme'
+" Plug 'vim-scripts/oceanlight'
+" Plug 'vim-scripts/Railscasts-Theme-GUIand256color'
+" Plug 'vim-scripts/twilight'
 Plug 'atelierbram/vim-colors_atelier-schemes'
-Plug 'rafi/awesome-vim-colorschemes'
+" Plug 'rafi/awesome-vim-colorschemes'
 
 " Cycle through colorschemes
 Plug 'xolox/vim-colorscheme-switcher'
@@ -36,7 +36,7 @@ Plug 'xolox/vim-colorscheme-switcher'
 " Syntax
 Plug 'tpope/vim-git', { 'for': 'git' }
 Plug 'cakebaker/scss-syntax.vim', { 'for': 'scss' }
-Plug 'qrps/lilypond-vim', { 'for': 'lilypond' }
+" Plug 'qrps/lilypond-vim', { 'for': 'lilypond' }
 Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
 Plug 'sukima/xmledit', { 'for': 'xml' }
 Plug 'https://github.com/othree/html5.vim.git', { 'for': 'html' }
