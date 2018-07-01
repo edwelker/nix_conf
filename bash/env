@@ -1,14 +1,21 @@
-export EDITOR="vi"
+# believe it or not, this needs to be vim, not vi, for crontab -e to work on a mac
+export EDITOR=vim
 export PAGER="less"
 export LESS="-R"
 export TERM=xterm-256color
-export CDPATH=.:~:~/code:~/code/python:~/code/scala:~/src:~/bin:$DOTDOT
+export CDPATH=.:~:~/code:~/code/python:~/code/scala:~/code/css:~/src:~/bin:$DOTDOT:/am/intrawebdev2/web/public/htdocs/staff/welkere/
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:~/lib
-# export HISTIGNORE="&:ls:[bf]g:exit:history*:pwd:clear"
+export HISTIGNORE="clear" # Ignore clear, since I type that constantly
 export HISTTIMEFORMAT="%y-%m-%dT%T "
+export HISTSIZE=3000 # 3000 per session
+export HISTFILESIZE=500000 # 500,000 across all sessions
+export HISTCONTROL="ignoreboth" # Ignore cmds starting with whitepsace, and duplicates
+export RIPGREP_CONFIG_PATH=$DOTDOT/ripgreprc
 
 . ${DOTDOT}/bash/javaenv
 . ${DOTDOT}/bash/go
+. ${DOTDOT}/bash/scala
+. ${DOTDOT}/bash/node
 . ${DOTDOT}/bash/ncbi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
@@ -28,7 +35,7 @@ if command -v dnsdomainname 1>/dev/null && [[ $(dnsdomainname 2>/dev/null) =~ ^.
 
     export TMPDIR=/tmp
 
-    export PATH=/usr/local/python/all/bin/:"$PATH"
+    export PATH=/usr/local/python/all/bin:"$PATH"
 fi
 
 if [ -f /usr/bin/dircolors ]
@@ -49,6 +56,12 @@ export PATH
 
 if [ -d /usr/local/bin/ ];then
     export PATH=/usr/local/bin:$PATH
+fi
+
+# homebrew sbin
+which -s brew 2> /dev/null
+if [[ $? = 0 ]] ; then
+    export PATH="/usr/local/sbin:$PATH"
 fi
 
 # pipsi
@@ -78,8 +91,18 @@ export VENVWRAPPER=$(command -v virtualenvwrapper.sh 2>/dev/null)
 if [ ! -z "$VENVWRAPPER" ]; then
     export WORKON_HOME=$HOME/env
     export PROJECT_HOME=$HOME/code/python
+    export VIRTUALENVWRAPPER_PYTHON=$(which python3)
     source "$VENVWRAPPER"
 fi
+
+# added by travis gem
+[ -f /home/welkere/.travis/travis.sh ] && source /home/welkere/.travis/travis.sh
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+[ -f ~/src/ripgrep/complete/rg.bash ] && source ~/src/ripgrep/complete/rg.bash;
+[ -f ~/src/fd/autocomplete/fd.bash-completion ] && source ~/src/fd/autocomplete/fd.bash-completion
 
 
 # pip bash completion start
@@ -104,12 +127,17 @@ fi
 
 if [ -d /etc/bash_completion.d/ ]; then
    source /etc/bash_completion.d/git
-   source /etc/bash_completion.d/yum
+   # source /etc/bash_completion.d/yum
+   # support the `g` alias for git
    complete -o default -o nospace -F _git g
+   __git_complete g __git_main
 fi
 
-if command -v brew 1>/dev/null && [ -f $(brew --prefix)/etc/bash_completion ]; then
-  . $(brew --prefix)/etc/bash_completion
+# mac with homebrew
+if [ -x "$(command -v brew)" ] && [ -f $(brew --prefix)/etc/bash_completion ]; then
+    . $(brew --prefix)/etc/bash_completion
+   # support the `g` alias for git
+    __git_complete g __git_main
 fi
 
 if [ -f ${DOTDOT}/git/git-prompt.sh ]; then
@@ -124,7 +152,7 @@ if [ -x $(which aws_completer 2>/dev/null) ]; then
 fi
 
 #http://tychoish.com/rhizome/9-awesome-ssh-tricks/
-#ssh-agent runs per-session, so tmux can't always find it. 
+#ssh-agent runs per-session, so tmux can't always find it.
 #don't re-run, just find the real one
 ssh-reagent () {
     for agent in $TMPDIR/ssh-*/agent.*; do
@@ -132,10 +160,35 @@ ssh-reagent () {
         if ssh-add -l 2>&1 > /dev/null; then
             echo Found working SSH Agent:
             ssh-add -l
-            return
+            return  # after the first one found, exit the for loop
         fi
     done
     echo Cannot find ssh agent - maybe you should reconnect and forward it?
+}
+
+function ssh-agent-hookup (){
+  if [ -n "$SSH_AUTH_SOCK" ]; then return; fi; # already have an ssh agent
+        local pids pid;
+        pids=$(pgrep -u $LOGNAME $(basename $SHELL))
+        # if there are no bash processes, then create an ssh-agent
+        if [ "$pids" = "" ]; then
+                eval `ssh-agent -s`
+                return;
+        fi;
+        for pid in $pids; do
+                if [ -e /proc/$pid/environ ] && strings /proc/$pid/environ | egrep -q ^SSH_AUTH_SOCK; then
+                        echo Found a working agent
+                        export $(strings /proc/$pid/environ|egrep ^SSH_AUTH_SOCK)
+                        if ssh-add -l 2>&1 > /dev/null; then
+                            echo Found working SSH Agent:
+                            ssh-add -l
+                            # found one, instead return
+                        fi
+                        return;
+                fi
+        done
+        eval `ssh-agent -s`
+        return
 }
 
 #for xforwarding
@@ -156,3 +209,11 @@ export PS1
 
 #install the groovy enVironment Manager
 [[ -r "~/.gvm/bin/gvm-init.sh" ]] && source "~/.gvm/bin/gvm-init.sh"
+
+# terminfo, italics, https://sookocheff.com/post/vim/italics/
+if [ ! -d $HOME/.terminfo ]; then
+    mkdir $HOME/.terminfo
+    tic -o $HOME/.terminfo $DOTDOT/terminfo/tmux.terminfo
+    tic -o $HOME/.terminfo $DOTDOT/terminfo/tmux-256color.terminfo
+    tic -o $HOME/.terminfo $DOTDOT/terminfo/xterm-256color.terminfo
+fi

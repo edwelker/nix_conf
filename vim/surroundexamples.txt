@@ -1,0 +1,39 @@
+Examples of using surround.
+For more (and better) examples, see : http://www.futurile.net/2016/03/19/vim-surround-plugin-tutorial/
+
+1)
+On first word - ysw[ (y-add, s-surround, w-word, [-square braces with space)
+[ This ] is a random sentence.
+
+2)
+ys3wb - add surround 3 words parens
+(This is a) random sentence.
+
+3)
+(This is a random sentence.)
+yssb - add surround sentence parens
+
+4)
+<em>This is a random sentence.</em>
+yss<em>
+
+
+Here's the next sentence:
+"This was a 'very delicate' matter"
+
+1)
+'This was a 'very delicate' matter'
+cs"'
+
+2)
+""This" was a 'very delicate' matter"
+csw"
+
+3)
+[ "This was a 'very delicate' matter"
+]
+css[
+
+4)
+""This was "a 'very delicate' matter"
+cs5w"

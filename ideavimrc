@@ -1,0 +1,197 @@
+set ignorecase smartcase
+"set hlsearch
+set showmode
+set scrolloff=5
+set history=1000
+set surround
+set incsearch
+set relativenumber
+set smartcase
+set hlsearch
+
+" Integrate with system clipboard
+set clipboard=unnamedplus,unnamed
+
+let mapleader = ","
+
+imap ,. <Esc>
+vmap ,. <Esc>
+
+" Use Q for formatting the current paragraph (or visual selection)
+vmap Q gq
+nmap Q gqap
+
+" These create newlines like o and O but stay in normal mode
+nmap zj o<Esc>k
+nmap zk O<Esc>j
+
+" key bindings for quickly moving between windows
+" h left, l right, k up, j down
+nmap <leader>h <c-w>h
+nmap <leader>l <c-w>l
+nmap <leader>k <c-w>k
+nmap <leader>j <c-w>j
+
+nmap <leader>g :action GotoDeclaration<cr>
+nmap <leader>b :action Back<cr>
+nmap <leader>f :action Forward<cr>
+
+nmap <leader>t :action GotoFile<cr>
+nmap <leader>c :action GotoClass<cr>
+nmap <leader>ns :action GotoSymbol<cr>
+nmap <leader>nm :action FileStructurePopup<cr>
+nmap <leader>d :action ShowErrorDescription<cr>
+
+" IdeaVim uses 'a' for alt instead of Vim's 'm'
+nmap <a-j> 15gj
+nmap <a-k> 15gk
+
+" See below
+" Won't work in visual mode (with vmap) for some reason.
+" Use default map of <c-/> for that.
+" nmap gcc :action CommentByLineComment<cr>
+
+nnoremap z,al :actionlist
+" clear the search buffer when hitting return
+ nnoremap <Leader>/ :nohlsearch<cr>
+
+" To copy text to the end-of-line, press Y.
+" This mapping sets up Y to be consistent with
+" the C and D operators, which act from the cursor
+" to the end of the line. The default behavior of Y
+" is to yank the whole line.
+nnoremap Y y$
+
+" Shortcut for escape
+imap jj <Esc>
+
+" When in normal mode and I hit Enter,
+" then save file please
+nmap <CR> :write<CR>
+
+" Quick window navigation
+map <C-J> <C-W>j
+map <C-K> <C-W>k
+map <C-L> <C-W>l
+map <C-H> <C-W>h
+
+" Shortcut for copying to/from System Clipboard
+vmap <Leader>y "+y
+vmap <Leader>d "+d
+nmap <Leader>p "+p
+nmap <Leader>P "+P
+
+" Splitting Windows
+nmap <Leader>\ :vsplit<CR>
+nmap <Leader>v :vsplit<CR>
+nmap <Leader>- :split<CR>
+nmap <Leader>h :split<CR>
+
+" Project Shortcuts
+" =================
+" Close Project
+nmap <Leader>q :action CloseProject<CR>
+nmap <leader>t :action FileStructurePopup<CR>
+
+" Some Action commands to memic my native vim
+" For a list of :action try :actionlist
+" ===========================================
+" Hide open panels
+nmap <Leader>f :action HideAllWindows<CR>
+" Open Global Find Dialog box
+nmap <Leader><Leader>f :action FindInPath<CR>
+" Open recent project dialog box
+nmap <Leader><Leader>p :action ManageRecentProjects<CR>
+" Mapping to mimic BufferExplorer
+" nmap <Leader>be :action Switcher<CR>
+nmap <Leader>be :action RecentFiles<CR>
+" Toggle code minimap
+nmap <Leader>m :action CodeGlance.toggle<CR>
+" Nerdtree want to be
+nmap <Leader>nt :action ActivateProjectToolWindow<CR>
+
+"Coding Formating
+" ===============
+nnoremap <leader>cf :action ReformatCode<CR>
+nnoremap <leader>pcf :action Tool_External Tools_PHP CS Fixer<CR>
+
+
+" XDebug Shortcuts
+nmap <Leader>xl :action PhpListenDebugAction<CR>
+nmap <Leader>bp :action ToggleLineBreakpoint<CR>
+" Jump to Source
+nmap <C>] :action XDebugger.JumpToSource
+
+" Some Git Shortcuts for view status, pull, and branches
+" Mapping mimic Fugitive in my native vim
+nmap <Leader>gs :action CheckinProject<CR>
+nmap <Leader>gc :action CheckinProject<CR>
+nmap <Leader>ga :action Git.Add<CR>
+nmap <Leader>gp :action Git.Pull<CR>
+nmap <Leader>gb :action Annotate<CR>
+nmap <Leader>gl :action Git.Log<CR>
+nmap <Leader>go :action Github.Open.In.Browser<CR>
+nmap <Leader>br :action Git.Branches<CR>
+
+" View my customize Quicklist
+nmap <Leader><leader> l :action QuickList.MyQuickList<CR>
+
+" AceJump Plugin - Jump to Character
+nmap <Leader><Leader>w :action AceJumpAction<CR>
+
+" Commenting
+nmap gcc :action CommentByLineComment<CR>
+nmap gcs :action CommentByBlockComment<CR>
+nmap <Leader>c<Space> :action CommentByLineComment<CR>
+nmap <Leader>cs<Space> :action CommentByBlockComment<CR>
+
+" Refactoring
+nmap <Leader>rt :action Refactorings.QuickListPopupAction<CR>
+"nmap csw' :action Macro.surround_with_single_quote<CR>
+
+" Move visual block
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+
+" Put search results in the middle of the screen
+nnoremap n nzz
+nnoremap N Nzz
+
+nnoremap <c-w><c-c> :action VimWindowClose<cr>
+
+nnoremap [c :action VcsShowPrevChangeMarker<cr>
+nnoremap ]c :action VcsShowNextChangeMarker<cr>
+
+nnoremap [d :action QuickImplementations<cr>
+nnoremap ]d :action QuickImplementations<cr>
+
+nnoremap gcc :action CommentByLineComment<cr>
+
+nnoremap <leader>ff :action FindInPath<cr>
+nnoremap <leader>fu :action FindUsages<cr>
+nnoremap <leader>su :action ShowUsages<cr>
+nnoremap <leader>cv :action ChangeView<cr>
+nnoremap <leader>bb :action ToggleLineBreakpoint<cr>
+nnoremap <leader>br :action ViewBreakpoints<cr>
+nnoremap <leader>ic :action InspectCode<cr>
+nnoremap <leader>oi :action OptimizeImports<cr>
+nnoremap <leader>re :action RenameElement<cr>
+nnoremap <leader>rf :action RenameFile<cr>
+nnoremap <leader>gq :action ReformatCode<cr>
+nnoremap <leader>mv :action ActivateMavenProjectsToolWindow<cr>
+nnoremap <leader>dd :action Debug<cr>
+nnoremap <leader>dc :action ChooseDebugConfiguration<cr>
+nnoremap <leader>rr :action Run<cr>
+nnoremap <leader>rc :action ChooseRunConfiguration<cr>
+nnoremap <leader>q  :action CloseActiveTab<cr>
+nnoremap <leader>ga :action GotoAction<cr>
+nnoremap <leader>gi :action GotoImplementation<cr>
+nnoremap <leader>gs :action GotoSuperMethod<cr>
+nnoremap <leader>gd :action GotoDeclaration<cr>
+nnoremap <leader>gt :action GotoTest<cr>
+nnoremap <leader>gr :action GotoRelated<cr>
+nnoremap <leader>gb :action Annotate<cr>
+nnoremap <leader>tl Vy<cr>:action ActivateTerminalToolWindow<cr>
+vnoremap <leader>tl y<cr>:action ActivateTerminalToolWindow<cr>
+nnoremap ]e :action GotoNextError<cr>
+nnoremap [e :action GotoPreviousError<cr>

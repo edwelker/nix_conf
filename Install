@@ -17,32 +17,30 @@ if [ ! -h ~/.bashrc ]; then
     fi
 fi;
 
+
+# First level symlinks
+for rc in inputrc ctags pythonstartup ackrc editorconfig ideavimrc; do
+    if [ ! -h ~/.$rc ]; then
+        ln -s ${DOTDOT}/"$rc" ~/."$rc"
+    else
+        echo "File ~/.$rc already exists"
+    fi
+done
+
+
+# Deeper symlinks
+for rc in git/gitconfig git/gitk vim/vimrc vim/vim tmux/tmux.conf mutt/muttrc; do
+    RCFILE=$(basename "./$rc")
+    if [ ! -h ~/."$RCFILE" ]; then
+        ln -s ${DOTDOT}/"$rc" ~/."$RCFILE"
+    else
+        echo "File ~/.$RCFILE already exists"
+    fi;
+done
+
+
 if [ ! -h ~/.ssh/config ]; then
     ln -s ${DOTDOT}/ssh/config ~/.ssh/config
-fi;
-
-if [ ! -h ~/.gitconfig ]; then
-    ln -s ${DOTDOT}/git/gitconfig ~/.gitconfig
-fi; 
-
-if [ ! -h ~/.gitk ]; then
-    ln -s ${DOTDOT}/git/gitk ~/.gitk
-fi;
-
-if [ ! -h ~/.vimrc ]; then
-    ln -s ${DOTDOT}/vim/vimrc ~/.vimrc
-fi;
-
-if [ ! -h ~/.vim ]; then
-    ln -s ${DOTDOT}/vim/vim ~/.vim
-fi;
-
-if [ ! -h ~/.ctags ]; then
-    ln -s ${DOTDOT}/ctags ~/.ctags
-fi;
-
-if [ ! -h ~/.tmux.conf ]; then
-    ln -s ${DOTDOT}/tmux/tmux.conf ~/.tmux.conf
 fi;
 
 if [ ! -h ~/.pip ]; then
@@ -50,27 +48,7 @@ if [ ! -h ~/.pip ]; then
     ln -s ${DOTDOT}/pip.conf ~/.pip/pip.conf
 fi;
 
-if [ ! -h ~/.pythonstartup ]; then
-    ln -s ${DOTDOT}/pythonstartup ~/.pythonstartup
-fi;
-
-if [ ! -h ~/.muttrc ]; then
-    ln -s ${DOTDOT}/mutt/muttrc ~/.muttrc
-fi;
-
-if [ ! -h ~/.ackrc ]; then
-    ln -s ${DOTDOT}/ackrc ~/.ackrc
-fi;
-
 #create a .tmp directory for vim backups
 if [ ! -d ~/.tmp ]; then
     mkdir ~/.tmp;
 fi;
-
-#checkout the pathogen submodules and whatnot
-if [ ! "$(ls -A ${DOTDOT}/pathogen)" ]; then
-    git submodule update --init
-fi;
-
-#to update to the latest submodules,
-#git submodule foreach git pull origin master

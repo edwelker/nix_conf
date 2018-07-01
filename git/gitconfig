@@ -4,6 +4,8 @@
 [core]
     editor = /usr/bin/vim
     pager = less -FXRS -x2
+	whitespace = trailing-space,space-before-tab
+	excludesfile = ~/.gitignore
 [color]
     diff = auto
     status = auto
@@ -15,12 +17,14 @@
     st = status -sb
     ci = commit
     cm = commit -m
+    cv = commit -v
     co = checkout
     br = branch
     bra = branch -vvra
     rv = remote -v
     ap = add -p
     a = add
+    p = pull --rebase
     w = whatchanged
     cp = cherry-pick
     ds = diff --staged
@@ -37,10 +41,18 @@
     le = log --oneline --decorate
     undo = reset --soft HEAD^
     soft = reset --soft HEAD^
+    unstage = reset HEAD
     diffprev = diff HEAD^
+    subinit = submodule update --init
+    subupdate = pull --recurse-submodules
+    subco = submodule foreach --recursive git checkout .
     amend = commit --amend -C HEAD
-    syncfetch = remote prune origin
-    bclean = "!f() { git branch --merged ${1-master} | grep -v " ${1-master}$" | xargs -r git branch -d; }; f"
+
+    c = "clean -f -d -x"
+
+    pruneremotes = remote prune origin
+    bclean = "!git co master && git branch --no-color --merged | grep -v '\\*' | xargs -n 1 git branch -d"
+
     lt = describe --tags --abbrev=0
     ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
     ls = log --pretty=format:"%C(green)%h\\ %C(yellow)[%ad]%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
@@ -53,18 +65,46 @@
     aliases = "!git config -l | grep alias | cut -c 7-"
     authors = shortlog -sne --no-merges -w1024,0,0
     create-pull-request = !sh -c 'stash pull-request $0'
-    home = "!git rev-parse && cd $(git rev-parse --show-cdup)"
+    home = "!cd $(git rev-parse --show-cdup)"
+    root = "!pwd"
     edit-unmerged = "!f() { git diff --name-status --diff-filter=U | cut -f2 ; }; vim `f`"
     add-unmerged = "!f() { git diff --name-status --diff-filter=U | cut -f2 ; }; git add `f`"
     aged-branches = "!f() { git for-each-ref --sort=committerdate refs/heads $1  --format=\"%(refname:short)\" ; }; g() { for C in $(f $1) ; do git show -s --pretty=format:\"%Cgreen%ci %Cblue%cr%Creset $C\" \"$C\" -- ; done; }; g "
     churners = shortlog -sn --
     rank = shortlog -sn --no-merges
-    ; urm = "!f() { git reset -- $1 && git checkout -- $1; }; `f`"  # can't get this to work
+
+    ; these are stolen from here: https://hackernoon.com/lesser-known-git-commands-151a1918a60#.iemxe52lc
+    please = "push --force-with-lease"
+    commend = "commit --amend --no-edit"
+    it = "!git init && git commit -m 'root' --allow-empty"
+    stsh = 'stash --keep-index'
+    staash = 'stash --include-untracked'
+    staaash = 'stash --all'
+    merc = 'merge --no-ff'
+
+    # STOLEN! https://gist.github.com/robmiller/6018582
+    # Get the current branch name (not so useful in itself, but used in
+    # other aliases)
+    branch-name = "!git rev-parse --abbrev-ref HEAD"
+    # Push the current branch to the remote "origin", and set it to track
+    # the upstream branch
+    publish = "!git push -u origin $(git branch-name)"
+    # Delete the remote version of the current branch
+    unpublish = "!git push origin :$(git branch-name)"
+
+    # Mark a file as "assume unchanged", which means that Git will treat it
+    # as though there are no changes to it even if there are. Useful for
+    # temporary changes to tracked files
+    assume = update-index --assume-unchanged
+    # Reverse the above
+    unassume = update-index --no-assume-unchanged
+    # Show the files that are currently assume-unchanged
+    assumed = "!git ls-files -v | grep ^h | cut -c 3-"
 [github]
     user = edwelker
     password = !security find-generic-password -gs github.password -w | tr -d '\n'
 [push]
-   default = current
+	default = tracking
 [credential]
     helper = cache --timeout=3600
 [merge]
@@ -72,3 +112,12 @@
 	conflictstyle = diff3
 [mergetool]
 	prompt = false
+[advice]
+	statusHints = false
+[diff]
+	renames = copies
+	mnemonicprefix = true
+[branch]
+	autosetupmerge = true
+[rerere]
+	enabled = true

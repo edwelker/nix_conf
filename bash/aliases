@@ -2,7 +2,7 @@ alias rebash="source ~/.bashrc; echo -e '\nBash config reloaded'"
 alias aliases="vi ${DOTDOT}/bash/aliases && source ~/.bashrc"
 alias galiases="vi ${DOTDOT}/git/gitconfig && source ~/.bashrc"
 alias envs="vi ${DOTDOT}/bash/env && source ~/.bashrc"
-alias dotdot="cd ${DOTDOT}"
+alias dot="pd .; cd ${DOTDOT}"
 
 alias c="clear"
 
@@ -19,7 +19,19 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
+alias ......='cd ../../../../..'
+alias .......='cd ../../../../../..'
+
 alias md='mkdir -p'
+alias mt='cd $(mktemp -d)'
+
+mvenv(){
+    cd $(mktemp -d);
+    virtualenv venv;
+    source venv/bin/activate;
+    pip install -r ${DOTDOT}/mvenv_reqs.txt
+    cd -;
+}
 
 alias pd="pushd"
 alias pd1="pushd +1"
@@ -32,11 +44,10 @@ alias hl='fc -l'
 
 alias py='python'
 alias py3='python3'
-alias ma='python manage.py'
-alias rs='python manage.py runserver'
-alias shell='python manage.py shell_plus'
+alias ma='manage.py'
+alias rs='manage.py runserver'
+alias shell='manage.py shell_plus --ipython'
 alias db='python manage.py dbshell'
-alias ipy="python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'"
 
 alias venv='source venv/bin/activate'
 
@@ -78,7 +89,8 @@ alias psg='ps -ef | grep'
 alias netstat_mac="sudo lsof -i -P"
 alias threads="ps -o nlwp"
 alias duhere="du -h --max-depth=1"
-alias dirsize="du -sh"
+alias dusort="du -skh * | sort -h"
+alias dudirsize="du -sh"
 alias permissionshere="namei -m $(pwd -P)"
 
 #systemd
@@ -92,9 +104,10 @@ alias work="~/bin/work.sh"
 alias iweb="cd ~/iwebdev-welkere"
 alias lbsg="lbsmc | grep"
 
-alias macssh='eval $(ssh-agent)'
+alias agent='eval $(ssh-agent); ssh-add ~/.ssh/id_rsa; ssh-add ~/.ssh/me_for_stash/id_rsa'
 
 alias sr='ssh-reagent'
+alias sh='ssh-agent-hookup'
 alias sk='ssh-keygen -t rsa -b 4096'
 
 alias g='git'
@@ -102,13 +115,26 @@ alias gp='git push'
 alias gpp='git pull && git push'
 alias gpt='git push && git push --tags'
 alias ginitpy="git init --template=${DOTDOT}/pygittemplate"
+alias ghome="cd $(g root)"
+alias gsuperclean="git pruneremotes && git bclean"
 alias b='bzr'
+
+alias unaws='unset AWS_SESSION_TOKEN AWS_DEFAULT_REGION AWS_SECRET_ACCESS_KEY AWS_ACCESS_KEY_ID'
 
 alias vu='vagrant up'
 alias vs='vagrant ssh'
 alias vd='vagrant destroy -f'
 
-alias brewu='brew update && brew upgrade && brew cleanup -s; brew doctor'
+alias brewu='brew update && brew upgrade && brew cleanup -s; brew doctor; brew prune'
+
+function port(){
+  fuser $1/tcp
+}
+
+function port-and-app(){
+  # xargs strips whitespace
+  ls -al /proc/$(fuser $1/tcp | xargs)/exe
+}
 
 #get openssl cert for proxying
 function getcert(){
@@ -120,6 +146,18 @@ function getcert(){
     fi
 }
 
+# fix permissions, standard 644 on files, 755 on directories
+function fixpermissions(){
+    if [ $# -lt 2 ]; then
+        echo 1>&2 "$0: not enough arguments, specifiy the directory to start in"
+        exit 2
+    else
+        find $1 -type d -exec chmod 755 {} +
+        find $1 -type f -exec chmod 644 {} +
+    fi
+}
+
+alias removetokens='/bin/rm -rf /private/var/db/TokenCache/*'
 
 #stolen from elsewhere : https://gist.github.com/aliang/1024466
 # SSH Auto Completion of Remote Hosts
@@ -142,11 +180,20 @@ cat ~/.ssh/config | \
         }
 complete -F _complete_ssh_hosts ssh
 
+ven(){
+    pushd .
+    TEMPDIR=`mktemp -d`
+    cd $TEMPDIR
+    virtualenv3 venv
+    source venv/bin/activate
+    popd
+}
+
 #http://www.bit-integrity.com/2011/08/vim-syntax-highlighting-with-less.html
-VLESS=$(find /usr/share/vim -name 'less.sh')
-if [ ! -z $VLESS ]; then
-  alias less=$VLESS
-fi
+# VLESS=$(find /usr/share/vim -name 'less.sh')
+# if [ ! -z $VLESS ]; then
+#   alias less=$VLESS
+# fi
 
 lsa(){
     egrep ${DOTDOT}/bash/aliases -e 'alias' | awk '{$1=""; print $0}'
@@ -169,13 +216,14 @@ alias sbc="sbt clean"
 alias server="sbt server/run"
 alias client="sbt client/run"
 alias srun="sbt run"
+alias sct="sbt clean clean-files coverage test coverageReport"
 
 function fr(){
     if [ $# -lt 2 ]; then
         echo 1>&2 "$0: not enough arguments"
         exit 2
     else
-        ag -l $1 | xargs sed -i "s/$1/$2/"
+        ag --hidden -l $1 | xargs sed -i "s/$1/$2/"
     fi
 }
 
@@ -187,3 +235,16 @@ function gurm(){
         git reset -- $1 && g checkout -- $1;
     fi
 }
+
+
+linux_servers ()
+{
+   awk '/#lnx-srv-/{print $2}' /etc/hosts.nis
+}
+
+alias rvmlist="rvm list known"
+alias rvminstall="rvm install"
+alias rvmuse="rvm use"
+alias rvmdefault="rvm use system"
+alias rvmsys="rvm use system"
+alias rvmnoautolibs="rvm autolibs disable"  # Don't use yum, etc.
