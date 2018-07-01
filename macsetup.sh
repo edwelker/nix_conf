@@ -49,9 +49,6 @@ git clone https://github.com/edwelker/nix_conf.git bin/nix_conf
 . ~/.bashrc
 cd ~
 
-#install global python packages
-pip install -r ${DOTDOT}/requirements.txt
-
 #ssh key
 mkdir ~/.ssh && cd ~/.ssh && ssh-keygen -t rsa -C "eddie.welker@gmail.com"
 
