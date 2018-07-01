@@ -1,6 +1,3 @@
-let g:airline#extensions#tabline#buffer_nr_show=1
-
-
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible " don't need vi compatibility
@@ -281,13 +278,79 @@ let g:ale_sign_warning = '⚠'
 "https://medium.com/a-tiny-piece-of-vim/making-ctrlp-vim-load-100x-faster-7a722fae7df6
 " let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
+"fzf------------------------------------------------------------
 map <C-p> :FZF<CR>
 let $FZF_DEFAULT_COMMAND= 'ag -g ""'
 let g:fzf_action = {
       \'ctrl-t': 'tab split',
       \'ctrl-v': 'vsplit',
       \'ctrl-x': 'split',
+      \ 'ctrl-a': 'argedit'
   \}
+let g:fzf_history_dir = '~/.local/share/fzf-history'
+let g:fzf_buffers_jump = 1
+let g:fzf_layout = {"up":'~40%'}
+nnoremap <c-p><c-p> :Files<CR>
+nnoremap <c-p><c-f> :call <SID>fzf('find -L . -type f ! -path "*.hg/*" ! -path "*.git/*"', ':Files') <CR>
+nnoremap <c-p><c-a> :call <SID>fzf('find -L . -type f', ':Files') <CR>
+nnoremap <c-p><c-g> :GitFiles<CR>
+"nnoremap <c-p><c-g>? :GitFiles?<CR>
+nnoremap <c-p><c-b> :Buffers<CR>
+"nnoremap <c-p><c-c> :Colors<CR>
+"nnoremap <c-p><c-a> :Ag<CR>
+"nnoremap <c-p><c-l> :Lines<CR>
+nnoremap <c-p><c-l> :BLines<CR>
+nnoremap <c-p><c-t> :Tags<CR>
+nnoremap <c-p><c-j> :BTags<CR>
+autocmd! FileType cpp  nnoremap <buffer> <c-p><c-j> : call <SID>fzf_cpp_tags()<CR>
+"nnoremap <c-p><c-j> :BTags<CR>
+"nnoremap <c-p><c-m> :Marks<CR>
+nnoremap <c-p><c-w> :Windows<CR>
+"nnoremap <c-p><c-l> :Locate<CR>
+nnoremap <c-p><c-h> :History<CR>
+"nnoremap <c-p><c-;> :History:<CR>
+"nnoremap <c-p><c-/> :History/<CR>
+nnoremap <c-p><c-s> :Snippets<CR>
+"nnoremap <c-p><c-c> :Commits<CR>
+"nnoremap <c-p><c-b>c :BCommits<CR>
+nnoremap <c-p><c-c> :Commands<CR>
+nnoremap <c-p><c-m> :Maps<CR>
+command! -nargs=* -complete=file Ae :call s:fzf_ag_expand(<q-args>)
+
+"nnoremap <c-p>h :Helptags<CR>
+"nnoremap <c-p>f :Filetypes<CR>
+
+"command! -nargs=* -complete=file AA :call s:fzf_ag_raw(<q-args>)
+autocmd! VimEnter * command! -nargs=* -complete=file Ag :call s:fzf_ag_raw(<q-args>)
+
+let s:fzf_btags_cmd = 'ctags -f - --sort=no --excmd=number --c++-kinds=+p '
+let s:fzf_btags_options = {'options' : '--reverse -m -d "\t" --with-nth 1,4.. -n 1,-1 --prompt "BTags> "'}
+function! s:fzf_cpp_tags()
+call fzf#vim#buffer_tags(
+      \ "",[s:fzf_btags_cmd . expand('%:S')],
+      \ extend(copy(g:fzf_layout), s:fzf_btags_options))
+endfunction
+
+function! s:fzf(fzf_default_cmd, cmd)
+  let oldcmds = $FZF_DEFAULT_COMMAND | try
+    let $FZF_DEFAULT_COMMAND = a:fzf_default_cmd
+    execute a:cmd
+  finally | let $FZF_DEFAULT_COMMAND = oldcmds | endtry
+endfunction
+
+function! s:fzf_ag_raw(cmd)
+  call fzf#vim#ag_raw('--noheading '. a:cmd)
+endfunction
+
+" some path is ignored by git or hg, i need to use absolute path to avoid that.
+function! s:fzf_ag_expand(cmd)
+  let matches = matchlist(a:cmd, '\v(.{-})(\S*)\s*$')
+  " readlink, remove trailing linebreak
+  let ecmd = matches[1] . system("readlink -f " . matches[2])[0:-2]
+  call s:fzf_ag_raw(ecmd)
+endfunction
+
+" end fzf
 
 
 "GitGutter - this substantially makes git gutter much faster
