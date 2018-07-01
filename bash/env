@@ -102,7 +102,7 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 [ -f ~/src/ripgrep/complete/rg.bash ] && source ~/src/ripgrep/complete/rg.bash;
-[ -f ~/src/fd/autocomplete/fd.bash-completion ] && srouce ~/src/fd/autocomplete/fd.bash-completion
+[ -f ~/src/fd/autocomplete/fd.bash-completion ] && source ~/src/fd/autocomplete/fd.bash-completion
 
 
 # pip bash completion start
