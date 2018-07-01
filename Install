@@ -19,7 +19,7 @@ fi;
 
 
 # First level symlinks
-for rc in inputrc ctags pythonstartup ackrc; do
+for rc in inputrc ctags pythonstartup ackrc editorconfig; do
     if [ ! -h ~/.$rc ]; then
         ln -s ${DOTDOT}/"$rc" ~/."$rc"
     else
