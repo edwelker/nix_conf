@@ -95,6 +95,15 @@ if [ ! -z "$VENVWRAPPER" ]; then
     source "$VENVWRAPPER"
 fi
 
+# added by travis gem
+[ -f /home/welkere/.travis/travis.sh ] && source /home/welkere/.travis/travis.sh
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+[ -f ~/src/ripgrep/complete/rg.bash ] && source ~/src/ripgrep/complete/rg.bash;
+[ -f ~/src/fd/autocomplete/fd.bash-completion ] && srouce ~/src/fd/autocomplete/fd.bash-completion
+
 
 # pip bash completion start
 # _pip_completion()
@@ -114,10 +123,6 @@ export LANG='en_US.UTF-8'
 #TODO: clean up these three identical if statements
 if [ -f /etc/bash_completion ]; then
     source /etc/bash_completion
-fi
-
-if [ -f ~/src/ripgrep/complete/rg.bash ]; then
-    source ~/src/ripgrep/complete/rg.bash;
 fi
 
 if [ -d /etc/bash_completion.d/ ]; then
