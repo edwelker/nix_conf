@@ -1,0 +1,11 @@
+ipython
+ipdb
+trepan3k
+pylint
+black
+mypy
+isort
+flake8
+pylint-django
+django-extensions
+werkzeug

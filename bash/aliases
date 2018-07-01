@@ -29,7 +29,7 @@ mvenv(){
     cd $(mktemp -d);
     virtualenv venv;
     source venv/bin/activate;
-    pip install ipython ipdb trepan3k pylint black mypy isort flake8 pylint-django django-extensions werkzeug
+    pip install -r ${DOTDOT}/mvenv_reqs.txt
     cd -;
 }
 
