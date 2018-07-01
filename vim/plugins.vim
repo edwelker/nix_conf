@@ -63,6 +63,9 @@ Plug 'fisadev/vim-isort'
 " Hashi
 " Plug 'hashivim/vim-terraform'
 
+" Editorconfig
+Plug 'editorconfig/editorconfig-vim'
+
 " Completion
 Plug 'mattn/emmet-vim', { 'for': 'html' }
 Plug 'alvan/vim-closetag', { 'for': 'html' }
