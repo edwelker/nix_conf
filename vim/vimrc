@@ -1,3 +1,10 @@
+" to show the key mappings
+" :nmap - normal mode
+" :vmap - visual mode
+" :imap - insert mode
+" :map - some set of all? not sure.
+
+
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible " don't need vi compatibility
@@ -202,8 +209,8 @@ vnoremap < <gv
 vnoremap > >gv
 
 " nextval
-nnoremap <silent> <unique> + <Plug>nextvalInc
-nnoremap <silent> <unique> - <Plug>nextvalDec
+nnoremap <Leader>+ <Plug>nextvalInc
+nnoremap <Leader>- <Plug>nextvalDec
 
 " airline
 set laststatus=2
@@ -214,11 +221,13 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 " Use this theme:
 let g:airline_theme='luna'
 let g:airline_powerline_fonts = 1
+" airline end
 
 " gutentags Don't pollute project dirs
 let g:gutentags_ctags_exclude = ['venv', 'build', 'static', 'node_modules']
 let g:gutentags_ctags_exclude_wildignore = 0
 let g:gutentags_ctags_tagfile = '.tags'
+" gutentags end
 
 " set vim default tags file name `tags` to `.tags`
 set tags=./.tags;,.tags
@@ -273,12 +282,10 @@ let g:pymode_syntax_highlight_exceptions = g:pymode_syntax_all " builtin excepti
 let python_highlight_all=1 " highlight
 
 " Ale
+let g:ale_sign_column_always = 1
+let g:ale_completion_enabled = 1
 let g:ale_lint_on_enter = 1
 let g:ale_lint_on_save = 1
-" Ale JavaScript
-"https://prettier.io/docs/en/vim.html
-" let g:ale_fixers['javascript'] = ['prettier']
-" let g:ale_javascript_prettier_options = '--single-quote --trailing-comma es5'
 " Ale Python
 " https://blog.landscape.io/using-pylint-on-django-projects-with-pylint-django.html
 let g:ale_python_pylint_options = '--load-plugins pylint_django'
@@ -286,6 +293,22 @@ let g:ale_python_pylint_options = '--load-plugins pylint_django'
 let g:airline#extensions#ale#enabled = 1
 let g:ale_sign_error = '✗'
 let g:ale_sign_warning = '⚠'
+
+let g:ale_linters = {
+\  'python': ['mypy', 'flake8', 'pylint-django', 'black', 'pylint'],
+\  'javascript': ['eslint'],
+\  'css': ['stylelint'],
+\  'jsx': ['stylelint', 'eslint']
+\}
+let g:ale_linter_aliases = {
+  \'jsx': 'css'
+\}
+let g:ale_fixers = {
+\  'python': ['isort'],
+\  'javascript': ['eslint'],
+\}
+" Ale end
+
 
 "Ctrlp
 "https://medium.com/a-tiny-piece-of-vim/making-ctrlp-vim-load-100x-faster-7a722fae7df6
@@ -434,12 +457,12 @@ set rtp+=$DOTDOT/vim/vim/bundle/powerline/powerline/bindings/vim
 " close quick/location fix/list
 nnoremap <leader>l :lcl<CR>
 " next/prev quicklist item
-nmap <c-b> :cprevious<CR>
-nmap <c-n> :cnext<CR>
+" nmap <c-b> :cprevious<CR>
+" nmap <c-n> :cnext<CR>
 
 " http://vim.wikia.com/wiki/Using_vim_color_schemes_with_Putty
 if &term =~ "xterm"
-    "256 color --
+    " 256 color --
     let &t_Co=256
     " restore screen after quitting
     set t_ti=ESC7ESC[rESC[?47h t_te=ESC[?47lESC8

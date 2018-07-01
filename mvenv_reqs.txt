@@ -1,3 +1,5 @@
+# for python
+
 ipython
 ipdb
 trepan3k
@@ -9,3 +11,9 @@ flake8
 pylint-django
 django-extensions
 werkzeug
+
+# for yaml
+yamllint
+
+# for vim
+vim-vint
