@@ -95,6 +95,15 @@ if [ ! -z "$VENVWRAPPER" ]; then
     source "$VENVWRAPPER"
 fi
 
+# added by travis gem
+[ -f /home/welkere/.travis/travis.sh ] && source /home/welkere/.travis/travis.sh
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+[ -f ~/src/ripgrep/complete/rg.bash ] && source ~/src/ripgrep/complete/rg.bash;
+[ -f ~/src/fd/autocomplete/fd.bash-completion ] && source ~/src/fd/autocomplete/fd.bash-completion
+
 
 # pip bash completion start
 # _pip_completion()
@@ -118,14 +127,14 @@ fi
 
 if [ -d /etc/bash_completion.d/ ]; then
    source /etc/bash_completion.d/git
-   source /etc/bash_completion.d/yum
+   # source /etc/bash_completion.d/yum
    # support the `g` alias for git
    complete -o default -o nospace -F _git g
    __git_complete g __git_main
 fi
 
 # mac with homebrew
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
+if [ -x "$(command -v brew)" ] && [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion
    # support the `g` alias for git
     __git_complete g __git_main
@@ -143,7 +152,7 @@ if [ -x $(which aws_completer 2>/dev/null) ]; then
 fi
 
 #http://tychoish.com/rhizome/9-awesome-ssh-tricks/
-#ssh-agent runs per-session, so tmux can't always find it. 
+#ssh-agent runs per-session, so tmux can't always find it.
 #don't re-run, just find the real one
 ssh-reagent () {
     for agent in $TMPDIR/ssh-*/agent.*; do
