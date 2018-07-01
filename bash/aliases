@@ -44,11 +44,10 @@ alias hl='fc -l'
 
 alias py='python'
 alias py3='python3'
-alias ma='python manage.py'
-alias rs='python manage.py runserver'
-alias shell='python manage.py shell_plus'
+alias ma='manage.py'
+alias rs='manage.py runserver'
+alias shell='manage.py shell_plus --ipython'
 alias db='python manage.py dbshell'
-alias ipy="python -c 'import IPython; IPython.terminal.ipapp.launch_new_instance()'"
 
 alias venv='source venv/bin/activate'
 
