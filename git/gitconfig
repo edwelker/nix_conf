@@ -6,6 +6,8 @@
     pager = less -FXRS -x2
 	whitespace = trailing-space,space-before-tab
 	excludesfile = ~/.gitignore
+	autocrlf = input
+	eol = lf
 [color]
     diff = auto
     status = auto
