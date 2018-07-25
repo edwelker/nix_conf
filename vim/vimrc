@@ -139,6 +139,10 @@ set noerrorbells         " don't beep
 set colorcolumn=99
 highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
 
+" File setftings
+set fileformat=unix
+set fileformats=unix,dos
+
 " Split settings
 set splitbelow
 set splitright
