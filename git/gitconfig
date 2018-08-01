@@ -106,7 +106,7 @@
     user = edwelker
     password = !security find-generic-password -gs github.password -w | tr -d '\n'
 [push]
-	default = tracking
+	default = current
 [credential]
     helper = cache --timeout=3600
 [merge]
@@ -120,6 +120,7 @@
 	renames = copies
 	mnemonicprefix = true
 [branch]
-	autosetupmerge = true
+    autosetupmerge = always
+    autosetuprebase = always
 [rerere]
 	enabled = true
