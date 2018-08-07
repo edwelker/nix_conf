@@ -29,10 +29,13 @@ alias mt='cd $(mktemp -d)'
 
 mvenv(){
     cd $(mktemp -d);
-    virtualenv venv;
+    TMPDIR=$(pwd -P)
+    virtualenv3.6 venv;
     source venv/bin/activate;
     pip install -r ${DOTDOT}/mvenv_reqs.txt
     cd -;
+    rm venv;
+    ln -s $TMPDIR/venv venv
 }
 
 alias pd="pushd"
@@ -47,9 +50,11 @@ alias hl='fc -l'
 alias py='python'
 alias py3='python3'
 alias ma='manage.py'
-alias rs='manage.py runserver'
+alias rs='manage.py runserver 0.0.0.0:10005'
 alias shell='manage.py shell_plus --ipython'
 alias db='python manage.py dbshell'
+alias testclean="mvenv && pe && pst"
+alias pt=".tox/py*/bin/py.test --nomigrations"
 
 alias venv='source venv/bin/activate'
 

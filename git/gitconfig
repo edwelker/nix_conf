@@ -43,6 +43,7 @@
     le = log --oneline --decorate
     undo = reset --soft HEAD^
     soft = reset --soft HEAD^
+    po = "push origin"
     unstage = reset HEAD
     diffprev = diff HEAD^
     subinit = submodule update --init
