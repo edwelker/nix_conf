@@ -125,3 +125,5 @@
     autosetuprebase = always
 [rerere]
 	enabled = true
+[fetch]
+	prune = true
