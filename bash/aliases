@@ -29,10 +29,17 @@ alias mt='cd $(mktemp -d)'
 
 mvenv(){
     cd $(mktemp -d);
-    virtualenv venv;
+    TMPDIR=$(pwd -P)
+    virtualenv3.6 venv;
     source venv/bin/activate;
     pip install -r ${DOTDOT}/mvenv_reqs.txt
     cd -;
+    rm -rf .eggs;
+    rm venv;
+    ln -s $TMPDIR/venv venv
+    if [ -f setup.py ]; then
+        pip install -e .
+    fi
 }
 
 alias pd="pushd"
@@ -47,9 +54,18 @@ alias hl='fc -l'
 alias py='python'
 alias py3='python3'
 alias ma='manage.py'
-alias rs='manage.py runserver'
+alias rs='manage.py runserver 0.0.0.0:10005'
 alias shell='manage.py shell_plus --ipython'
 alias db='python manage.py dbshell'
+alias testclean="mvenv && pe && pst"
+
+function pt (){
+    .tox/py*/bin/pytest "$@"; .tox/flake8/bin/flake8 --ignore=E501,W503,W504 src/ tests/
+}
+
+function pte(){
+    .tox/py*/bin/pytest "$@" --nomigrations --cov=project --cov=tests --cov-report=term-missing:skip-covered -k-slow -rsx; .tox/flake8/bin/flake8 --ignore=E501,W503,W504 src/ tests/
+}
 
 alias venv='source venv/bin/activate'
 
@@ -59,6 +75,7 @@ alias pip-old="pip list -o"
 alias pip-local="egrep -v -f ${DOTDOT}/requirements.txt"
 alias pe="pip install -e ."
 alias pst="python setup.py test"
+alias fl=".tox/flake8/bin/flake8 --ignore=E501,W503,W504 src/ tests/"
 
 alias findhere='find . -iname'
 alias findhome='find ~ -iname'
@@ -117,7 +134,7 @@ alias sk='ssh-keygen -t rsa -b 4096'
 alias g='git'
 alias gp='git push'
 alias gpp='git pull && git push'
-alias gpt='git push && git push --tags'
+alias gpt='git po && git po --tags'
 alias ginitpy="git init --template=${DOTDOT}/pygittemplate"
 alias ghome="cd $(g root)"
 alias gsuperclean="git pruneremotes && git bclean"
