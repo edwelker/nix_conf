@@ -13,7 +13,7 @@ django-extensions
 werkzeug
 
 # for yaml
-yamllint
+# yamllint
 
 # for vim
 vim-vint

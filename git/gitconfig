@@ -55,7 +55,7 @@
     c = "clean -f -d -x"
 
     pruneremotes = remote prune origin
-    bclean = "!git co master && git branch --no-color --merged | grep -v '\\*' | xargs -n 1 git branch -d"
+    bclean = "!git co develop && git branch --no-color --merged | grep -v '\\*' | xargs -n 1 git branch -d"
 
     lt = describe --tags --abbrev=0
     ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
@@ -114,6 +114,7 @@
 [merge]
 	tool = vimdiff
 	conflictstyle = diff3
+	tool = kdiff3
 [mergetool]
 	prompt = false
 [advice]

@@ -304,7 +304,6 @@ let g:pymode_syntax_highlight_exceptions = g:pymode_syntax_all " builtin excepti
 let python_highlight_all=1 " highlight
 
 " Ale
-<<<<<<< HEAD
 let g:ale_sign_column_always = 1
 let g:ale_completion_enabled = 1
 let g:ale_open_list = 0
@@ -330,6 +329,8 @@ let g:ale_cache_executable_check_failures = 1
 let g:airline#extensions#ale#enabled = 1
 let g:ale_sign_error = '✗'
 let g:ale_sign_warning = '⚠'
+" highlight ALEErrorSign ctermbg=NONE ctermfg=red
+" highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
 
 let g:ale_linters = {
 \  'python': ['mypy', 'flake8', 'pylint-django', 'black', 'pylint'],
