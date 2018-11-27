@@ -23,6 +23,7 @@
     co = checkout
     br = branch
     bra = branch -vvra
+    brd = for-each-ref --sort=committerdate refs/heads/ --format='%(color: red)%(committerdate:short) %(color: cyan)%(refname:short)'
     rv = remote -v
     ap = add -p
     a = add

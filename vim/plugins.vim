@@ -142,6 +142,7 @@ Plug 'tpope/vim-surround'
 
 " Trial
 Plug 'airblade/vim-gitgutter'
+Plug 'scrooloose/nerdtree'
 
 
 filetype plugin indent on                   " required!
