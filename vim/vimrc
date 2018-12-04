@@ -49,10 +49,12 @@ else
   set backupdir=~/.tmp
 
   "set where to keep swp files
-  set directory=~/.tmp/swapfiles//
+  set directory=~/.tmp/swapfiles/,~/tmp,/tmp
+  set viminfo='20,\"80            " read/write a .viminfo file, don't store more
+                                "    than 80 lines of registers
 endif
 
-set history=100         " keep 50 lines of command line history
+set history=500         " keep 50 lines of command line history
 set ruler               " show the cursor position all the time
 set showcmd             " display incomplete commands
 set incsearch           " do incremental searching
@@ -73,6 +75,10 @@ if &t_Co > 2 || has("gui_running")
   syntax on
   set hlsearch
 endif
+
+" Conflict markers
+" highlight conflict markers
+match ErrorMsg '\v^[<\|=|>]{7}([^=].+)?$'
 
 
 " Only do this part when compiled with support for autocommands.
@@ -383,32 +389,36 @@ let g:fzf_history_dir = '~/.local/share/fzf-history'
 let g:fzf_buffers_jump = 1
 let g:fzf_layout = {"up":'~40%'}
 nnoremap <c-p><c-p> :Files<CR>
-nnoremap <c-p><c-f> :call <SID>fzf('find -L . -type f ! -path "*.hg/*" ! -path "*.git/*"', ':Files') <CR>
-nnoremap <c-p><c-a> :call <SID>fzf('find -L . -type f', ':Files') <CR>
-nnoremap <c-p><c-g> :GitFiles<CR>
+nnoremap <leader>t :Files<cr>
+nnoremap <leader>. :Tags<cr>
+nnoremap <leader>b :Buffers<cr>
+nnoremap <leader>m :Marks<cr>
+
+" nnoremap <c-p><c-f> :call <SID>fzf('find -L . -type f ! -path "*.hg/*" ! -path "*.git/*"', ':Files') <CR>
+" nnoremap <c-p><c-a> :call <SID>fzf('find -L . -type f', ':Files') <CR>
+" nnoremap <c-p><c-g> :GitFiles<CR>
 "nnoremap <c-p><c-g>? :GitFiles?<CR>
-nnoremap <c-p><c-b> :Buffers<CR>
+" nnoremap <c-p><c-b> :Buffers<CR>
 "nnoremap <c-p><c-c> :Colors<CR>
 "nnoremap <c-p><c-a> :Ag<CR>
 "nnoremap <c-p><c-l> :Lines<CR>
-nnoremap <c-p><c-l> :BLines<CR>
-nnoremap <c-p><c-t> :Tags<CR>
-nnoremap <c-p><c-j> :BTags<CR>
-autocmd! FileType cpp  nnoremap <buffer> <c-p><c-j> : call <SID>fzf_cpp_tags()<CR>
+" nnoremap <c-p><c-l> :BLines<CR>
+" nnoremap <c-p><c-t> :Tags<CR>
+" nnoremap <c-p><c-j> :BTags<CR>
+" autocmd! FileType cpp  nnoremap <buffer> <c-p><c-j> : call <SID>fzf_cpp_tags()<CR>
 "nnoremap <c-p><c-j> :BTags<CR>
 "nnoremap <c-p><c-m> :Marks<CR>
-nnoremap <c-p><c-w> :Windows<CR>
+" nnoremap <c-p><c-w> :Windows<CR>
 "nnoremap <c-p><c-l> :Locate<CR>
-nnoremap <c-p><c-h> :History<CR>
+" nnoremap <c-p><c-h> :History<CR>
 "nnoremap <c-p><c-;> :History:<CR>
 "nnoremap <c-p><c-/> :History/<CR>
-nnoremap <c-p><c-s> :Snippets<CR>
+" nnoremap <c-p><c-s> :Snippets<CR>
 "nnoremap <c-p><c-c> :Commits<CR>
 "nnoremap <c-p><c-b>c :BCommits<CR>
-nnoremap <c-p><c-c> :Commands<CR>
-nnoremap <c-p><c-m> :Maps<CR>
+" nnoremap <c-p><c-c> :Commands<CR>
+" nnoremap <c-p><c-m> :Maps<CR>
 command! -nargs=* -complete=file Ae :call s:fzf_ag_expand(<q-args>)
-
 "nnoremap <c-p>h :Helptags<CR>
 "nnoremap <c-p>f :Filetypes<CR>
 
@@ -553,6 +563,9 @@ au BufNewFile,BufRead views.py     setlocal filetype=python.django
 au BufNewFile,BufRead settings.py  setlocal filetype=python.django
 au BufNewFile,BufRead forms.py     setlocal filetype=python.django
 au BufNewFile,BufRead *.html setlocal filetype=htmldjango
+
+" Automatic insertion of breakpoints
+autocmd filetype python nnoremap <buffer> <leader>b :normal oimport pdb; pdb.set_trace()  # TODO: BREAKPOINT  # noqa<Esc>
 
 
 " Omni completion
