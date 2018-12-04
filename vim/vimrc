@@ -13,6 +13,8 @@ source $DOTDOT/vim/plugins.vim
 
 " remap the leader key.  typically \, but , is easier
 let mapleader=","
+" 2 second leader key (default is 1 sec)
+set timeoutlen=2000
 
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
@@ -49,6 +51,7 @@ else
   "set where to keep swp files
   set directory=~/.tmp/swapfiles//
 endif
+
 set history=100         " keep 50 lines of command line history
 set ruler               " show the cursor position all the time
 set showcmd             " display incomplete commands
@@ -129,7 +132,13 @@ set hidden               " Leave hidden buffers open
 set lazyredraw           " fewer redraws
 set ttyfast
 
+" disabled for performance
 " set cursorline           " show where the cursor is YES, THIS MAY BE ANNOYING
+set nocursorline
+set nocursorcolumn
+set scrolljump=5
+set lazyredraw
+set synmaxcol=180
 set showmatch            " shows matching parens
 
 set title                " change the terminal's title
@@ -229,6 +238,10 @@ vnoremap > >gv
 nnoremap <Leader>+ <Plug>nextvalInc
 nnoremap <Leader>- <Plug>nextvalDec
 
+" " Moving between buffers
+" map <C-Tab> :bnext<cr>
+" map <C-S-Tab> :bprevious<cr>
+
 " airline
 set laststatus=2
 " Enable the list of buffers
@@ -236,19 +249,23 @@ let g:airline#extensions#tabline#enabled = 1
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#show_buffers = 1
-let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
+let g:airline#extensions#tabline#tab_nr_type = 0 " tab number
 let g:airline#extensions#tabline#show_close_button = 0
 let g:airline#extensions#tabline#buffer_nr_show = 1
-let g:airline#extensions#tabline#buffer_idx_mode = 1
+" this just shows an index but not the buffer number
+let g:airline#extensions#tabline#buffer_idx_mode = 0
 " Use this theme:
 let g:airline_theme='luna'
 let g:airline_powerline_fonts = 1
+
+let g:airline#extensions#gutentags#enabled = 1
 " airline end
 
 " gutentags Don't pollute project dirs
 let g:gutentags_ctags_exclude = ['venv', 'build', 'static', 'node_modules']
 let g:gutentags_ctags_exclude_wildignore = 0
 let g:gutentags_ctags_tagfile = '.tags'
+let g:gutentags_generate_on_missing = 1
 " gutentags end
 
 " set vim default tags file name `tags` to `.tags`
@@ -258,7 +275,7 @@ set tags=./.tags;,.tags
 " No carrage return at the end so we can actually search
 " :help key-notation
 nnoremap <leader>a :Ag<Space>
-let g:ag_highlight=1
+let g:ag_highlight=0
 
 " html5 settings
 let g:html5_event_handler_attributes_complete = 1
@@ -327,6 +344,7 @@ let g:ale_cache_executable_check_failures = 1
 " let g:ale_python_pylint_options = '--load-plugins pylint_django'
 " Ale-Airline
 let g:airline#extensions#ale#enabled = 1
+let airline#extensions#ale#show_line_numbers = 1
 let g:ale_sign_error = '✗'
 let g:ale_sign_warning = '⚠'
 " highlight ALEErrorSign ctermbg=NONE ctermfg=red
@@ -469,6 +487,10 @@ command! Wq wq
 command! Q q
 command! Bd bd
 command! BD bd
+command! Bn bn
+command! Bp bp
+command! BN bn
+command! BP bp
 
 " range select
 command! -range Vis call setpos('.', [0,<line1>,0,0]) |
@@ -562,10 +584,6 @@ au FileType html,css,markdown,htmldjango,scsshp,txt setlocal binary noeol
 if exists("nofixeol") " only for versions 7.4.785 and later (http://vim.wikia.com/wiki/Do_not_auto-add_a_newline_at_EOF)
     au FileType html,css,markdown,htmldjango,scsshp,txt setlocal binary noeol nofixeol
 endif
-
-" " Moving between buffers
-" map <C-Tab> :bnext<cr>
-" map <C-S-Tab> :bprevious<cr>
 
 " au FileType scala syn region foldImports start="import" end=/import.*\n^$/ fold keepend
 

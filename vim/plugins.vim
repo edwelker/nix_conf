@@ -35,15 +35,15 @@ Plug 'xolox/vim-colorscheme-switcher'
 
 " Syntax
 Plug 'tpope/vim-git', { 'for': 'git' }
-Plug 'cakebaker/scss-syntax.vim', { 'for': 'scss' }
+" Plug 'cakebaker/scss-syntax.vim', { 'for': 'scss' }
 " Plug 'qrps/lilypond-vim', { 'for': 'lilypond' }
-Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
-Plug 'sukima/xmledit', { 'for': 'xml' }
+" Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
+" Plug 'sukima/xmledit', { 'for': 'xml' }
 Plug 'https://github.com/othree/html5.vim.git', { 'for': 'html' }
 
 " Markdown
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
-Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
+" Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
 
 " Ugh, Ruby
 " Plug 'rodjek/vim-puppet', { 'for': 'puppet' }
@@ -57,8 +57,10 @@ Plug 'sheerun/vim-polyglot'
 Plug 'jmcantrell/vim-virtualenv', { 'for': 'python' }
 " Plug 'klen/python-mode', { 'for': 'python' }
 Plug 'vim-scripts/indentpython.vim', { 'for': 'python' }
-Plug 'raimon49/requirements.txt.vim'
-Plug 'fisadev/vim-isort'
+Plug 'raimon49/requirements.txt.vim', { 'for': 'python' }
+Plug 'fisadev/vim-isort', { 'for': 'python' }
+Plug 'tmhedberg/SimpylFold', { 'for': 'python' }
+Plug 'Raimondi/delimitMate', { 'for': 'python' }
 
 " Hashi
 " Plug 'hashivim/vim-terraform'
@@ -81,14 +83,12 @@ Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 " Fugitive Git from within Vim
 Plug 'tpope/vim-fugitive'
 
-" Syntastic: Code linting errors
-" Plug 'scrooloose/syntastic', { 'for': ['python', 'javascript', 'css'] }
-" Plug 'scrooloose/syntastic', { 'for': 'ruby' }
+" Ale
 Plug 'w0rp/ale'
 
 " Ag for searching
 Plug 'rking/ag.vim'
-Plug 'majutsushi/tagbar'
+Plug 'majutsushi/tagbar', { 'on': 'TagBar' }
 
 
 " Files!
@@ -104,21 +104,21 @@ Plug 'ConradIrwin/vim-bracketed-paste'
 " Plug 'myusuf3/numbers.vim'
 
 " aligning
-Plug 'godlygeek/tabular'
+" Plug 'godlygeek/tabular'
 
 " incrementing numbers using + and -
 Plug 'vim-scripts/nextval'
 
 " Handlebars
-Plug 'mustache/vim-mustache-handlebars'
+" Plug 'mustache/vim-mustache-handlebars'
 
 " ctags
 " autotags for ctag generation
 " Plug 'craigemery/vim-autotag'
-Plug 'ludovicchabant/vim-gutentags'
+Plug 'ludovicchabant/vim-gutentags'   " Can't get the damned thing to work
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 " Plug 'xolox/vim-easytags'
 Plug 'xolox/vim-misc'
-Plug 'majutsushi/tagbar'
 
 " Tmux window navigation
 Plug 'christoomey/vim-tmux-navigator'
@@ -142,7 +142,6 @@ Plug 'tpope/vim-surround'
 
 " Trial
 Plug 'airblade/vim-gitgutter'
-Plug 'scrooloose/nerdtree'
 
 
 filetype plugin indent on                   " required!
