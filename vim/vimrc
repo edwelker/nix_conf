@@ -565,7 +565,7 @@ au BufNewFile,BufRead forms.py     setlocal filetype=python.django
 au BufNewFile,BufRead *.html setlocal filetype=htmldjango
 
 " Automatic insertion of breakpoints
-autocmd filetype python nnoremap <buffer> <leader>bb :normal oimport pdb; pdb.set_trace()  # TODO: BREAKPOINT  # noqa<Esc>
+autocmd filetype python nnoremap <buffer> <leader>ib :normal oimport pdb; pdb.set_trace()  # TODO: BREAKPOINT  # noqa<Esc>
 
 
 " Omni completion
