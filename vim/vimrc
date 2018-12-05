@@ -57,6 +57,8 @@ set ruler               " show the cursor position all the time
 set showcmd             " display incomplete commands
 set incsearch           " do incremental searching
 
+set path+=**
+
 " For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
 " let &guioptions = substitute(&guioptions, "t", "", "g")
 
@@ -266,14 +268,17 @@ let g:airline#extensions#gutentags#enabled = 1
 " airline end
 
 " gutentags Don't pollute project dirs
+let g:gutentags_project_root = ['.tags']
+let g:gutentags_add_default_project_roots = 1
 let g:gutentags_ctags_exclude = ['venv', 'build', 'static', 'node_modules']
 let g:gutentags_ctags_exclude_wildignore = 0
 let g:gutentags_ctags_tagfile = '.tags'
+let g:gutentags_ctags_auto_set_tags = 1
 let g:gutentags_generate_on_missing = 1
 " gutentags end
 
 " set vim default tags file name `tags` to `.tags`
-set tags=./.tags;
+set tags=./tags;/
 
 " Ag settings
 " No carrage return at the end so we can actually search
@@ -294,7 +299,7 @@ let g:user_emmet_expandabbr_key='<c-e>'
 let g:use_emmet_complete_tag=1
 
 " python-mode (pymode)
-let g:pymode_lint_ignore="E501"
+let g:pymode_lint_ignore='E501'
 let g:pymode_virtualenv = 1
 let g:pymode_lint = 0
 

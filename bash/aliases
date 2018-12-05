@@ -22,6 +22,8 @@ alias .....='cd ../../../..'
 alias ......='cd ../../../../..'
 alias .......='cd ../../../../../..'
 
+alias tree='tree -Ca --noreport -I ".sass-cache|.git|node_modules|bower_components|tmp|__pycache__|venv"'
+
 alias ag=rg
 
 alias md='mkdir -p'
