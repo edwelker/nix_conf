@@ -464,7 +464,7 @@ nnoremap <Leader>ps :PlugStatus<CR>
 
 "GitGutter - this substantially makes git gutter much faster
 set updatetime=100
-set signcolumn=yes " always show the column, so vim doesn't resize
+set signcolumn=yes  " always show the column, so vim doesn't resize
 let g:gitgutter_max_signs = 100  " 500 default value
 
 
