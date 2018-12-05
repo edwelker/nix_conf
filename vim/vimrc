@@ -565,7 +565,7 @@ au BufNewFile,BufRead forms.py     setlocal filetype=python.django
 au BufNewFile,BufRead *.html setlocal filetype=htmldjango
 
 " Automatic insertion of breakpoints
-autocmd filetype python nnoremap <buffer> <leader>b :normal oimport pdb; pdb.set_trace()  # TODO: BREAKPOINT  # noqa<Esc>
+autocmd filetype python nnoremap <buffer> <leader>bb :normal oimport pdb; pdb.set_trace()  # TODO: BREAKPOINT  # noqa<Esc>
 
 
 " Omni completion
@@ -577,6 +577,11 @@ autocmd filetype python nnoremap <buffer> <leader>b :normal oimport pdb; pdb.set
 " au FileType htmldjango set omnifunc=htmldjangocomplete#CompleteDjango
 " au FileType htmldjango inoremap {% {% %}<left><left><left>
 " au FileType htmldjango inoremap {{ {{ }}<left><left><left>
+
+" Jedi
+let g:jedi#popup_on_dot = 0
+let g:jedi#popup_select_first = 0
+let g:jedi#usages_command = "<leader>b"  " like IntelliJ
 
 
 " Completor
