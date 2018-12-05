@@ -1,5 +1,6 @@
 # believe it or not, this needs to be vim, not vi, for crontab -e to work on a mac
-export EDITOR=vim
+export VISUAL=vim
+export EDITOR="$VISUAL"
 export PAGER="less"
 export LESS="-R"
 export TERM=xterm-256color

@@ -2,7 +2,7 @@
     name = Eddie Welker
     email = welkere@ncbi.nlm.nih.gov
 [core]
-    editor = /usr/bin/vim
+    # editor = /usr/bin/vim   - don't use this, use either $VISUAL or $EDITOR so it's platform independent
     pager = less -FXRS -x2
 	whitespace = trailing-space,space-before-tab
 	excludesfile = ~/.gitignore
