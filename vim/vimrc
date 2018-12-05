@@ -49,9 +49,7 @@ else
   set backupdir=~/.tmp
 
   "set where to keep swp files
-  set directory=~/.tmp/swapfiles/,~/tmp,/tmp
-  set viminfo='20,\"80            " read/write a .viminfo file, don't store more
-                                "    than 80 lines of registers
+  set directory=~/.tmp/swapfiles//
 endif
 
 set history=500         " keep 50 lines of command line history
@@ -275,7 +273,7 @@ let g:gutentags_generate_on_missing = 1
 " gutentags end
 
 " set vim default tags file name `tags` to `.tags`
-set tags=./.tags;,.tags
+set tags=./.tags;
 
 " Ag settings
 " No carrage return at the end so we can actually search
@@ -299,8 +297,6 @@ let g:use_emmet_complete_tag=1
 let g:pymode_lint_ignore="E501"
 let g:pymode_virtualenv = 1
 let g:pymode_lint = 0
-
-let g:pymode_rope = 0
 
 " let g:pymode_options = 0
 " let g:pymode_options_max_line_length = 99
@@ -604,30 +600,6 @@ if exists("nofixeol") " only for versions 7.4.785 and later (http://vim.wikia.co
 endif
 
 " au FileType scala syn region foldImports start="import" end=/import.*\n^$/ fold keepend
-
-
-" Markdown
-" " Goyo
-function! s:auto_goyo()
-    if &ft == 'markdown' && winnr('$') == 1
-        Goyo 80
-        NumbersToggle
-    elseif exists('#goyo')
-        Goyo!
-    endif
-endfunction
-
-function! s:goyo_leave()
-    if winnr('$') < 2
-        silent! :q
-    endif
-endfunction
-
-augroup goyo_markdown
-    autocmd!
-    autocmd BufNewFile,BufRead * call s:auto_goyo()
-    autocmd! User GoyoLeave nested call goyo_leave()
-augroup END
 
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
