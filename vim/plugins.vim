@@ -88,7 +88,7 @@ Plug 'w0rp/ale'
 
 " Ag for searching
 Plug 'rking/ag.vim'
-Plug 'majutsushi/tagbar', { 'on': 'TagBar' }
+" Plug 'majutsushi/tagbar', { 'on': 'TagBar' }
 
 
 " Files!
@@ -115,7 +115,7 @@ Plug 'vim-scripts/nextval'
 " ctags
 " autotags for ctag generation
 " Plug 'craigemery/vim-autotag'
-Plug 'ludovicchabant/vim-gutentags'   " Can't get the damned thing to work
+Plug 'ludovicchabant/vim-gutentags'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 " Plug 'xolox/vim-easytags'
 Plug 'xolox/vim-misc'

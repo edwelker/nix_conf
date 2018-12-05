@@ -1,9 +1,13 @@
 -f .tags
 -R
 
+--extra=+f
+
 --fields=+l
 --fields=+n
 --fields=+S
+
+--languages=all
 
 --exclude=*.bak
 --exclude=*.dll
@@ -36,9 +40,26 @@
 --exclude=node_modules
 --exclude=static
 --exclude=target
---exclude=venv
+--exclude=venv/bin
+--exclude=venv/include
+--exclude=venv/man
+--exclude=venv/lib64
+--exclude=venv/share
+--exclude=venv/trepan
+--exclude=gulp
+--exclude=.gitignore
+--exclude=requirements
+--exclude=Procfile
+--exclude=*.yaml
+--exclude=.eggs
+--exclude=tests-report
+--exclude=htmlcov
+--exclude=.pytest_cache
+--exclude=.mypy_cache
+--exclude=.idea
+--exclude=*.egg-info
 
---python-kinds=cfmi
+--python-kinds=cfm-i
 --vim-kinds=acfmv
 --javascript-kinds=cfm
 
@@ -48,10 +69,7 @@
 --regex-markdown=/^##[ \t]+(.*)/\1/h,heading2/
 --regex-markdown=/^###[ \t]+(.*)/\1/h,heading3/
 
---exclude=node_modules
---exclude=gulp
 
---languages=-javascript
 
 --langdef=js
 --langmap=js:.js
