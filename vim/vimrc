@@ -488,6 +488,20 @@ vnoremap %s/ %s/\v
 "F2 spell check
 nnoremap <F2> :set spell<CR>
 
+" spelling
+setlocal spell
+highlight clear SpellBad
+highlight SpellBad term=standout ctermfg=1 term=underline cterm=underline cterm=italic
+set spell spelllang=en_us
+set dictionary+=/usr/share/dict/words
+set spellfile=~/.vim/spell/en.utf-8.add
+
+
+" Completion - natural vim style - include tags, and dictionary words (k{dictname})
+set complete+=.,w,b,u,t,i
+set complete+=kspell
+
+
 " Paste mode with visual indication
 " set pastetoggle=<F2>
 " No longer needed with bracketed paste plugin: https://github.com/ConradIrwin/vim-bracketed-paste
@@ -620,7 +634,7 @@ inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " Use tab to trigger auto completion.  Default suggests completions as you type.
-let g:completor_auto_trigger = 0
+let g:completor_auto_trigger = 1
 inoremap <expr> <Tab> Tab_Or_Complete()
 " END Completor
 
@@ -638,11 +652,9 @@ endif
 " au FileType scala syn region foldImports start="import" end=/import.*\n^$/ fold keepend
 
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+autocmd BufRead,BufNewFile *.md setlocal spell
 
-" Spell check
-setlocal spell
-highlight clear SpellBad
-highlight SpellBad term=standout ctermfg=1 term=underline cterm=underline
+autocmd FileType gitcommit setlocal spell
 
 " Comment italics - tho depends on colorscheme
 highlight Comment cterm=italic
