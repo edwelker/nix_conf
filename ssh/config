@@ -44,11 +44,13 @@ Host iweb
     LocalForward 3128 webproxy.ncbi.nlm.nih.gov:3128
     LocalForward 2222 intrawebdev2.be-md.ncbi.nlm.nih.gov:22
     LocalForward 2181 10.50.2.148:2181
-    LocalForward 3389 NCBIPC8234.be-md.ncbi.nlm.nih.gov:3389
+    # LocalForward 3389 NCBIPC8234.be-md.ncbi.nlm.nih.gov:3389
+    # LocalForward 3389 NCBIPC9179.be-md.ncbi.nlm.nih.gov:3389
+    LocalForward 3389 mslogin01.be-md.ncbi.nlm.nih.gov:3389
     LocalForward 9418 bitbucket.be-md.ncbi.nlm.nih.gov:9418
     LocalForward 9443 bbkt-test.be-md.ncbi.nlm.nih.gov:443
-    LocalForward 9922 ncbimac1029.ncbi.nlm.nih.gov:22
-    LocalForward 5920 ncbimac1029.ncbi.nlm.nih.gov:5920
+    LocalForward 9922 ncbimac1206.be-md.ncbi.nlm.nih.gov:22
+    LocalForward 5920 ncbimac1206.be-md.ncbi.nlm.nih.gov:5920
     LocalForward 5443 artifactory.ncbi.nlm.nih.gov:443
     LocalForward 5444 teamcity.ncbi.nlm.nih.gov:443
     LocalForward 5222 net.nih.gov:5222
@@ -63,9 +65,11 @@ Host i
     ProxyCommand ssh w nc %h %p
     #ProxyCommand ssh w -W %h:%p
     LocalForward 2222 intrawebdev2.be-md.ncbi.nlm.nih.gov:22
-    LocalForward 3389 NCBIPC8234.be-md.ncbi.nlm.nih.gov:3389
-    LocalForward 9922 ncbimac1029.ncbi.nlm.nih.gov:22
-    LocalForward 5920 ncbimac1029.ncbi.nlm.nih.gov:5920
+    # LocalForward 3389 NCBIPC8234.be-md.ncbi.nlm.nih.gov:3389
+    LocalForward 3389 mslogin01.be-md.ncbi.nlm.nih.gov:3389
+    LocalForward 3389 NCBIPC9179.be-md.ncbi.nlm.nih.gov:3389
+    LocalForward 9922 ncbimac1206.be-md.ncbi.nlm.nih.gov:22
+    LocalForward 5920 ncbimac1206.be-md.ncbi.nlm.nih.gov:5920
     LocalForward 5443 artifactory.ncbi.nlm.nih.gov:443
     LocalForward 5444 teamcity.ncbi.nlm.nih.gov:443
     LocalForward 5222 net.nih.gov:5222
@@ -78,7 +82,7 @@ Host i
 Host w
     HostName ssh.ncbi.nlm.nih.gov
     User welkere
-    PKCS11Provider /usr/local/Cellar/opensc/HEAD-29589e8/lib/pkcs11/opensc-pkcs11.so
+    PKCS11Provider /usr/local/Cellar/opensc/HEAD-452e1d3/lib/pkcs11/opensc-pkcs11.so
     LocalForward 3128 webproxy.ncbi.nlm.nih.gov:3128
     LocalForward 9418 stash.be-md.ncbi.nlm.nih.gov:9418
     ServerAliveInterval 50
@@ -114,11 +118,6 @@ Host st
     ServerAliveInterval 50
     KeepAlive yes
     ForwardX11 no
-
-Host ncbimac1029
-    User welkere
-    HostName ncbimac1029.be-md.ncbi.nlm.nih.gov
-#    Port 9922
 
 Host github github.com
     HostName github.com

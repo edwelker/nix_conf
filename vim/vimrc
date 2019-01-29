@@ -1,3 +1,10 @@
+" to show the key mappings
+" :nmap - normal mode
+" :vmap - visual mode
+" :imap - insert mode
+" :map - some set of all? not sure.
+
+
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible " don't need vi compatibility
@@ -6,6 +13,8 @@ source $DOTDOT/vim/plugins.vim
 
 " remap the leader key.  typically \, but , is easier
 let mapleader=","
+" 2 second leader key (default is 1 sec)
+set timeoutlen=2000
 
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
@@ -42,10 +51,13 @@ else
   "set where to keep swp files
   set directory=~/.tmp/swapfiles//
 endif
-set history=100         " keep 50 lines of command line history
+
+set history=500         " keep 50 lines of command line history
 set ruler               " show the cursor position all the time
 set showcmd             " display incomplete commands
 set incsearch           " do incremental searching
+
+set path+=**
 
 " For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
 " let &guioptions = substitute(&guioptions, "t", "", "g")
@@ -63,6 +75,10 @@ if &t_Co > 2 || has("gui_running")
   syntax on
   set hlsearch
 endif
+
+" Conflict markers
+" highlight conflict markers
+match ErrorMsg '\v^[<\|=|>]{7}([^=].+)?$'
 
 
 " Only do this part when compiled with support for autocommands.
@@ -122,7 +138,13 @@ set hidden               " Leave hidden buffers open
 set lazyredraw           " fewer redraws
 set ttyfast
 
+" disabled for performance
 " set cursorline           " show where the cursor is YES, THIS MAY BE ANNOYING
+set nocursorline
+set nocursorcolumn
+set scrolljump=5
+set lazyredraw
+set synmaxcol=180
 set showmatch            " shows matching parens
 
 set title                " change the terminal's title
@@ -131,6 +153,10 @@ set noerrorbells         " don't beep
 
 set colorcolumn=99
 highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
+
+" File setftings
+set fileformat=unix
+set fileformats=unix,dos
 
 " Split settings
 set splitbelow
@@ -196,14 +222,33 @@ nnoremap <esc><esc> :nohl<cr>
 " Open the last file
 nnoremap <Leader><Leader> :e#<CR>
 
+" Nerd
+nnoremap <Leader>n :NERDTreeToggle<CR>
+nnoremap <silent> <Leader>nv :NERDTreeFind<CR>
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
+let NERDTreeHighlightCursorline = 1
+let NERDTreeIgnore = ['\~$', '.*\.pyc$', 'pip-log\.txt$', '__pycache__', '.*\.egg-info']
+
+let NERDChristmasTree = 1
+let NERDTreeChDirMode = 2
+let NERDTreeMapJumpFirstChild = 'gK'
+let NERDTreeMapActivateNode='<space>'
+let NERDTreeAutoDeleteBuffer = 1
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
 "keep selection after intending (thank goodness)
 "gv means select what you last selected
 vnoremap < <gv
 vnoremap > >gv
 
 " nextval
-nnoremap <silent> <unique> + <Plug>nextvalInc
-nnoremap <silent> <unique> - <Plug>nextvalDec
+nnoremap <Leader>+ <Plug>nextvalInc
+nnoremap <Leader>- <Plug>nextvalDec
+
+" " Moving between buffers
+" map <C-Tab> :bnext<cr>
+" map <C-S-Tab> :bprevious<cr>
 
 " airline
 set laststatus=2
@@ -211,23 +256,41 @@ set laststatus=2
 let g:airline#extensions#tabline#enabled = 1
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tabline#show_buffers = 1
+let g:airline#extensions#tabline#tab_nr_type = 0 " tab number
+let g:airline#extensions#tabline#show_close_button = 0
+let g:airline#extensions#tabline#buffer_nr_show = 1
+" this just shows an index but not the buffer number
+let g:airline#extensions#tabline#buffer_idx_mode = 0
 " Use this theme:
 let g:airline_theme='luna'
 let g:airline_powerline_fonts = 1
 
+let g:airline#extensions#gutentags#enabled = 1
+" airline end
+
 " gutentags Don't pollute project dirs
-let g:gutentags_ctags_exclude = ['venv', 'build', 'static', 'node_modules']
+" let g:gutentags_trace = 1
+let g:gutentags_project_root = ['.tags']
+let g:gutentags_add_default_project_roots = 1
 let g:gutentags_ctags_exclude_wildignore = 0
+let g:gutentags_ctags_auto_set_tags = 1
+let g:gutentags_generate_on_missing = 1
+let g:gutentags_generate_on_write = 1
+let g:gutentags_resolve_symlinks = 1
 let g:gutentags_ctags_tagfile = '.tags'
+" Should not be necessary given my .ctags config
+" let g:gutentags_ctags_exclude = ['venv', 'build', 'static', 'node_modules']
+" gutentags end
 
 " set vim default tags file name `tags` to `.tags`
-set tags=./.tags;,.tags
+set tags=./.tags;/
 
 " Ag settings
 " No carrage return at the end so we can actually search
 " :help key-notation
 nnoremap <leader>a :Ag<Space>
-let g:ag_highlight=1
+let g:ag_highlight=0
 
 " html5 settings
 let g:html5_event_handler_attributes_complete = 1
@@ -242,11 +305,9 @@ let g:user_emmet_expandabbr_key='<c-e>'
 let g:use_emmet_complete_tag=1
 
 " python-mode (pymode)
-let g:pymode_lint_ignore="E501"
+let g:pymode_lint_ignore='E501'
 let g:pymode_virtualenv = 1
 let g:pymode_lint = 0
-
-let g:pymode_rope = 0
 
 " let g:pymode_options = 0
 " let g:pymode_options_max_line_length = 99
@@ -273,19 +334,52 @@ let g:pymode_syntax_highlight_exceptions = g:pymode_syntax_all " builtin excepti
 let python_highlight_all=1 " highlight
 
 " Ale
-let g:ale_lint_on_enter = 1
+let g:ale_sign_column_always = 1
+let g:ale_completion_enabled = 1
+let g:ale_open_list = 0
+let g:ale_set_highlights = 1
+let g:ale_set_loclist = 1
+let g:ale_echo_cursor = 1
+let g:ale_keep_list_window_open = 0
+let g:ale_lint_delay = 200
+let g:ale_lint_on_enter = 0
 let g:ale_lint_on_save = 1
+let g:ale_lint_on_text_changed = 'always'
+let g:ale_cache_executable_check_failures = 1
+
 " Ale JavaScript
 "https://prettier.io/docs/en/vim.html
 " let g:ale_fixers['javascript'] = ['prettier']
 " let g:ale_javascript_prettier_options = '--single-quote --trailing-comma es5'
+
 " Ale Python
 " https://blog.landscape.io/using-pylint-on-django-projects-with-pylint-django.html
-let g:ale_python_pylint_options = '--load-plugins pylint_django'
+" let g:ale_python_pylint_options = '--load-plugins pylint_django'
 " Ale-Airline
 let g:airline#extensions#ale#enabled = 1
+let airline#extensions#ale#show_line_numbers = 1
 let g:ale_sign_error = '✗'
 let g:ale_sign_warning = '⚠'
+" highlight ALEErrorSign ctermbg=NONE ctermfg=red
+" highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
+
+let g:ale_linters = {
+\  'python': ['mypy', 'flake8', 'pylint-django', 'black', 'pylint'],
+\  'javascript': ['eslint'],
+\  'css': ['stylelint'],
+\  'jsx': ['stylelint', 'eslint']
+\}
+let g:ale_linter_aliases = {
+  \'jsx': 'css'
+\}
+let g:ale_fixers = {
+\  'python': ['isort'],
+\  'javascript': ['eslint'],
+\}
+let g:ale_python_pylint_options = '--load-plugins pylint_django'
+let g:ale_python_mypy_options = '--namespace-packages --ignore-missing-imports'
+" Ale end
+
 
 "Ctrlp
 "https://medium.com/a-tiny-piece-of-vim/making-ctrlp-vim-load-100x-faster-7a722fae7df6
@@ -304,32 +398,36 @@ let g:fzf_history_dir = '~/.local/share/fzf-history'
 let g:fzf_buffers_jump = 1
 let g:fzf_layout = {"up":'~40%'}
 nnoremap <c-p><c-p> :Files<CR>
-nnoremap <c-p><c-f> :call <SID>fzf('find -L . -type f ! -path "*.hg/*" ! -path "*.git/*"', ':Files') <CR>
-nnoremap <c-p><c-a> :call <SID>fzf('find -L . -type f', ':Files') <CR>
-nnoremap <c-p><c-g> :GitFiles<CR>
+nnoremap <leader>t :Tags<cr>
+nnoremap <leader>. :Tags<cr>
+nnoremap <leader>b :Buffers<cr>
+nnoremap <leader>m :Marks<cr>
+
+" nnoremap <c-p><c-f> :call <SID>fzf('find -L . -type f ! -path "*.hg/*" ! -path "*.git/*"', ':Files') <CR>
+" nnoremap <c-p><c-a> :call <SID>fzf('find -L . -type f', ':Files') <CR>
+" nnoremap <c-p><c-g> :GitFiles<CR>
 "nnoremap <c-p><c-g>? :GitFiles?<CR>
-nnoremap <c-p><c-b> :Buffers<CR>
+" nnoremap <c-p><c-b> :Buffers<CR>
 "nnoremap <c-p><c-c> :Colors<CR>
 "nnoremap <c-p><c-a> :Ag<CR>
 "nnoremap <c-p><c-l> :Lines<CR>
-nnoremap <c-p><c-l> :BLines<CR>
-nnoremap <c-p><c-t> :Tags<CR>
-nnoremap <c-p><c-j> :BTags<CR>
-autocmd! FileType cpp  nnoremap <buffer> <c-p><c-j> : call <SID>fzf_cpp_tags()<CR>
+" nnoremap <c-p><c-l> :BLines<CR>
+" nnoremap <c-p><c-t> :Tags<CR>
+" nnoremap <c-p><c-j> :BTags<CR>
+" autocmd! FileType cpp  nnoremap <buffer> <c-p><c-j> : call <SID>fzf_cpp_tags()<CR>
 "nnoremap <c-p><c-j> :BTags<CR>
 "nnoremap <c-p><c-m> :Marks<CR>
-nnoremap <c-p><c-w> :Windows<CR>
+" nnoremap <c-p><c-w> :Windows<CR>
 "nnoremap <c-p><c-l> :Locate<CR>
-nnoremap <c-p><c-h> :History<CR>
+" nnoremap <c-p><c-h> :History<CR>
 "nnoremap <c-p><c-;> :History:<CR>
 "nnoremap <c-p><c-/> :History/<CR>
-nnoremap <c-p><c-s> :Snippets<CR>
+" nnoremap <c-p><c-s> :Snippets<CR>
 "nnoremap <c-p><c-c> :Commits<CR>
 "nnoremap <c-p><c-b>c :BCommits<CR>
-nnoremap <c-p><c-c> :Commands<CR>
-nnoremap <c-p><c-m> :Maps<CR>
+" nnoremap <c-p><c-c> :Commands<CR>
+" nnoremap <c-p><c-m> :Maps<CR>
 command! -nargs=* -complete=file Ae :call s:fzf_ag_expand(<q-args>)
-
 "nnoremap <c-p>h :Helptags<CR>
 "nnoremap <c-p>f :Filetypes<CR>
 
@@ -375,7 +473,7 @@ nnoremap <Leader>ps :PlugStatus<CR>
 
 "GitGutter - this substantially makes git gutter much faster
 set updatetime=100
-set signcolumn=yes " always show the column, so vim doesn't resize
+set signcolumn=yes  " always show the column, so vim doesn't resize
 let g:gitgutter_max_signs = 100  " 500 default value
 
 
@@ -389,6 +487,20 @@ vnoremap %s/ %s/\v
 
 "F2 spell check
 nnoremap <F2> :set spell<CR>
+
+" spelling
+setlocal spell
+highlight clear SpellBad
+highlight SpellBad term=standout ctermfg=1 term=underline cterm=underline cterm=italic
+set spell spelllang=en_us
+set dictionary+=/usr/share/dict/words
+set spellfile=~/.vim/spell/en.utf-8.add
+
+
+" Completion - natural vim style - include tags, and dictionary words (k{dictname})
+set complete+=.,w,b,u,t,i
+set complete+=kspell
+
 
 " Paste mode with visual indication
 " set pastetoggle=<F2>
@@ -408,6 +520,10 @@ command! Wq wq
 command! Q q
 command! Bd bd
 command! BD bd
+command! Bn bn
+command! Bp bp
+command! BN bn
+command! BP bp
 
 " range select
 command! -range Vis call setpos('.', [0,<line1>,0,0]) |
@@ -434,12 +550,12 @@ set rtp+=$DOTDOT/vim/vim/bundle/powerline/powerline/bindings/vim
 " close quick/location fix/list
 nnoremap <leader>l :lcl<CR>
 " next/prev quicklist item
-nmap <c-b> :cprevious<CR>
-nmap <c-n> :cnext<CR>
+" nmap <c-b> :cprevious<CR>
+" nmap <c-n> :cnext<CR>
 
 " http://vim.wikia.com/wiki/Using_vim_color_schemes_with_Putty
 if &term =~ "xterm"
-    "256 color --
+    " 256 color --
     let &t_Co=256
     " restore screen after quitting
     set t_ti=ESC7ESC[rESC[?47h t_te=ESC[?47lESC8
@@ -471,6 +587,9 @@ au BufNewFile,BufRead settings.py  setlocal filetype=python.django
 au BufNewFile,BufRead forms.py     setlocal filetype=python.django
 au BufNewFile,BufRead *.html setlocal filetype=htmldjango
 
+" Automatic insertion of breakpoints
+autocmd filetype python nnoremap <buffer> <leader>ib :normal oimport pdb; pdb.set_trace()  # TODO: BREAKPOINT  # noqa<Esc>
+
 
 " Omni completion
 " autocmd FileType python set omnifunc=pythoncomplete#Complete
@@ -482,14 +601,42 @@ au BufNewFile,BufRead *.html setlocal filetype=htmldjango
 " au FileType htmldjango inoremap {% {% %}<left><left><left>
 " au FileType htmldjango inoremap {{ {{ }}<left><left><left>
 
+" Jedi
+let g:jedi#popup_on_dot = 0
+let g:jedi#popup_select_first = 0
+let g:jedi#usages_command = "<leader>b"  " like IntelliJ
+
 
 " Completor
+" Use TAB to complete when typing words, else inserts TABs as usual.  Uses
+" dictionary, source files, and completor to find matching words to complete.
+
+" Note: usual completion is on <C-n> but more trouble to press all the time.
+" Never type the same word twice and maybe learn a new spellings!
+" Use the Linux dictionary when spelling is in doubt.
+function! Tab_Or_Complete() abort
+  " If completor is already open the `tab` cycles through suggested completions.
+  if pumvisible()
+    return "\<C-N>"
+  " If completor is not open and we are in the middle of typing a word then
+  " `tab` opens completor menu.
+  elseif col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
+    return "\<C-R>=completor#do('complete')\<CR>"
+  else
+    " If we aren't typing a word and we press `tab` simply do the normal `tab`
+    " action.
+    return "\<Tab>"
+  endif
+endfunction
+
+" Use `tab` key to select completions.  Default is arrow keys.
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr> pumvisible() ? "\<C-y>\<cr>" : "\<cr>"
 
-" let g:completor_auto_trigger = 0
-" inoremap <expr> <Tab> pumvisible() ? "<C-N>" : "<C-R>=completor#do('complete')<CR>"
+" Use tab to trigger auto completion.  Default suggests completions as you type.
+let g:completor_auto_trigger = 1
+inoremap <expr> <Tab> Tab_Or_Complete()
+" END Completor
 
 " set custom indentation
 let g:scala_sort_across_groups=1
@@ -502,42 +649,12 @@ if exists("nofixeol") " only for versions 7.4.785 and later (http://vim.wikia.co
     au FileType html,css,markdown,htmldjango,scsshp,txt setlocal binary noeol nofixeol
 endif
 
-" " Moving between buffers
-" map <C-Tab> :bnext<cr>
-" map <C-S-Tab> :bprevious<cr>
-
 " au FileType scala syn region foldImports start="import" end=/import.*\n^$/ fold keepend
 
-
-" Markdown
-" " Goyo
-function! s:auto_goyo()
-    if &ft == 'markdown' && winnr('$') == 1
-        Goyo 80
-        NumbersToggle
-    elseif exists('#goyo')
-        Goyo!
-    endif
-endfunction
-
-function! s:goyo_leave()
-    if winnr('$') < 2
-        silent! :q
-    endif
-endfunction
-
-augroup goyo_markdown
-    autocmd!
-    autocmd BufNewFile,BufRead * call s:auto_goyo()
-    autocmd! User GoyoLeave nested call goyo_leave()
-augroup END
-
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+autocmd BufRead,BufNewFile *.md setlocal spell
 
-" Spell check
-setlocal spell
-highlight clear SpellBad
-highlight SpellBad term=standout ctermfg=1 term=underline cterm=underline
+autocmd FileType gitcommit setlocal spell
 
 " Comment italics - tho depends on colorscheme
 highlight Comment cterm=italic

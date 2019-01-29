@@ -1,5 +1,6 @@
 # believe it or not, this needs to be vim, not vi, for crontab -e to work on a mac
-export EDITOR=vim
+export VISUAL=vim
+export EDITOR="$VISUAL"
 export PAGER="less"
 export LESS="-R"
 export TERM=xterm-256color
@@ -17,8 +18,6 @@ export RIPGREP_CONFIG_PATH=$DOTDOT/ripgreprc
 . ${DOTDOT}/bash/scala
 . ${DOTDOT}/bash/node
 . ${DOTDOT}/bash/ncbi
-
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[0;33m\] \[\033[00m\]\$ '
 
@@ -104,6 +103,8 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 [ -f ~/src/ripgrep/complete/rg.bash ] && source ~/src/ripgrep/complete/rg.bash;
 [ -f ~/src/fd/autocomplete/fd.bash-completion ] && source ~/src/fd/autocomplete/fd.bash-completion
 
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # pip bash completion start
 # _pip_completion()

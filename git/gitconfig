@@ -2,10 +2,12 @@
     name = Eddie Welker
     email = welkere@ncbi.nlm.nih.gov
 [core]
-    editor = /usr/bin/vim
+    # editor = /usr/bin/vim   - don't use this, use either $VISUAL or $EDITOR so it's platform independent
     pager = less -FXRS -x2
 	whitespace = trailing-space,space-before-tab
 	excludesfile = ~/.gitignore
+	autocrlf = input
+	eol = lf
 [color]
     diff = auto
     status = auto
@@ -21,6 +23,7 @@
     co = checkout
     br = branch
     bra = branch -vvra
+    brd = for-each-ref --sort=committerdate refs/heads/ --format='%(color: red)%(committerdate:short) %(color: cyan)%(refname:short)'
     rv = remote -v
     ap = add -p
     a = add
@@ -41,6 +44,7 @@
     le = log --oneline --decorate
     undo = reset --soft HEAD^
     soft = reset --soft HEAD^
+    po = "push origin"
     unstage = reset HEAD
     diffprev = diff HEAD^
     subinit = submodule update --init
@@ -51,7 +55,7 @@
     c = "clean -f -d -x"
 
     pruneremotes = remote prune origin
-    bclean = "!git co master && git branch --no-color --merged | grep -v '\\*' | xargs -n 1 git branch -d"
+    bclean = "!git co develop && git branch --no-color --merged | grep -v '\\*' | xargs -n 1 git branch -d"
 
     lt = describe --tags --abbrev=0
     ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
@@ -104,12 +108,13 @@
     user = edwelker
     password = !security find-generic-password -gs github.password -w | tr -d '\n'
 [push]
-	default = tracking
+	default = current
 [credential]
     helper = cache --timeout=3600
 [merge]
 	tool = vimdiff
 	conflictstyle = diff3
+	tool = kdiff3
 [mergetool]
 	prompt = false
 [advice]
@@ -118,6 +123,9 @@
 	renames = copies
 	mnemonicprefix = true
 [branch]
-	autosetupmerge = true
+    autosetupmerge = always
+    autosetuprebase = always
 [rerere]
 	enabled = true
+[fetch]
+	prune = true

@@ -17,7 +17,7 @@ web:*.{html,css,js}*
 --glob=!node_module/*
 --glob=!*.min.js
 --glob=!*.min.css
---glob=!tags
+--glob=!.tags
 
 # Set the colors.
 --colors=line:none
