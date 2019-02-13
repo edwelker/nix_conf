@@ -30,17 +30,19 @@ alias md='mkdir -p'
 alias mt='cd $(mktemp -d)'
 
 mvenv(){
-    cd $(mktemp -d);
-    TMPDIR=$(pwd -P)
+    TMPDIR=$(mktemp -d);
+    pushd .;
+    cd $TMPDIR;
     virtualenv3.6 venv;
     source venv/bin/activate;
     pip install -r ${DOTDOT}/mvenv_reqs.txt
-    cd -;
+    popd;
     rm -rf .eggs;
     rm venv;
     ln -s $TMPDIR/venv venv
     if [ -f setup.py ]; then
-        pip install -e .
+        pip install -e .;
+        pip install -r requirements/test.txt
     fi
 }
 
@@ -57,8 +59,9 @@ alias py='python'
 alias py3='python3'
 alias ma='manage.py'
 alias rs='manage.py runserver 0.0.0.0:10005'
-alias shell='manage.py shell_plus --ipython'
+alias sp='manage.py shell_plus --ipython'
 alias db='python manage.py dbshell'
+alias fmm="manage.py makemigrations --dry-run --verbosity=3"
 alias testclean="mvenv && pe && pst"
 
 function pt (){
@@ -69,7 +72,12 @@ function pte(){
     .tox/py*/bin/pytest "$@" --nomigrations --cov=project --cov=tests --cov-report=term-missing:skip-covered -k-slow -rsx; .tox/flake8/bin/flake8 --ignore=E501,W503,W504 src/ tests/
 }
 
+function ptf(){
+    .tox/py*/bin/pytest "$@" --nomigrations --cov=project --cov=tests --cov-report=term-missing:skip-covered --cov-report xml:coverage.xml; .tox/flake8/bin/flake8 --ignore=E501,W503,W504 src/ tests/;sonar;
+}
+
 alias venv='source venv/bin/activate'
+alias e='env | ag inv'
 
 alias nz='nosetests'
 alias pip-upgrade="pip install --upgrade"
@@ -121,7 +129,7 @@ alias psc='ps xawf -eo pid,user,cgroup,args'
 alias cgrps='systemd-cgls'
 
 alias error_tail='tail -n 40 /web/public/logs/error'
-alias tail='tail -f'
+alias tailf='tail -f'
 
 alias work="~/bin/work.sh"
 alias iweb="cd ~/iwebdev-welkere"

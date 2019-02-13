@@ -214,6 +214,8 @@ nnoremap <space> za
 " nnoremap <c-l> <c-w>l
 " nnoremap <c-h> <c-w>h
 
+command Bc bp\|bd \#
+
 " Cancel search with escape
 " this is commented so that files don't start in replace mode
 " nnoremap <silent> <Esc> :nohlsearch<Bar>:echo<CR>
