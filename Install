@@ -19,7 +19,7 @@ fi;
 
 
 # First level symlinks
-for rc in inputrc ctags pythonstartup ackrc editorconfig ideavimrc pdbrc; do
+for rc in inputrc ctags pythonstartup ackrc editorconfig ideavimrc pdbrc virtualenv; do
     if [ ! -h ~/.$rc ]; then
         ln -s ${DOTDOT}/"$rc" ~/."$rc"
     else
