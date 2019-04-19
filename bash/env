@@ -76,9 +76,13 @@ if [ -f ~/.pythonstartup ]; then
     export PYTHONSTARTUP=~/.pythonstartup
 fi
 
-if [ -d ~/.rvm/bin ]; then
-    export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-fi
+# if [ -d ~/.rvm/bin ]; then
+#     export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+# fi
+
+# if [ -d ~/.rvm/bin ]; then
+#     PS1="\$(~/.rvm/bin/rvm-prompt) $PS1"
+# fi
 
 if [ -d ~/node_modules/.bin ]; then
     export PATH=~/node_modules/.bin:$PATH
@@ -97,7 +101,6 @@ fi
 # added by travis gem
 [ -f /home/welkere/.travis/travis.sh ] && source /home/welkere/.travis/travis.sh
 
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 [ -f ~/src/ripgrep/complete/rg.bash ] && source ~/src/ripgrep/complete/rg.bash;
@@ -199,10 +202,6 @@ update_display() {
     good_display=${good_display: -2}
     export DISPLAY=${HOSTNAME}:${good_display}.0
 }
-
-if [ -d ~/.rvm/bin ]; then
-    PS1="\$(~/.rvm/bin/rvm-prompt) $PS1"
-fi
 
 export PS1
 

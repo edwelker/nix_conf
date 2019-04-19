@@ -68,12 +68,21 @@ function pt (){
     .tox/py*/bin/pytest "$@"; .tox/flake8/bin/flake8 --ignore=E501,W503,W504 src/ tests/
 }
 
-function pte(){
-    .tox/py*/bin/pytest "$@" --nomigrations --cov=project --cov=tests --cov-report=term-missing:skip-covered -k-slow -rsx; .tox/flake8/bin/flake8 --ignore=E501,W503,W504 src/ tests/
+function qt (){
+    .tox/py*/bin/pytest --reuse-db --nomigrations "$@"; .tox/flake8/bin/flake8 --ignore=E501,W503,W504 src/ tests/
+}
+
+function pta(){
+    .tox/py*/bin/pytest "$@" --reuse-db --nomigrations --cov=project --cov=tests --cov-report=term-missing:skip-covered -k-slow -rsx; .tox/flake8/bin/flake8 --ignore=E501,W503,W504 src/ tests/
+}
+
+function ptq(){
+    .tox/py*/bin/pytest "$@" --reuse-db --nomigrations --cov=project --cov=tests --cov-report=term-missing:skip-covered; .tox/flake8/bin/flake8 --ignore=E501,W503,W504 src/ tests/
 }
 
 function ptf(){
-    .tox/py*/bin/pytest "$@" --nomigrations --cov=project --cov=tests --cov-report=term-missing:skip-covered --cov-report xml:coverage.xml; .tox/flake8/bin/flake8 --ignore=E501,W503,W504 src/ tests/;sonar;
+    rm coverage.xml
+    .tox/py*/bin/pytest "$@" --nomigrations --cov=project --cov=tests --cov-report=term-missing:skip-covered --cov-report xml:coverage.xml; .tox/flake8/bin/flake8 --ignore=E501,W503,W504 src/ tests/; sonar;
 }
 
 alias venv='source venv/bin/activate'
