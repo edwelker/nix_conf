@@ -33,7 +33,7 @@ mvenv(){
     TMPDIR=$(mktemp -d);
     pushd .;
     cd $TMPDIR;
-    virtualenv3.6 venv;
+    virtualenv venv;
     source venv/bin/activate;
     pip install -r ${DOTDOT}/mvenv_reqs.txt
     popd;
