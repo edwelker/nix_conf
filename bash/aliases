@@ -64,12 +64,20 @@ alias db='python manage.py dbshell'
 alias fmm="manage.py makemigrations --dry-run --verbosity=3"
 alias testclean="mvenv && pe && pst"
 
+function nt (){
+    npm run test "$@";
+}
+
 function pt (){
     .tox/py*/bin/pytest "$@"; .tox/flake8/bin/flake8 --ignore=E501,W503,W504 src/ tests/
 }
 
 function qt (){
-    .tox/py*/bin/pytest --reuse-db --nomigrations "$@"; .tox/flake8/bin/flake8 --ignore=E501,W503,W504 src/ tests/
+    .tox/py*/bin/pytest --reuse-db --nomigrations --dist=load --tx="4*popen//python=$(which python)" "$@"; .tox/flake8/bin/flake8 --ignore=E501,W503,W504 src/ tests/
+}
+
+function qtpdb (){
+    .tox/py*/bin/pytest --reuse-db --nomigrations --pdb "$@"; .tox/flake8/bin/flake8 --ignore=E501,W503,W504 src/ tests/
 }
 
 function pta(){
@@ -81,11 +89,15 @@ function ptq(){
 }
 
 function ptf(){
-    rm coverage.xml
-    .tox/py*/bin/pytest "$@" --nomigrations --cov=project --cov=tests --cov-report=term-missing:skip-covered --cov-report xml:coverage.xml; .tox/flake8/bin/flake8 --ignore=E501,W503,W504 src/ tests/; sonar;
+    rm coverage.xml;
+    rm -rf coverage;
+    nt;
+    .tox/py*/bin/pytest --dist=load --tx="4*popen//python=$(which python)" "$@" --nomigrations --cov=project --cov=tests --cov-report=term-missing:skip-covered --cov-report xml:coverage.xml; .tox/flake8/bin/flake8 --ignore=E501,W503,W504 src/ tests/;
+    SONAR_RUNNER_HOME=/panfs/pan1.be-md.ncbi.nlm.nih.gov/teamcity_builds/sonar-runner /panfs/pan1.be-md.ncbi.nlm.nih.gov/teamcity_builds/sonar-runner/bin/sonar-runner -Dsonar.branch=;
 }
 
 alias venv='source venv/bin/activate'
+alias v=venv
 alias e='env | ag inv'
 
 alias nz='nosetests'
@@ -155,7 +167,7 @@ alias gp='git push'
 alias gpp='git pull && git push'
 alias gpt='git po && git po --tags'
 alias ginitpy="git init --template=${DOTDOT}/pygittemplate"
-alias ghome="cd $(g root)"
+alias ghome="cd $(git root)"
 alias gsuperclean="git pruneremotes && git bclean"
 alias b='bzr'
 

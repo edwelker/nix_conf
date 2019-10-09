@@ -4,7 +4,7 @@ export EDITOR="$VISUAL"
 export PAGER="less"
 export LESS="-R"
 export TERM=xterm-256color
-export CDPATH=.:~:~/code:~/code/python:~/code/scala:~/code/css:~/src:~/bin:$DOTDOT:/am/intrawebdev2/web/public/htdocs/staff/welkere/
+export CDPATH=.:~:/export/home/welkere/:~/code:~/code/python:~/code/scala:~/code/css:~/src:~/bin:$DOTDOT:/am/intrawebdev2/web/public/htdocs/staff/welkere/
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:~/lib
 export HISTIGNORE="clear" # Ignore clear, since I type that constantly
 export HISTTIMEFORMAT="%y-%m-%dT%T "
@@ -12,6 +12,8 @@ export HISTSIZE=3000 # 3000 per session
 export HISTFILESIZE=500000 # 500,000 across all sessions
 export HISTCONTROL="ignoreboth" # Ignore cmds starting with whitepsace, and duplicates
 export RIPGREP_CONFIG_PATH=$DOTDOT/ripgreprc
+
+export PIP_DOWNLOAD_CACHE=$HOME/.cache/pip
 
 . ${DOTDOT}/bash/javaenv
 . ${DOTDOT}/bash/go
@@ -90,6 +92,7 @@ if [ -d ~/node_modules/.bin ]; then
 fi
 
 export PYTHONDONTWRITEBYTECODE=1
+export PYTHONWARNINGS="ignore"
 
 export VENVWRAPPER=$(command -v virtualenvwrapper.sh 2>/dev/null)
 if [ ! -z "$VENVWRAPPER" ]; then

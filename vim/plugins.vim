@@ -21,6 +21,7 @@ call plug#begin('~/.vim/plugged')
 " Plug 'chriskempson/base16-vim'
 " Plug 'NLKNguyen/papercolor-theme'
 Plug 'vim-scripts/oceandeep'
+Plug 'mhartington/oceanic-next'
 " Plug 'vim-scripts/corn'
 " Plug 'vim-scripts/github-theme'
 " Plug 'vim-scripts/oceanlight'
@@ -39,7 +40,7 @@ Plug 'tpope/vim-git', { 'for': 'git' }
 " Plug 'qrps/lilypond-vim', { 'for': 'lilypond' }
 " Plug 'derekwyatt/vim-scala', { 'for': 'scala' }
 " Plug 'sukima/xmledit', { 'for': 'xml' }
-Plug 'https://github.com/othree/html5.vim.git', { 'for': 'html' }
+" Plug 'https://github.com/othree/html5.vim.git', { 'for': 'html' }
 
 " Markdown
 Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
@@ -133,6 +134,7 @@ Plug 'tpope/vim-commentary'
 " 'Vastly improved Javascript indentation and syntax support in Vim'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx' " React
+Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 
 " General tool for builds and external commands
 Plug 'tpope/vim-dispatch'
