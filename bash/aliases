@@ -33,7 +33,7 @@ mvenv(){
     TMPDIR=$(mktemp -d);
     pushd .;
     cd $TMPDIR;
-    virtualenv3.6 venv;
+    virtualenv3.7 venv;
     source venv/bin/activate;
     pip install -r ${DOTDOT}/mvenv_reqs.txt
     popd;
@@ -41,7 +41,6 @@ mvenv(){
     rm venv;
     ln -s $TMPDIR/venv venv
     if [ -f setup.py ]; then
-        pip install -e .;
         pip install -r requirements/test.txt
     fi
 }
@@ -73,7 +72,7 @@ function pt (){
 }
 
 function qt (){
-    .tox/py*/bin/pytest --reuse-db --nomigrations --dist=load --tx="4*popen//python=$(which python)" "$@"; .tox/flake8/bin/flake8 --ignore=E501,W503,W504 src/ tests/
+    .tox/py*/bin/pytest --reuse-db --nomigrations --dist=load --tx="8*popen//python=$(fd -t x python3 .tox/py3*)" "$@"; .tox/flake8/bin/flake8 --ignore=E501,W503,W504 src/ tests/
 }
 
 function qtpdb (){
@@ -92,7 +91,7 @@ function ptf(){
     rm coverage.xml;
     rm -rf coverage;
     nt;
-    .tox/py*/bin/pytest --dist=load --tx="4*popen//python=$(which python)" "$@" --nomigrations --cov=project --cov=tests --cov-report=term-missing:skip-covered --cov-report xml:coverage.xml; .tox/flake8/bin/flake8 --ignore=E501,W503,W504 src/ tests/;
+    .tox/py*/bin/pytest --dist=load --tx="8*popen//python=$(fd -t x python3 .tox/py3*)" "$@" --nomigrations --cov=project --cov=tests --cov-report=term-missing:skip-covered --cov-report xml:coverage.xml; .tox/flake8/bin/flake8 --ignore=E501,W503,W504 src/ tests/;
     SONAR_RUNNER_HOME=/panfs/pan1.be-md.ncbi.nlm.nih.gov/teamcity_builds/sonar-runner /panfs/pan1.be-md.ncbi.nlm.nih.gov/teamcity_builds/sonar-runner/bin/sonar-runner -Dsonar.branch=;
 }
 

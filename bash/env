@@ -9,8 +9,8 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:~/lib
 export HISTIGNORE="clear" # Ignore clear, since I type that constantly
 export HISTTIMEFORMAT="%y-%m-%dT%T "
 export HISTSIZE=3000 # 3000 per session
-export HISTFILESIZE=500000 # 500,000 across all sessions
-export HISTCONTROL="ignoreboth" # Ignore cmds starting with whitepsace, and duplicates
+export HISTFILESIZE=800000 # 800,000 across all sessions
+export HISTCONTROL=ignoredups:erasedups # Ignore cmds starting with whitepsace, and duplicates
 export RIPGREP_CONFIG_PATH=$DOTDOT/ripgreprc
 
 export PIP_DOWNLOAD_CACHE=$HOME/.cache/pip
@@ -51,7 +51,7 @@ fi
 
 shopt -s histappend
 export PROMPT_COMMAND='history -a'
-export HISTSIZE=20000
+export HISTSIZE=30000
 
 PATH=~/bin:$DOTDOT/bin:$PATH
 export PATH
