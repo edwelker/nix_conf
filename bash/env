@@ -4,14 +4,16 @@ export EDITOR="$VISUAL"
 export PAGER="less"
 export LESS="-R"
 export TERM=xterm-256color
-export CDPATH=.:~:~/code:~/code/python:~/code/scala:~/code/css:~/src:~/bin:$DOTDOT:/am/intrawebdev2/web/public/htdocs/staff/welkere/
+export CDPATH=.:~:/export/home/welkere/:~/code:~/code/python:~/code/scala:~/code/css:~/src:~/bin:$DOTDOT:/am/intrawebdev2/web/public/htdocs/staff/welkere/
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:~/lib
 export HISTIGNORE="clear" # Ignore clear, since I type that constantly
 export HISTTIMEFORMAT="%y-%m-%dT%T "
 export HISTSIZE=3000 # 3000 per session
-export HISTFILESIZE=500000 # 500,000 across all sessions
-export HISTCONTROL="ignoreboth" # Ignore cmds starting with whitepsace, and duplicates
+export HISTFILESIZE=800000 # 800,000 across all sessions
+export HISTCONTROL=ignoredups:erasedups # Ignore cmds starting with whitepsace, and duplicates
 export RIPGREP_CONFIG_PATH=$DOTDOT/ripgreprc
+
+export PIP_DOWNLOAD_CACHE=$HOME/.cache/pip
 
 . ${DOTDOT}/bash/javaenv
 . ${DOTDOT}/bash/go
@@ -19,7 +21,8 @@ export RIPGREP_CONFIG_PATH=$DOTDOT/ripgreprc
 . ${DOTDOT}/bash/node
 . ${DOTDOT}/bash/ncbi
 
-PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[0;33m\] \[\033[00m\]\$ '
+# with host PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[0;33m\] \[\033[00m\]\$ '
+PS1='\[\033[01;32m\]\u:\[\033[01;34m\]\w\[\033[0;33m\] \[\033[00m\]\$ '
 
 #because I hit ctrl-s all the time
 stty ixany
@@ -48,7 +51,7 @@ fi
 
 shopt -s histappend
 export PROMPT_COMMAND='history -a'
-export HISTSIZE=20000
+export HISTSIZE=30000
 
 PATH=~/bin:$DOTDOT/bin:$PATH
 export PATH
@@ -76,15 +79,20 @@ if [ -f ~/.pythonstartup ]; then
     export PYTHONSTARTUP=~/.pythonstartup
 fi
 
-if [ -d ~/.rvm/bin ]; then
-    export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-fi
+# if [ -d ~/.rvm/bin ]; then
+#     export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+# fi
+
+# if [ -d ~/.rvm/bin ]; then
+#     PS1="\$(~/.rvm/bin/rvm-prompt) $PS1"
+# fi
 
 if [ -d ~/node_modules/.bin ]; then
     export PATH=~/node_modules/.bin:$PATH
 fi
 
 export PYTHONDONTWRITEBYTECODE=1
+export PYTHONWARNINGS="ignore"
 
 export VENVWRAPPER=$(command -v virtualenvwrapper.sh 2>/dev/null)
 if [ ! -z "$VENVWRAPPER" ]; then
@@ -97,7 +105,6 @@ fi
 # added by travis gem
 [ -f /home/welkere/.travis/travis.sh ] && source /home/welkere/.travis/travis.sh
 
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 [ -f ~/src/ripgrep/complete/rg.bash ] && source ~/src/ripgrep/complete/rg.bash;
@@ -144,7 +151,7 @@ fi
 if [ -f ${DOTDOT}/git/git-prompt.sh ]; then
     . ${DOTDOT}/git/git-prompt.sh
     GIT_PS1_SHOWDIRTYSTATE=true
-    PS1='\[\033[01;32m\][\!] \u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[0;33m\] \[\033[0;33m\]$(__git_ps1 "(%s)") \[\033[00m\]\$ '
+    PS1='\[\033[01;32m\][\!] \u:\[\033[01;34m\]\w\[\033[0;33m\] \[\033[0;33m\]$(__git_ps1 "(%s)") \[\033[00m\]\$ '
 fi
 
 #aws completion
@@ -199,10 +206,6 @@ update_display() {
     good_display=${good_display: -2}
     export DISPLAY=${HOSTNAME}:${good_display}.0
 }
-
-if [ -d ~/.rvm/bin ]; then
-    PS1="\$(~/.rvm/bin/rvm-prompt) $PS1"
-fi
 
 export PS1
 

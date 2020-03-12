@@ -114,8 +114,6 @@ if has("autocmd")
     set list
     set listchars=tab:▸\ ,trail:.,extends:#,nbsp:.,precedes:… ",eol:¬
 
-    " autocmd filetype html,xml set listchars-=tab:>.
-
 else
 
   set autoindent " always set autoindenting on
@@ -213,6 +211,8 @@ nnoremap <space> za
 " nnoremap <c-k> <c-w>k
 " nnoremap <c-l> <c-w>l
 " nnoremap <c-h> <c-w>h
+
+command Bc bp\|bd \#
 
 " Cancel search with escape
 " this is commented so that files don't start in replace mode
@@ -341,7 +341,7 @@ let g:ale_set_highlights = 1
 let g:ale_set_loclist = 1
 let g:ale_echo_cursor = 1
 let g:ale_keep_list_window_open = 0
-let g:ale_lint_delay = 200
+let g:ale_lint_delay = 100
 let g:ale_lint_on_enter = 0
 let g:ale_lint_on_save = 1
 let g:ale_lint_on_text_changed = 'always'
@@ -349,12 +349,11 @@ let g:ale_cache_executable_check_failures = 1
 
 " Ale JavaScript
 "https://prettier.io/docs/en/vim.html
-" let g:ale_fixers['javascript'] = ['prettier']
-" let g:ale_javascript_prettier_options = '--single-quote --trailing-comma es5'
+let g:ale_javascript_prettier_options = '--single-quote --trailing-comma es5'
+let g:prettier#config#single_quote = 'true'
 
 " Ale Python
 " https://blog.landscape.io/using-pylint-on-django-projects-with-pylint-django.html
-" let g:ale_python_pylint_options = '--load-plugins pylint_django'
 " Ale-Airline
 let g:airline#extensions#ale#enabled = 1
 let airline#extensions#ale#show_line_numbers = 1
@@ -363,19 +362,26 @@ let g:ale_sign_warning = '⚠'
 " highlight ALEErrorSign ctermbg=NONE ctermfg=red
 " highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
 
+let g:ale_linters_explicit = 1
+
 let g:ale_linters = {
 \  'python': ['mypy', 'flake8', 'pylint-django', 'black', 'pylint'],
 \  'javascript': ['eslint'],
 \  'css': ['stylelint'],
-\  'jsx': ['stylelint', 'eslint']
 \}
+" \  'jsx': ['stylelint', 'eslint'],
+" \  'vue': ['eslint']
 let g:ale_linter_aliases = {
   \'jsx': 'css'
 \}
 let g:ale_fixers = {
 \  'python': ['isort'],
-\  'javascript': ['eslint'],
+\  'javascript': ['eslint', 'prettier'],
+\  'vue': ['eslint'],
+\  'scss': ['prettier'],
+\  'css': ['prettier']
 \}
+" let g:ale_fix_on_save = 1
 let g:ale_python_pylint_options = '--load-plugins pylint_django'
 let g:ale_python_mypy_options = '--namespace-packages --ignore-missing-imports'
 " Ale end
@@ -540,8 +546,11 @@ autocmd! BufLeave *.groovy,*.java,*.gradle,*.scala,*.sbt colo oceandeep
 
 
 " JavaScript
-au FileType javascript setlocal foldmethod=marker
-au FileType javascript setlocal foldmarker={,}
+augroup javascript_folding
+    au!
+    au FileType javascript setlocal foldmethod=syntax
+augroup END
+let g:javascript_plugin_jsdoc = 1
 
 
 "powerline
@@ -585,7 +594,7 @@ au BufNewFile,BufRead models.py    setlocal filetype=python.django
 au BufNewFile,BufRead views.py     setlocal filetype=python.django
 au BufNewFile,BufRead settings.py  setlocal filetype=python.django
 au BufNewFile,BufRead forms.py     setlocal filetype=python.django
-au BufNewFile,BufRead *.html setlocal filetype=htmldjango
+" au BufNewFile,BufRead *.html setlocal filetype=htmldjango
 
 " Automatic insertion of breakpoints
 autocmd filetype python nnoremap <buffer> <leader>ib :normal oimport pdb; pdb.set_trace()  # TODO: BREAKPOINT  # noqa<Esc>
@@ -641,15 +650,15 @@ inoremap <expr> <Tab> Tab_Or_Complete()
 " set custom indentation
 let g:scala_sort_across_groups=1
 let g:scala_first_party_namespaces='\(controllers\|views\|models\|modules\|util.\|gov.\)'
-" au FileType html,handlebars.html,htmldjango,css,scsshp,twig,javascript setlocal sts=2 sw=2 et
+" au FileType html,handlebars.html,htmldjango,css,scsshp,twig,javascript setlocal expandtab tabstop=2 softtabstop=2 shiftwidth=2
 
 " Don't bother with newlines for text-based files (but keep for others)
-au FileType html,css,markdown,htmldjango,scsshp,txt setlocal binary noeol
+au FileType html,css,markdown,htmldjango,scsshp,txt setlocal binary noeol et ts=2 sts=2 sw=2
 if exists("nofixeol") " only for versions 7.4.785 and later (http://vim.wikia.com/wiki/Do_not_auto-add_a_newline_at_EOF)
     au FileType html,css,markdown,htmldjango,scsshp,txt setlocal binary noeol nofixeol
 endif
 
-" au FileType scala syn region foldImports start="import" end=/import.*\n^$/ fold keepend
+au FileType scala syn region foldImports start="import" end=/import.*\n^$/ fold keepend
 
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 autocmd BufRead,BufNewFile *.md setlocal spell
