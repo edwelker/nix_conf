@@ -24,7 +24,7 @@ brew cask install firefox iterm2 google-chrome alfred vlc macvim flux vienna caf
 rvm use system
 
 #install non-GUI's
-brew install git python3 tmux vim ack wget tree node bash-completion irssi jq autossh mosh libev sshfs mutt cask go nvm meld gnu-sed the_silver_searcher ctags pstree watch fzf fd
+brew install git python3 tmux vim ack wget tree node bash-completion irssi jq autossh mosh libev sshfs mutt cask go nvm meld gnu-sed the_silver_searcher ctags pstree watch fzf fd ripgrep
 
 $(brew --prefix)/opt/fzf/install
 
