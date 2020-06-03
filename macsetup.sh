@@ -12,12 +12,10 @@ brew install brew-cask
 #install fonts
 brew cask install font-source-code-pro
 brew cask install font-inconsolata
-brew cask install font-dejavu-sans
 
 #install GUI's
 #install GUI's to /opt/homebrew-cask/Caskroom
-brew cask install firefox iterm2 google-chrome rdio alfred vlc macvim flux vienna dropbox dash caffeine time-out spirited-away selfcontrol lastfm eclipse-ide java cord seil quicksilver amethyst phantomjs amazon-music iterm2 java node serf virtualbox java7 mou adium karabiner spotify thunderbird soundcast radiant-player
-
+brew cask install firefox iterm2 google-chrome alfred vlc macvim flux vienna caffeine time-out spirited-away selfcontrol lastfm seil mou karabiner spotify slack
 #for older versions: http://stackoverflow.com/questions/3987683/homebrew-install-specific-version-of-formula
 
 #remember: http://stackoverflow.com/questions/127591/using-caps-lock-as-esc-in-mac-os-x
@@ -26,7 +24,7 @@ brew cask install firefox iterm2 google-chrome rdio alfred vlc macvim flux vienn
 rvm use system
 
 #install non-GUI's
-brew install git python python3 tmux vim phantomjs ack wget tree node bash-completion ruby irssi scala sbt typesafe-activator jq autossh mosh libev sshfs mutt awscli cask go hadoop nvm cassandra meld gnu-sed the_silver_searcher ctags pstree watch fzf fd
+brew install git python3 tmux vim ack wget tree node bash-completion irssi jq autossh mosh libev sshfs mutt cask go nvm meld gnu-sed the_silver_searcher ctags pstree watch fzf fd
 
 $(brew --prefix)/opt/fzf/install
 
