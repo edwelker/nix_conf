@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Application Name Color</key>
+	<data>
+	BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2JqZWN0AIWEAWMBhARm
+	ZmZmg9oIeT+DzBR5P4PmBXk/AYY=
+	</data>
+	<key>Application Name Shadow</key>
+	<false/>
+	<key>Background Color</key>
+	<data>
+	BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2JqZWN0AIWEAWMDhAJm
+	ZgCDAAAAP4Y=
+	</data>
+	<key>Item Height</key>
+	<real>37</real>
+	<key>Maximum Width</key>
+	<real>0.50161897590361448</real>
+	<key>Panel Shadow</key>
+	<false/>
+	<key>Selection Border Color</key>
+	<data>
+	BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2JqZWN0AIWEAWMBhARm
+	ZmZmAQEAgwAAgD6G
+	</data>
+	<key>Selection Color</key>
+	<data>
+	BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2JqZWN0AIWEAWMFhAVm
+	ZmZmZgAAAQCDEUMlP4Y=
+	</data>
+	<key>Selection Gradient</key>
+	<integer>-18</integer>
+	<key>Window Name Color</key>
+	<data>
+	BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2JqZWN0AIWEAWMBhARm
+	ZmZmg39rXz+DNnZfP4PZaF8/AYY=
+	</data>
+	<key>Window Name Shadow</key>
+	<false/>
+</dict>
+</plist>
