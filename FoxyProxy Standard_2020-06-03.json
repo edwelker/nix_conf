@@ -1,0 +1,87 @@
+{
+  "import-587598292": {
+    "active": true,
+    "address": "localhost",
+    "port": 3128,
+    "username": "",
+    "password": "",
+    "type": 1,
+    "title": "localhost:3128",
+    "color": "#217a0f",
+    "index": 0,
+    "whitePatterns": [
+      {
+        "title": "ncbi",
+        "pattern": "*ncbi.nlm.nih.gov",
+        "type": 1,
+        "protocols": 1,
+        "active": true
+      },
+      {
+        "title": "intranet",
+        "pattern": "intranet*",
+        "type": 1,
+        "protocols": 2,
+        "active": true
+      },
+      {
+        "title": "10.30.*",
+        "pattern": "10.30.*",
+        "type": 1,
+        "protocols": 1,
+        "active": true
+      }
+    ],
+    "blackPatterns": [
+      {
+        "title": "www.ncbi.nlm.nih.gov",
+        "pattern": "www.ncbi.nlm.nih.gov",
+        "type": 1,
+        "protocols": 1,
+        "active": true
+      },
+      {
+        "title": "54*",
+        "pattern": "*54.*",
+        "type": 1,
+        "protocols": 1,
+        "active": true
+      },
+      {
+        "title": "mail.nih.gov",
+        "pattern": "*mail.nih.gov*",
+        "type": 1,
+        "protocols": 1,
+        "active": true
+      }
+    ],
+    "proxyDNS": false,
+    "pacURL": ""
+  },
+  "k20d21508277536715": {
+    "active": true,
+    "type": 5,
+    "title": "Default",
+    "color": "#0055E5",
+    "index": 9007199254740991,
+    "whitePatterns": [
+      {
+        "title": "All",
+        "active": true,
+        "pattern": "*",
+        "importedPattern": "*",
+        "type": 1,
+        "protocols": 1
+      }
+    ],
+    "blackPatterns": []
+  },
+  "logging": {
+    "size": 100,
+    "active": false
+  },
+  "mode": "patterns",
+  "browserVersion": "77.0",
+  "foxyProxyVersion": "7.4.3",
+  "foxyProxyEdition": "standard"
+}

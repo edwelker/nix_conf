@@ -39,7 +39,7 @@
     ; always have to semi-colon end the commands in the braces
     t = "!f() { git tag $1 -a -m \"$1\"; }; f"
     ; b/c I always use the plural anyway
-    tags = tag -n1 -l
+    tags = tag -n1 -l --sort=v:refname
     tag = tag -a
     le = log --oneline --decorate
     undo = reset --soft HEAD^
@@ -51,6 +51,8 @@
     subupdate = pull --recurse-submodules
     subco = submodule foreach --recursive git checkout .
     amend = commit --amend -C HEAD
+
+    chicken = checkout  ; because life is too short
 
     c = "clean -f -d -x"
 

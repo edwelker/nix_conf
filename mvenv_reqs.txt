@@ -17,3 +17,6 @@ werkzeug
 
 # for vim
 vim-vint
+
+# for pdb
+pdbpp
