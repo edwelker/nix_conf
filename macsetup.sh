@@ -15,7 +15,7 @@ brew cask install font-inconsolata
 
 #install GUI's
 #install GUI's to /opt/homebrew-cask/Caskroom
-brew cask install firefox iterm2 google-chrome alfred vlc macvim flux vienna caffeine time-out spirited-away selfcontrol lastfm seil mou karabiner spotify slack
+brew cask install firefox iterm2 google-chrome alfred vlc macvim flux vienna caffeine time-out spirited-away selfcontrol lastfm mou spotify slack appcleaner dozer macdown onyx background-music rocket friedrichweise/wechsel/wechsel
 #for older versions: http://stackoverflow.com/questions/3987683/homebrew-install-specific-version-of-formula
 
 #remember: http://stackoverflow.com/questions/127591/using-caps-lock-as-esc-in-mac-os-x
@@ -25,7 +25,6 @@ rvm use system
 
 #install non-GUI's
 brew install git python3 tmux vim ack wget tree node bash-completion irssi jq autossh mosh libev sshfs mutt cask go nvm meld gnu-sed the_silver_searcher ctags pstree watch fzf fd ripgrep
-
 $(brew --prefix)/opt/fzf/install
 
 brew tap homebrew/completions
