@@ -10,22 +10,73 @@ brew tap caskroom/fonts
 brew install brew-cask
 
 #install fonts
-brew cask install font-source-code-pro
-brew cask install font-inconsolata
+brew install --cask font-source-code-pro
+brew install --cask font-inconsolata
 
 #install GUI's
 #install GUI's to /opt/homebrew-cask/Caskroom
-brew cask install firefox iterm2 google-chrome alfred vlc macvim flux vienna caffeine time-out spirited-away selfcontrol lastfm mou spotify slack appcleaner dozer macdown onyx background-music rocket friedrichweise/wechsel/wechsel
+brew install --cask firefox
+brew install --cask iterm2
+brew install --cask google-chrome
+brew install --cask alfred
+brew install --cask vlc
+brew install --cask macvim
+brew install --cask flux
+brew install --cask vienna
+brew install --cask caffeine
+brew install --cask time-out
+# brew install --cask spirited-away
+brew install --cask selfcontrol
+brew install --cask lastfm
+brew install --cask mou
+brew install --cask spotify
+brew install --cask slack
+brew install --cask appcleaner
+brew install --cask dozer
+brew install --cask macdown
+brew install --cask onyx
+brew install --cask background-music
+brew install --cask rocket
+brew install --cask friedrichweise/wechsel/wechsel
 #for older versions: http://stackoverflow.com/questions/3987683/homebrew-install-specific-version-of-formula
 
 #remember: http://stackoverflow.com/questions/127591/using-caps-lock-as-esc-in-mac-os-x
 
+#install non-GUI's
+brew install git
+brew install python3
+brew install tmux
+brew install ack
+brew install wget
+brew install tree
+brew install node
+brew install bash-completion
+brew install irssi
+brew install jq
+brew install autossh
+brew install mosh
+brew install libev
+brew install sshfs
+# brew install mutt
+brew install cask
+brew install go
+brew install nvm
+brew install meld
+brew install gnu-sed
+brew install the_silver_searcher
+brew install ctags
+brew install pstree
+brew install watch
+brew install fzf
+brew install fd
+brew install ripgrep
+brew install rvm
+$(brew --prefix)/opt/fzf/install
+
 # use system rvm before installing vim
 rvm use system
 
-#install non-GUI's
-brew install git python3 tmux vim ack wget tree node bash-completion irssi jq autossh mosh libev sshfs mutt cask go nvm meld gnu-sed the_silver_searcher ctags pstree watch fzf fd ripgrep
-$(brew --prefix)/opt/fzf/install
+brew install vim
 
 brew tap homebrew/completions
 
