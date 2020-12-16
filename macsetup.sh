@@ -3,7 +3,7 @@
 #idea and portions stolen shamelessly from @llimllib
 
 #install homebrew
-ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 brew tap phinze/cask
 brew tap caskroom/fonts
