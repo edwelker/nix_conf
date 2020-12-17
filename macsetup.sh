@@ -3,19 +3,50 @@
 #idea and portions stolen shamelessly from @llimllib
 
 #install homebrew
-ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-brew tap phinze/cask
-brew tap caskroom/fonts
-brew install brew-cask
+brew tap homebrew/cask
+brew tap homebrew/cask-fonts
+
+# for some fonts
+brew install git svn
 
 #install fonts
-brew cask install font-source-code-pro
-brew cask install font-inconsolata
+brew install --cask font-cozette  # based on Dina, of which there still is no good Mac version (2020)
+brew install --cask font-dejavu font-dejavu-sans-mono-for-powerline font-dejavu-sans-mono-nerd-font
+brew install --cask font-roboto font-roboto-mono font-roboto-mono-for-powerline font-roboto-mono-nerd-font font-roboto-slab
+
+# lesser fonts
+brew install --cask font-source-code-pro
+brew install --cask font-inconsolata
+brew install --cask font-envy-code-r
+brew install --cask font-fira-code font-fira-mono font-fira-mono-nerd-font font-fira-sans-condensed font-firago font-fira-code-nerd-font font-fira-mono-for-powerline font-fira-sans font-fira-sans-extra-condensed
 
 #install GUI's
 #install GUI's to /opt/homebrew-cask/Caskroom
-brew cask install firefox iterm2 google-chrome alfred vlc macvim flux vienna caffeine time-out spirited-away selfcontrol lastfm mou spotify slack appcleaner dozer macdown onyx background-music rocket friedrichweise/wechsel/wechsel
+brew install --cask firefox
+brew install --cask iterm2
+brew install --cask google-chrome
+brew install --cask alfred
+brew install --cask vlc
+brew install --cask macvim
+brew install --cask flux
+brew install --cask vienna
+brew install --cask caffeine
+brew install --cask time-out
+# brew install --cask spirited-away
+brew install --cask selfcontrol
+brew install --cask lastfm
+brew install --cask mou
+brew install --cask spotify
+brew install --cask slack
+brew install --cask appcleaner
+brew install --cask dozer
+brew install --cask macdown
+brew install --cask onyx
+brew install --cask background-music
+brew install --cask rocket
+brew install --cask friedrichweise/wechsel/wechsel
 #for older versions: http://stackoverflow.com/questions/3987683/homebrew-install-specific-version-of-formula
 
 #remember: http://stackoverflow.com/questions/127591/using-caps-lock-as-esc-in-mac-os-x
@@ -24,7 +55,8 @@ brew cask install firefox iterm2 google-chrome alfred vlc macvim flux vienna caf
 rvm use system
 
 #install non-GUI's
-brew install git python3 tmux vim ack wget tree node bash-completion irssi jq autossh mosh libev sshfs mutt cask go nvm meld gnu-sed the_silver_searcher ctags pstree watch fzf fd ripgrep
+brew install python3 tmux vim ack wget tree node bash-completion irssi jq autossh mosh libev mutt cask go nvm meld gnu-sed the_silver_searcher ctags pstree watch fzf fd ripgrep
+brew install sshfs
 $(brew --prefix)/opt/fzf/install
 
 brew tap homebrew/completions
