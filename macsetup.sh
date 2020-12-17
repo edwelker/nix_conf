@@ -118,7 +118,7 @@ defaults write NSGlobalDomain KeyRepeat -int 0
 #make the notification time very short
 defaults write com.apple.notificationcenterui bannerTime 1.5
 # scroll direction
-defaults write -g com.apple.swipescrolldirection -bool TRUE
+defaults write -g com.apple.swipescrolldirection -bool false
 # trash warning
 defaults write com.apple.finder WarnOnEmptyTrash -bool false
 # airdrop over ethernet
