@@ -97,6 +97,10 @@ mkdir ~/.ssh && cd ~/.ssh && ssh-keygen -t rsa -C "eddie.welker@gmail.com"
 #get dotfiles
 mkdir -p bin/nix_conf
 git clone https://github.com/edwelker/nix_conf.git bin/nix_conf
+pushd .
+cd ~/bin/nix_conf
+git submodule update --init --recursive
+popd
 . ~/bin/nix_conf/Install
 . ~/.bashrc
 cd ~
