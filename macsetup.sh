@@ -46,6 +46,7 @@ brew install --cask macdown
 brew install --cask onyx
 brew install --cask background-music
 brew install --cask rocket
+brew install witch
 brew install --cask friedrichweise/wechsel/wechsel
 #for older versions: http://stackoverflow.com/questions/3987683/homebrew-install-specific-version-of-formula
 
@@ -116,6 +117,12 @@ defaults write com.apple.dock showhidden -bool true
 defaults write NSGlobalDomain KeyRepeat -int 0
 #make the notification time very short
 defaults write com.apple.notificationcenterui bannerTime 1.5
+# scroll direction
+defaults write -g com.apple.swipescrolldirection -bool TRUE
+# trash warning
+defaults write com.apple.finder WarnOnEmptyTrash -bool false
+# airdrop over ethernet
+defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true
 
 #restart dock to see changes
 killall Dock
