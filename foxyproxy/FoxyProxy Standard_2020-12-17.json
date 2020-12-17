@@ -1,0 +1,97 @@
+{
+  "import-587598292": {
+    "active": true,
+    "address": "localhost",
+    "port": 3128,
+    "username": "",
+    "password": "",
+    "type": 1,
+    "title": "webproxy",
+    "color": "#217a0f",
+    "index": 0,
+    "whitePatterns": [
+      {
+        "title": "ncbi",
+        "pattern": "*ncbi.nlm.nih.gov*",
+        "type": 1,
+        "protocols": 1,
+        "active": true
+      },
+      {
+        "title": "intranet",
+        "pattern": "intranet*",
+        "type": 1,
+        "protocols": 2,
+        "active": true
+      },
+      {
+        "title": "10.30.*",
+        "pattern": "10.30.*",
+        "type": 1,
+        "protocols": 1,
+        "active": true
+      },
+      {
+        "title": "nihfs",
+        "pattern": "*nihfsauth.nih.gov*",
+        "type": 1,
+        "protocols": 1,
+        "active": true
+      },
+      {
+        "title": "tableau",
+        "pattern": "*nlmtableau.nlm.nih.gov*",
+        "type": 1,
+        "protocols": 1,
+        "active": true
+      }
+    ],
+    "blackPatterns": [
+      {
+        "title": "www.ncbi.nlm.nih.gov",
+        "pattern": "www.ncbi.nlm.nih.gov",
+        "type": 1,
+        "protocols": 1,
+        "active": true
+      },
+      {
+        "title": "54*",
+        "pattern": "*54.*",
+        "type": 1,
+        "protocols": 1,
+        "active": true
+      },
+      {
+        "title": "mail.nih.gov",
+        "pattern": "*mail.nih.gov*",
+        "type": 1,
+        "protocols": 1,
+        "active": true
+      },
+      {
+        "title": "confluence",
+        "pattern": "*confluence.ncbi.nlm.nih.gov*",
+        "type": 1,
+        "protocols": 1,
+        "active": true
+      },
+      {
+        "title": "jira",
+        "pattern": "*jira.ncbi.nlm.nih.gov*",
+        "type": 1,
+        "protocols": 1,
+        "active": true
+      }
+    ],
+    "proxyDNS": false,
+    "pacURL": ""
+  },
+  "logging": {
+    "size": 100,
+    "active": false
+  },
+  "mode": "patterns",
+  "browserVersion": "83.0",
+  "foxyProxyVersion": "7.5.1",
+  "foxyProxyEdition": "standard"
+}
