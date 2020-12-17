@@ -81,15 +81,7 @@ brew install ripgrep
 brew install rvm
 $(brew --prefix)/opt/fzf/install
 
-# use system rvm before installing vim
-rvm use system
-
 brew install vim
-
-brew tap homebrew/completions
-
-#add system duplicates
-brew tap homebrew/dupes
 
 #opensc for that stupid card reader, then you have to change the ssh call to point
 #to /usr/local/Cellar/opensc/0.13.0/lib/pkcs11/opensc-pkcs11.so
@@ -98,15 +90,15 @@ brew install opensc
 #make code directory and subdir, leave empty
 mkdir -p ~/code/python
 
+#ssh key
+mkdir ~/.ssh && cd ~/.ssh && ssh-keygen -t rsa -C "eddie.welker@gmail.com"
+
 #get dotfiles
 mkdir -p bin/nix_conf
 git clone https://github.com/edwelker/nix_conf.git bin/nix_conf
 . ~/bin/nix_conf/Install
 . ~/.bashrc
 cd ~
-
-#ssh key
-mkdir ~/.ssh && cd ~/.ssh && ssh-keygen -t rsa -C "eddie.welker@gmail.com"
 
 #get the adium prefs from bb
 

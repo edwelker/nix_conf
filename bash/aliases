@@ -182,7 +182,7 @@ function port(){
   fuser $1/tcp
 }
 
-function port-and-app(){
+function port_and_app(){
   # xargs strips whitespace
   ls -al /proc/$(fuser $1/tcp | xargs)/exe
 }
