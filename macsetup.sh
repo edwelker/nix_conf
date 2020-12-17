@@ -51,13 +51,40 @@ brew install --cask friedrichweise/wechsel/wechsel
 
 #remember: http://stackoverflow.com/questions/127591/using-caps-lock-as-esc-in-mac-os-x
 
+#install non-GUI's
+brew install python3
+brew install tmux
+brew install ack
+brew install wget
+brew install tree
+brew install node
+brew install bash-completion
+brew install irssi
+brew install jq
+brew install autossh
+brew install mosh
+brew install libev
+brew install sshfs
+# brew install mutt
+brew install cask
+brew install go
+brew install nvm
+brew install meld
+brew install gnu-sed
+brew install the_silver_searcher
+brew install ctags
+brew install pstree
+brew install watch
+brew install fzf
+brew install fd
+brew install ripgrep
+brew install rvm
+$(brew --prefix)/opt/fzf/install
+
 # use system rvm before installing vim
 rvm use system
 
-#install non-GUI's
-brew install python3 tmux vim ack wget tree node bash-completion irssi jq autossh mosh libev mutt cask go nvm meld gnu-sed the_silver_searcher ctags pstree watch fzf fd ripgrep
-brew install sshfs
-$(brew --prefix)/opt/fzf/install
+brew install vim
 
 brew tap homebrew/completions
 
