@@ -109,6 +109,10 @@ cd ~
 
 #get the adium prefs from bb
 
+########
+######## If using a Varmilo keyboard, make sure to hit FN-A for 3 sec, wait for capslock to blink
+######## That will swap win/mac mode, and get your option and command keys in the correct order
+
 #dock on bottom (gotta manually move to the left)
 defaults write com.apple.dock pinning -string end
 #show hidden files
@@ -129,6 +133,10 @@ defaults write -g com.apple.swipescrolldirection -bool false
 defaults write com.apple.finder WarnOnEmptyTrash -bool false
 # airdrop over ethernet
 defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true
+
+# set keyboard repeat rates
+defaults write -g InitialKeyRepeat -int 10 # normal minimum is 15 (225 ms)
+defaults write -g KeyRepeat -int 1 # normal minimum is 2 (30 ms)
 
 #restart dock to see changes
 killall Dock
