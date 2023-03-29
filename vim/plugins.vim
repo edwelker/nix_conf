@@ -62,6 +62,7 @@ Plug 'raimon49/requirements.txt.vim', { 'for': 'python' }
 Plug 'fisadev/vim-isort', { 'for': 'python' }
 Plug 'tmhedberg/SimpylFold', { 'for': 'python' }
 Plug 'Raimondi/delimitMate', { 'for': 'python' }
+Plug 'psf/black', { 'branch': 'stable' }
 
 " Hashi
 " Plug 'hashivim/vim-terraform'

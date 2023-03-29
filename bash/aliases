@@ -30,10 +30,10 @@ alias md='mkdir -p'
 alias mt='cd $(mktemp -d)'
 
 mvenv(){
-    TMPDIR=$(mktemp -d);
+    local TMPDIR=$(mktemp -d);
     pushd .;
     cd $TMPDIR;
-    virtualenv3.7 venv;
+    virtualenv3.11 venv;
     source venv/bin/activate;
     pip install -r ${DOTDOT}/mvenv_reqs.txt
     popd;
@@ -41,9 +41,12 @@ mvenv(){
     rm venv;
     ln -s $TMPDIR/venv venv
     if [ -f setup.py ]; then
-        pip install -r requirements/test.txt
+        pip install -r requirements/test.txt;
+        pip install -e .;
     fi
 }
+
+alias d='deactivate'
 
 alias pd="pushd"
 alias pd1="pushd +1"
@@ -92,7 +95,11 @@ function ptf(){
     rm -rf coverage;
     nt;
     .tox/py*/bin/pytest --dist=load --tx="8*popen//python=$(fd -t x python3 .tox/py3*)" "$@" --nomigrations --cov=project --cov=tests --cov-report=term-missing:skip-covered --cov-report xml:coverage.xml; .tox/flake8/bin/flake8 --ignore=E501,W503,W504 src/ tests/;
-    SONAR_RUNNER_HOME=/panfs/pan1.be-md.ncbi.nlm.nih.gov/teamcity_builds/sonar-runner /panfs/pan1.be-md.ncbi.nlm.nih.gov/teamcity_builds/sonar-runner/bin/sonar-runner -Dsonar.branch=;
+    SONAR_RUNNER_HOME=/panfs/pan1.be-md.ncbi.nlm.nih.gov/teamcity_builds/sonar-scanner /panfs/pan1.be-md.ncbi.nlm.nih.gov/teamcity_builds/sonar-scanner/bin/sonar-scanner
+}
+
+function cqt (){
+    PYTHONPATH="$PYTHONPATH:./tests/unit_tests:./src:." .tox/py*/bin/pytest --dist=load --tx="8*popen//python=$(fd -t x python3 .tox/py3*)" "$@"
 }
 
 alias venv='source venv/bin/activate'
@@ -105,7 +112,7 @@ alias pip-old="pip list -o"
 alias pip-local="egrep -v -f ${DOTDOT}/requirements.txt"
 alias pe="pip install -e ."
 alias pst="python setup.py test"
-alias fl=".tox/flake8/bin/flake8 --ignore=E501,W503,W504 src/ tests/"
+alias fl=".tox/flake8/bin/flake8"
 
 alias findhere='find . -iname'
 alias findhome='find ~ -iname'
@@ -159,7 +166,7 @@ alias agent='eval $(ssh-agent); ssh-add ~/.ssh/id_rsa; ssh-add ~/.ssh/me_for_sta
 
 alias sr='ssh-reagent'
 alias sh='ssh-agent-hookup'
-alias sk='ssh-keygen -t rsa -b 4096'
+alias sk='ssh-keygen -t ed25519'
 
 alias g='git'
 alias gp='git push'
@@ -254,6 +261,10 @@ lastcommand(){
     h | tail -n 2 | head -n 1 | awk '{$1=""; $2=""; print $0}' | sed -e 's/^ *//'
 }
 alias savelastcommand='lastcommand >'
+
+colors(){
+for i in {0..255}; do  printf "\x1b[38;5;${i}mcolor%-5i\x1b[0m" $i ; if ! (( ($i - 3) % 6 )); then echo ; fi ; done
+}
 
 #openshift
 alias rh='rhc'

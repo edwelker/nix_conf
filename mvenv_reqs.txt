@@ -2,7 +2,6 @@
 
 ipython
 ipdb
-trepan3k
 pylint
 black
 mypy
@@ -16,7 +15,9 @@ werkzeug
 # yamllint
 
 # for vim
-vim-vint
+# vim-vint
 
 # for pdb
 pdbpp
+
+pre_commit

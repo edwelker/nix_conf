@@ -386,6 +386,10 @@ let g:ale_python_pylint_options = '--load-plugins pylint_django'
 let g:ale_python_mypy_options = '--namespace-packages --ignore-missing-imports'
 " Ale end
 
+" Black config
+autocmd BufWritePre *.py execute ':Black'
+nnoremap <Leader>b :Black<CR>
+
 
 "Ctrlp
 "https://medium.com/a-tiny-piece-of-vim/making-ctrlp-vim-load-100x-faster-7a722fae7df6

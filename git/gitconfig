@@ -34,12 +34,13 @@
     dc = diff --cached
     push = push --tags --prune
     fetch = fetch --prune
-    bp = !"git branch --merged master | grep -v 'master$' | xargs git branch -d"
+    bpm = !"git branch --merged master | grep -v 'master$' | xargs git branch -d"
+    bp = !"git branch --merged develop | grep -v 'develop$' | xargs git branch -d"
     ai = add --interactive
     ; always have to semi-colon end the commands in the braces
     t = "!f() { git tag $1 -a -m \"$1\"; }; f"
     ; b/c I always use the plural anyway
-    tags = tag -n1 -l --sort=v:refname
+    tags = !"git tag -n1 -l --sort=v:refname | tail -n 5"
     tag = tag -a
     le = log --oneline --decorate
     undo = reset --soft HEAD^
@@ -78,6 +79,9 @@
     aged-branches = "!f() { git for-each-ref --sort=committerdate refs/heads $1  --format=\"%(refname:short)\" ; }; g() { for C in $(f $1) ; do git show -s --pretty=format:\"%Cgreen%ci %Cblue%cr%Creset $C\" \"$C\" -- ; done; }; g "
     churners = shortlog -sn --
     rank = shortlog -sn --no-merges
+
+
+    sl = stash list --pretty=format:\"%C(red)%h%C(reset) - %C(dim yellow)(%C(bold magenta)%gd%C(dim yellow))%C(reset) %<(70,trunc)%s %C(green)(%cr) %C(bold blue)<%an>%C(reset)\"
 
     ; these are stolen from here: https://hackernoon.com/lesser-known-git-commands-151a1918a60#.iemxe52lc
     please = "push --force-with-lease"
