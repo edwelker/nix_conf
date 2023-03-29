@@ -47,8 +47,8 @@ Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 " Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
 
 " Ugh, Ruby
-" Plug 'rodjek/vim-puppet', { 'for': 'puppet' }
-" Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
+Plug 'rodjek/vim-puppet', { 'for': 'puppet' }
+Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 " Plug 'vim-scripts/Specky', { 'for': 'rspec' }
 
 " All the syntax
