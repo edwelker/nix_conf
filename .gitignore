@@ -6,3 +6,5 @@ vim/vim/plugged
 *.swp
 vim/vim/bundle/
 ncbi
+vim/vim/black
+.tags*
