@@ -115,6 +115,7 @@
     password = !security find-generic-password -gs github.password -w | tr -d '\n'
 [push]
 	default = current
+	followTags = true
 [credential]
     helper = cache --timeout=3600
 [merge]
@@ -128,13 +129,16 @@
 [diff]
 	renames = copies
 	mnemonicprefix = true
-	colorMoved = zebra
+	colorMoved = dimmed-zebra
 [branch]
     autosetupmerge = always
     autosetuprebase = always
 [rerere]
-	enabled = true
+    enabled = true
+    autoUpdate = true
 [fetch]
 	prune = true
 [pull]
 	rebase = true
+[rebase]
+	stat = true
