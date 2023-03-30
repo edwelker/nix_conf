@@ -85,7 +85,7 @@ brew install rvm
 brew install tre
 brew install bat
 brew install dasel
-brew install delta
+brew install git-delta
 $(brew --prefix)/opt/fzf/install
 
 brew install vim
