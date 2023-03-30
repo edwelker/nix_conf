@@ -74,7 +74,7 @@ brew install go
 brew install nvm
 brew install meld
 brew install gnu-sed
-brew install the_silver_searcher
+# brew install the_silver_searcher
 brew install ctags
 brew install pstree
 brew install watch
@@ -82,6 +82,10 @@ brew install fzf
 brew install fd
 brew install ripgrep
 brew install rvm
+brew install tre
+brew install bat
+brew install dasel
+brew install delta
 $(brew --prefix)/opt/fzf/install
 
 brew install vim
