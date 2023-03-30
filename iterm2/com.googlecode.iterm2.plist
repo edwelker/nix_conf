@@ -5,7 +5,7 @@
 	<key>AllowClipboardAccess</key>
 	<true/>
 	<key>Command</key>
-	<string></string>
+	<string>/bin/bash</string>
 	<key>Default Bookmark Guid</key>
 	<string>A6D09EF9-4F84-4762-965C-13FB39FEFCB3</string>
 	<key>HapticFeedbackForEsc</key>
@@ -607,11 +607,12 @@
 			<key>Visual Bell</key>
 			<true/>
 			<key>Window Type</key>
-			<integer>15</integer>
+			<integer>0</integer>
 			<key>Working Directory</key>
 			<string>/Users/ewelker</string>
 		</dict>
 	</array>
+<<<<<<< Updated upstream
 	<key>PMPrintingExpandedStateForPrint2</key>
 	<false/>
 	<key>PointerActions</key>
@@ -649,11 +650,49 @@
 	</dict>
 	<key>Print In Black And White</key>
 	<true/>
+||||||| constructed merge base
+=======
+	<key>PointerActions</key>
+	<dict>
+		<key>Button,1,1,,</key>
+		<dict>
+			<key>Action</key>
+			<string>kContextMenuPointerAction</string>
+		</dict>
+		<key>Button,2,1,,</key>
+		<dict>
+			<key>Action</key>
+			<string>kPasteFromClipboardPointerAction</string>
+		</dict>
+		<key>Gesture,ThreeFingerSwipeDown,,</key>
+		<dict>
+			<key>Action</key>
+			<string>kPrevWindowPointerAction</string>
+		</dict>
+		<key>Gesture,ThreeFingerSwipeLeft,,</key>
+		<dict>
+			<key>Action</key>
+			<string>kPrevTabPointerAction</string>
+		</dict>
+		<key>Gesture,ThreeFingerSwipeRight,,</key>
+		<dict>
+			<key>Action</key>
+			<string>kNextTabPointerAction</string>
+		</dict>
+		<key>Gesture,ThreeFingerSwipeUp,,</key>
+		<dict>
+			<key>Action</key>
+			<string>kNextWindowPointerAction</string>
+		</dict>
+	</dict>
+>>>>>>> Stashed changes
 	<key>SoundForEsc</key>
 	<false/>
 	<key>UseLionStyleFullscreen</key>
 	<false/>
 	<key>VisualIndicatorForEsc</key>
 	<false/>
+	<key>findMode_iTerm</key>
+	<integer>0</integer>
 </dict>
 </plist>

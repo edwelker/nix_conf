@@ -34,6 +34,7 @@ mvenv(){
     pushd .;
     cd $TMPDIR;
     virtualenv3.11 venv;
+    /usr/local/bin/virtualenv venv;
     source venv/bin/activate;
     pip install -r ${DOTDOT}/mvenv_reqs.txt
     popd;
