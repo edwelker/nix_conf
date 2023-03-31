@@ -109,6 +109,7 @@ fi
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 [ -f ~/src/ripgrep/complete/rg.bash ] && source ~/src/ripgrep/complete/rg.bash;
 [ -f ~/src/fd/autocomplete/fd.bash-completion ] && source ~/src/fd/autocomplete/fd.bash-completion
+[ -f ~/src/bat/autocomplete/bat.bash ] && source ~/src/bat/autocomplete/bat.bash;
 
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
