@@ -136,8 +136,7 @@ if [ -f ./ncbi ]; then
     . ncbi
 fi
 
-# from morty
-path_filter_nfs(){ export PATH=$(/bin/echo $PATH|/usr/bin/tr ":" "\n"|/bin/egrep -v '^/(net|am|usr/local)'|/usr/bin/tr "\n" :) ;}
+alias cat='bat'
 
 alias os='cat /etc/*-release'
 alias kernel='uname -a'
