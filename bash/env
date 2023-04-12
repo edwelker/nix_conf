@@ -1,7 +1,8 @@
 # believe it or not, this needs to be vim, not vi, for crontab -e to work on a mac
 export VISUAL=vim
 export EDITOR="$VISUAL"
-export PAGER="less"
+export PAGER="bat"
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export LESS="-R"
 export TERM=xterm-256color
 export CDPATH=.:~:/export/home/welkere/:~/code:~/code/python:~/code/scala:~/code/css:~/src:~/bin:$DOTDOT:/am/intrawebdev2/web/public/htdocs/staff/welkere/
