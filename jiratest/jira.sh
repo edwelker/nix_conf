@@ -68,7 +68,7 @@ echo ""
 echo "requesting..."
 curl -G -s --user "$username:$password" --data-urlencode "$jql" --data-urlencode "$fields" --data-urlencode "$maxresults" "$jirahost/rest/api/2/search" -o "${resultsname}" &> /dev/null &
 curl_pid=$!
-Wait for the curl process to finish
+# Wait for the curl process to finish
 wait $curl_pid
 
 if [ -f $resultsname ]; then
