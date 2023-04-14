@@ -1,5 +1,13 @@
 #!/bin/bash
 
+### Script connects to jira, grabs all issues related to a user
+### and converts it to a text file which can then be selected from
+
+## Only real dependences are Jira, and fzf
+
+# This may seem stoopid, but I really hate trying to get the jira keys right
+# and this will prevent me from making typos.
+
 ### OKAY, let's start
 # Get the current user's username from the $USER environment variable
 username=$USER
