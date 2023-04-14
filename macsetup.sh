@@ -86,6 +86,7 @@ brew install tre
 brew install bat
 brew install dasel
 brew install git-delta
+brew install exa
 $(brew --prefix)/opt/fzf/install
 
 brew install vim
