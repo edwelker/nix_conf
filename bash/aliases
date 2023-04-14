@@ -5,8 +5,21 @@ alias envs="vi ${DOTDOT}/bash/env && source ~/.bashrc"
 alias dot="pd .; cd ${DOTDOT}"
 
 alias c="clear"
-
 alias vi=$(which vim)
+
+# the iffy stuff. :)
+alias cat=bat
+alias sd='cd $(fd -t d | fzf)'
+
+# find stuff
+fnd(){
+  find * | fzf --prompt 'All> ' \
+      --header 'CTRL-D: Directories / CTRL-F: Files' \
+      --bind 'ctrl-d:change-prompt(Directories> )+reload(find * -type d)' \
+      --bind 'ctrl-f:change-prompt(Files> )+reload(find * -type f)';
+}
+
+# /iffy
 
 alias l='ls'
 alias ls='ls -GF'
@@ -114,11 +127,6 @@ alias pip-local="egrep -v -f ${DOTDOT}/requirements.txt"
 alias pe="pip install -e ."
 alias pst="python setup.py test"
 alias fl=".tox/flake8/bin/flake8"
-
-alias findhere='find . -iname'
-alias findhome='find ~ -iname'
-alias findeverywhere='find / -iname'
-alias f='egrep -ir * -e'
 
 alias hi='pygmentize -f console256 -g'
 

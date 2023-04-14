@@ -7,3 +7,6 @@
 [submodule "syntax-highlighting"]
 	path = syntax-highlighting
 	url = https://github.com/atelierbram/syntax-highlighting.git
+[submodule "misc_submodules/fzf-git.sh"]
+	path = misc_submodules/fzf-git.sh
+	url = https://github.com/junegunn/fzf-git.sh.git
