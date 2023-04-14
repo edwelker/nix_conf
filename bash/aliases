@@ -26,6 +26,7 @@ fnd(){
       --bind 'ctrl-f:change-prompt(Files> )+reload(find * -type f)';
 }
 
+alias tkt='${DOTDOT}/jiratest/jira.sh'
 # /iffy
 
 alias l='ls'
