@@ -63,23 +63,28 @@ maxresults="maxResults=5000"
 # curl --trace - -G -s -H "Authorization: Bearer $(cat $tokenname)" --data-urlencode "$jql" --data-urlencode "$fields" "$jirahost/rest/api/2/search" -o my_jira_tickets.json #&> /dev/null
 
 # make it work with username/password as a fallback
-# read -s -p "Enter the password: " password
-# echo ""
-# echo "requesting..."
-# curl -G -s --user "$username:$password" --data-urlencode "$jql" --data-urlencode "$fields" --data-urlencode "$maxresults" "$jirahost/rest/api/2/search" -o "${resultsname}" &> /dev/null &
-# curl_pid=$!
-# Wait for the curl process to finish
-# wait $curl_pid
-
-timestamp=$(stat -c %Y $resultsname)
-age=$(( $(date +%s) - $timestamp ))
-hours=$(( $age / 3600 ))
-echo "${resultsname} is $hours hour(s) old."
-
-jira_text_results="${script_dir}/jira_key_summary_${datetime}.txt"
-
-echo "$(jq -r '.issues | length' $resultsname) issues returned"
+read -s -p "Enter the password: " password
 echo ""
-jq -r '.issues[] | "\(.key) \(.fields.summary)"' $resultsname > $jira_text_results
+echo "requesting..."
+curl -G -s --user "$username:$password" --data-urlencode "$jql" --data-urlencode "$fields" --data-urlencode "$maxresults" "$jirahost/rest/api/2/search" -o "${resultsname}" &> /dev/null &
+curl_pid=$!
+Wait for the curl process to finish
+wait $curl_pid
 
-cat $jira_text_results | fzf | awk '{print $1}'
+if [ -f $resultsname ]; then
+    timestamp=$(stat -c %Y $resultsname)
+    age=$(( $(date +%s) - $timestamp ))
+    hours=$(( $age / 3600 ))
+    echo "${resultsname} is $hours hour(s) old."
+
+    echo "$(jq -r '.issues | length' $resultsname) issues returned"
+    echo ""
+
+    jira_text_results="${script_dir}/jira_key_summary_${datetime}.txt"
+
+    jq -r '.issues[] | "\(.key) \(.fields.summary)"' $resultsname > $jira_text_results
+
+    cat $jira_text_results | fzf | awk '{print $1}'
+else
+    echo "$resultsname is not found/available."
+fi
