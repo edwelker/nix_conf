@@ -2,5 +2,9 @@ set -o vi
 set -o noclobber
 #take off the training wheels
 #shopt -s histverify
-shopt -s histreedit 
+shopt -s histreedit
 shopt -s histappend # append to the file rather than overwrite, for multiple sessions
+
+#lang/locale settings
+export LC_ALL='en_US.UTF-8'
+export LANG='en_US.UTF-8'
