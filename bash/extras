@@ -1,2 +1,11 @@
 . misc_submodules/fzf-git.sh/fzf-git.sh;
 
+gcb() {
+  local selected=$(_fzf_git_branches)
+  [ -n "$selected" ] && git checkout "$selected"
+}
+
+gcr() {
+  local selected=$(_fzf_git_remotes)
+  [ -n "$selected" ] && git checkout "$selected"
+}
