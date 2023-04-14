@@ -20,7 +20,7 @@ export PIP_DOWNLOAD_CACHE=$HOME/.cache/pip
 . ${DOTDOT}/bash/go
 . ${DOTDOT}/bash/scala
 . ${DOTDOT}/bash/node
-. ${DOTDOT}/bash/extras
+. ${DOTDOT}/bash/extras.sh
 if [ -f ${DOTDOT}/bash/ncbi ]; then
     . ${DOTDOT}/bash/ncbi
 fi
