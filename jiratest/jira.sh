@@ -13,8 +13,10 @@
 username=$USER
 jirahost="https://jira.ncbi.nlm.nih.gov"
 
+script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+
 tokenname="${username}_jira"
-filename="${tokenname}.token"
+filename="${script_dir}/${tokenname}.token"
 
 echo "Looking for $filename"
 
@@ -48,7 +50,7 @@ else
 fi
 
 datetime=$(date '+%Y-%m-%d')
-resultsname="${username}_results_${datetime}.json"
+resultsname="${script_dir}/${username}_results_${datetime}.json"
 
 # because filter permission in our jira is whack
 jql="jql=creator = ${username} OR comment ~ ${username} ORDER BY updatedDate DESC, created DESC"
@@ -74,7 +76,7 @@ age=$(( $(date +%s) - $timestamp ))
 hours=$(( $age / 3600 ))
 echo "${resultsname} is $hours hour(s) old."
 
-jira_text_results="jira_key_summary_${datetime}.txt"
+jira_text_results="${script_dir}/jira_key_summary_${datetime}.txt"
 
 echo "$(jq -r '.issues | length' $resultsname) issues returned"
 echo ""
