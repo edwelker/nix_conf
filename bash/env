@@ -99,17 +99,8 @@ fi
 export PYTHONDONTWRITEBYTECODE=1
 export PYTHONWARNINGS="ignore"
 
-export VENVWRAPPER=$(command -v virtualenvwrapper.sh 2>/dev/null)
-if [ ! -z "$VENVWRAPPER" ]; then
-    export WORKON_HOME=$HOME/env
-    export PROJECT_HOME=$HOME/code/python
-    export VIRTUALENVWRAPPER_PYTHON=$(which python3)
-    source "$VENVWRAPPER"
-fi
-
 # added by travis gem
-[ -f /home/welkere/.travis/travis.sh ] && source /home/welkere/.travis/travis.sh
-
+[ -f /home/welkere/.travis/travis.sh ] && echo "delete /home/welkere/.travis/travis.sh"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 [ -f ~/src/ripgrep/complete/rg.bash ] && source ~/src/ripgrep/complete/rg.bash;
