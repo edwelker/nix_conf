@@ -16,11 +16,11 @@ jirahost="https://jira.ncbi.nlm.nih.gov"
 script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 
 tokenname="${username}_jira"
-filename="${script_dir}/${tokenname}.token"
+token_filename="${script_dir}/${tokenname}.token"
 
-echo "Looking for $filename"
+echo "Looking for $token_filename"
 
-if [ ! -f "$filename" ]; then
+if [ ! -f "$token_filename" ]; then
     # Prompt the user for a password (without echoing the password to the console)
     read -s -p "Enter the password: " password
     echo ""
@@ -28,12 +28,12 @@ if [ ! -f "$filename" ]; then
     # jira's expected request format to create a token
     data="{\"name\": \"$tokenname\", \"expirationDuration\": 90}"
 
-    curl -X POST "$jirahost/rest/pat/latest/tokens" -H "Content-Type: application/json" -d "$data" --user "$username:$password" -o "$filename"
+    curl -X POST "$jirahost/rest/pat/latest/tokens" -H "Content-Type: application/json" -d "$data" --user "$username:$password" -o "$token_filename"
 else
     echo "Found, using existing token"
     echo ""
     # Extract expiration time from JSON file using jq
-    expiration=$(jq -r '.expiringAt' $filename)
+    expiration=$(jq -r '.expiringAt' $token_filename)
 
     # Convert expiration timestamp to Unix timestamp
     expiration_unix=$(date -d "$expiration" +%s)
