@@ -212,6 +212,10 @@ update_display() {
 
 export PS1
 
+ea(){
+    env | ag $*
+}
+
 #. ${DOTDOT}/vim/vim/bundle/powerline/powerline/bindings/bash/powerline.sh
 
 #install the groovy enVironment Manager

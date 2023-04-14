@@ -49,9 +49,10 @@ jql="jql=creator = ${username} OR comment ~ ${username} ORDER BY updatedDate DES
 fields="fields=key,summary"
 maxresults="maxResults=5000"
 
+# waiting to see what's wrong with this
 # curl --trace - -G -s -H "Authorization: Bearer $(cat $tokenname)" --data-urlencode "$jql" --data-urlencode "$fields" "$jirahost/rest/api/2/search" -o my_jira_tickets.json #&> /dev/null
 
-# testing with username/password
+# make it work with username/password as a fallback
 # read -s -p "Enter the password: " password
 # echo ""
 # echo "requesting..."
@@ -59,6 +60,11 @@ maxresults="maxResults=5000"
 # curl_pid=$!
 # Wait for the curl process to finish
 # wait $curl_pid
+
+timestamp=$(stat -c %Y $resultsname)
+age=$(( $(date +%s) - $timestamp ))
+hours=$(( $age / 3600 ))
+echo "${resultsname} is $hours hour(s) old."
 
 jira_text_results="jira_key_summary_${datetime}.txt"
 
