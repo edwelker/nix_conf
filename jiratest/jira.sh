@@ -52,24 +52,30 @@ fi
 datetime=$(date '+%Y-%m-%d')
 resultsname="${script_dir}/${username}_results_${datetime}.json"
 
-# because filter permission in our jira is whack
-jql="jql=creator = ${username} OR comment ~ ${username} ORDER BY updatedDate DESC, created DESC"
-# jql="jql=(creator = ${username} OR assignee = ${username}) ORDER BY updatedDate DESC, created DESC"
-# jql="filter=42435"
-fields="fields=key,summary"
-maxresults="maxResults=5000"
 
-# waiting to see what's wrong with this
-# curl --trace - -G -s -H "Authorization: Bearer $(cat $tokenname)" --data-urlencode "$jql" --data-urlencode "$fields" "$jirahost/rest/api/2/search" -o my_jira_tickets.json #&> /dev/null
+if [ ! -f $resultsname ]; then
+    echo "$resultsname is not found/available. Trying to regenerate..."
+    echo ""
 
-# make it work with username/password as a fallback
-read -s -p "Enter the password: " password
-echo ""
-echo "requesting..."
-curl -G -s --user "$username:$password" --data-urlencode "$jql" --data-urlencode "$fields" --data-urlencode "$maxresults" "$jirahost/rest/api/2/search" -o "${resultsname}" &> /dev/null &
-curl_pid=$!
-# Wait for the curl process to finish
-wait $curl_pid
+    # because filter permission in our jira is whack
+    jql="jql=creator = ${username} OR comment ~ ${username} ORDER BY updatedDate DESC, created DESC"
+    # jql="jql=(creator = ${username} OR assignee = ${username}) ORDER BY updatedDate DESC, created DESC"
+    # jql="filter=42435"
+    fields="fields=key,summary"
+    maxresults="maxResults=5000"
+
+    # waiting to see what's wrong with this
+    # curl --trace - -G -s -H "Authorization: Bearer $(cat $tokenname)" --data-urlencode "$jql" --data-urlencode "$fields" "$jirahost/rest/api/2/search" -o my_jira_tickets.json #&> /dev/null
+
+    # make it work with username/password as a fallback
+    read -s -p "Enter the password: " password
+    echo ""
+    echo "requesting..."
+    curl -G -s --user "$username:$password" --data-urlencode "$jql" --data-urlencode "$fields" --data-urlencode "$maxresults" "$jirahost/rest/api/2/search" -o "${resultsname}" &> /dev/null &
+    curl_pid=$!
+    # Wait for the curl process to finish
+    wait $curl_pid
+fi
 
 if [ -f $resultsname ]; then
     timestamp=$(stat -c %Y $resultsname)
@@ -86,5 +92,6 @@ if [ -f $resultsname ]; then
 
     cat $jira_text_results | fzf | awk '{print $1}'
 else
-    echo "$resultsname is not found/available."
+    echo "$resultsname could not be found/generated. Failing"
+    exit 1
 fi
