@@ -3,11 +3,11 @@
     email = welkere@ncbi.nlm.nih.gov
 [core]
     # editor = /usr/bin/vim   - don't use this, use either $VISUAL or $EDITOR so it's platform independent
-    pager = delta --line-numbers --dark
-	whitespace = trailing-space,space-before-tab
-	excludesfile = ~/.gitignore
-	autocrlf = input
-	eol = lf
+    pager = delta --line-numbers --dark --show-syntax-themes
+    whitespace = trailing-space,space-before-tab
+    excludesfile = ~/.gitignore
+    autocrlf = input
+    eol = lf
 [color]
     diff = auto
     status = auto
@@ -111,27 +111,27 @@
     unassume = update-index --no-assume-unchanged
     # Show the files that are currently assume-unchanged
     assumed = "!git ls-files -v | grep ^h | cut -c 3-"
-	dt = difftool
+    dt = difftool
 [github]
     user = edwelker
     password = !security find-generic-password -gs github.password -w | tr -d '\n'
 [push]
-	default = current
-	followTags = true
+    default = current
+    followTags = true
 [credential]
     helper = cache --timeout=3600
 [merge]
-	; tool = delta # nope, just use pager
-	conflictstyle = diff3
+    ; tool = delta # nope, just use pager
+    conflictstyle = diff3
 [mergetool]
-	prompt = false
+    prompt = false
 [advice]
-	statusHints = false
+    statusHints = false
 [diff]
-	renames = copies
-	mnemonicprefix = true
+    renames = copies
+    mnemonicprefix = true
     colorMoved = default
-	; tool = delta # nope, just use pagerr
+    ; tool = delta # nope, just use pagerr
 [branch]
     autosetupmerge = always
     autosetuprebase = always
@@ -139,11 +139,11 @@
     enabled = true
     autoUpdate = true
 [fetch]
-	prune = true
+    prune = true
 [pull]
-	rebase = true
+    rebase = true
 [rebase]
-	stat = true
+    stat = true
 [difftool]
     prompt = false
 

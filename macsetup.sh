@@ -87,6 +87,7 @@ brew install bat
 brew install dasel
 brew install git-delta
 brew install exa
+brew install pandoc
 $(brew --prefix)/opt/fzf/install
 
 brew install vim
