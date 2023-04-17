@@ -48,6 +48,7 @@ brew install --cask background-music
 brew install --cask rocket
 brew install witch
 brew install --cask friedrichweise/wechsel/wechsel
+brew install --cask visual-studio-code
 brew install plex
 brew install backblaze
 #for older versions: http://stackoverflow.com/questions/3987683/homebrew-install-specific-version-of-formula
