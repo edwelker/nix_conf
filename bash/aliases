@@ -43,7 +43,7 @@ alias .....='cd ../../../..'
 alias ......='cd ../../../../..'
 alias .......='cd ../../../../../..'
 
-alias tree='tree -L 2 -Ca --noreport -I ".sass-cache|.git|node_modules|bower_components|tmp|__pycache__|venv"'
+alias tree='tree -Ca --noreport -I ".sass-cache|.git|node_modules|migrations|bower_components|tmp|__pycache__|venv"'
 alias tre='tree -L 1'
 alias treee='tree -L 3'
 alias treeee='tree -L 4'

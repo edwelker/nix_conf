@@ -1,0 +1,4 @@
+rm -rf vim/plugged/<bad plugin that won't update with vim.plug>
+:PlugUpdate
+
+Mostly will say something like "fatal: refusing to merge unrelated histories"
