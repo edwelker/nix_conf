@@ -6,37 +6,39 @@ Host cdepot
     HostName cdepot.homedns.org
     User ewelker
 
-# see http://stackoverflow.com/questions/13228425/write-failed-broken-pipe
-# and
-# http://andy.wordpress.com/2010/06/14/my-ssh-config-setup/
+Host *
+    # see http://stackoverflow.com/questions/13228425/write-failed-broken-pipe
+    # and
+    # http://andy.wordpress.com/2010/06/14/my-ssh-config-setup/
 
-# Don't kill connection if route goes down
-TCPKeepAlive no
+    # Don't kill connection if route goes down
+    TCPKeepAlive no
 
-# always enable compression
-Compression yes
+    # always enable compression
+    Compression yes
 
-# multiplex connections
-ControlMaster auto
-# the unix socket created
-ControlPath /tmp/ssh-%r@%h:%p
-ControlPersist yes
+    # multiplex connections
+    ControlMaster auto
+    # the unix socket created
+    ControlPath /tmp/ssh-%r@%h:%p
+    ControlPersist yes
 
-# send a null packet to server every 60s to keep connection alive
-ServerAliveInterval 60
-StrictHostKeyChecking no
-# do authentication checks here, have them sent to other machines
-ForwardAgent yes
-ForwardX11 no
-IdentityFile ~/.ssh/id_rsa
-SendEnv EDITOR
-SendEnv GIT_AUTHOR_NAME
-SendEnv GIT_COMMITTER_NAME
-SendEnv COLORSCHEME
+    # send a null packet to server every 60s to keep connection alive
+    ServerAliveInterval 60
+    StrictHostKeyChecking no
+    # do authentication checks here, have them sent to other machines
+    ForwardAgent yes
+    ForwardX11 no
+    IdentityFile ~/.ssh/id_rsa
+    SendEnv EDITOR
+    SendEnv GIT_AUTHOR_NAME
+    SendEnv GIT_COMMITTER_NAME
+    SendEnv COLORSCHEME
 
-# HostKeyAlgorithms +rsa-sha2-256,rsa-sha2-512
-PubkeyAcceptedKeyTypes +ssh-rsa
-# UpdateHostKeys yes
+    # needed by newer MacOS'es and whatnot
+    HostkeyAlgorithms +ssh-rsa
+    PubkeyAcceptedAlgorithms +ssh-rsa
+    KexAlgorithms +diffie-hellman-group1-sha1
 
 
 Host iweb
@@ -64,7 +66,7 @@ Host iweb
 
 Host i
     User welkere
-    HostName iebdev12
+    HostName irbdev12
     ProxyCommand /usr/bin/ssh w nc %h %p
     #ProxyCommand ssh w -W %h:%p
     LocalForward 2222 intrawebdev2.be-md.ncbi.nlm.nih.gov:22
@@ -86,7 +88,8 @@ Host w
     HostName ssh.ncbi.nlm.nih.gov
     User welkere
     # PKCS11Provider /usr/lib/ssh-keychain.dylib
-    PKCS11Provider /usr/local/Cellar/opensc/0.23.0/lib/pkcs11/opensc-pkcs11.so
+    # PKCS11Provider /usr/local/Cellar/opensc/0.23.0/lib/pkcs11/opensc-pkcs11.so
+    PKCS11Provider /Library/OpenSC/lib/opensc-pkcs11.so
     LocalForward 3128 webproxy.ncbi.nlm.nih.gov:3128
     LocalForward 9418 stash.be-md.ncbi.nlm.nih.gov:9418
     ServerAliveInterval 50
