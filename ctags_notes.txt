@@ -1,0 +1,2 @@
+puppet from
+https://github.com/rodjek/vim-puppet/blob/master/ctags/puppet.ctags
