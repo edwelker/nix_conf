@@ -270,7 +270,7 @@ let g:airline#extensions#gutentags#enabled = 1
 " airline end
 
 " gutentags Don't pollute project dirs
-let g:gutentags_trace = 1
+" let g:gutentags_trace = 1
 let g:gutentags_project_root = ['.tags']
 let g:gutentags_add_default_project_roots = 1
 let g:gutentags_ctags_exclude_wildignore = 0
@@ -282,7 +282,7 @@ let g:gutentags_ctags_tagfile = '.tags'
 " gutentags end
 
 " set vim default tags file name `tags` to `.tags`
-set tags=./.tags;/
+set tags=.tags;/
 
 " Ag settings
 " No carrage return at the end so we can actually search
@@ -413,7 +413,8 @@ nnoremap <Leader>b :Black<CR>
 
 "fzf------------------------------------------------------------
 map <C-p> :FZF<CR>
-let $FZF_DEFAULT_COMMAND= 'ag -g ""'
+" used to work, not as of nov 13, 2024
+" let $FZF_DEFAULT_COMMAND= 'ag -g ""'
 let g:fzf_action = {
       \'ctrl-t': 'tab split',
       \'ctrl-v': 'vsplit',
@@ -690,6 +691,11 @@ au BufNewFile,BufRead *.pp
   \ set expandtab |
   \ set autoindent |
   \ set fileformat=unix
+
+" gross
+au FileType puppet setlocal isk+=:
+au FileType puppet nnoremap <c-]> :exe "tag " . substitute(expand("<cword>"), "^::", "", "")<CR>
+au FileType puppet nnoremap <c-w><c-]> :tab split<CR>:exe "tag " . substitute(expand("<cword>"), "^::", "", "")<CR>
 
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 autocmd BufRead,BufNewFile *.md setlocal spell
