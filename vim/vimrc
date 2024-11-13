@@ -692,7 +692,7 @@ au BufNewFile,BufRead *.pp
   \ set autoindent |
   \ set fileformat=unix
 
-" gross
+" gross https://maxmanders.co.uk/2016/01/12/my-puppet-vimrc/
 au FileType puppet setlocal isk+=:
 au FileType puppet nnoremap <c-]> :exe "tag " . substitute(expand("<cword>"), "^::", "", "")<CR>
 au FileType puppet nnoremap <c-w><c-]> :tab split<CR>:exe "tag " . substitute(expand("<cword>"), "^::", "", "")<CR>
