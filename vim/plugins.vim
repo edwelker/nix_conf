@@ -49,6 +49,8 @@ Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
 " Ugh, Ruby
 Plug 'rodjek/vim-puppet', { 'for': 'puppet' }
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
+Plug 'preservim/tagbar', { 'for': 'ruby' }  " may be useful for puppet?
+Plug 'mrk21/yaml-vim' " For hieradata
 " Plug 'vim-scripts/Specky', { 'for': 'rspec' }
 
 " All the syntax
@@ -65,7 +67,7 @@ Plug 'Raimondi/delimitMate', { 'for': 'python' }
 Plug 'psf/black', { 'branch': 'stable' }
 
 " Hashi
-" Plug 'hashivim/vim-terraform'
+Plug 'hashivim/vim-terraform'
 
 " Editorconfig
 Plug 'editorconfig/editorconfig-vim'

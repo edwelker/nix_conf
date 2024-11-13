@@ -191,6 +191,7 @@ alias sk='ssh-keygen -t ed25519'
 alias g='git'
 alias gp='git push'
 alias gpp='git pull && git push'
+alias gppr='git pull && git push && sr && rake puppetmaster:update'
 alias gpt='git po && git po --tags'
 alias ginitpy="git init --template=${DOTDOT}/pygittemplate"
 alias ghome="cd $(git root)"
