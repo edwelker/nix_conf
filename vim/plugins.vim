@@ -51,7 +51,8 @@ Plug 'rodjek/vim-puppet', { 'for': 'puppet' }
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 Plug 'preservim/tagbar', { 'for': 'ruby' }  " may be useful for puppet?
 Plug 'mrk21/yaml-vim' " For hieradata
-" Plug 'vim-scripts/Specky', { 'for': 'rspec' }
+" aligning
+Plug 'godlygeek/tabular'
 
 " All the syntax
 Plug 'sheerun/vim-polyglot'
@@ -88,7 +89,7 @@ Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 Plug 'tpope/vim-fugitive'
 
 " Ale
-Plug 'w0rp/ale'
+Plug 'dense-analysis/ale'
 
 " Ag for searching
 Plug 'rking/ag.vim'
@@ -107,8 +108,6 @@ Plug 'ConradIrwin/vim-bracketed-paste'
 " line numbers numbers
 " Plug 'myusuf3/numbers.vim'
 
-" aligning
-" Plug 'godlygeek/tabular'
 
 " incrementing numbers using + and -
 Plug 'vim-scripts/nextval'

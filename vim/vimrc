@@ -342,10 +342,15 @@ let g:ale_set_loclist = 1
 let g:ale_echo_cursor = 1
 let g:ale_keep_list_window_open = 0
 let g:ale_lint_delay = 100
-let g:ale_lint_on_enter = 0
+let g:ale_lint_on_insert_leave = 0
 let g:ale_lint_on_save = 1
 let g:ale_lint_on_text_changed = 'always'
 let g:ale_cache_executable_check_failures = 1
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+" tricky one
+let g:ale_lint_on_enter = 0
 
 " Ale JavaScript
 "https://prettier.io/docs/en/vim.html
@@ -354,13 +359,19 @@ let g:prettier#config#single_quote = 'true'
 
 " Ale Python
 " https://blog.landscape.io/using-pylint-on-django-projects-with-pylint-django.html
+
+
 " Ale-Airline
 let g:airline#extensions#ale#enabled = 1
 let airline#extensions#ale#show_line_numbers = 1
 let g:ale_sign_error = '✗'
 let g:ale_sign_warning = '⚠'
-" highlight ALEErrorSign ctermbg=NONE ctermfg=red
-" highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
+" let g:ale_sign_error = '🔴'
+" let g:ale_sign_warning = '⚠️'
+
+" autocmd makes these work
+autocmd ColorScheme * highlight ALEErrorSign ctermbg=NONE ctermfg=red
+autocmd ColorScheme * highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
 
 let g:ale_linters_explicit = 1
 
@@ -368,23 +379,30 @@ let g:ale_linters = {
 \  'python': ['mypy', 'flake8', 'pylint-django', 'black', 'pylint'],
 \  'javascript': ['eslint'],
 \  'css': ['stylelint'],
+\  'puppet': ['puppetlint'],
 \}
-" \  'jsx': ['stylelint', 'eslint'],
-" \  'vue': ['eslint']
+
 let g:ale_linter_aliases = {
   \'jsx': 'css'
 \}
+
+" first line despite I think Python does that already, even without black
 let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \  'python': ['isort'],
 \  'javascript': ['eslint', 'prettier'],
 \  'vue': ['eslint'],
 \  'scss': ['prettier'],
-\  'css': ['prettier']
+\  'css': ['prettier'],
+\  'puppet': ['puppetlint'],
 \}
-" let g:ale_fix_on_save = 1
+
 let g:ale_python_pylint_options = '--load-plugins pylint_django'
 let g:ale_python_mypy_options = '--namespace-packages --ignore-missing-imports'
+
+let g:ale_puppet_puppetlint_options = '--no-autoloader_layout-check --no-double_quoted_strings-check --with-filename'
 " Ale end
+
 
 " Black config
 autocmd BufWritePre *.py execute ':Black'
@@ -500,7 +518,7 @@ nnoremap <F2> :set spell<CR>
 
 " spelling
 setlocal spell
-highlight clear SpellBad
+" highlight clear SpellBad
 highlight SpellBad term=standout ctermfg=1 term=underline cterm=underline cterm=italic
 set spell spelllang=en_us
 set dictionary+=/usr/share/dict/words
@@ -664,7 +682,17 @@ endif
 
 au FileType scala syn region foldImports start="import" end=/import.*\n^$/ fold keepend
 
-au BufNewFile,BufRead *.pp set filetype=puppet
+" Settings for puppet files
+au BufNewFile,BufRead *.pp
+  \ set filetype=puppet |
+  \ set tabstop=2 |
+  \ set softtabstop=2 |
+  \ set shiftwidth=2 |
+  \ set textwidth=79 |
+  \ set expandtab |
+  \ set autoindent |
+  \ set fileformat=unix
+
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 autocmd BufRead,BufNewFile *.md setlocal spell
 
@@ -672,3 +700,17 @@ autocmd FileType gitcommit setlocal spell
 
 " Comment italics - tho depends on colorscheme
 highlight Comment cterm=italic
+
+" test from Jesse, tagbar now installed for puppet
+let g:tagbar_type_puppet = {
+  \ 'ctagstype': 'puppet',
+  \ 'kinds': [
+    \'c:class',
+    \'s:site',
+    \'n:node',
+    \'d:definition',
+    \'r:resource',
+    \'f:default'
+  \]
+\}
+
