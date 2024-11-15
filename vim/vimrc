@@ -377,7 +377,7 @@ let g:ale_linters = {
 \  'python': ['mypy', 'flake8', 'pylint-django', 'black', 'pylint'],
 \  'javascript': ['eslint'],
 \  'css': ['stylelint'],
-\  'puppet': ['puppetlint'],
+\  'puppet': ['puppetlint', 'puppet'],
 \}
 
 let g:ale_linter_aliases = {
@@ -392,7 +392,7 @@ let g:ale_fixers = {
 \  'vue': ['eslint'],
 \  'scss': ['prettier'],
 \  'css': ['prettier'],
-\  'puppet': ['puppetlint'],
+\  'puppet': ['puppetlint', 'puppet'],
 \}
 
 let g:ale_python_pylint_options = '--load-plugins pylint_django'
