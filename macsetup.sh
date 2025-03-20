@@ -6,7 +6,7 @@
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 brew tap homebrew/cask
-brew tap homebrew/cask-fonts
+# brew tap homebrew/cask-fonts
 
 # for some fonts
 brew install git svn
@@ -88,8 +88,9 @@ brew install tre
 brew install bat
 brew install dasel
 brew install git-delta
-brew install exa
+# brew install exa
 brew install pandoc
+brew install gauth
 $(brew --prefix)/opt/fzf/install
 
 brew install vim
@@ -141,6 +142,8 @@ defaults write -g com.apple.swipescrolldirection -bool false
 defaults write com.apple.finder WarnOnEmptyTrash -bool false
 # airdrop over ethernet
 defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true
+
+defaults write -g com.apple.mouse.scaling  5.0;
 
 # set keyboard repeat rates
 defaults write -g InitialKeyRepeat -int 10 # normal minimum is 15 (225 ms)

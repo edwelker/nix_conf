@@ -8,6 +8,8 @@
 	<string>/bin/bash</string>
 	<key>Default Bookmark Guid</key>
 	<string>024B205C-F8BB-4C54-B69A-994F09725E40</string>
+	<key>DimOnlyText</key>
+	<false/>
 	<key>DoubleClickPerformsSmartSelection</key>
 	<true/>
 	<key>HapticFeedbackForEsc</key>
@@ -686,9 +688,15 @@
 			<string>kNextWindowPointerAction</string>
 		</dict>
 	</dict>
+	<key>Print In Black And White</key>
+	<true/>
+	<key>ShowFullScreenTabBar</key>
+	<false/>
 	<key>SoundForEsc</key>
 	<false/>
 	<key>VisualIndicatorForEsc</key>
 	<false/>
+	<key>findMode_iTerm</key>
+	<integer>0</integer>
 </dict>
 </plist>
