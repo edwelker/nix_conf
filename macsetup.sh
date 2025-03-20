@@ -47,8 +47,8 @@ brew install --cask onyx
 brew install --cask background-music
 brew install --cask rocket
 brew install witch
-brew install --cask friedrichweise/wechsel/wechsel
-brew install --cask visual-studio-code
+# brew install --cask friedrichweise/wechsel/wechsel # uninstalled b/c it's confusing homebrew
+# brew install --cask visual-studio-code
 brew install --cask discord
 brew install plex
 brew install backblaze
