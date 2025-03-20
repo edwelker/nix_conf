@@ -52,7 +52,7 @@ Host iweb
     LocalForward 2181 10.50.2.148:2181
     # LocalForward 3389 NCBIPC8234.be-md.ncbi.nlm.nih.gov:3389
     # LocalForward 3389 NCBIPC9179.be-md.ncbi.nlm.nih.gov:3389
-    LocalForward 3389 mslogin04.be-md.ncbi.nlm.nih.gov:3389
+    LocalForward 3389 mslogin02.be-md.ncbi.nlm.nih.gov:3389
     LocalForward 9418 bitbucket.be-md.ncbi.nlm.nih.gov:9418
     LocalForward 9443 bbkt-test.be-md.ncbi.nlm.nih.gov:443
     LocalForward 9922 ncbimac1206.be-md.ncbi.nlm.nih.gov:22
@@ -66,12 +66,12 @@ Host iweb
 
 Host i
     User welkere
-    HostName irbdev12
+    HostName irbdev08
     ProxyCommand /usr/bin/ssh w nc %h %p
     #ProxyCommand ssh w -W %h:%p
     LocalForward 2222 intrawebdev2.be-md.ncbi.nlm.nih.gov:22
     # LocalForward 3389 NCBIPC8234.be-md.ncbi.nlm.nih.gov:3389
-    LocalForward 3389 mslogin04.be-md.ncbi.nlm.nih.gov:3389
+    LocalForward 3389 mslogin02.be-md.ncbi.nlm.nih.gov:3389
     # LocalForward 3389 NCBIPC9179.be-md.ncbi.nlm.nih.gov:3389
     # LocalForward 9922 ncbimac1206.be-md.ncbi.nlm.nih.gov:22
     # LocalForward 5920 ncbimac1206.be-md.ncbi.nlm.nih.gov:5920
