@@ -88,7 +88,6 @@ brew install tre
 brew install bat
 brew install dasel
 brew install git-delta
-# brew install exa
 brew install pandoc
 brew install gauth
 $(brew --prefix)/opt/fzf/install
