@@ -42,10 +42,6 @@ Plug 'tpope/vim-git', { 'for': 'git' }
 " Plug 'sukima/xmledit', { 'for': 'xml' }
 " Plug 'https://github.com/othree/html5.vim.git', { 'for': 'html' }
 
-" Markdown
-Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
-" Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
-
 " Ugh, Ruby
 Plug 'rodjek/vim-puppet', { 'for': 'puppet' }
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
@@ -53,6 +49,11 @@ Plug 'preservim/tagbar', { 'for': 'ruby' }  " may be useful for puppet?
 Plug 'mrk21/yaml-vim' " For hieradata
 " aligning
 Plug 'godlygeek/tabular'
+
+" Markdown
+" note this has to be after tabular, apparently
+Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+" Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
 
 " All the syntax
 Plug 'sheerun/vim-polyglot'

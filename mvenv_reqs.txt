@@ -2,12 +2,13 @@
 
 ipython
 ipdb
-pylint
-black
-mypy
+# pylint
+# black
+# mypy
 isort
 flake8
 pylint-django
+ruff
 django-extensions
 werkzeug
 
@@ -19,5 +20,8 @@ werkzeug
 
 # for pdb
 pdbpp
+
+# for markdown
+pymarkdown
 
 pre_commit
