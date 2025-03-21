@@ -196,6 +196,7 @@ alias gpt='git po && git po --tags'
 alias ginitpy="git init --template=${DOTDOT}/pygittemplate"
 alias ghome="cd $(git root)"
 alias gsuperclean="git pruneremotes && git bclean"
+alias gs='git submodule update --init --recursive'
 alias b='bzr'
 
 alias unaws='unset AWS_SESSION_TOKEN AWS_DEFAULT_REGION AWS_SECRET_ACCESS_KEY AWS_ACCESS_KEY_ID'
