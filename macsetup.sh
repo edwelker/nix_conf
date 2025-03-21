@@ -90,6 +90,7 @@ brew install dasel
 brew install git-delta
 brew install pandoc
 brew install gauth
+brew install fclones
 $(brew --prefix)/opt/fzf/install
 
 brew install vim
