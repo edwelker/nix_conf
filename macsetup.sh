@@ -5,6 +5,10 @@
 #install homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
+brew install bash
+sudo sed -i '' '1s/^/\/usr\/local\/bin\/bash\n/' /etc/shells
+chsh -s /usr/local/bin/bash
+
 brew tap homebrew/cask
 # brew tap homebrew/cask-fonts
 
@@ -37,7 +41,7 @@ brew install --cask time-out
 # brew install --cask spirited-away
 brew install --cask selfcontrol
 brew install --cask lastfm
-brew install --cask mou
+brew install --cask zettlr
 brew install --cask spotify
 brew install --cask slack
 brew install --cask appcleaner
@@ -46,6 +50,13 @@ brew install --cask macdown
 brew install --cask onyx
 brew install --cask background-music
 brew install --cask rocket
+brew install --cask coteditor
+brew install --cask monolingual
+brew install --cask hiddenbar
+brew install --cask radiola
+brew install --cask deeper
+brew install --cask texts
+brew install --cask aldente
 brew install witch
 # brew install --cask friedrichweise/wechsel/wechsel # uninstalled b/c it's confusing homebrew
 # brew install --cask visual-studio-code
