@@ -57,6 +57,7 @@ brew install --cask radiola
 brew install --cask deeper
 brew install --cask texts
 brew install --cask aldente
+brew install --cask musicbrainz-picard
 brew install witch
 # brew install --cask friedrichweise/wechsel/wechsel # uninstalled b/c it's confusing homebrew
 # brew install --cask visual-studio-code
@@ -102,6 +103,7 @@ brew install git-delta
 brew install pandoc
 brew install gauth
 brew install fclones
+brew install --cask karabiner-elements
 $(brew --prefix)/opt/fzf/install
 
 brew install vim
