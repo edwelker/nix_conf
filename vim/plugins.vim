@@ -43,10 +43,10 @@ Plug 'tpope/vim-git', { 'for': 'git' }
 " Plug 'https://github.com/othree/html5.vim.git', { 'for': 'html' }
 
 " Ugh, Ruby
-Plug 'rodjek/vim-puppet', { 'for': 'puppet' }
-Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
-Plug 'preservim/tagbar', { 'for': 'ruby' }  " may be useful for puppet?
-Plug 'mrk21/yaml-vim' " For hieradata
+" Plug 'rodjek/vim-puppet', { 'for': 'puppet' }
+" Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
+" Plug 'preservim/tagbar', { 'for': 'ruby' }  " may be useful for puppet?
+" Plug 'mrk21/yaml-vim' " For hieradata
 " aligning
 Plug 'godlygeek/tabular'
 

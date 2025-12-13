@@ -200,9 +200,10 @@ nmap Q gqap
 "folding
 set foldmethod=indent
 set foldlevel=10
-if $TMUX == ''
-    set clipboard+=unnamed
-endif
+
+" clipboard
+set clipboard+=unnamedplus
+
 " use spacebar to fold
 nnoremap <space> za
 
@@ -352,8 +353,8 @@ let g:ale_lint_on_enter = 1
 
 " Ale JavaScript
 "https://prettier.io/docs/en/vim.html
-let g:ale_javascript_prettier_options = '--single-quote --trailing-comma es5'
-let g:prettier#config#single_quote = 'true'
+" let g:ale_javascript_prettier_options = '--single-quote --trailing-comma es5'
+" let g:prettier#config#single_quote = 'true'
 
 " Ale Python
 " https://blog.landscape.io/using-pylint-on-django-projects-with-pylint-django.html
@@ -537,13 +538,14 @@ set complete+=kspell
 " set pastetoggle=<F2>
 " No longer needed with bracketed paste plugin: https://github.com/ConradIrwin/vim-bracketed-paste
 
-" Be able to keep pasting the same thing... hack that re-yanks the text each time
-xnoremap p pgvy
+" Paste over visual selection without losing the pasted text to the register
+xnoremap p "_dP
 
 set showmode
 
-" Seems to speed up scrolling
-set regexpengine=1
+" Zero here says auto pick the regex engine.
+" With it set to 1, it was failing on typescript files.
+set regexpengine=0
 
 " fix capitol writing combos, when I don't unpress shift fast enough
 command! W w
