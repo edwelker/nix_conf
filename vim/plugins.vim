@@ -92,11 +92,6 @@ Plug 'tpope/vim-fugitive'
 " Ale
 Plug 'dense-analysis/ale'
 
-" Ag for searching
-Plug 'rking/ag.vim'
-" Plug 'majutsushi/tagbar', { 'on': 'TagBar' }
-
-
 " Files!
 " Plug 'ctrlpvim/ctrlp.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
