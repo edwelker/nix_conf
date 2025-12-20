@@ -46,6 +46,13 @@ set ruler               " show the cursor position all the time
 set showcmd             " display incomplete commands
 set incsearch           " do incremental searching
 
+" persistent undo
+set undofile
+set undodir=~/.tmp/undo//
+if !isdirectory(expand('~/.tmp/undo'))
+    call mkdir(expand('~/.tmp/undo'), 'p')
+endif
+
 " ripgrep and fd don't need recursive paths, so keep this simple
 set path=.,/usr/include,,
 
@@ -213,9 +220,7 @@ let g:gutentags_ctags_exclude = [
 " Set vim tags to look in project AND the Gutentags cache
 set tags=./tags;,tags;,~/.cache/tags/tags
 
-" Ag settings
-nnoremap <leader>a :Ag<Space>
-let g:ag_highlight=0
+nnoremap <leader>a :Rg<Space>
 
 " html5/emmet
 let g:html5_event_handler_attributes_complete = 1
@@ -301,8 +306,7 @@ autocmd BufWritePre *.py execute ':Black'
 nnoremap <Leader>b :Black<CR>
 
 " fzf ------------------------------------------------------------
-" Smart Ctrl-P
-nnoremap <expr> <C-p> (len(system('git rev-parse --is-inside-work-tree 2>/dev/null')) ? ':GFiles' : ':Files') . "\<cr>"
+nnoremap <C-p> :Files<CR>
 
 let g:fzf_action = {
       \ 'ctrl-t': 'tab split',
@@ -311,7 +315,7 @@ let g:fzf_action = {
       \ 'ctrl-a': 'argedit' }
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 let g:fzf_buffers_jump = 1
-let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
+let g:fzf_layout = {'up': '~40%'}
 
 nnoremap <c-p><c-p> :Files<CR>
 nnoremap <leader>t :Tags<cr>
@@ -328,6 +332,22 @@ autocmd! VimEnter * command! -nargs=* -complete=file Ag :call s:fzf_ag_raw(<q-ar
 function! s:fzf_ag_raw(cmd)
   call fzf#vim#ag_raw('--noheading '. a:cmd)
 endfunction
+
+" Match FZF colors to Atelier_CaveDark
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
 " ----------------------------------------------------------------
 
 " Plug mappings
@@ -368,12 +388,13 @@ set regexpengine=0
 " Capitol aliases
 command! W w
 command! Wq wq
+command! WQ wq
 command! Q q
 command! Bd bd
 command! BD bd
 command! Bn bn
-command! Bp bp
 command! BN bn
+command! Bp bp
 command! BP bp
 
 colorscheme Atelier_CaveDark
