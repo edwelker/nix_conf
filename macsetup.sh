@@ -89,7 +89,7 @@ brew install nvm
 brew install meld
 brew install gnu-sed
 # brew install the_silver_searcher
-brew install ctags
+brew install universal-ctags
 brew install pstree
 brew install watch
 brew install fzf
@@ -100,7 +100,6 @@ brew install tre
 brew install bat
 brew install dasel
 brew install git-delta
-brew install pandoc
 brew install gauth
 brew install fclones
 brew install --cask karabiner-elements

@@ -205,7 +205,7 @@ alias vu='vagrant up'
 alias vs='vagrant ssh'
 alias vd='vagrant destroy -f'
 
-alias brewu='brew update && brew upgrade && brew cleanup -s; brew doctor; brew --cask upgrade'
+alias brewu='brew update && brew upgrade && brew cleanup --prune=all; brew doctor'
 
 function port(){
   fuser $1/tcp

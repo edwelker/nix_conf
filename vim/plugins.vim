@@ -1,14 +1,14 @@
 " ----------------------------------------------------------------------------
-"   Plug
+"   Plug
 " ----------------------------------------------------------------------------
 
 " Install vim-plug if we don't arlready have it
 if empty(glob("~/.vim/autoload/plug.vim"))
-    " Ensure all needed directories exist  (Thanks @kapadiamush)
-    execute 'mkdir -p ~/.vim/plugged'
-    execute 'mkdir -p ~/.vim/autoload'
-    " Download the actual plugin manager
-    execute '!curl -fLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+    " Ensure all needed directories exist  (Thanks @kapadiamush)
+    execute 'mkdir -p ~/.vim/plugged'
+    execute 'mkdir -p ~/.vim/autoload'
+    " Download the actual plugin manager
+    execute '!curl -fLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
 endif
 
 call plug#begin('~/.vim/plugged')
@@ -45,7 +45,7 @@ Plug 'tpope/vim-git', { 'for': 'git' }
 " Ugh, Ruby
 " Plug 'rodjek/vim-puppet', { 'for': 'puppet' }
 " Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
-" Plug 'preservim/tagbar', { 'for': 'ruby' }  " may be useful for puppet?
+" Plug 'preservim/tagbar', { 'for': 'ruby' }  " may be useful for puppet?
 " Plug 'mrk21/yaml-vim' " For hieradata
 " aligning
 Plug 'godlygeek/tabular'
@@ -65,7 +65,7 @@ Plug 'vim-scripts/indentpython.vim', { 'for': 'python' }
 Plug 'raimon49/requirements.txt.vim', { 'for': 'python' }
 Plug 'fisadev/vim-isort', { 'for': 'python' }
 Plug 'tmhedberg/SimpylFold', { 'for': 'python' }
-Plug 'Raimondi/delimitMate', { 'for': 'python' }
+Plug 'Raimondi/delimitMate'
 Plug 'psf/black', { 'branch': 'stable' }
 
 " Hashi
@@ -75,7 +75,7 @@ Plug 'hashivim/vim-terraform'
 Plug 'editorconfig/editorconfig-vim'
 
 " Completion
-Plug 'mattn/emmet-vim', { 'for': 'html' }
+Plug 'mattn/emmet-vim', { 'for': ['html', 'javascript.jsx', 'vue', 'astro'] }
 Plug 'alvan/vim-closetag', { 'for': 'html' }
 Plug 'maralla/completor.vim'
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
@@ -92,14 +92,13 @@ Plug 'tpope/vim-fugitive'
 " Ale
 Plug 'dense-analysis/ale'
 
-" Ag for searching
-Plug 'rking/ag.vim'
+" Ag for searching (Note: Redundant if using FZF, but kept per workflow)
+" Plug 'rking/ag.vim'
 " Plug 'majutsushi/tagbar', { 'on': 'TagBar' }
 
 
 " Files!
 " Plug 'ctrlpvim/ctrlp.vim'
-" Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
@@ -120,7 +119,7 @@ Plug 'vim-scripts/nextval'
 " autotags for ctag generation
 " Plug 'craigemery/vim-autotag'
 Plug 'ludovicchabant/vim-gutentags'
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 " Plug 'xolox/vim-easytags'
 Plug 'xolox/vim-misc'
 
@@ -135,9 +134,12 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-commentary'
 
 " 'Vastly improved Javascript indentation and syntax support in Vim'
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx' " React
+Plug 'pangloss/vim-javascript'    " JavaScript support
+Plug 'leafgarland/typescript-vim' " TypeScript syntax
+Plug 'maxmellon/vim-jsx-pretty'   " JS and JSX (react) syntax
+Plug 'jparise/vim-graphql'        " GraphQL syntax
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
+Plug 'wuelnerdotexe/vim-astro'
 
 " General tool for builds and external commands
 Plug 'tpope/vim-dispatch'
@@ -149,5 +151,5 @@ Plug 'tpope/vim-surround'
 Plug 'airblade/vim-gitgutter'
 
 
-filetype plugin indent on                   " required!
+filetype plugin indent on                   " required!
 call plug#end()

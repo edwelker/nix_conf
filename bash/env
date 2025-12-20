@@ -81,7 +81,7 @@ fi
 # won't work, relies on https://github.com/scop/bash-completion which i need to look into
 # [ -f ~/src/bat/autocomplete/bat.bash ] && source ~/src/bat/autocomplete/bat.bash;
 
-export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git --exclude Library --exclude node_modules --exclude .cache'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 #completion
