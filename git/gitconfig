@@ -1,6 +1,6 @@
 [user]
     name = Eddie Welker
-    email = welkere@ncbi.nlm.nih.gov
+    email = eddie.welker@gmail.com
 [core]
     # editor = /usr/bin/vim   - don't use this, use either $VISUAL or $EDITOR so it's platform independent
     pager = delta --line-numbers --dark
