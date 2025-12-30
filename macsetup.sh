@@ -86,7 +86,6 @@ brew install sshfs
 brew install cask
 brew install go
 brew install nvm
-brew install meld
 brew install gnu-sed
 # brew install the_silver_searcher
 brew install universal-ctags
