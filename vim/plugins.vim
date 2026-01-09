@@ -76,9 +76,13 @@ Plug 'editorconfig/editorconfig-vim'
 
 " Completion
 Plug 'mattn/emmet-vim', { 'for': ['html', 'javascript.jsx', 'vue', 'astro'] }
-Plug 'alvan/vim-closetag', { 'for': 'html' }
 Plug 'maralla/completor.vim'
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
+
+" HTML, hopeful this works.
+" Plug 'alvan/vim-closetag', { 'for': 'html' } # I hated this
+Plug 'AndrewRadev/tagalong.vim'
+Plug 'jiangmiao/auto-pairs'
 
 " Make % match xml tags
 " Plug 'edsono/vim-matchit', { 'for': ['html', 'xml'] }
