@@ -58,6 +58,7 @@ brew install --cask deeper
 brew install --cask texts
 brew install --cask aldente
 brew install --cask musicbrainz-picard
+brew install --cask docker
 brew install witch
 # brew install --cask friedrichweise/wechsel/wechsel # uninstalled b/c it's confusing homebrew
 # brew install --cask visual-studio-code
