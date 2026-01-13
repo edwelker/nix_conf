@@ -76,6 +76,7 @@ brew install ack
 brew install wget
 brew install tree
 brew install node
+brew install nvm
 brew install bash-completion
 brew install irssi
 brew install jq
@@ -86,7 +87,6 @@ brew install sshfs
 # brew install mutt
 brew install cask
 brew install go
-brew install nvm
 brew install gnu-sed
 # brew install the_silver_searcher
 brew install universal-ctags
