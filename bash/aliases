@@ -182,7 +182,24 @@ alias work="~/bin/work.sh"
 alias iweb="cd ~/iwebdev-welkere"
 alias lbsg="lbsmc | grep"
 
-alias agent='eval $(ssh-agent); ssh-add ~/.ssh/id_rsa; ssh-add ~/.ssh/me_for_stash/id_rsa'
+agent() {
+    # Start the agent
+    eval "$(ssh-agent)"
+
+    # Define all keys here
+    local key_list=(
+        "$HOME/.ssh/id_rsa"
+        "$HOME/.ssh/me_for_stash/id_rsa"
+        "$HOME/.ssh/me_for_github"
+    )
+
+    # Loop through and add if they exist
+    for key in "${key_list[@]}"; do
+        if [ -f "$key" ]; then
+            ssh-add "$key"
+        fi
+    done
+}
 
 alias sr='ssh-reagent'
 alias sh='ssh-agent-hookup'
