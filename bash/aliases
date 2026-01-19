@@ -188,9 +188,10 @@ agent() {
 
     # Define all keys here
     local key_list=(
-        "$HOME/.ssh/id_rsa"
+ /       "$HOME/.ssh/id_rsa"
         "$HOME/.ssh/me_for_stash/id_rsa"
         "$HOME/.ssh/me_for_github"
+        "$HOME/.ssh/mbp_to_github"
     )
 
     # Loop through and add if they exist
