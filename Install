@@ -48,6 +48,11 @@ if [ ! -h ~/.pip ]; then
     ln -s ${DOTDOT}/pip.conf ~/.pip/pip.conf
 fi;
 
+if [ ! -f ~/.prettierrc.json ]; then
+    ln -s ${DOTDOT}/.prettierrc.json ~/.prettierrc.json
+fi;
+
+
 #create a .tmp directory for vim backups
 if [ ! -d ~/.tmp ]; then
     mkdir ~/.tmp;

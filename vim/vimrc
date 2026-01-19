@@ -311,6 +311,16 @@ let g:ale_python_auto_virtualenv = 1
 autocmd BufWritePre *.py execute ':Black'
 nnoremap <Leader>b :Black<CR>
 
+" Prettier for various
+" Enable auto formatting on save
+let g:prettier#autoformat = 1
+
+" Allow formatting without the '@format' docblock (CRITICAL for 'Black' behavior)
+let g:prettier#autoformat_require_pragma = 0
+
+" Disable quickfix window to keep workflow smooth
+let g:prettier#quickfix_enabled = 0
+
 " fzf ------------------------------------------------------------
 nnoremap <C-p> :Files<CR>
 
