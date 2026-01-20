@@ -354,3 +354,5 @@ alias rvmuse="rvm use"
 alias rvmdefault="rvm use system"
 alias rvmsys="rvm use system"
 alias rvmnoautolibs="rvm autolibs disable"  # Don't use yum, etc.
+
+alias proxy_interface="route get 1.1.1.1 | grep interface"
