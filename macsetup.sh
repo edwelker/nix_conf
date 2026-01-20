@@ -103,7 +103,6 @@ brew install git-delta
 brew install gauth
 brew install fclones
 brew install rsync # get a modern version
-brew install glow
 brew install --cask karabiner-elements
 $(brew --prefix)/opt/fzf/install
 
