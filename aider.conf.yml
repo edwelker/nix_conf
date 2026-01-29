@@ -1,0 +1,9 @@
+auto-commits: false
+dirty-commits: false
+
+architect: true
+model: gemini/gemini-3-pro-preview
+editor-model: gemini/gemini-3-flash-preview
+
+cache-prompts: true
+cache-keepalive-pings: 5

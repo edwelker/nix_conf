@@ -19,7 +19,7 @@ fi;
 
 
 # First level symlinks
-for rc in inputrc fdignore ctags pythonstartup ackrc editorconfig ideavimrc pdbrc virtualenv; do
+for rc in inputrc fdignore ctags pythonstartup ackrc editorconfig ideavimrc pdbrc virtualenv aider.conf.yml; do
     if [ ! -h ~/.$rc ]; then
         ln -s ${DOTDOT}/"$rc" ~/."$rc"
     else
