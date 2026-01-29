@@ -1,9 +1,15 @@
+# --- Personal Preferences ---
 auto-commits: false
 dirty-commits: false
+architect: true       # Always use Architect mode.
 
-architect: true
+# --- Model Configuration ---
 model: gemini/gemini-3-pro-preview
 editor-model: gemini/gemini-3-flash-preview
-
 cache-prompts: true
-cache-keepalive-pings: 5
+map-tokens: 4096
+notifications: true
+
+# --- Display ---
+# Optional: Makes the chat output look nicer
+dark-mode: true
