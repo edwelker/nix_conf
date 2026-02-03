@@ -225,10 +225,7 @@ alias vd='vagrant destroy -f'
 
 alias brewu='brew update && brew upgrade && brew cleanup --prune=all; brew doctor'
 
-alias aid="aider --model gemini/gemini-2.5-pro --no-auto-commits --vim"
-alias aid3="aider --model gemini/gemini-3-pro-preview --no-auto-commits --vim"
-alias aidf="aider --model gemini/gemini-3-flash-preview --no-auto-commits --vim"
-alias aida="aider --no-auto-commits --vim"
+alias aid="aider --no-auto-commits --vim"
 
 function port(){
   fuser $1/tcp
