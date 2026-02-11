@@ -11,3 +11,4 @@ vim/vim/black
 jiratest/*.token
 jiratest/*.txt
 jiratest/*json
+espanso/match/secrets.yml

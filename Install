@@ -52,6 +52,12 @@ if [ ! -f ~/.prettierrc.json ]; then
     ln -s ${DOTDOT}/.prettierrc.json ~/.prettierrc.json
 fi;
 
+# Ensure the destination directory exists
+mkdir -p ~/Library/Application\ Support/espanso
+
+# Link the config and match directories
+ln -s ~/bin/nix_conf/espanso/config ~/Library/Application\ Support/espanso/config
+ln -s ~/bin/nix_conf/espanso/match ~/Library/Application\ Support/espanso/match
 
 #create a .tmp directory for vim backups
 if [ ! -d ~/.tmp ]; then

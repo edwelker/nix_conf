@@ -104,6 +104,7 @@ brew install gauth
 brew install fclones
 brew install rsync # get a modern version
 brew install mole
+brew install espanso
 brew install --cask karabiner-elements
 $(brew --prefix)/opt/fzf/install
 
