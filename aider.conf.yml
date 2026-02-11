@@ -4,8 +4,8 @@ dirty-commits: false
 architect: true       # Always use Architect mode.
 
 # --- Model Configuration ---
-model: gemini/gemini-2.0-flash-exp
-editor-model: gemini/gemini-2.0-flash-exp
+model: gemini/gemini-2.5-flash
+editor-model: gemini/gemini-2.5-flash
 # This forces aider to use the AI Studio path
 openai-api-base: https://generativelanguage.googleapis.com/v1beta
 
