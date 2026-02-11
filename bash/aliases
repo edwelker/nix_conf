@@ -58,8 +58,7 @@ mvenv(){
     local TMPDIR=$(mktemp -d);
     pushd .;
     cd $TMPDIR;
-    virtualenv3.11 venv;
-    /usr/local/bin/virtualenv venv;
+    python3 -m venv venv;
     source venv/bin/activate;
     pip install -r ${DOTDOT}/mvenv_reqs.txt
     popd;
@@ -69,6 +68,9 @@ mvenv(){
     if [ -f setup.py ]; then
         pip install -r requirements/test.txt;
         pip install -e .;
+    fi
+    if [ -f requirements.txt ]; then
+        pip install -r requirements.txt
     fi
 }
 
@@ -354,3 +356,12 @@ alias rvmsys="rvm use system"
 alias rvmnoautolibs="rvm autolibs disable"  # Don't use yum, etc.
 
 alias proxy_interface="route get 1.1.1.1 | grep interface"
+
+watchpy() {
+  if [ -z "$1" ]; then
+    echo "Usage: watchpy <file_path>"
+    return 1
+  fi
+
+  ls "$1" | entr -c python3 "$1"
+}

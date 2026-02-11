@@ -1,0 +1,24 @@
+{
+  "inlayHint.enable": false,
+  "coc.preferences.formatOnSave": true,
+  "python.formatting.provider": "black",
+  "python.linting.enabled": true,
+  "python.linting.pylintEnabled": true,
+  "python.sortImports.path": "isort",
+  "coc.preferences.fzf.sort": true,
+  "suggest.noselect": false,
+  "suggest.defaultSortMethod": "none",
+  "python.pythonPath": "python",
+
+  "hover.target": "float",
+  "hover.maxWidth": 80,
+  "hover.maxHeight": 20,
+
+  "suggest.floatConfig": {
+    "border": true,
+    "rounded": true,
+    "maxWidth": 80,
+    "maxHeight": 20
+  },
+  "suggest.enablePreview": false
+}
