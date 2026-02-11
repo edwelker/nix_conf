@@ -1,0 +1,10 @@
+# Espanso Configuration File
+
+# Set the threshold for snippet expansion (ms)
+backspace_speed: 20
+
+# Disable expansion in specific apps (e.g., Terminal if it interferes)
+# filter_exec: "Terminal"
+
+# Use the "Inject" backend on macOS for better compatibility with some apps
+backend: Clipboard
