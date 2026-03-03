@@ -1,0 +1,48 @@
+{
+  "security": {
+    "auth": {
+      "selectedType": "login-with-google"
+    }
+  },
+  "general": {
+    "previewFeatures": true,
+    "vimMode": true,
+    "preferredEditor": "vim",
+    "defaultApprovalMode": "plan",
+    "maxAttempts": 3,
+    "retryFetchErrors": true,
+    "enableAutoUpdate": true,
+    "checkpointing": {
+      "enabled": true
+    },
+    "plan": {
+      "directory": ".gemini/plans",
+      "modelRouting": true
+    },
+    "sessionRetention": {
+      "enabled": true,
+      "maxAge": "30d",
+      "warningAcknowledged": true
+    }
+  },
+  "ui": {
+    "inlineThinkingMode": "full",
+    "hideTips": true,
+    "hideBanner": true,
+    "showLineNumbers": true,
+    "showUserIdentity": true
+  },
+  "model": {
+    "name": "gemini-2.0-flash",
+    "compressionThreshold": 0.2,
+    "maxSessionTurns": 50
+  },
+  "context": {
+    "fileFiltering": {
+      "respectGitIgnore": true,
+      "respectGeminiIgnore": true,
+      "enableRecursiveFileSearch": false
+    },
+    "discoveryMaxDirs": 3
+  }
+}

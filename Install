@@ -38,6 +38,18 @@ for rc in git/gitconfig git/gitk vim/vimrc vim/vim tmux/tmux.conf mutt/muttrc; d
     fi;
 done
 
+if [ ! -d ~/.gemini ]; then
+    mkdir -p ~/.gemini
+fi
+if [ ! -h ~/.gemini/settings.json ]; then
+    ln -s ${DOTDOT}/ai/gemini_settings.json ~/.gemini/settings.json
+    echo "Linked Gemini settings"
+fi
+if [ ! -h ~/.gemini/.geminiignore ]; then
+    ln -s ${DOTDOT}/ai/geminiignore ~/.gemini/.geminiignore
+    echo "Linked global .geminiignore"
+fi
+
 
 if [ ! -h ~/.ssh/config ]; then
     ln -s ${DOTDOT}/ssh/config ~/.ssh/config
