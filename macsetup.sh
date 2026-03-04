@@ -70,6 +70,7 @@ brew install backblaze
 #remember: http://stackoverflow.com/questions/127591/using-caps-lock-as-esc-in-mac-os-x
 
 #install non-GUI's
+brew install bash
 brew install python3
 brew install tmux
 brew install ack
