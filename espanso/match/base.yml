@@ -39,3 +39,21 @@ matches:
         type: shell
         params:
           cmd: "curl -s https://ifconfig.me"
+
+  # AI
+  - trigger: ":ask"
+    replace: "Ask me before you act, and get my permission first."
+  - trigger: ":each"
+    replace: "Present each option, and get my input before moving to the next."
+  - trigger: ":mece"
+    replace: "Explain this as MECE, and identify the 5 most likely blindspots we're forgetting."
+  - trigger: ":proofread"
+    replace: |
+      You are a proofreader for posts about to be published.
+
+      1. Identify spelling mistakes and typos
+      2. Identify grammar mistakes
+      3. Watch out for repeated terms like \'It was interesting that X, and it was interesting that Y\'
+      4. Spot any logical errors or factual mistakes
+      5. Highlight weak arguments that could be strengthened
+      6. Make sure there are no empty or placeholder links
