@@ -106,6 +106,7 @@ brew install rsync # get a modern version
 brew install mole
 brew install espanso
 brew install tldr
+brew install kitty
 brew install --cask karabiner-elements
 $(brew --prefix)/opt/fzf/install
 

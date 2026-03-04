@@ -527,3 +527,6 @@ let g:tagbar_type_puppet = {
 
 " Astro
 let g:tagalong_additional_filetypes = ['astro']
+
+" Auto-reload Kitty when saving kitty.conf
+autocmd BufWritePost kitty.conf silent !kill -SIGUSR1 $KITTY_PID

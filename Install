@@ -55,6 +55,10 @@ if [ ! -h ~/.ssh/config ]; then
     ln -s ${DOTDOT}/ssh/config ~/.ssh/config
 fi;
 
+if [ ! -h ~/.config/kitty/kitty.conf ]; then
+    ln -s ${DOTDOT}/kitty.conf ~/.config/kitty/kitty.conf
+fi;
+
 if [ ! -h ~/.pip ]; then
     mkdir ~/.pip;
     ln -s ${DOTDOT}/pip.conf ~/.pip/pip.conf
