@@ -524,18 +524,27 @@ let g:tagalong_additional_filetypes = ['astro']
 autocmd BufWritePost kitty.conf silent !kill -SIGUSR1 $KITTY_PID
 
 " --- Spell Check Config ---
-" Toggle with F2
-nnoremap <F2> :set spell!<CR>
-
 set spell
 set spelllang=en_us
 set spellfile=~/.vim/spell/en.utf-8.add
 set dictionary+=/usr/share/dict/words
 
-" Use an autocmd for the highlight to prevent colorschemes from wiping it out
+" Leader Mappings
+nnoremap <leader>s :set spell!<CR>
+nnoremap <leader>sj ]s
+nnoremap <leader>sk [s
+nnoremap <leader>sc z=
+
+" Visuals: Bright Yellow + Wiggly Line
+" Enable undercurl in Kitty/Modern Terminals
+let &t_Cs = "\e[4:3m"
+let &t_Ce = "\e[4:0m"
+
 augroup SpellColors
     autocmd!
-    autocmd ColorScheme * highlight SpellBad term=underline cterm=underline ctermfg=1 cterm=italic
+    " guisp=Yellow is the key for undercurl color
+    autocmd ColorScheme * highlight SpellBad
+        \ cterm=undercurl ctermfg=11 gui=undercurl guisp=Yellow
 augroup END
 
 " Force it back on for text files specifically
