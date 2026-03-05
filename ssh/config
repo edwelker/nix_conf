@@ -34,6 +34,7 @@ Host *
     SendEnv GIT_AUTHOR_NAME
     SendEnv GIT_COMMITTER_NAME
     SendEnv COLORSCHEME
+    SetEnv TERM=xterm-256color
 
     # needed by newer MacOS'es and whatnot
     HostkeyAlgorithms +ssh-rsa
