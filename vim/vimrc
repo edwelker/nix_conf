@@ -17,6 +17,8 @@ nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :w<CR>:so $MYVIMRC<CR>
 nmap <silent> <leader>ep :e $DOTDOT/vim/plugins.vim<CR>
 nmap <silent> <leader>sp :w<CR>:so $DOTDOT/vim/plugins.vim<CR>
+nmap <silent> <leader>et :e $DOTDOT/tmux/tmux.conf<CR>
+nmap <silent> <leader>ek :e $DOTDOT/kitty.conf<CR>
 
 " learn to do it correctly
 noremap <Up> <Nop>
@@ -438,30 +440,6 @@ let g:javascript_plugin_jsdoc = 1
 set rtp+=$DOTDOT/vim/vim/bundle/powerline/powerline/bindings/vim
 
 nnoremap <leader>l :lcl<CR>
-
-if &term =~ "xterm"
-    let &t_Co=256
-    set t_ti=ESC7ESC[rESC[?47h t_te=ESC[?47lESC8
-    if has("terminfo")
-        let &t_Sf="\ESC[3%p1%dm"
-        let &t_Sb="\ESC[4%p1%dm"
-    else
-        let &t_Sf="\ESC[3%dm"
-        let &t_Sb="\ESC[4%dm"
-    endif
-endif
-
-if exists('$TMUX')
-    " Normal Mode = Steady Block (2)
-    " Insert Mode = Steady Bar (6)
-    let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>[2 q\<Esc>\\"
-    let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>[6 q\<Esc>\\"
-
-    " Keep your undercurl/8u logic here as well
-    let &t_Cs = "\e[4:3m"
-    let &t_Ce = "\e[4:0m"
-    let &t_8u = "\e[58:2:%lu:%lu:%lum"
-endif
 
 " Django
 au BufNewFile,BufRead admin.py,urls.py,models.py,views.py,settings.py,forms.py setlocal filetype=python.django

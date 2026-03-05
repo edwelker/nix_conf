@@ -34,6 +34,10 @@ Plug 'atelierbram/vim-colors_atelier-schemes'
 Plug 'xolox/vim-colorscheme-switcher'
 
 
+" Deal with the terminal messes.  Kitty/iterm/tmux/vim
+Plug 'wincent/terminus'
+Plug 'christoomey/vim-tmux-navigator'
+
 " Syntax
 Plug 'tpope/vim-git', { 'for': 'git' }
 " Plug 'cakebaker/scss-syntax.vim', { 'for': 'scss' }
@@ -121,9 +125,6 @@ Plug 'ludovicchabant/vim-gutentags'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 " Plug 'xolox/vim-easytags'
 Plug 'xolox/vim-misc'
-
-" Tmux window navigation
-Plug 'christoomey/vim-tmux-navigator'
 
 " Let's try to make this pretty...
 Plug 'vim-airline/vim-airline'
