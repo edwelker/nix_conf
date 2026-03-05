@@ -4,7 +4,6 @@ export EDITOR="$VISUAL"
 export PAGER="bat"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export LESS="-R"
-export TERM=xterm-256color
 export CDPATH=.:~:/export/home/welkere/:~/code:~/code/python:~/code/scala:~/code/css:~/src:~/bin:$DOTDOT:/am/intrawebdev2/web/public/htdocs/staff/welkere/
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:~/lib
 export HISTIGNORE="clear" # Ignore clear, since I type that constantly
@@ -76,6 +75,15 @@ if [[ $? = 0 ]] ; then
     export PATH="/usr/local/sbin:$PATH"
 fi
 
+# Force Bash to send cursor shape sequences even inside tmux
+if [[ -n "$TMUX" ]]; then
+    # Wrap escape sequences in \ePtmux; and \e\\ for tmux passthrough
+    bind 'set vi-ins-mode-string \1\ePtmux;\e\e[6 q\e\\\2'
+    bind 'set vi-cmd-mode-string \1\ePtmux;\e\e[2 q\e\\\2'
+else
+    bind 'set vi-ins-mode-string \1\e[6 q\2'
+    bind 'set vi-cmd-mode-string \1\e[2 q\2'
+fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 [ -f ~/src/ripgrep/complete/rg.bash ] && source ~/src/ripgrep/complete/rg.bash;
