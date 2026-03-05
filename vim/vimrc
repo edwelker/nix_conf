@@ -132,6 +132,7 @@ set splitbelow
 set splitright
 
 set wildmenu
+set wildignorecase
 set wildmode=longest:full,list:full
 set wildignore+=*.DS_Store,~*
 set wildignore+=*.bmp,*.gif,*.jpg,*.png
