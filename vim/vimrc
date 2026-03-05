@@ -399,14 +399,6 @@ nnoremap %s/ %s/\v
 vnoremap / /\v
 vnoremap %s/ %s/\v
 
-" Spell check
-nnoremap <F2> :set spell<CR>
-setlocal spell
-highlight SpellBad term=standout ctermfg=1 term=underline cterm=underline cterm=italic
-set spell spelllang=en_us
-set dictionary+=/usr/share/dict/words
-set spellfile=~/.vim/spell/en.utf-8.add
-
 " Completion
 set complete+=.,w,b,u,t,i
 set complete+=kspell
@@ -494,9 +486,9 @@ inoremap <expr> <Tab> Tab_Or_Complete()
 let g:scala_sort_across_groups=1
 let g:scala_first_party_namespaces='\(controllers\|views\|models\|modules\|util.\|gov.\)'
 
-au FileType html,css,markdown,htmldjango,scsshp,txt setlocal binary noeol et ts=2 sts=2 sw=2
+au FileType html,css,markdown,htmldjango,scsshp,txt setlocal noeol et ts=2 sts=2 sw=2
 if exists("nofixeol")
-    au FileType html,css,markdown,htmldjango,scsshp,txt setlocal binary noeol nofixeol
+    au FileType html,css,markdown,htmldjango,scsshp,txt setlocal noeol nofixeol
 endif
 
 au FileType scala syn region foldImports start="import" end=/import.*\n^$/ fold keepend
@@ -530,3 +522,21 @@ let g:tagalong_additional_filetypes = ['astro']
 
 " Auto-reload Kitty when saving kitty.conf
 autocmd BufWritePost kitty.conf silent !kill -SIGUSR1 $KITTY_PID
+
+" --- Spell Check Config ---
+" Toggle with F2
+nnoremap <F2> :set spell!<CR>
+
+set spell
+set spelllang=en_us
+set spellfile=~/.vim/spell/en.utf-8.add
+set dictionary+=/usr/share/dict/words
+
+" Use an autocmd for the highlight to prevent colorschemes from wiping it out
+augroup SpellColors
+    autocmd!
+    autocmd ColorScheme * highlight SpellBad term=underline cterm=underline ctermfg=1 cterm=italic
+augroup END
+
+" Force it back on for text files specifically
+autocmd FileType markdown,text,gitcommit setlocal spell
