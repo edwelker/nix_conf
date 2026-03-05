@@ -1,9 +1,5 @@
 # Brewfile combined from brewfile.cli and brewfile.gui
 
-# The main cask tap is usually tapped by default, but it doesn't hurt to be explicit
-# tap "homebrew/bundle"
-# tap "homebrew/cask"
-
 # CLI Tools
 brew "bash"
 brew "git"
@@ -43,7 +39,8 @@ brew "tealdeer"
 brew "vim"
 brew "aider"
 brew "gemini-cli"
-brew "svn"
+brew "black"
+brew "entr"
 
 # opensc for that stupid card reader, then you have to change the ssh call to point
 # to /usr/local/Cellar/opensc/0.13.0/lib/pkcs11/opensc-pkcs11.so
@@ -93,6 +90,9 @@ cask "appcleaner"
 # cask "dozer"
 cask "macdown"
 cask "onyx"
+cask "witch"
+cask "plex"
+cask "backblaze"
 cask "background-music"
 cask "rocket"
 cask "coteditor"
@@ -100,13 +100,11 @@ cask "monolingual"
 cask "hiddenbar"
 cask "radiola"
 cask "musicbrainz-picard"
+cask "kid3"
+cask "macs-fan-control"
 cask "docker-desktop"
 cask "discord"
 cask "karabiner-elements"
+cask "raycast"
 cask "kitty"
 cask "espanso"
-
-# Corrected from 'brew' to 'cask'
-cask "witch"
-cask "plex"
-cask "backblaze"

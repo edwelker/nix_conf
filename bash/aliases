@@ -229,23 +229,28 @@ brewfiles() {
     local base_file="${DOTDOT}/brewfile.base"
     local laptop_file="${DOTDOT}/brewfile.laptop"
     local tmp_brewfile="/tmp/Brewfile.combined"
+    local check_mode=false
+
+    if [[ "$1" == "--check" ]]; then
+        check_mode=true
+    fi
 
     echo "--- Building combined Brewfile ---"
-
-    # 1. Start with the base file
     cat "$base_file" >| "$tmp_brewfile"
 
-    # 2. Append laptop tools if hardware matches
     if sysctl -n hw.model | grep -q "Book"; then
         echo "Appending laptop dependencies..."
         cat "$laptop_file" >> "$tmp_brewfile"
     fi
 
-    # 3. Run a single sync command
-    # --no-upgrade prevents brew from spending 10 minutes checking for updates
-    # if you just want to sync state. Remove it if you want the upgrade.
-    echo "--- Syncing system state ---"
-    brew bundle --file="$tmp_brewfile" --cleanup
+    if [ "$check_mode" = true ]; then
+        echo "--- Checking for extraneous packages (Not in Brewfiles) ---"
+        # Lists items that would be uninstalled
+        brew bundle cleanup --file="$tmp_brewfile"
+    else
+        echo "--- Syncing system state ---"
+        brew bundle --file="$tmp_brewfile" --cleanup
+    fi
 
     rm "$tmp_brewfile"
 }
