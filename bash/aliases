@@ -225,7 +225,31 @@ alias vu='vagrant up'
 alias vs='vagrant ssh'
 alias vd='vagrant destroy -f'
 
-alias brewfiles="brew bundle --file=${DOTDOT}/Brewfile.cli --cleanup && brew bundle --file=${DOTDOT}/Brewfile.gui --cleanup"
+brewfiles() {
+    local base_file="${DOTDOT}/brewfile.base"
+    local laptop_file="${DOTDOT}/brewfile.laptop"
+    local tmp_brewfile="/tmp/Brewfile.combined"
+
+    echo "--- Building combined Brewfile ---"
+
+    # 1. Start with the base file
+    cat "$base_file" >| "$tmp_brewfile"
+
+    # 2. Append laptop tools if hardware matches
+    if sysctl -n hw.model | grep -q "Book"; then
+        echo "Appending laptop dependencies..."
+        cat "$laptop_file" >> "$tmp_brewfile"
+    fi
+
+    # 3. Run a single sync command
+    # --no-upgrade prevents brew from spending 10 minutes checking for updates
+    # if you just want to sync state. Remove it if you want the upgrade.
+    echo "--- Syncing system state ---"
+    brew bundle --file="$tmp_brewfile" --cleanup
+
+    rm "$tmp_brewfile"
+}
+
 # 1. brew update: Refreshes local metadata.
 # 2. brewfiles: Syncs system to Brewfiles and upgrades packages.
 # 3. brew cleanup: Deep cleans old versions and cache.
