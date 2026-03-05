@@ -7,7 +7,6 @@ if ! command -v brew >/dev/null; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
-# initial shell setup
 brew install bash
 sudo sed -i '' '1s/^/\/usr\/local\/bin\/bash\n/' /etc/shells
 chsh -s /usr/local/bin/bash
@@ -36,7 +35,6 @@ pushd ~/bin/nix_conf
 git submodule update --init --recursive
 popd
 
-# install configs
 . ~/bin/nix_conf/Install
 . ~/.bashrc
 cd ~
@@ -86,5 +84,3 @@ sethost(){
     sudo echo "127.0.0.1 $1" >> /etc/hosts
     dscacheutil -flushcache
 }
-
-sethost

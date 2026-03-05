@@ -1,5 +1,5 @@
-tap "homebrew/bundle"
 tap "homebrew/cask"
+# brew tap homebrew/cask-fonts
 
 # for some fonts
 brew "git"
@@ -42,7 +42,7 @@ cask "flux"
 cask "vienna"
 cask "caffeine"
 cask "time-out"
-# cask "spirited-away"
+# brew install --cask spirited-away
 cask "selfcontrol"
 cask "lastfm"
 cask "zettlr"
@@ -63,13 +63,15 @@ cask "texts"
 cask "aldente"
 cask "musicbrainz-picard"
 cask "docker"
-cask "witch"
-# cask "friedrichweise/wechsel/wechsel" # uninstalled b/c it's confusing homebrew
-# cask "visual-studio-code"
+brew "witch"
+# brew install --cask friedrichweise/wechsel/wechsel # uninstalled b/c it's confusing homebrew
+# brew install --cask visual-studio-code
 cask "discord"
-cask "plex"
-cask "backblaze"
+brew "plex"
+brew "backblaze"
 cask "karabiner-elements"
+cask "kitty"
+cask "espanso"
 
 # remember: http://stackoverflow.com/questions/127591/using-caps-lock-as-esc-in-mac-os-x
 # for older versions: http://stackoverflow.com/questions/3987683/homebrew-install-specific-version-of-formula

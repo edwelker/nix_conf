@@ -225,8 +225,12 @@ alias vu='vagrant up'
 alias vs='vagrant ssh'
 alias vd='vagrant destroy -f'
 
-alias brewu='brew update && brew upgrade && brew cleanup --prune=all; brew doctor'
 alias brewfiles="brew bundle --file=${DOTDOT}/Brewfile.cli --cleanup && brew bundle --file=${DOTDOT}/Brewfile.gui --cleanup"
+# 1. brew update: Refreshes local metadata.
+# 2. brewfiles: Syncs system to Brewfiles and upgrades packages.
+# 3. brew cleanup: Deep cleans old versions and cache.
+# 4. brew doctor: Runs a final health check.
+alias brewu='brew update && brewfiles && brew cleanup --prune=all; brew doctor'
 
 alias aid="aider --no-auto-commits --vim"
 
