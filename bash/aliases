@@ -226,6 +226,7 @@ alias vs='vagrant ssh'
 alias vd='vagrant destroy -f'
 
 alias brewu='brew update && brew upgrade && brew cleanup --prune=all; brew doctor'
+alias brewfiles="brew bundle --file=${DOTDOT}/Brewfile.cli --cleanup && brew bundle --file=${DOTDOT}/Brewfile.gui --cleanup"
 
 alias aid="aider --no-auto-commits --vim"
 
