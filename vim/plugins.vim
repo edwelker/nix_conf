@@ -101,7 +101,7 @@ Plug 'dense-analysis/ale'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
-" PASTE!!!!!
+" PASTE!!!!! (absolutely needed for kitty)
 Plug 'ConradIrwin/vim-bracketed-paste'
 
 " line numbers numbers
