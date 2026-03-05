@@ -452,11 +452,23 @@ if &term =~ "xterm"
 endif
 
 if exists('$TMUX')
+    " Cursor Shape
     let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
     let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+
+    " Undercurl support for tmux
+    let &t_Cs = "\e[4:3m"
+    let &t_Ce = "\e[4:0m"
+    " Colored undercurl support
+    let &t_8u = "\e[58:2:%lu:%lu:%lum"
 else
+    " Cursor Shape (Kitty/Direct)
     let &t_SI = "\<Esc>]50;CursorShape=1\x7"
     let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+
+    " Undercurl support (Kitty/Direct)
+    let &t_Cs = "\e[4:3m"
+    let &t_Ce = "\e[4:0m"
 endif
 
 " Django
@@ -525,7 +537,7 @@ let g:tagalong_additional_filetypes = ['astro']
 autocmd BufWritePost kitty.conf silent !kill -SIGUSR1 $KITTY_PID
 
 " --- Spell Check Config ---
-set spell
+" set spell  -- didn't do this so I can be explict about where to use it
 set spelllang=en_us
 set spellfile=~/.vim/spell/en.utf-8.add
 set dictionary+=/usr/share/dict/words
@@ -543,10 +555,17 @@ let &t_Ce = "\e[4:0m"
 
 augroup SpellColors
     autocmd!
-    " guisp=Yellow is the key for undercurl color
     autocmd ColorScheme * highlight SpellBad
-        \ cterm=undercurl ctermfg=11 gui=undercurl guisp=Yellow
+        \ cterm=undercurl ctermfg=11 gui=undercurl guisp=#FFFF00
+
+    " Re-inject tmux undercurl color support on every ColorScheme change
+    if exists('$TMUX')
+        autocmd ColorScheme * let &t_8u = "\e[58:2:%lu:%lu:%lum"
+    endif
 augroup END
 
+" Force the current session to update without a restart
+doautocmd ColorScheme
+
 " Force it back on for text files specifically
-autocmd FileType markdown,text,gitcommit setlocal spell
+autocmd FileType markdown setlocal spell
