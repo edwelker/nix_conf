@@ -32,6 +32,16 @@ PS1='\[\033[01;32m\]\u:\[\033[01;34m\]\w\[\033[0;33m\] \[\033[00m\]\$ '
 stty ixany
 stty ixoff -ixon
 
+# Clipboard aliases
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    alias pc='pbcopy'
+    alias pp='pbpaste'
+else
+    # Fallback for Linux machines
+    alias pc='xclip -selection clipboard'
+    alias pp='xclip -selection clipboard -o'
+fi
+
 #because I occasionally kill shells by Ctrl+d, don't send eof.
 set -o ignoreeof
 
