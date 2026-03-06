@@ -1,5 +1,5 @@
 # Laptop-only utilities
-cask "aldente"
+# tap "friedrichweise/wechsel"
 
-tap "friedrichweise/wechsel"
-brew "wechsel"
+cask "aldente"
+# cask "friedrichweise/wechsel/wechsel"
