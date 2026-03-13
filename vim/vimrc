@@ -242,7 +242,8 @@ let g:gutentags_ctags_exclude = [
       \ ]
 
 " Set vim tags to look in project AND the Gutentags cache
-set tags=./tags;,tags;,~/.cache/tags/tags
+" I guess gutentags keeps this configured now? commeented for test
+" set tags=./tags;,tags;,~/.cache/tags/tags
 
 nnoremap <leader>a :Rg<Space>
 
