@@ -422,9 +422,9 @@ au BufNewFile,BufRead admin.py,urls.py,models.py,views.py,settings.py,forms.py s
 autocmd filetype python nnoremap <buffer> <leader>ib :normal oimport pdb; pdb.set_trace()  # TODO: BREAKPOINT  # noqa<Esc>
 
 " Jedi
-let g:jedi#popup_on_dot = 0
-let g:jedi#popup_select_first = 0
-let g:jedi#usages_command = "<leader>b"
+" let g:jedi#popup_on_dot = 0
+" let g:jedi#popup_select_first = 0
+" let g:jedi#usages_command = "<leader>b"
 
 let g:scala_sort_across_groups=1
 let g:scala_first_party_namespaces='\(controllers\|views\|models\|modules\|util.\|gov.\)'
@@ -499,3 +499,10 @@ doautocmd ColorScheme
 
 " Force it back on for text files specifically
 autocmd FileType markdown setlocal spell
+
+" Replace completor with vim9 tab completion
+def TabComplete(): string
+    return pumvisible() ? "\<C-n>" : (col('.') > 1 && getline('.')[col('.') - 2] =~ '\k' ? "\<C-x>\<C-o>" : "\<Tab>")
+enddef
+inoremap <expr> <Tab> TabComplete()
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
