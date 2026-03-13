@@ -64,13 +64,10 @@ Plug 'sheerun/vim-polyglot'
 
 " Python
 Plug 'jmcantrell/vim-virtualenv', { 'for': 'python' }
-" Plug 'klen/python-mode', { 'for': 'python' }
 Plug 'vim-scripts/indentpython.vim', { 'for': 'python' }
 Plug 'raimon49/requirements.txt.vim', { 'for': 'python' }
-Plug 'fisadev/vim-isort', { 'for': 'python' }
 Plug 'tmhedberg/SimpylFold', { 'for': 'python' }
 Plug 'Raimondi/delimitMate'
-Plug 'psf/black', { 'branch': 'stable' }
 
 " Hashi
 Plug 'hashivim/vim-terraform'
@@ -80,7 +77,6 @@ Plug 'editorconfig/editorconfig-vim'
 
 " Completion
 Plug 'mattn/emmet-vim', { 'for': ['html', 'javascript.jsx', 'vue', 'astro'] }
-Plug 'maralla/completor.vim'
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 
 " HTML, hopeful this works.
@@ -101,7 +97,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'dense-analysis/ale'
 
 " Files!
-" Plug 'ctrlpvim/ctrlp.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
@@ -133,13 +128,9 @@ Plug 'vim-airline/vim-airline-themes'
 " Make commenting easier
 Plug 'tpope/vim-commentary'
 
-" 'Vastly improved Javascript indentation and syntax support in Vim'
-Plug 'pangloss/vim-javascript'    " JavaScript support
-Plug 'leafgarland/typescript-vim' " TypeScript syntax
-Plug 'maxmellon/vim-jsx-pretty'   " JS and JSX (react) syntax
+" JS
 Plug 'jparise/vim-graphql'        " GraphQL syntax
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
-Plug 'wuelnerdotexe/vim-astro'
 
 " General tool for builds and external commands
 Plug 'tpope/vim-dispatch'
