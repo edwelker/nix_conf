@@ -56,7 +56,7 @@ if !isdirectory(expand('~/.tmp/undo'))
 endif
 
 " ripgrep and fd don't need recursive paths, so keep this simple
-set path=.,/usr/include,,
+" set path=.,/usr/include,,
 
 " Don't use Ex mode, use Q for formatting
 map Q gq
