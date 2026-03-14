@@ -399,3 +399,5 @@ watchpy() {
 
   ls "$1" | entr -c python3 "$1"
 }
+
+alias fix-kitty='codesign --force --deep --sign - /Applications/kitty.app'
