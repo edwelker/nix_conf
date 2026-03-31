@@ -35,7 +35,7 @@
   "model": {
     "name": "gemini-2.0-flash",
     "compressionThreshold": 0.2,
-    "maxSessionTurns": 50
+    "maxSessionTurns": 150
   },
   "context": {
     "fileFiltering": {
