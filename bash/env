@@ -45,20 +45,6 @@ fi
 #because I occasionally kill shells by Ctrl+d, don't send eof.
 set -o ignoreeof
 
-if command -v dnsdomainname 1>/dev/null && [[ $(dnsdomainname 2>/dev/null) =~ ^.*ncbi.*$ ]]; then
-    CDPATH=$CDPATH:/net/iwebdev2/export/home/web/private/htdocs/staff/welkere
-    export CDPATH;
-
-    export TMPDIR=/tmp
-
-    export PATH=/usr/local/python/all/bin:"$PATH"
-    if [ -f ${DOTDOT}/bash/ncbi ]; then
-        . ${DOTDOT}/bash/ncbi
-    else
-        echo "NCBI config not found."
-    fi
-fi
-
 if [ -f /usr/bin/dircolors ]
   then
     export LS_OPTIONS='-F --color=auto'
