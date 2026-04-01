@@ -175,10 +175,18 @@ alias tailf='tail -f'
 alias work="~/bin/work.sh"
 
 agent() {
-    # Start the agent
-    eval "$(ssh-agent)"
+    local socket="$HOME/.ssh/ssh-auth-sock"
 
-    # Define all keys here
+    # Check if a healthy agent is already listening on this socket
+    export SSH_AUTH_SOCK="$socket"
+    ssh-add -l >/dev/null 2>&1
+
+    if [ $? -eq 2 ]; then
+        # Agent is dead or missing. Clean up stale socket and start fresh.
+        [ -S "$socket" ] && rm -f "$socket"
+        eval "$(ssh-agent -a "$socket")" > /dev/null
+    fi
+
     local key_list=(
         "$HOME/.ssh/id_rsa"
         "$HOME/.ssh/me_for_stash/id_rsa"
@@ -186,12 +194,33 @@ agent() {
         "$HOME/.ssh/mbp_to_github"
     )
 
-    # Loop through and add if they exist
     for key in "${key_list[@]}"; do
         if [ -f "$key" ]; then
-            ssh-add "$key"
+            chmod 600 "$key"
+            ssh-add "$key" 2>/dev/null
         fi
     done
+
+    ssh-add -l
+}
+
+ssh-reagent() {
+    local socket="$HOME/.ssh/ssh-auth-sock"
+
+    if [ -S "$socket" ]; then
+        export SSH_AUTH_SOCK="$socket"
+
+        # Check if the agent responds (0 = keys loaded, 1 = empty, 2 = dead)
+        ssh-add -l >/dev/null 2>&1
+        if [ $? -ne 2 ]; then
+            echo "Connected to SSH Agent at: $socket"
+            ssh-add -l
+            return 0
+        fi
+    fi
+
+    echo "Cannot contact agent at $socket. Run 'agent' to start one."
+    return 1
 }
 
 alias sr='ssh-reagent'

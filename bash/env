@@ -122,28 +122,6 @@ if [ -x $(which aws_completer 2>/dev/null) ]; then
     complete -C aws_completer aws
 fi
 
-ssh-reagent () {
-    # Check if the current socket is already valid
-    ssh-add -l >/dev/null 2>&1 && { echo "Current agent valid."; return 0; }
-
-    # Search for sockets across macOS and Linux paths
-    # -type s finds only 'socket' files
-    local sockets
-    sockets=$(find /var/folders /tmp /run/user/$(id -u) -path "*/ssh-*/agent.*" -type s 2>/dev/null)
-
-    for socket in $sockets; do
-        export SSH_AUTH_SOCK=$socket
-        if ssh-add -l >/dev/null 2>&1; then
-            echo "Found working agent: $socket"
-            ssh-add -l
-            return 0
-        fi
-    done
-
-    echo "No working agent found. Forwarding active?"
-    return 1
-}
-
 #for xforwarding
 #see http://brainscraps.wikia.com/wiki/Extreme_Multitasking_with_tmux_and_PuTTY
 update_display() {
