@@ -42,10 +42,6 @@ brew "gemini-cli"
 brew "black"
 brew "entr"
 
-# opensc for that stupid card reader, then you have to change the ssh call to point
-# to /usr/local/Cellar/opensc/0.13.0/lib/pkcs11/opensc-pkcs11.so
-brew "opensc"
-
 # added tools
 brew "uv"
 brew "ruff"

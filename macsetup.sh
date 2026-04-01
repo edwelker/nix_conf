@@ -7,13 +7,19 @@ if ! command -v brew >/dev/null; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
-brew install bash
-sudo sed -i '' '1s/^/\/usr\/local\/bin\/bash\n/' /etc/shells
-chsh -s /usr/local/bin/bash
+# Path agnostic setup for Silicon/Intel
+if [[ -f /opt/homebrew/bin/brew ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+else
+    eval "$(/usr/local/bin/brew shellenv)"
+fi
 
-# run brewfiles
-brew bundle --file=./Brewfile.cli
-brew bundle --file=./Brewfile.gui
+brew install bash
+sudo sed -i '' "1s|^|$(brew --prefix)/bin/bash\n|" /etc/shells
+chsh -s "$(brew --prefix)/bin/bash"
+
+# run modular brewfile
+brew bundle --file=./Brewfile
 
 # post-install fzf
 $(brew --prefix)/opt/fzf/install

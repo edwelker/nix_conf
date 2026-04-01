@@ -118,14 +118,6 @@ function ptq(){
     .tox/py*/bin/pytest "$@" --reuse-db --nomigrations --cov=project --cov=tests --cov-report=term-missing:skip-covered; .tox/flake8/bin/flake8 --ignore=E501,W503,W504 src/ tests/
 }
 
-function ptf(){
-    rm coverage.xml;
-    rm -rf coverage;
-    nt;
-    .tox/py*/bin/pytest --dist=load --tx="8*popen//python=$(fd -t x python3 .tox/py3*)" "$@" --nomigrations --cov=project --cov=tests --cov-report=term-missing:skip-covered --cov-report xml:coverage.xml; .tox/flake8/bin/flake8 --ignore=E501,W503,W504 src/ tests/;
-    SONAR_RUNNER_HOME=/panfs/pan1.be-md.ncbi.nlm.nih.gov/teamcity_builds/sonar-scanner /panfs/pan1.be-md.ncbi.nlm.nih.gov/teamcity_builds/sonar-scanner/bin/sonar-scanner
-}
-
 function cqt (){
     PYTHONPATH="$PYTHONPATH:./tests/unit_tests:./src:." .tox/py*/bin/pytest --dist=load --tx="8*popen//python=$(fd -t x python3 .tox/py3*)" "$@"
 }
@@ -152,7 +144,7 @@ alias td='tmux detach'
 alias tk='tmux kill-session -t'
 
 alias w='w -s'
-alias lookup="/usr/local/bin/lookup"
+alias lookup="$(brew --prefix)/bin/lookup"
 
 if [ -f ./ncbi ]; then
     . ncbi
@@ -181,8 +173,6 @@ alias error_tail='tail -n 40 /web/public/logs/error'
 alias tailf='tail -f'
 
 alias work="~/bin/work.sh"
-alias iweb="cd ~/iwebdev-welkere"
-alias lbsg="lbsmc | grep"
 
 agent() {
     # Start the agent
@@ -190,7 +180,7 @@ agent() {
 
     # Define all keys here
     local key_list=(
- /       "$HOME/.ssh/id_rsa"
+        "$HOME/.ssh/id_rsa"
         "$HOME/.ssh/me_for_stash/id_rsa"
         "$HOME/.ssh/me_for_github"
         "$HOME/.ssh/mbp_to_github"
@@ -225,41 +215,14 @@ alias vu='vagrant up'
 alias vs='vagrant ssh'
 alias vd='vagrant destroy -f'
 
-brewfiles() {
-    local base_file="${DOTDOT}/brewfile.base"
-    local laptop_file="${DOTDOT}/brewfile.laptop"
-    local tmp_brewfile="/tmp/Brewfile.combined"
-    local check_mode=false
-
-    if [[ "$1" == "--check" ]]; then
-        check_mode=true
-    fi
-
-    echo "--- Building combined Brewfile ---"
-    cat "$base_file" >| "$tmp_brewfile"
-
-    if sysctl -n hw.model | grep -q "Book"; then
-        echo "Appending laptop dependencies..."
-        cat "$laptop_file" >> "$tmp_brewfile"
-    fi
-
-    if [ "$check_mode" = true ]; then
-        echo "--- Checking for extraneous packages (Not in Brewfiles) ---"
-        # Lists items that would be uninstalled
-        brew bundle cleanup --file="$tmp_brewfile"
-    else
-        echo "--- Syncing system state ---"
-        brew bundle --file="$tmp_brewfile" --cleanup
-    fi
-
-    rm "$tmp_brewfile"
-}
-
-# 1. brew update: Refreshes local metadata.
-# 2. brewfiles: Syncs system to Brewfiles and upgrades packages.
-# 3. brew cleanup: Deep cleans old versions and cache.
-# 4. brew doctor: Runs a final health check.
-alias brewu='brew update && brewfiles && brew cleanup --prune=all; brew doctor'
+# --- Modular Brewfile Aliases ---
+alias brewu='brew update && brew bundle --file=${DOTDOT}/Brewfile'
+alias brew-base='brew bundle --file=${DOTDOT}/brewfile.base'
+alias brew-ncbi='brew bundle --file=${DOTDOT}/brewfile.ncbi'
+alias brew-rs='brew bundle --file=${DOTDOT}/brewfile.rs'
+alias brew-audit='brew bundle cleanup --file=${DOTDOT}/Brewfile'
+alias brew-prune='brew bundle --file=${DOTDOT}/Brewfile --cleanup'
+alias brew-clean='brew cleanup --prune=all; brew doctor'
 
 alias aid="aider --no-auto-commits --vim"
 
@@ -324,12 +287,6 @@ ven(){
     source venv/bin/activate
     popd
 }
-
-#http://www.bit-integrity.com/2011/08/vim-syntax-highlighting-with-less.html
-# VLESS=$(find /usr/share/vim -name 'less.sh')
-# if [ ! -z $VLESS ]; then
-#   alias less=$VLESS
-# fi
 
 lsa(){
     egrep ${DOTDOT}/bash/aliases -e 'alias' | awk '{$1=""; print $0}'
@@ -401,3 +358,10 @@ watchpy() {
 }
 
 alias fix-kitty='codesign --force --deep --sign - /Applications/kitty.app'
+
+# --- Modular Environment Sourcing ---
+if [ -f ~/.ncbi_hints ]; then
+    [ -f ${DOTDOT}/bash/ncbi ] && . ${DOTDOT}/bash/ncbi
+elif [[ $(hostname -s) == "PLACEHOLDER_RS_HOST" ]]; then
+    [ -f ${DOTDOT}/bash/rs ] && . ${DOTDOT}/bash/rs
+fi
