@@ -61,8 +61,14 @@ export HISTSIZE=30000
 PATH=~/bin:$DOTDOT/bin:$PATH
 export PATH
 
+# intel
 if [ -d /usr/local/bin/ ];then
     export PATH=/usr/local/bin:$PATH
+fi
+
+# apple
+if [ -d /opt/homebrew/bin/ ]; then
+    export PATH=/opt/homebrew/bin:$PATH
 fi
 
 # homebrew sbin
