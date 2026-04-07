@@ -168,3 +168,7 @@
     hunk-header-file-style = red
     hunk-header-line-number-style = "#067a00"
     hunk-header-style = file line-number syntax
+
+# Override identity for work folder
+[include]
+    path = ~/bin/nix_conf/rs/.gitconfig
