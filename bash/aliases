@@ -60,11 +60,18 @@ mvenv(){
     cd $TMPDIR;
     python3 -m venv venv;
     source venv/bin/activate;
+
+    # Restore work-specific paths only if the config exists
+    if [ -f "${DOTDOT}/bash/rs.sh" ]; then
+        . "${DOTDOT}/bash/rs.sh"
+    fi
+
     pip install -r ${DOTDOT}/mvenv_reqs.txt
     popd;
     rm -rf .eggs;
-    rm venv;
+    [ -L venv ] || [ -f venv ] && rm venv;
     ln -s $TMPDIR/venv venv
+
     if [ -f setup.py ]; then
         pip install -r requirements/test.txt;
         pip install -e .;
