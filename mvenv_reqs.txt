@@ -2,26 +2,8 @@
 
 ipython
 ipdb
-# pylint
-# black
-# mypy
-isort
-flake8
-pylint-django
 ruff
 django-extensions
 werkzeug
-
-# for yaml
-# yamllint
-
-# for vim
-# vim-vint
-
-# for pdb
-pdbpp
-
-# for markdown
-pymarkdown
 
 pre_commit
