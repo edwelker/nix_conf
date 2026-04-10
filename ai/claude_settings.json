@@ -1,0 +1,38 @@
+{
+  "model": "opusplan",
+  "effortLevel": "auto",
+  "editorMode": "vim",
+  "preferences": {
+    "autoCompactThreshold": 0.7,
+    "maxTerminalOutputLines": 200,
+    "suggestFollowupQuestions": false,
+    "enableAdaptiveThinking": true,
+    "previewFeatures": true
+  },
+  "permissions": {
+    "defaultMode": "plan",
+    "deny": [
+      "Read(**/node_modules/**)",
+      "Read(**/.venv/**)",
+      "Read(**/__pycache__/**)",
+      "Read(**/.git/**)",
+      "Read(**/cdk.out/**)",
+      "Read(**/.terraform/**)",
+      "Read(**/dist/**)",
+      "Read(**/build/**)",
+      "Read(**/*.log)",
+      "Read(**/*.sql)",
+      "Read(**/*.csv)",
+      "Read(**/*.json.gz)",
+      "Read(**/secrets/**)",
+      "Read(**/.aws/credentials)",
+      "Read(**/.env*)"
+    ]
+  },
+  "env": {
+    "EDITOR": "vim",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "claude-3-5-haiku-latest",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "claude-3-5-sonnet-latest",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "claude-3-7-opus-latest"
+  }
+}
