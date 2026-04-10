@@ -27,6 +27,12 @@
       "Read(**/secrets/**)",
       "Read(**/.aws/credentials)",
       "Read(**/.env*)"
+    ],
+    "allow": [
+      "Bash(rg *)",
+      "Bash(fd *)",
+      "Bash(ast-grep *)",
+      "Bash(sd *)"
     ]
   },
   "env": {
