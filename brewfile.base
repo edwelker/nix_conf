@@ -41,6 +41,8 @@ brew "aider"
 brew "gemini-cli"
 brew "black"
 brew "entr"
+brew "sd"
+brew "ast-grep"
 
 # added tools
 brew "uv"
