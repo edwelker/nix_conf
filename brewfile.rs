@@ -6,3 +6,4 @@ brew "uv"
 # cask
 cask "plexamp"
 cask "claude-code"
+cask "visual-studio-code"
