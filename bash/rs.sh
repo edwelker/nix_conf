@@ -15,7 +15,9 @@ aws_login(){
     aws sso login --profile kyruus
 }
 
-export PATH="$PG_PATH:$PATH"
+RANCHER_PATH="$HOME/.rd/bin"
+
+export PATH="$RANCHER_PATH:$PG_PATH:$PATH"
 
 mvenv(){
     local PY_EXE
