@@ -118,6 +118,7 @@
 [push]
     default = current
     followTags = true
+	autoSetupRemote = true
 [credential]
     helper = cache --timeout=3600
 [merge]

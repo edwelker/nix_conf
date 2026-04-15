@@ -15,7 +15,7 @@
 #     CTRL-/ to change preview window layout
 #     CTRL-O to open the object in the web browser (in GitHub URL scheme)
 
-gcb() {
+gb() {
   local selected=$(_fzf_git_branches)
   [ -n "$selected" ] && git checkout "$selected"
 }
