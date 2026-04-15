@@ -41,7 +41,7 @@
     ; always have to semi-colon end the commands in the braces
     t = "!f() { git tag $1 -a -m \"$1\"; }; f"
     ; b/c I always use the plural anyway
-    tags = !"git tag -n1 -l --sort=v:refname | tail -n 5"
+    tags = !"git tag -l "[0-9]*" --sort=-v:refname | head -n 10"
     tag = tag -a
     le = log --oneline --decorate
     undo = reset --soft HEAD^
