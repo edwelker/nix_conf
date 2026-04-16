@@ -15,7 +15,9 @@
 #     CTRL-/ to change preview window layout
 #     CTRL-O to open the object in the web browser (in GitHub URL scheme)
 
+export FZF_DEFAULT_OPTS="--bind 'ctrl-j:down,ctrl-k:up'"
+
 gb() {
-  local selected=$(_fzf_git_branches)
-  [ -n "$selected" ] && git checkout "$selected"
+    local selected=$(_fzf_git_branches --bind 'ctrl-j:down,ctrl-k:up')
+    [ -n "$selected" ] && git checkout "$selected"
 }

@@ -3,19 +3,10 @@
 export DOTDOT="${HOME}/bin/nix_conf"
 
 #Create symlinks for the configs
-if [ ! -h ~/.bashrc ]; then
-    if [ -f ~/.bashrc ]; then #there's a file there to remove
-        mv ~/.bashrc ~/.bashrc.old
-    fi;
-    ln -s ${DOTDOT}/bashrc ~/.bashrc
-    source ~/.bashrc
-    if [ -f ~/.bash_profile ]; then
-        mv ~/.bash_profile ~/.bash_profile.old
-    fi;
-    if [ ! -f ~/.bash_profile ]; then
-        echo ". ~/.bashrc" >> ~/.bash_profile
-    fi
-fi;
+rm -f ~/.bashrc
+ln -s "${DOTDOT}/bashrc" ~/.bashrc
+echo ". ~/.bashrc" > ~/.bash_profile
+source ~/.bashrc
 
 
 # First level symlinks
