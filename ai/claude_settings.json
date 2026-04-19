@@ -3,8 +3,8 @@
   "effortLevel": "auto",
   "editorMode": "vim",
   "preferences": {
-    "autoCompactThreshold": 0.7,
-    "maxTerminalOutputLines": 200,
+    "autoCompactThreshold": 0.5,
+    "maxTerminalOutputLines": 500,
     "suggestFollowupQuestions": false,
     "enableAdaptiveThinking": true,
     "previewFeatures": true
@@ -32,7 +32,9 @@
       "Bash(rg *)",
       "Bash(fd *)",
       "Bash(ast-grep *)",
-      "Bash(sd *)"
+      "Bash(sd *)",
+      "Bash(python manage.py test *)",
+      "Bash(pytest *)"
     ]
   },
   "env": {
