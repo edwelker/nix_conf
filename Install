@@ -1,78 +1,40 @@
 #!/bin/bash
+set -e
 
 export DOTDOT="${HOME}/bin/nix_conf"
 
 #Create symlinks for the configs
-rm -f ~/.bashrc
-ln -s "${DOTDOT}/bashrc" ~/.bashrc
+ln -sfn "${DOTDOT}/bashrc" ~/.bashrc
 echo ". ~/.bashrc" > ~/.bash_profile
 source ~/.bashrc
 
-
 # First level symlinks
 for rc in inputrc fdignore ctags pythonstartup ackrc editorconfig ideavimrc pdbrc virtualenv aider.conf.yml; do
-    if [ ! -h ~/.$rc ]; then
-        ln -s ${DOTDOT}/"$rc" ~/."$rc"
-    else
-        echo "File ~/.$rc already exists"
-    fi
+    ln -sfn "${DOTDOT}/$rc" ~/."$rc"
 done
-
 
 # Deeper symlinks
 for rc in git/gitconfig git/gitk vim/vimrc vim/vim tmux/tmux.conf mutt/muttrc; do
-    RCFILE=$(basename "./$rc")
-    if [ ! -h ~/."$RCFILE" ]; then
-        ln -s ${DOTDOT}/"$rc" ~/."$RCFILE"
-    else
-        echo "File ~/.$RCFILE already exists"
-    fi;
+    ln -sfn "${DOTDOT}/$rc" ~/."$(basename "$rc")"
 done
 
-if [ ! -d ~/.gemini ]; then
-    mkdir -p ~/.gemini
-fi
-if [ ! -h ~/.gemini/settings.json ]; then
-    ln -s ${DOTDOT}/ai/gemini_settings.json ~/.gemini/settings.json
-    echo "Linked Gemini settings"
-fi
-if [ ! -h ~/.gemini/.geminiignore ]; then
-    ln -s ${DOTDOT}/ai/geminiignore ~/.gemini/.geminiignore
-    echo "Linked global .geminiignore"
-fi
-if [ ! -h ~/.claude/settings.json ]; then
-    ln -s ${DOTDOT}/ai/claude_settings.json ~/.claude/settings.json
-    echo "Linked Claude settings"
-fi
-
-
-if [ ! -h ~/.ssh/config ]; then
-    ln -s ${DOTDOT}/ssh/config ~/.ssh/config
-fi;
-
-if [ ! -h ~/.config/kitty/kitty.conf ]; then
-    ln -s ${DOTDOT}/kitty.conf ~/.config/kitty/kitty.conf
-fi;
-
-if [ ! -h ~/.pip ]; then
-    mkdir ~/.pip;
-    ln -s ${DOTDOT}/pip.conf ~/.pip/pip.conf
-fi;
-
-if [ ! -f ~/.prettierrc.json ]; then
-    ln -s ${DOTDOT}/.prettierrc.json ~/.prettierrc.json
-fi;
+mkdir -p ~/.gemini ~/.claude ~/.ssh ~/.config/kitty ~/.pip
+ln -sfn "${DOTDOT}/ai/gemini_settings.json" ~/.gemini/settings.json
+ln -sfn "${DOTDOT}/ai/geminiignore" ~/.gemini/.geminiignore
+ln -sfn "${DOTDOT}/ai/claude_settings.json" ~/.claude/settings.json
+ln -sfn "${DOTDOT}/ssh/config" ~/.ssh/config
+ln -sfn "${DOTDOT}/kitty.conf" ~/.config/kitty/kitty.conf
+ln -sfn "${DOTDOT}/pip.conf" ~/.pip/pip.conf
+ln -sfn "${DOTDOT}/.prettierrc.json" ~/.prettierrc.json
 
 # Ensure the destination directory exists
 mkdir -p ~/Library/Application\ Support/espanso
 
 # Link the config and match directories
-ln -s ~/bin/nix_conf/espanso/config ~/Library/Application\ Support/espanso/config
-ln -s ~/bin/nix_conf/espanso/match ~/Library/Application\ Support/espanso/match
+ln -sfn "${DOTDOT}/espanso/config" ~/Library/Application\ Support/espanso/config
+ln -sfn "${DOTDOT}/espanso/match" ~/Library/Application\ Support/espanso/match
 
 #create a .tmp directory for vim backups
-if [ ! -d ~/.tmp ]; then
-    mkdir ~/.tmp;
-fi;
+mkdir -p ~/.tmp
 
-git submodule update --init;
+git submodule update --init
