@@ -123,7 +123,7 @@
     helper = cache --timeout=3600
 [merge]
     ; tool = delta # nope, just use pager
-    conflictstyle = diff3
+    conflictstyle = zdiff3
 [mergetool]
     prompt = false
 [advice]

@@ -393,6 +393,30 @@ watchpy() {
   ls "$1" | entr -c python3 "$1"
 }
 
+git-clean-merged() {
+  # Get the short name of the remote HEAD (e.g., development_v2)
+  local default_branch=$(git rev-parse --abbrev-ref origin/HEAD 2>/dev/null | sed 's|^origin/||')
+
+  if [ -z "$default_branch" ]; then
+    echo "Error: Could not determine default branch. Run 'git remote set-head origin -a' first."
+    return 1
+  fi
+
+  echo "Target branch identified as: $default_branch"
+  echo -n "Clean up branches already merged into $default_branch? [y/N]: "
+  read confirmation
+
+  if [[ ! "$confirmation" =~ ^[yY]$ ]]; then
+    echo "Cleanup aborted."
+    return 0
+  fi
+
+  # Filter out current branch (*) and the default branch itself
+  git branch --merged "$default_branch" | \
+    grep -vE "^\*|${default_branch}" | \
+    xargs -n 1 git branch -d
+}
+
 alias fix-kitty='codesign --force --deep --sign - /Applications/kitty.app'
 
 # --- Modular Environment Sourcing ---
