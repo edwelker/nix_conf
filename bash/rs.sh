@@ -19,6 +19,9 @@ RANCHER_PATH="$HOME/.rd/bin"
 
 export PATH="$RANCHER_PATH:$PG_PATH:$PATH"
 
+# direnv
+eval "$(direnv hook bash)"
+
 mvenv(){
     local PY_EXE
 
