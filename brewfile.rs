@@ -3,6 +3,8 @@ brew "python@3.9"
 brew "postgresql@16"
 brew "uv"
 brew "gh"
+brew "direnv"
+
 # Structural code analysis (like ast-grep)
 brew "semgrep"          # Pattern-based security/code analysis
 brew "comby"            # Structural search/replace

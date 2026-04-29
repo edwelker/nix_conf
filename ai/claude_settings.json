@@ -18,7 +18,7 @@
       "Bash(git status)", "Bash(git log *)", "Bash(git diff *)", "Bash(git branch *)",
       "Bash(ls *)", "Bash(pwd)", "Bash(which *)",
       "Bash(npm list *)", "Bash(npm run --list)",
-      "Bash(python --version)", "Bash(python -m *)", "Bash(pytest --collect-only *)",
+      "Bash(python --version)", "Bash(python -m *)", "Bash(pytest *)", "Bash(.venv/bin/pytest *)",
       "Bash(docker ps *)", "Bash(docker images *)",
       "Bash(fd *)",
       "Bash(rg *)",
