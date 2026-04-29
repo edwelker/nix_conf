@@ -1,46 +1,101 @@
 {
   "model": "opusplan",
   "effortLevel": "auto",
-  "editorMode": "vim",
-  "preferences": {
-    "autoCompactThreshold": 0.5,
-    "maxTerminalOutputLines": 500,
-    "suggestFollowupQuestions": false,
-    "enableAdaptiveThinking": true,
-    "previewFeatures": true
-  },
+  "alwaysThinkingEnabled": true,
+  "showThinkingSummaries": true,
+  "defaultShell": "bash",
+  "viewMode": "focus",
+  "respectGitignore": true,
+  "cleanupPeriodDays": 90,
+  "autoMemoryEnabled": true,
+  "includeGitInstructions": true,
+  "promptSuggestionEnabled": true,
+  "autoCompactWindow": 150000,
   "permissions": {
     "defaultMode": "plan",
-    "deny": [
-      "Read(**/node_modules/**)",
-      "Read(**/.venv/**)",
-      "Read(**/__pycache__/**)",
-      "Read(**/.git/**)",
-      "Read(**/cdk.out/**)",
-      "Read(**/.terraform/**)",
-      "Read(**/dist/**)",
-      "Read(**/build/**)",
-      "Read(**/*.log)",
-      "Read(**/*.sql)",
-      "Read(**/*.csv)",
-      "Read(**/*.json.gz)",
-      "Read(**/secrets/**)",
-      "Read(**/.aws/credentials)",
-      "Read(**/.env*)"
-    ],
     "allow": [
-      "Bash(rg *)",
+      "Read", "Glob", "Grep",
+      "Bash(git status)", "Bash(git log *)", "Bash(git diff *)", "Bash(git branch *)",
+      "Bash(ls *)", "Bash(pwd)", "Bash(which *)",
+      "Bash(npm list *)", "Bash(npm run --list)",
+      "Bash(python --version)", "Bash(python -m *)", "Bash(pytest --collect-only *)",
+      "Bash(docker ps *)", "Bash(docker images *)",
       "Bash(fd *)",
-      "Bash(ast-grep *)",
+      "Bash(rg *)",
+      "Bash(bat *)",
+      "Bash(tree *)",
+      "Bash(jq *)",
       "Bash(sd *)",
-      "Bash(python manage.py test *)",
-      "Bash(pytest *)"
+      "Bash(delta *)",
+      "Bash(fzf *)",
+      "Bash(ast-grep *)", "Bash(sg *)",
+      "Bash(git show *)", "Bash(git blame *)", "Bash(git reflog *)",
+      "Bash(gh pr list *)", "Bash(gh pr view *)", "Bash(gh pr diff *)", "Bash(gh pr checks *)",
+      "Bash(gh issue list *)", "Bash(gh issue view *)",
+      "Bash(gh repo view *)", "Bash(gh run list *)", "Bash(gh run view *)",
+      "Bash(gh api *)",
+      "Bash(semgrep *)",
+      "Bash(comby *)",
+      "Bash(tokei *)",
+      "Bash(difftastic *)", "Bash(difft *)",
+      "Bash(yq *)",
+      "Bash(gron *)",
+      "Bash(xsv *)",
+      "Bash(hyperfine *)",
+      "Bash(miller *)", "Bash(mlr *)"
+    ]
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '\n💡 Session Config Reminder:\n   • Model: opusplan (change: /model sonnet for routine work)\n   • Thinking: ON (change: /thinking off for simple tasks)\n   • Effort: auto (adaptive based on task)\n   • Karpathy Guidelines: Use /karpathy-guidelines for code work\n'"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "if": "Edit(**.py)|Write(**.py)",
+            "command": "ruff check --fix \"$FILE_PATH\" 2>/dev/null || true"
+          },
+          {
+            "type": "command",
+            "if": "Edit(**.py)|Write(**.py)",
+            "command": "ruff format \"$FILE_PATH\" 2>/dev/null || true"
+          }
+        ]
+      }
     ]
   },
   "env": {
-    "EDITOR": "vim",
-    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "claude-3-5-haiku-latest",
-    "ANTHROPIC_DEFAULT_SONNET_MODEL": "claude-3-5-sonnet-latest",
-    "ANTHROPIC_DEFAULT_OPUS_MODEL": "claude-3-7-opus-latest"
+    "AWS_REGION": "us-east-1",
+    "CLAUDE_CODE_USE_BEDROCK": "1",
+    "AWS_PROFILE": "ClaudeCode",
+    "CLAUDE_CODE_ENABLE_TELEMETRY": "1",
+    "CLAUDE_CODE_SUBAGENT_MODEL": "haiku",
+    "OTEL_METRICS_EXPORTER": "otlp",
+    "OTEL_LOGS_EXPORTER": "otlp",
+    "OTEL_EXPORTER_OTLP_PROTOCOL": "http/protobuf",
+    "OTEL_EXPORTER_OTLP_ENDPOINT": "https://claude-otel.kyruus.com",
+    "OTEL_RESOURCE_ATTRIBUTES": "department=engineering,team.id=default,cost_center=default,organization=default"
+  },
+  "extraKnownMarketplaces": {
+    "karpathy-skills": {
+      "source": {
+        "source": "github",
+        "repo": "forrestchang/andrej-karpathy-skills"
+      }
+    }
+  },
+  "otelHeadersHelper": "~/claude-code-with-bedrock/otel-helper",
+  "enabledPlugins": {
+    "andrej-karpathy-skills@karpathy-skills": true
   }
 }
