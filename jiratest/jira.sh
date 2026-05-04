@@ -88,6 +88,7 @@ if [ -f "$resultsname" ]; then
     if [ -n "$selected" ]; then
         echo "$selected" | pbcopy
         echo "$selected (copied to clipboard)"
+        echo "${JIRA_HOST}/browse/${selected}"
     fi
 else
     echo "$resultsname could not be found/generated. Failing"
