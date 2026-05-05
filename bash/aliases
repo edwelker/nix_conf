@@ -158,8 +158,6 @@ if [ -f ./ncbi ]; then
     . ncbi
 fi
 
-alias cat='bat'
-
 alias os='cat /etc/*-release'
 alias kernel='uname -a'
 alias top='COLUMNS=200 top -c'
