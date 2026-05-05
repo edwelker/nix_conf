@@ -44,7 +44,7 @@ for rc in inputrc fdignore ctags pythonstartup ackrc editorconfig ideavimrc pdbr
     safe_ln "${DOTDOT}/$rc" ~/."$rc"
 done
 
-for rc in git/gitconfig git/gitk vim/vimrc vim/vim tmux/tmux.conf mutt/muttrc; do
+for rc in git/gitconfig git/gitk vim/vimrc vim/vim tmux/tmux.conf; do
     safe_ln "${DOTDOT}/$rc" ~/."$(basename "$rc")"
 done
 

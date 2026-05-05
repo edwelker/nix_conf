@@ -6,10 +6,6 @@ if [ -d ~/.local/bin ];then
     export PATH=~/.local/bin:$PATH
 fi
 
-if [ -d /Users/welkere/Library/Python/2.7/bin ];then
-    export PATH=/Users/welkere/Library/Python/2.7/bin:$PATH
-fi
-
 if [ -f ~/.pythonstartup ]; then
     export PYTHONSTARTUP=~/.pythonstartup
 fi

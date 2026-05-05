@@ -275,7 +275,7 @@ function port_and_app(){
 function getcert(){
     if [ $# -lt 2 ]; then
         echo 1>&2 "$0: not enough arguments, specify host and filename.pem"
-        exit 2
+        return 2
     else
         openssl s_client -showcerts -connect $1:443 </dev/null 2>/dev/null|openssl x509 -outform PEM >$2
     fi
@@ -285,7 +285,7 @@ function getcert(){
 function fixpermissions(){
     if [ $# -lt 2 ]; then
         echo 1>&2 "$0: not enough arguments, specifiy the directory to start in"
-        exit 2
+        return 2
     else
         find $1 -type d -exec chmod 755 {} +
         find $1 -type f -exec chmod 644 {} +
