@@ -1,25 +1,39 @@
 {
-  "model": "opusplan",
-  "effortLevel": "auto",
-  "alwaysThinkingEnabled": true,
-  "showThinkingSummaries": true,
-  "defaultShell": "bash",
-  "viewMode": "focus",
   "respectGitignore": true,
   "cleanupPeriodDays": 90,
-  "autoMemoryEnabled": true,
+  "env": {
+    "AWS_REGION": "us-east-1",
+    "CLAUDE_CODE_USE_BEDROCK": "1",
+    "AWS_PROFILE": "ClaudeCode",
+    "CLAUDE_CODE_ENABLE_TELEMETRY": "1",
+    "CLAUDE_CODE_SUBAGENT_MODEL": "haiku",
+    "OTEL_METRICS_EXPORTER": "otlp",
+    "OTEL_LOGS_EXPORTER": "otlp",
+    "OTEL_EXPORTER_OTLP_PROTOCOL": "http/protobuf",
+    "OTEL_EXPORTER_OTLP_ENDPOINT": "https://claude-otel.kyruus.com",
+    "OTEL_RESOURCE_ATTRIBUTES": "department=engineering,team.id=default,cost_center=default,organization=default"
+  },
   "includeGitInstructions": true,
-  "promptSuggestionEnabled": true,
-  "autoCompactWindow": 150000,
   "permissions": {
-    "defaultMode": "plan",
     "allow": [
-      "Read", "Glob", "Grep",
-      "Bash(git status)", "Bash(git log *)", "Bash(git diff *)", "Bash(git branch *)",
-      "Bash(ls *)", "Bash(pwd)", "Bash(which *)",
-      "Bash(npm list *)", "Bash(npm run --list)",
-      "Bash(python --version)", "Bash(python -m *)", "Bash(pytest *)", "Bash(.venv/bin/pytest *)",
-      "Bash(docker ps *)", "Bash(docker images *)",
+      "Read",
+      "Glob",
+      "Grep",
+      "Bash(git status)",
+      "Bash(git log *)",
+      "Bash(git diff *)",
+      "Bash(git branch *)",
+      "Bash(ls *)",
+      "Bash(pwd)",
+      "Bash(which *)",
+      "Bash(npm list *)",
+      "Bash(npm run --list)",
+      "Bash(python --version)",
+      "Bash(python -m *)",
+      "Bash(pytest *)",
+      "Bash(.venv/bin/pytest *)",
+      "Bash(docker ps *)",
+      "Bash(docker images *)",
       "Bash(fd *)",
       "Bash(rg *)",
       "Bash(bat *)",
@@ -28,23 +42,38 @@
       "Bash(sd *)",
       "Bash(delta *)",
       "Bash(fzf *)",
-      "Bash(ast-grep *)", "Bash(sg *)",
-      "Bash(git show *)", "Bash(git blame *)", "Bash(git reflog *)",
-      "Bash(gh pr list *)", "Bash(gh pr view *)", "Bash(gh pr diff *)", "Bash(gh pr checks *)",
-      "Bash(gh issue list *)", "Bash(gh issue view *)",
-      "Bash(gh repo view *)", "Bash(gh run list *)", "Bash(gh run view *)",
+      "Bash(ast-grep *)",
+      "Bash(sg *)",
+      "Bash(entr *)",
+      "Bash(git show *)",
+      "Bash(git blame *)",
+      "Bash(git reflog *)",
+      "Bash(gh pr list *)",
+      "Bash(gh pr view *)",
+      "Bash(gh pr diff *)",
+      "Bash(gh pr checks *)",
+      "Bash(gh issue list *)",
+      "Bash(gh issue view *)",
+      "Bash(gh repo view *)",
+      "Bash(gh run list *)",
+      "Bash(gh run view *)",
       "Bash(gh api *)",
       "Bash(semgrep *)",
       "Bash(comby *)",
       "Bash(tokei *)",
-      "Bash(difftastic *)", "Bash(difft *)",
+      "Bash(difftastic *)",
+      "Bash(difft *)",
       "Bash(yq *)",
       "Bash(gron *)",
       "Bash(xsv *)",
       "Bash(hyperfine *)",
-      "Bash(miller *)", "Bash(mlr *)"
-    ]
+      "Bash(miller *)",
+      "Bash(mlr *)",
+      "Bash(tail *)"
+    ],
+    "defaultMode": "auto"
   },
+  "model": "opusplan",
   "hooks": {
     "SessionStart": [
       {
@@ -62,29 +91,21 @@
         "hooks": [
           {
             "type": "command",
-            "if": "Edit(**.py)|Write(**.py)",
-            "command": "ruff check --fix \"$FILE_PATH\" 2>/dev/null || true"
+            "command": "ruff check --fix \"$FILE_PATH\" 2>/dev/null || true",
+            "if": "Edit(**.py)|Write(**.py)"
           },
           {
             "type": "command",
-            "if": "Edit(**.py)|Write(**.py)",
-            "command": "ruff format \"$FILE_PATH\" 2>/dev/null || true"
+            "command": "ruff format \"$FILE_PATH\" 2>/dev/null || true",
+            "if": "Edit(**.py)|Write(**.py)"
           }
         ]
       }
     ]
   },
-  "env": {
-    "AWS_REGION": "us-east-1",
-    "CLAUDE_CODE_USE_BEDROCK": "1",
-    "AWS_PROFILE": "ClaudeCode",
-    "CLAUDE_CODE_ENABLE_TELEMETRY": "1",
-    "CLAUDE_CODE_SUBAGENT_MODEL": "haiku",
-    "OTEL_METRICS_EXPORTER": "otlp",
-    "OTEL_LOGS_EXPORTER": "otlp",
-    "OTEL_EXPORTER_OTLP_PROTOCOL": "http/protobuf",
-    "OTEL_EXPORTER_OTLP_ENDPOINT": "https://claude-otel.kyruus.com",
-    "OTEL_RESOURCE_ATTRIBUTES": "department=engineering,team.id=default,cost_center=default,organization=default"
+  "defaultShell": "bash",
+  "enabledPlugins": {
+    "andrej-karpathy-skills@karpathy-skills": true
   },
   "extraKnownMarketplaces": {
     "karpathy-skills": {
@@ -95,7 +116,11 @@
     }
   },
   "otelHeadersHelper": "~/claude-code-with-bedrock/otel-helper",
-  "enabledPlugins": {
-    "andrej-karpathy-skills@karpathy-skills": true
-  }
+  "viewMode": "focus",
+  "alwaysThinkingEnabled": true,
+  "autoCompactWindow": 150000,
+  "promptSuggestionEnabled": true,
+  "autoMemoryEnabled": true,
+  "showThinkingSummaries": true,
+  "skipAutoPermissionPrompt": true
 }
