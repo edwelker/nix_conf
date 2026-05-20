@@ -50,8 +50,26 @@ done
 
 safe_ln "${DOTDOT}/ai/gemini_settings.json" ~/.gemini/settings.json
 safe_ln "${DOTDOT}/ai/geminiignore" ~/.gemini/.geminiignore
-safe_ln "${DOTDOT}/ai/claude_settings.json" ~/.claude/settings.json
-safe_ln "${DOTDOT}/ai/claude.md" ~/CLAUDE.md
+
+# Claude config is its own private repo
+if [ ! -d "$HOME/.claude/.git" ]; then
+    git clone https://github.com/edwelker/claude.git "$HOME/.claude"
+else
+    git -C "$HOME/.claude" pull --ff-only 2>/dev/null || true
+fi
+safe_ln "$HOME/.claude/CLAUDE.md" ~/CLAUDE.md
+
+# Inject MCP config into ~/.claude.json (the file Claude Code manages)
+if [ -f "$HOME/.claude/mcp-servers.json" ]; then
+    if [ -f "$HOME/.claude.json" ]; then
+        jq --slurpfile mcp "$HOME/.claude/mcp-servers.json" \
+           '.users.mcpServers = $mcp[0]' "$HOME/.claude.json" > /tmp/claude.json.tmp \
+           && mv /tmp/claude.json.tmp "$HOME/.claude.json"
+    else
+        echo '{"users":{"mcpServers":{}}}' | jq --slurpfile mcp "$HOME/.claude/mcp-servers.json" \
+           '.users.mcpServers = $mcp[0]' > "$HOME/.claude.json"
+    fi
+fi
 safe_ln "${DOTDOT}/ssh/config" ~/.ssh/config
 safe_ln "${DOTDOT}/kitty.conf" ~/.config/kitty/kitty.conf
 safe_ln "${DOTDOT}/pip.conf" ~/.pip/pip.conf

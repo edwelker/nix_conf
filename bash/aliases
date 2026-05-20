@@ -89,6 +89,8 @@ alias pd1="pushd +1"
 alias pd2="pushd +2"
 alias dirs='dirs -v'
 
+alias jobs="jobs -l"
+
 alias h='history'
 alias r='fc -s'
 alias hl='fc -l'
@@ -414,6 +416,34 @@ git-clean-merged() {
   git branch --merged "$default_branch" | \
     grep -vE "^\*|${default_branch}" | \
     xargs -n 1 git branch -d
+}
+
+cj() {
+jobs -l | while read -r line; do
+    pid=$(echo "$line" | awk '{print $2}')
+    if [[ "$pid" =~ ^[0-9]+$ ]]; then
+        # Get working directory
+        if command -v pwdx &>/dev/null; then
+            dir=$(pwdx "$pid" 2>/dev/null | cut -d: -f2- | xargs)
+        else
+            dir=$(lsof -a -p "$pid" -d cwd -Fn 2>/dev/null | grep '^n' | cut -c2-)
+        fi
+        dir=${dir:-unknown}
+
+        # Get git branch if in a git repo
+        if [[ "$dir" != "unknown" ]]; then
+            branch=$(git -C "$dir" rev-parse --abbrev-ref HEAD 2>/dev/null)
+            location="$(basename "$dir")"
+            [[ -n "$branch" ]] && location="$location:$branch"
+        else
+            location="unknown"
+        fi
+
+        echo "$line  ($location)"
+    else
+        echo "$line"
+    fi
+done
 }
 
 alias fix-kitty='codesign --force --deep --sign - /Applications/kitty.app'

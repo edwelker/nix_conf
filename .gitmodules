@@ -10,3 +10,6 @@
 [submodule "misc_submodules/fzf-git.sh"]
 	path = misc_submodules/fzf-git.sh
 	url = https://github.com/junegunn/fzf-git.sh.git
+[submodule "claude-config"]
+	path = claude-config
+	url = https://github.com/edwelker/claude.git
