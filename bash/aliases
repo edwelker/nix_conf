@@ -253,6 +253,7 @@ alias vd='vagrant destroy -f'
 # --- Modular Brewfile Aliases ---
 alias brewu='brew update && brew bundle --file=${DOTDOT}/Brewfile'
 alias brew-base='brew bundle --file=${DOTDOT}/brewfile.base'
+alias brew-laptop='brew bundle --file=${DOTDOT}/brewfile.laptop && brew-base'
 alias brew-rs='brew bundle --file=${DOTDOT}/brewfile.rs'
 alias brew-audit='brew bundle cleanup --file=${DOTDOT}/Brewfile'
 alias brew-prune='brew bundle --file=${DOTDOT}/Brewfile --cleanup'
