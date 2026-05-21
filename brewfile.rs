@@ -21,5 +21,6 @@ brew "miller"           # CSV/JSON/TSV data processor
 # cask
 cask "plexamp"
 cask "claude-code"
+cask "copilot-cli"
 cask "visual-studio-code"
 cask "rancher"

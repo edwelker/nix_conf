@@ -10,10 +10,12 @@ if [ ! -d "$PG_PATH" ]; then
     fi
 fi
 
-
+# aliases
 aws_login(){
     aws sso login --profile kyruus
 }
+alias co=copilot
+alias cl=claude
 
 RANCHER_PATH="$HOME/.rd/bin"
 
