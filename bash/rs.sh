@@ -14,8 +14,8 @@ fi
 aws_login(){
     aws sso login --profile kyruus
 }
-alias co=copilot
-alias cl=claude
+alias co="copilot"
+alias cl="claude"
 
 RANCHER_PATH="$HOME/.rd/bin"
 
