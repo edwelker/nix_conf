@@ -33,7 +33,7 @@
     "showUserIdentity": true
   },
   "model": {
-    "name": "gemini-2.0-flash",
+    "name": "auto",
     "compressionThreshold": 0.2,
     "maxSessionTurns": 150
   },
