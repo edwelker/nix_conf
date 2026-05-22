@@ -12,7 +12,6 @@ done
 # --- Node-based CLI tools ---
 echo "Installing/upgrading Node-based CLI tools..."
 
-npm install -g @datadog/datadog-ci
 npm install -g confluence-cli
 
 # --- Claude MCP for AWS ---

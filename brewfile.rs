@@ -26,3 +26,6 @@ cask "claude-code"
 cask "copilot-cli"
 cask "visual-studio-code"
 cask "rancher"
+
+tap "datadog-labs/pack"
+brew "datadog-labs/pack/pup"
