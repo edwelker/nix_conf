@@ -2,6 +2,8 @@
 brew "python@3.9"
 brew "postgresql@16"
 brew "uv"
+brew "sentry-cli"
+brew "jira-cli"
 brew "gh"
 brew "direnv"
 

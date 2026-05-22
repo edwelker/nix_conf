@@ -14,6 +14,9 @@ fi
 aws_login(){
     aws sso login --profile kyruus
 }
+
+source ~/.config/jira.conf
+
 alias co="copilot"
 alias cl="claude"
 
