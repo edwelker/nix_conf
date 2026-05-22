@@ -45,4 +45,21 @@ EOF
   echo "Created ~/.confluence-cli/config.json (Update required)"
 fi
 
+echo "Configuring Datadog CLI..."
+if [ ! -f ~/.config/datadog.conf ]; then
+  cat << 'EOF' > ~/.config/datadog.conf
+export DATADOG_API_KEY="YOUR_API_KEY"
+export DATADOG_APP_KEY="YOUR_APP_KEY"
+export DATADOG_SITE="datadoghq.com"
+EOF
+  echo "Created ~/.config/datadog.conf (Update required)"
+fi
+
+if ! grep -q "source ~/.config/datadog.conf" ~/.zshrc; then
+  echo "" >> ~/.zshrc
+  echo "# Datadog CLI Credentials" >> ~/.zshrc
+  echo "[ -f ~/.config/datadog.conf ] && source ~/.config/datadog.conf" >> ~/.zshrc
+  echo "Added Datadog config source to ~/.zshrc"
+fi
+
 echo "Installation complete."

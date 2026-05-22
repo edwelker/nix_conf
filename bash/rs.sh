@@ -15,7 +15,8 @@ aws_login(){
     aws sso login --profile kyruus
 }
 
-source ~/.config/jira.conf
+[ -f ~/.config/jira.conf ] && source ~/.config/jira.conf
+[ -f ~/.config/datadog.conf ] && source ~/.config/datadog.conf
 
 alias co="copilot"
 alias cl="claude"
