@@ -1,17 +1,30 @@
 #!/usr/bin/env bash
 set -e
 
-echo "Installing Node-based CLI tools..."
-# Datadog CI
-npm install -g @datadog/datadog-ci
+# --- Prereq checks ---
+for cmd in npm claude uvx; do
+  if ! command -v "$cmd" &>/dev/null; then
+    echo "ERROR: '$cmd' is not installed or not in PATH. Aborting." >&2
+    exit 1
+  fi
+done
 
-# Confluence CLI
+# --- Node-based CLI tools ---
+echo "Installing/upgrading Node-based CLI tools..."
+
+npm install -g @datadog/datadog-ci
 npm install -g confluence-cli
 
+# --- Claude MCP for AWS ---
 echo "Configuring Claude MCP for AWS..."
-claude mcp add-json aws-mcp --scope user \
-  '{"command":"uvx","args":["mcp-proxy-for-aws@latest","https://aws-mcp.us-east-1.api.aws/mcp"]}'
+if claude mcp list 2>/dev/null | grep -q "^aws-mcp"; then
+  echo "aws-mcp already configured in Claude MCP, skipping."
+else
+  claude mcp add-json aws-mcp --scope user \
+    '{"command":"uvx","args":["mcp-proxy-for-aws@latest","https://aws-mcp.us-east-1.api.aws/mcp"]}'
+fi
 
+# --- Jira CLI config ---
 echo "Configuring Jira CLI..."
 mkdir -p ~/.config
 if [ ! -f ~/.config/jira.conf ]; then
@@ -23,13 +36,7 @@ EOF
   echo "Created ~/.config/jira.conf (Update required)"
 fi
 
-if ! grep -q "source ~/.config/jira.conf" ~/.zshrc; then
-  echo "" >> ~/.zshrc
-  echo "# Jira CLI Credentials" >> ~/.zshrc
-  echo "[ -f ~/.config/jira.conf ] && source ~/.config/jira.conf" >> ~/.zshrc
-  echo "Added Jira config source to ~/.zshrc"
-fi
-
+# --- Confluence CLI config ---
 echo "Configuring Confluence CLI..."
 mkdir -p ~/.confluence-cli
 if [ ! -f ~/.confluence-cli/config.json ]; then
@@ -45,21 +52,30 @@ EOF
   echo "Created ~/.confluence-cli/config.json (Update required)"
 fi
 
+# --- Datadog CLI config ---
 echo "Configuring Datadog CLI..."
 if [ ! -f ~/.config/datadog.conf ]; then
   cat << 'EOF' > ~/.config/datadog.conf
-export DATADOG_API_KEY="YOUR_API_KEY"
-export DATADOG_APP_KEY="YOUR_APP_KEY"
-export DATADOG_SITE="datadoghq.com"
+export DD_API_KEY="YOUR_API_KEY"
+export DD_APP_KEY="YOUR_APP_KEY"
+export DD_SITE="datadoghq.com"
 EOF
   echo "Created ~/.config/datadog.conf (Update required)"
 fi
 
-if ! grep -q "source ~/.config/datadog.conf" ~/.zshrc; then
-  echo "" >> ~/.zshrc
-  echo "# Datadog CLI Credentials" >> ~/.zshrc
-  echo "[ -f ~/.config/datadog.conf ] && source ~/.config/datadog.conf" >> ~/.zshrc
-  echo "Added Datadog config source to ~/.zshrc"
-fi
+# --- Shell rc additions ---
+echo ""
+echo "========================================================"
+echo "Add the following lines to your shell rc file:"
+echo "========================================================"
+echo ""
+echo "# Jira CLI Credentials"
+echo '[ -f ~/.config/jira.conf ] && source ~/.config/jira.conf'
+echo ""
+echo "# Datadog CLI Credentials (DD_API_KEY, DD_APP_KEY, DD_SITE)"
+echo '[ -f ~/.config/datadog.conf ] && source ~/.config/datadog.conf'
+echo ""
+echo "========================================================"
 
+echo ""
 echo "Installation complete."
