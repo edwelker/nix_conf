@@ -5,6 +5,7 @@ brew "uv"
 brew "sentry-cli"
 brew "jira-cli"
 brew "gh"
+brew "circleci"
 brew "direnv"
 
 # Structural code analysis (like ast-grep)
