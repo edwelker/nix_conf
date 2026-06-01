@@ -49,6 +49,8 @@ brew "uv"
 brew "ruff"
 brew "btop"
 
+brew "gcalcli"
+
 # Fonts (Now part of homebrew/cask)
 cask "font-cozette"
 cask "font-dejavu"
