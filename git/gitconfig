@@ -157,6 +157,10 @@
 [delta]
     features = decorations
     navigate = true
+	plus-style = "syntax #003800"
+	minus-style = "syntax #3f0001"
+	plus-emph-style = "bold #00ff00 #007700"
+	minus-emph-style = "bold #ff0000 #770000"
 
 [delta "interactive"]
     keep-plus-minus-markers = false

@@ -35,7 +35,7 @@
   "model": {
     "name": "auto",
     "compressionThreshold": 0.2,
-    "maxSessionTurns": 150
+    "maxSessionTurns": 250
   },
   "context": {
     "fileFiltering": {
