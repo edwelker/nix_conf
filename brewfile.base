@@ -48,6 +48,7 @@ brew "ast-grep"
 brew "uv"
 brew "ruff"
 brew "btop"
+brew "lefthook"
 
 brew "gcalcli"
 
