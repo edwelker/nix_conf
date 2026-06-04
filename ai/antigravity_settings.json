@@ -1,48 +1,20 @@
 {
-  "security": {
-    "auth": {
-      "selectedType": "oauth-personal"
-    }
-  },
-  "general": {
-    "previewFeatures": true,
-    "vimMode": true,
-    "preferredEditor": "vim",
-    "defaultApprovalMode": "plan",
-    "maxAttempts": 3,
-    "retryFetchErrors": true,
-    "enableAutoUpdate": true,
-    "checkpointing": {
-      "enabled": true
-    },
-    "plan": {
-      "directory": ".gemini/plans",
-      "modelRouting": true
-    },
-    "sessionRetention": {
-      "enabled": true,
-      "maxAge": "30d",
-      "warningAcknowledged": true
-    }
-  },
-  "ui": {
-    "inlineThinkingMode": "full",
-    "hideTips": true,
-    "hideBanner": true,
-    "showLineNumbers": true,
-    "showUserIdentity": true
-  },
-  "model": {
-    "name": "auto",
-    "compressionThreshold": 0.2,
-    "maxSessionTurns": 250
-  },
-  "context": {
-    "fileFiltering": {
-      "respectGitIgnore": true,
-      "respectGeminiIgnore": true,
-      "enableRecursiveFileSearch": false
-    },
-    "discoveryMaxDirs": 3
+  "editor": "vim",
+  "enableTerminalSandbox": true,
+  "model": "Gemini 3.5 Flash (Medium)",
+  "permissions": {
+    "allow": [
+      "command(find)",
+      "command(git log)",
+      "command(git show)",
+      "command(cat)",
+      "command(git status)",
+      "command(fd)",
+      "command(rg)",
+      "command(jq)",
+      "command(uv)",
+      "command(ruff)",
+      "command(bat)"
+    ]
   }
 }
