@@ -1,4 +1,4 @@
-# .geminiignore - SRE/DevOps Context Filter
+# .antigravityignore / .geminiignore - SRE/DevOps Context Filter
 
 # --- Version Control & Metadata ---
 .git/

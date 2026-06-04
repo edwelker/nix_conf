@@ -28,7 +28,7 @@ safe_ln() {
     return 0
 }
 
-mkdir -p ~/.gemini ~/.claude ~/.ssh ~/.config/kitty ~/.pip ~/.tmp ~/Library/Application\ Support/espanso
+mkdir -p ~/.gemini/antigravity-cli ~/.claude ~/.ssh ~/.config/kitty ~/.pip ~/.tmp ~/Library/Application\ Support/espanso
 
 safe_ln "${DOTDOT}/bashrc" ~/.bashrc
 
@@ -48,8 +48,11 @@ for rc in git/gitconfig git/gitk vim/vimrc vim/vim tmux/tmux.conf; do
     safe_ln "${DOTDOT}/$rc" ~/."$(basename "$rc")"
 done
 
-safe_ln "${DOTDOT}/ai/gemini_settings.json" ~/.gemini/settings.json
-safe_ln "${DOTDOT}/ai/geminiignore" ~/.gemini/.geminiignore
+safe_ln "${DOTDOT}/ai/antigravity_settings.json" ~/.gemini/antigravity-cli/settings.json
+safe_ln "${DOTDOT}/ai/antigravity_settings.json" ~/.gemini/settings.json
+safe_ln "${DOTDOT}/ai/antigravityignore" ~/.gemini/antigravity-cli/.antigravityignore
+safe_ln "${DOTDOT}/ai/antigravityignore" ~/.gemini/antigravity-cli/.geminiignore
+safe_ln "${DOTDOT}/ai/antigravityignore" ~/.gemini/.geminiignore
 
 # Claude config is its own private repo
 if [ ! -d "$HOME/.claude/.git" ]; then
@@ -76,6 +79,15 @@ safe_ln "${DOTDOT}/pip.conf" ~/.pip/pip.conf
 safe_ln "${DOTDOT}/.prettierrc.json" ~/.prettierrc.json
 safe_ln "${DOTDOT}/espanso/config" ~/Library/Application\ Support/espanso/config
 safe_ln "${DOTDOT}/espanso/match" ~/Library/Application\ Support/espanso/match
+
+# Install or update Antigravity CLI
+if ! command -v agy &> /dev/null; then
+    echo "Installing Antigravity CLI..."
+    curl -fsSL https://antigravity.google/cli/install.sh | bash
+else
+    echo "Antigravity CLI is already installed. Running update check..."
+    agy update || true
+fi
 
 if [[ -d "${DOTDOT}/.git" ]]; then
     git -C "${DOTDOT}" submodule update --init 2>/dev/null || echo "Warning: Failed to update git submodules" >&2

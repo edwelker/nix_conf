@@ -79,6 +79,11 @@ if [[ $? = 0 ]] ; then
     export PATH="/usr/local/sbin:$PATH"
 fi
 
+# local bin (e.g. for Antigravity CLI)
+if [ -d "$HOME/.local/bin" ]; then
+    export PATH="$HOME/.local/bin:$PATH"
+fi
+
 # Force Bash to send cursor shape sequences even inside tmux
 if [[ -n "$TMUX" ]]; then
     # Wrap escape sequences in \ePtmux; and \e\\ for tmux passthrough
