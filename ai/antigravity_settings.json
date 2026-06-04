@@ -1,4 +1,5 @@
 {
+  "colorScheme": "terminal",
   "editor": "vim",
   "enableTerminalSandbox": true,
   "model": "Gemini 3.5 Flash (Medium)",
@@ -14,7 +15,16 @@
       "command(jq)",
       "command(uv)",
       "command(ruff)",
-      "command(bat)"
+      "command(bat)",
+      "unsandboxed(cat)",
+      "unsandboxed(jq)",
+      "unsandboxed(mv)",
+      "unsandboxed(find)"
     ]
+  },
+  "statusLine": {
+    "type": "",
+    "command": "",
+    "enabled": true
   }
 }

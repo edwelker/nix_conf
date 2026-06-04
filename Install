@@ -49,18 +49,23 @@ for rc in git/gitconfig git/gitk vim/vimrc vim/vim tmux/tmux.conf; do
 done
 
 safe_ln "${DOTDOT}/ai/antigravity_settings.json" ~/.gemini/antigravity-cli/settings.json
-safe_ln "${DOTDOT}/ai/antigravity_settings.json" ~/.gemini/settings.json
 safe_ln "${DOTDOT}/ai/antigravityignore" ~/.gemini/antigravity-cli/.antigravityignore
 safe_ln "${DOTDOT}/ai/antigravityignore" ~/.gemini/antigravity-cli/.geminiignore
 safe_ln "${DOTDOT}/ai/antigravityignore" ~/.gemini/.geminiignore
 
 # Claude config is its own private repo
-if [ ! -d "$HOME/.claude/.git" ]; then
-    git clone https://github.com/edwelker/claude.git "$HOME/.claude"
-else
-    git -C "$HOME/.claude" pull --ff-only 2>/dev/null || true
+read -p "Do you want to clone/update private GitHub repositories (e.g., Claude config)? [y/N]: " clone_choice
+if [[ "$clone_choice" =~ ^[Yy]$ ]]; then
+    if [ ! -d "$HOME/.claude/.git" ]; then
+        git clone https://github.com/edwelker/claude.git "$HOME/.claude"
+    else
+        git -C "$HOME/.claude" pull --ff-only 2>/dev/null || true
+    fi
 fi
-safe_ln "$HOME/.claude/CLAUDE.md" ~/CLAUDE.md
+
+if [ -f "$HOME/.claude/CLAUDE.md" ]; then
+    safe_ln "$HOME/.claude/CLAUDE.md" ~/CLAUDE.md
+fi
 
 # Inject MCP config into ~/.claude.json (the file Claude Code manages)
 if [ -f "$HOME/.claude/mcp-servers.json" ]; then
@@ -90,7 +95,20 @@ else
 fi
 
 if [[ -d "${DOTDOT}/.git" ]]; then
-    git -C "${DOTDOT}" submodule update --init 2>/dev/null || echo "Warning: Failed to update git submodules" >&2
+    read -p "Do you want to update git submodules? [y/N]: " update_submodules
+    if [[ "$update_submodules" =~ ^[Yy]$ ]]; then
+        echo "Updating public submodules..."
+        git -C "${DOTDOT}" submodule update --init \
+            vim/vim/autoload/vim-plug \
+            base16-iterm2 \
+            syntax-highlighting \
+            misc_submodules/fzf-git.sh 2>/dev/null || echo "Warning: Failed to update public submodules" >&2
+
+        if [[ "$clone_choice" =~ ^[Yy]$ ]]; then
+            echo "Updating private submodules..."
+            git -C "${DOTDOT}" submodule update --init claude-config 2>/dev/null || echo "Warning: Failed to update private submodules" >&2
+        fi
+    fi
 fi
 
 echo "Installation complete!"
