@@ -51,6 +51,7 @@ brew "btop"
 brew "lefthook"
 
 brew "gcalcli"
+brew "gmailctl"
 
 # Fonts (Now part of homebrew/cask)
 cask "font-cozette"
