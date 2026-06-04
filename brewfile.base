@@ -52,6 +52,9 @@ brew "lefthook"
 
 brew "gcalcli"
 brew "gmailctl"
+brew "poppler"
+brew "ghostscript"
+brew "pandoc"
 
 # Fonts (Now part of homebrew/cask)
 cask "font-cozette"
