@@ -1,5 +1,4 @@
 {
-  "colorScheme": "terminal",
   "editor": "vim",
   "enableTerminalSandbox": true,
   "model": "Gemini 3.5 Flash (Medium)",
@@ -23,8 +22,8 @@
     ]
   },
   "statusLine": {
-    "type": "",
-    "command": "",
+    "type": "command",
+    "command": "/Users/ewelker/bin/nix_conf/ai/statusline.py",
     "enabled": true
   }
 }
