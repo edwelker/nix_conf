@@ -6,5 +6,9 @@ export TOMCAT_HOME=~/code/java/tomcat
 # if which jenv > /dev/null; then eval "$(jenv init -)"; fi
 export PATH=$PATH:~/src/scala/bin
 
-# mac specific, 2026
-export PATH="/usr/local/opt/openjdk@21/bin:$PATH"
+# prefer Apple Silicon path, fall back to Intel
+if [ -d /opt/homebrew/opt/openjdk@21/bin ]; then
+    export PATH="/opt/homebrew/opt/openjdk@21/bin:$PATH"
+elif [ -d /usr/local/opt/openjdk@21/bin ]; then
+    export PATH="/usr/local/opt/openjdk@21/bin:$PATH"
+fi

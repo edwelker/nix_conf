@@ -111,4 +111,19 @@ if [[ -d "${DOTDOT}/.git" ]]; then
     fi
 fi
 
+# On ewelker* machines, ensure machine-local gitconfig override exists
+if [[ "$(hostname)" == ewelker* ]]; then
+    if [ ! -f "${DOTDOT}/git/gitconfig.rs" ]; then
+        if [ -f "${DOTDOT}/git/gitconfig.rs.example" ]; then
+            cp "${DOTDOT}/git/gitconfig.rs.example" "${DOTDOT}/git/gitconfig.rs"
+            echo "Created git/gitconfig.rs from example — review and customize it."
+        else
+            echo "Note: on an ewelker* machine but git/gitconfig.rs is missing. Create it for machine-local git overrides."
+        fi
+    fi
+fi
+
+# app-configs/ contains application backup files (Picard, Thunderbird, Witch).
+# These are archives for reference only — nothing in there gets symlinked.
+
 echo "Installation complete!"

@@ -13,3 +13,5 @@ jiratest/*.txt
 jiratest/*json
 espanso/match/secrets.yml
 rs
+git/gitconfig.rs
+TODO

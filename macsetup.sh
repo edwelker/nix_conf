@@ -28,8 +28,8 @@ $(brew --prefix)/opt/fzf/install
 mkdir -p ~/code/python
 
 # ssh key
-if [ ! -f ~/.ssh/id_rsa ]; then
-    mkdir -p ~/.ssh && cd ~/.ssh && ssh-keygen -t rsa -C "eddie.welker@gmail.com"
+if [ ! -f ~/.ssh/id_ed25519 ]; then
+    mkdir -p ~/.ssh && ssh-keygen -t ed25519 -C "eddie.welker@gmail.com" -f ~/.ssh/id_ed25519
 fi
 
 # get dotfiles
