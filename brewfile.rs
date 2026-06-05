@@ -4,7 +4,6 @@ brew "postgresql@16"
 brew "uv"
 brew "sentry-cli"
 brew "jira-cli"
-brew "gh"
 brew "circleci"
 brew "direnv"
 

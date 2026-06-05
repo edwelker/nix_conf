@@ -1,7 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "Bash(git update-index *)"
+      "Bash(git update-index *)",
+      "Bash(git *)",
+      "Bash(brew info *)"
     ]
   }
 }
