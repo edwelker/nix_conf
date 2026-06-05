@@ -1,10 +1,10 @@
 # rs specific config/aliases
 
-PG_PATH="/opt/homebrew/opt/postgresql@16/bin"
+PG_PATH="${HOMEBREW_PREFIX}/opt/postgresql@16/bin"
 
 # If the standard opt path is missing, try to find the actual Cellar path
 if [ ! -d "$PG_PATH" ]; then
-    CELLAR_PG=$(find /opt/homebrew/Cellar/postgresql@16 -name pg_config -exec dirname {} \;)
+    CELLAR_PG=$(find "${HOMEBREW_PREFIX}/Cellar/postgresql@16" -name pg_config -exec dirname {} \;)
     if [ -n "$CELLAR_PG" ]; then
         PG_PATH="$CELLAR_PG"
     fi
@@ -36,7 +36,7 @@ mvenv(){
         # 2. Extract version numbers (e.g., 3.9)
         # 3. Sort numerically (oldest to newest)
         # 4. Prompt with fzf
-        local SELECTED_VER=$(ls -d /opt/homebrew/opt/python@* 2>/dev/null | \
+        local SELECTED_VER=$(ls -d "${HOMEBREW_PREFIX}/opt/python@"* 2>/dev/null | \
                             grep -oE '[0-9]+\.[0-9]+' | \
                             sort -uV | \
                             fzf --header="Select Python version for venv" \
@@ -47,15 +47,15 @@ mvenv(){
             echo "No version selected."
             return 1
         fi
-        PY_EXE="/opt/homebrew/opt/python@${SELECTED_VER}/bin/python${SELECTED_VER}"
+        PY_EXE="${HOMEBREW_PREFIX}/opt/python@${SELECTED_VER}/bin/python${SELECTED_VER}"
     else
-        PY_EXE="/opt/homebrew/opt/python@$1/bin/python$1"
+        PY_EXE="${HOMEBREW_PREFIX}/opt/python@$1/bin/python$1"
     fi
 
     # Fallback check for Homebrew binary naming conventions
     if [ ! -x "$PY_EXE" ]; then
         local VER_NUM=$(echo "$PY_EXE" | grep -oE '[0-9]+\.[0-9]+')
-        PY_EXE="/opt/homebrew/opt/python@${VER_NUM}/bin/python3"
+        PY_EXE="${HOMEBREW_PREFIX}/opt/python@${VER_NUM}/bin/python3"
     fi
 
     # Final fallback to system default if Homebrew path is still invalid

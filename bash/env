@@ -63,9 +63,9 @@ if [ -d /usr/local/bin/ ];then
     export PATH=/usr/local/bin:$PATH
 fi
 
-# apple
-if [ -d /opt/homebrew/bin/ ]; then
-    export PATH=/opt/homebrew/bin:$PATH
+# homebrew (arch-agnostic via HOMEBREW_PREFIX set in bashrc)
+if [ -d "${HOMEBREW_PREFIX}/bin/" ]; then
+    export PATH="${HOMEBREW_PREFIX}/bin:$PATH"
 fi
 
 # homebrew sbin
