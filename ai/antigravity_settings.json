@@ -5,10 +5,8 @@
   "permissions": {
     "allow": [
       "command(find)",
-      "command(git log)",
-      "command(git show)",
       "command(cat)",
-      "command(git status)",
+      "command(git)",
       "command(fd)",
       "command(rg)",
       "command(jq)",
@@ -18,7 +16,8 @@
       "unsandboxed(cat)",
       "unsandboxed(jq)",
       "unsandboxed(mv)",
-      "unsandboxed(find)"
+      "unsandboxed(find)",
+      "unsandboxed(uv)",
     ]
   },
   "statusLine": {
