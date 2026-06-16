@@ -3,3 +3,4 @@
 
 cask "aldente"
 # cask "friedrichweise/wechsel/wechsel"
+cask "plex-media-server"
