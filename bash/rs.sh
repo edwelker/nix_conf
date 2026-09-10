@@ -16,6 +16,7 @@ aws_login(){
 }
 
 [ -f ~/.config/jira.conf ] && source ~/.config/jira.conf
+[ -f ~/.config/artifactory.conf ] && source ~/.config/artifactory.conf
 [ -f ~/.config/datadog.conf ] && source ~/.config/datadog.conf
 
 alias co="copilot"
@@ -91,4 +92,42 @@ mvenv(){
     if [ -f requirements.txt ]; then
         pip install -r requirements.txt
     fi
+}
+
+kill_globalprotect() {
+    local uid
+    uid=$(id -u)
+    for label in com.paloaltonetworks.gp.pangpsd com.paloaltonetworks.gp.pangps com.paloaltonetworks.gp.pangpa; do
+      sudo launchctl bootout "system/${label}" 2>/dev/null
+      launchctl bootout "gui/${uid}/${label}" 2>/dev/null
+    done
+    sudo pkill -9 -f GlobalProtect 2>/dev/null
+    sudo pkill -9 -f PanGPA 2>/dev/null
+    sudo pkill -9 -f PanGPS 2>/dev/null
+    echo "GlobalProtect killed."
+}
+
+restart_globalprotect() {
+    local uid
+    uid=$(id -u)
+
+    # 1. Force kill any existing user-space UI processes to prevent instance conflicts
+    pkill -9 -f "GlobalProtect" 2>/dev/null
+    pkill -9 -f "PanGPA" 2>/dev/null
+
+    # 2. Bootstrap back the system daemons
+    for label in com.paloaltonetworks.gp.pangpsd com.paloaltonetworks.gp.pangps; do
+        sudo launchctl bootstrap system "/Library/LaunchDaemons/${label}.plist" 2>/dev/null
+    done
+
+    # 3. Bootstrap the GUI agent
+    launchctl bootstrap "gui/${uid}" "/Library/LaunchAgents/com.paloaltonetworks.gp.pangpa.plist" 2>/dev/null
+
+    # 4. Give launchctl a moment to initialize the agent before launching the UI
+    sleep 1
+
+    # 5. Relaunch the user interface application
+    open -a "/Applications/GlobalProtect.app" 2>/dev/null
+
+    echo "GlobalProtect restarted."
 }
