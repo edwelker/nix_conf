@@ -15,3 +15,5 @@ espanso/match/secrets.yml
 rs
 git/gitconfig.rs
 TODO
+# tmux-fzf-url downloads a platform-specific xre binary here on first use
+tmux/plugins/tmux-fzf-url/bin/
