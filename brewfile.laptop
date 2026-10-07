@@ -4,3 +4,6 @@
 cask "aldente"
 # cask "friedrichweise/wechsel/wechsel"
 cask "plex-media-server"
+cask "sdformatter"
+cask "fx-cast-bridge"
+

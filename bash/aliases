@@ -254,7 +254,7 @@ alias vs='vagrant ssh'
 alias vd='vagrant destroy -f'
 
 # --- Modular Brewfile Aliases ---
-alias brewu='brew update && brew bundle --file=${DOTDOT}/Brewfile'
+alias brewu='brew update && brew bundle -v --file=${DOTDOT}/Brewfile'
 alias brew-base='brew bundle --file=${DOTDOT}/brewfile.base'
 alias brew-laptop='brew bundle --file=${DOTDOT}/brewfile.laptop && brew-base'
 alias brew-rs='brew bundle --file=${DOTDOT}/brewfile.rs'

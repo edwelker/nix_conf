@@ -15,7 +15,7 @@ brew "bash-completion"
 brew "irssi"
 brew "jq"
 brew "autossh"
-brew "mosh"
+# brew "mosh"
 brew "libev"
 # brew install mutt
 brew "go"
