@@ -131,4 +131,11 @@ Host st
 Host github github.com
     HostName github.com
     User edwelker
-    IdentityFile ~/.ssh/macbookpro_to_github/macbookpro_to_github
+    # Key lives in the agent started by `agent` (bash/aliases); name it so any shell finds it.
+    IdentityAgent ~/.ssh/ssh-auth-sock
+
+Host bitbucket.org
+    HostName bitbucket.org
+    User git
+    IdentityFile ~/.ssh/id_ed25519_bitbucket
+    IdentitiesOnly yes
