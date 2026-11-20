@@ -26,6 +26,7 @@ cask "claude-code"
 cask "copilot-cli"
 cask "visual-studio-code"
 cask "rancher"
+cask "session-manager-plugin" # aws session manager
 
 tap "datadog-labs/pack"
 brew "datadog-labs/pack/pup"
