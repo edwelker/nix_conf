@@ -6,6 +6,7 @@ brew "sentry-cli"
 brew "jira-cli"
 brew "circleci"
 brew "direnv"
+brew "pulumi"
 
 # Structural code analysis (like ast-grep)
 brew "semgrep"          # Pattern-based security/code analysis
